@@ -1,0 +1,7 @@
+\newcommand{\f}{\frac}
+\newcommand{\p}{\partial}
+\newcommand{\bs}{\boldsymbol}
+
+\newcounter{myenumi}
+\setcounter{myenumi}{0}
+\newenvironment{myenumerate}{\begin{enumerate} \setcounter{enumi}{\themyenumi}}{\setcounter{myenumi}{\theenumi}\end{enumerate}}
