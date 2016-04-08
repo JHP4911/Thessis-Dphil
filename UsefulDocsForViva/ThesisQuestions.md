@@ -61,4 +61,9 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 > Why might dose rate effects not have an effect at cryo temperatures?
 
-> With regard to SAXS radioprotectants, what are DTT and TCEP 
+> With regard to SAXS radioprotectants, what are DTT and TCEP
+
+> What's the difference between **radioprotectant** and **radical scavenger**?
+
+***Radioprotectants*** - compounds that either react with secondary radicals before they have a chance to damage the protein (i.e. they reduce indirect damage), or by interacting with the already damaged residue in such a way as to repair it to a predamaged state before further damaging reactions can occur (O’Neill et al., 2002).
+***Radical scavengers*** - compounds which reduce indirect damage by reacting with an externally produced radical that could have subsequently inflicted damage if it had reached the protein.
