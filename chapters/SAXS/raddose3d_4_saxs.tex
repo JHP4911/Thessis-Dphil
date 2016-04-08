@@ -20,7 +20,7 @@ Therefore I wrote a module that accepts a diameter and height as input and conve
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/saxs/cylinder_implementation.pdf}
-    \caption{Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$ and height $h$. (A) evenly spaced points around a circle are generated given the radius $r = d/2$ of the circular cross-section}. RADDOSE-3D defaults to 32 points. (B) In three dimensions the points represent the circles at each end of the cylinder. The connectivity of these vertices is hard-coded into the RADDOSE-3D source code.
+    \caption{Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$ and height $h$. (A) evenly spaced points around a circle are generated given the radius $r = d/2$ of the circular cross-section. RADDOSE-3D defaults to 32 points. (B) In three dimensions the points represent the circles at each end of the cylinder. The connectivity of these vertices is hard-coded into the RADDOSE-3D source code.}
     \label{fig:Cylindrical implementation}
 \end{figure}
 
@@ -43,3 +43,31 @@ This means that the beam would irradiate the sample along the $x$-axis (or direc
 In a typical SAXS experiments the beam direction is along the $z$-axis (i.e. perpendicular to the axial dimension of the cylinder).
 So whenever the user specifies a SAXS experiment in RADDOSE-3D the sample (it does not have to be cylindrical) is rotated by an additional $90^{\circ}$ to angle which the user specifies as the initial orientation of the sample to the beam.
 This is done because it is likely to be the most common scenario for a SAXS experiment (if the experimental geometry is non-standard then the user would have to take a lot of care to ensure that the geometric parameters provided to RADDOSE-3D are correct).
+
+\subsection{Determining the sample composition}
+\label{sub:Determining the sample composition}
+Knowledge of the atomic composition of the sample is necessary to be able to calculate the absorbed dose upon X-ray irradiation.
+This is because the overall absorption coefficient of the sample is calculated from the individual atomic absorption coefficients.
+In MX the crystal composition is calculated from the contents of the unit cell.
+This is not possible in SAXS because the sample is in a liquid form as opposed to a crystalline form so it does not make sense for the user to specify contents of the unit cell.
+Instead the user should know the concentration of the protein in the sample in units of milligrams per millilitre (mg/ml).
+So the approach to determine the overall sample composition is to work out the atomic composition in a given volume of liquid given the protein concentration and knowledge of the composition of the buffer solution.
+
+First the molarity of the solution is calculated as using the formula
+\begin{equation}
+    \text{Molarity (moles/litre)} = \f{\text{sample concentration (grams/litre)}}{\text{molecular mass (grams/mole)}}.
+\end{equation}
+If the sequence file is given for the protein (the sample could also contain DNA and RNA) then the molecular mass can be determined accurately from each residue in the file, otherwise an average molecular weight is used for each residue (110 daltons for protein residues, 339.5 daltons for RNA residues and 327 daltons for DNA residues) and the user has to specify the type and number of residues for the sample.
+
+Secondly the a suitable volume needs to be specified to calculate the atomic composition. By suitable it means that volume should be large enough to contain at least one complete molecule.
+By default this volume is defined to be 1000 Angstroms cubed but this can be changed by the user by specifying the length, width and height dimensions of the volume in the input file using the \textit{unit cell} input keyword.
+
+The number of monomers/molecules in the volume can then be calculated by multiplying the molarity by the volume (converted to litres) and by Avogadro's number ($N_A = 6.022 \times 10^{23} mol^{−1}$) and then rounded to the nearest integer.
+The absorption coefficient can then be calculated in the usual way as is described in \cite{pait2009}.
+If there is less than 1 molecule in the volume then this is flagged up and the user is advised to increase the volume.
+
+\subsection{Attenuation of X-ray flux due to capillary}
+\label{sub:Attenuation of X-ray flux due to capillary}
+In a typical MX experiment a crystal is exposed directly to the X-ray beam.
+In contrast, samples from SAXS experiments are held inside a capillary.
+This means that the attenuation of the X-ray flux due to the capillary needs to be taken into account before calculating the absorbed dose in the sample.
