@@ -1,5 +1,9 @@
 """Script to run through Thesis for 'ToDos' and word count"""
 import subprocess
+import os
+
+# Set top level directory for the main thesis
+MAIN_THESIS_DIR = "C:\Users\jonathan\Documents\UniOfOxford\DPhilWork\Thesis"
 
 
 def check_empty_line(string):
@@ -45,6 +49,7 @@ def run_system_command(command_string):
 # ---------------------------
 # Main Script
 # --------------------------
+os.chdir(MAIN_THESIS_DIR)
 MAIN_FILENAME = "main.tex"
 
 # Open the to TODO_FILE for writing the list of todos from the thesis.
