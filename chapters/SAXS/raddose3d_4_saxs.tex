@@ -44,6 +44,8 @@ In a typical SAXS experiments the beam direction is along the $z$-axis (i.e. per
 So whenever the user specifies a SAXS experiment in RADDOSE-3D the sample (it does not have to be cylindrical) is rotated by an additional $90^{\circ}$ to angle which the user specifies as the initial orientation of the sample to the beam.
 This is done because it is likely to be the most common scenario for a SAXS experiment (if the experimental geometry is non-standard then the user would have to take a lot of care to ensure that the geometric parameters provided to RADDOSE-3D are correct).
 
+The user should also be aware that the dimensions provided in the input file specifies the geometry of the sample alone, not the surrounding capillary. The capillary is dealt with separately (section \ref{sub:Attenuation of X-ray flux due to capillary})
+
 \subsection{Determining the sample composition}
 \label{sub:Determining the sample composition}
 Knowledge of the atomic composition of the sample is necessary to be able to calculate the absorbed dose upon X-ray irradiation.
@@ -56,11 +58,12 @@ So the approach to determine the overall sample composition is to work out the a
 First the molarity of the solution is calculated as using the formula
 \begin{equation}
     \text{Molarity (moles/litre)} = \f{\text{sample concentration (grams/litre)}}{\text{molecular mass (grams/mole)}}.
+    \label{eq:molarity calculation}
 \end{equation}
-If the sequence file is given for the protein (the sample could also contain DNA and RNA) then the molecular mass can be determined accurately from each residue in the file, otherwise an average molecular weight is used for each residue (110 daltons for protein residues, 339.5 daltons for RNA residues and 327 daltons for DNA residues) and the user has to specify the type and number of residues for the sample.
+The sample concentration is provided by the user. The molecular mass of the molecule is calculated from other parameters provided in the user input. If the sequence file is given for the protein (the sample could also contain DNA and RNA) then the molecular mass can be determined accurately from each residue in the file, otherwise an average molecular weight is used for each residue (110 daltons for protein residues, 339.5 daltons for RNA residues and 327 daltons for DNA residues) and the user has to specify the type and number of residues for the sample.
 
 Secondly the a suitable volume needs to be specified to calculate the atomic composition. By suitable it means that volume should be large enough to contain at least one complete molecule.
-By default this volume is defined to be 1000 Angstroms cubed but this can be changed by the user by specifying the length, width and height dimensions of the volume in the input file using the \textit{unit cell} input keyword.
+By default this volume is defined to be $1 \times 10^9$ Angstroms cubed but this can be changed by the user by specifying the length, width and height dimensions of the volume in the input file using the \textit{unit cell} input keyword.
 
 The number of monomers/molecules in the volume can then be calculated by multiplying the molarity by the volume (converted to litres) and by Avogadro's number ($N_A = 6.022 \times 10^{23} mol^{−1}$) and then rounded to the nearest integer.
 The absorption coefficient can then be calculated in the usual way as is described in \cite{pait2009}.
@@ -71,3 +74,61 @@ If there is less than 1 molecule in the volume then this is flagged up and the u
 In a typical MX experiment a crystal is exposed directly to the X-ray beam.
 In contrast, samples from SAXS experiments are held inside a capillary.
 This means that the attenuation of the X-ray flux due to the capillary needs to be taken into account before calculating the absorbed dose in the sample.
+
+The transmission fraction of an X-ray beam due to a material with mass thickness $x$ and density $\rho$ is given by
+\begin{equation}
+    I/I_0 = \exp \left[ -(\mu/\rho)x\right],
+    \label{eq:capillary transmission fraction}
+\end{equation}
+where $I$ is the emergent intensity of the beam after penetrating the material, $I_0$ is the incident intensity and $\mu/\rho$ is defined as the mass attenuation coefficient \cite{hubbell1995tables}.
+The mass thickness, $x$, is defined as the mass per unit area and is given by $x = \rho t$ where $t$ is the thickness of the material.
+The attenuation fraction by the capillary can hence be calculated as $1 - I/I_0$.
+
+RADDOSE-3D requires the user to supply the thickness, density and material composition of the capillary to calculate the attenuation fraction.
+The mass thickness can be directly calculated using the density and thickness as described above.
+The mass attenuation coefficient is dependent on the atomic composition of the material as well as the energy of the incident photons and is looked up via the online National Institute of Science and Technology (NIST) tables \cite{nisttable3,nisttable4}.
+A section of the webpage for the mass attenuation coefficient table of carbon is shown in Figure~\ref{fig:NIST table for carbon}.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/saxs/nist_table_carbon.png}
+    \caption{X-ray mass attenuation coefficient data for carbon. The mass attentuation coefficient data are tabulated beneath the graph. The exact energy of the X-ray photons used in crystallography and SAXS (typically around $12 keV$) is not in the table and hence the mass attenuation coefficient is linearly interpolated.}
+    \label{fig:NIST table for carbon}
+\end{figure}
+The tabulated energy values in the table does not explicitly include the typycial energies used in crystallograpy and SAXS (around $12 keV$), so the mass attenuation coefficient is linearly interpolated between the closest values.
+Mass attenuation coefficient data for various mixtures including air, borosilicate glass, water, bone and soft tissue are also tabulated in NIST table 4 \cite{nisttable4}.
+These mixtures can be used directly by RADDOSE-3D.
+
+When mixtures of atomic species are used (the most commonly used capillary material in SAXS is quartz which has elemental composition $SiO_2$) the mass attenuation coefficient is obtained using a weighted average given by
+\begin{equation}
+    \mu/\rho = \sum_i w_i (\mu/\rho)_i,
+\end{equation}
+where $w_i$ and $(\mu/\rho)_i$ are the fraction by weight and mass attenuation coefficient of the $i^{\text{th}}$ atomic constituent respectively.
+
+
+\subsection{Model considerations}
+\label{sub:Model considerations}
+The model of the SAXS experiment in RADDOSE-3D makes many implicit assumptions.
+With regards to the capillary, the atomic composition is uniform throughout and the thickness is assumed constant around the entire sample volume.
+The advantage of this assumption is that the attenuation by the capillary only needs to be calculated once regardless of any movement or rotation of the capillary.
+These assumptions are valid for a cylindrical capillary since the thickness penetrated by the X-ray beam is the same regardless of any rotations or translations.
+
+The sample itself is assumed static, moves as a rigid body and completely fills the capillary.
+This greatly reduces the computational cost when compared to the possibility of modelling the exact fluid dynamics.
+The assumption that the capillary volume is completely filled is valid for most cases since this is usually the case during an experiment.
+The static assumption is not always valid, especially when the sample is flowed through the capillary.
+However the rigid body assumption may still hold.
+During the time that the sample is flowed through the X-ray beam, a small volume element of water may have a constant position with respect to another small volume element of fluid.
+In other words, the fluid sample moves as one rigid body in the time it takes to pass through the X-ray beam.
+To test this assumption SAXS experiments will have to be performed where the damage rates and signatures are found by runs where the fluid is kept static.
+Then compare these results with experiments where the sample is flowed through the capillary and doses are calculated using the rigid body assumption to observe whether similar damage rates are observed.
+
+The SAXS sample can also be manipulated in the same way as a crystal in RADDOSE-3D. Hence helical scanning can be performed, translations of the sample and rotations. Figure~\ref{fig:SAXS cylinder rotated} is the final dose state of a glucose isomerase sample in an experiment where the sample was rotated $180^{\circ}$ in a $ 700 \mu m \times 700 \mu m $ top-hat profile beam.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/saxs/nist_table_carbon.png}
+    \caption{Final dose state of a glucose isomerase sample in an experiment where the sample was rotated $180^{\circ}$ in a $ 700 \mu m \times 700 \mu m $ top-hat profile beam with an incident energy of $ 12.1 keV $ for a total exposure time of 200 seconds. The capillary was treated as completely transparent to the X-rays so there was no attenuation. The contours correspond to dose iso-surfaces: light blue = $ 0.1\ MGy $, dark blue = $ 1.5\ MGy $ and red = $ 2\ MGy $ }
+    \label{fig:SAXS cylinder rotated}
+\end{figure}
+
+\subsection{Comparison with another SAXS radiation damage study}
+\label{sub:Comparison with another SAXS radiation damage study}
