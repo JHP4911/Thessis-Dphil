@@ -31,7 +31,7 @@ A plot of the fidelity values against time and diffraction weighted dose (DWD) c
     \caption{Fidelity value as a function of time and dose. Fidelity values start at 0 for the first frame and increases as the frames become incresingly dissimilar. These curves look like sections of logistic curves (S-shaped curved) and hence it was decided that they could be fitted with logistic functions.}
     \label{fig:Rebecca data}
 \end{figure}
-Although these data show the changing similarity of frames throughout the experiment, they do not necessarily answer the question that an experimenter really wants to know when processing the data: "what frames should be merged?".
+Although these data show the changing similarity of frames throughout the experiment, they do not necessarily answer the question that an experimenter really wants to know when processing the data: ``what frames should be merged?".
 The answer to this question also addresses the aim of this analysis - is it possible to quantitatively compare the efficacy of different radioprotectant compounds.
 So further analysis was required to provide an answer.
 
@@ -65,7 +65,7 @@ To perform this analysis it was necessary to calculate the curvature $\kappa$ of
     \kappa = \f{\f{\mathrm{d}^2F}{\mathrm{d}x^2}}{\left( 1 + \f{\mathrm{d}F}{\mathrm{d}x}\right)^{3/2}}
     \label{eq:Curvature}
 \end{equation}
-This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function 'fminbnd' to find the minimum value of $-\kappa$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This common for most optimisation problems.
+This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function `fminbnd' to find the minimum value of $-\kappa$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This common for most optimisation problems.
 
 It is important to note that an implicit assumption has been made with the methods described above.
 It is assumed here that damage is entirely progressive and subsequent frames beyond the threshold are all significantly dissimilar.
@@ -160,7 +160,7 @@ It can be seen in Figure~\ref{fig:p values for comparisons with frame 1} that th
 Therefore the threshold for radiation damage onset to be significant could be set at that frame.
 However the frames immediately after 55 do not have $P_{adj}(>C) < 0.01$ suggesting that these frames are not necessarily dissimilar to frame 1.
 So frame 55 may be a noisy outlier and radiation damage may not necessarily be significant at that frame.
-A more robust check may be to find the first dissimilar frame for which the next $m$ consecutive frames are also dissimilar.
+A more robust check may be to find the first dissimilar frame for which $m$ consecutive frames are dissimilar.
 This was tested for $m = 1, 3, 5, 7$ and $10$ to determine the number for which point of significant damage remained constant.
 Figure~\ref{fig:Num consecutive frame test} shows the result of the test for all of the runs with ascorbate as the added radioprotectant (note that the dose is used as the threshold for radiation damage instead of frame number).
 \begin{figure}

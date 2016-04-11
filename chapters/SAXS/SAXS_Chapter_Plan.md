@@ -27,8 +27,17 @@
 - Svergun method  => code written to implement the methods.
 
 ### 5) Results
-- Applying curvature method to Rebecca's data.
+- Rebecca's data
+    - Results of the two metrics
+        - They give very similar results
+        - Only one difference
+    - Most effective scavengers
 - Applying Svergun method to our data
+    - BsxCuBE threshold vs CorMap Threshold
+    - Further analysis
+    - Difference between dose and frame.
+    - Most effective compounds
+    - Concentration dependence
 - Summary plot.
 
 ### 6) Discussion

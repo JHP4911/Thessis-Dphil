@@ -2,21 +2,11 @@
 \section{Discussion}
 \label{sec:Discussion}
 \begin{itemize}
-    \item Don't forget to mention the check about the first 3 frames in the results section.
     \item Cylindrical shapes is an explicit input option for RADDOSE-3D sample geometry. It converts a the description of the cylinder provided by the user, diameter and height to a polyhedral geometry description. In fact the current cuboid implementation does the same thing. Therefore currently the only shape that is modelled by RADDOSE-3D that isn't converted to a polyhedral representation for the simulation is the spherical representation.
     \item Doesn't yet account for samples flowed through the capillary.
-    \item RADDOSE-3D modularity and what extensions are possible
+    \item RADDOSE-3D modularity and what extensions are possible.
+    \item temperature, HO vs electron scavengers.
+    \item Didn't look at the signal to noise of the radioprotectants
+    \item CorMap method is what people are likely to use now.
+    \item CorMap needs further refinement. Could expose different molecular conformations
 \end{itemize}
-
-\subsection{For Appendix?}
-\label{sub:For Appendix?}
-DATCMP is a software program, distributed as part of the ATSAS suite of software programs for SAXS data processing \cite{petoukhov2012new}, that assesses the similarity between SAXS frames.
-The reduced $\chi^2$ statistic \cite{pearson1900x} was the standard method to do this and is given by:
-\begin{equation}
-    \chi^2 = \f{1}{n-1} \sum_{k=1}^{n}\left[ \f{I_i(q_k) - I_j(q_k)}{\sigma(q_k)}\right]^2
-\end{equation}
-where $n$ is the number of data points $k$, $I_i(q_k)$ and $I_j(q_k)$ are the intensities at the scattering vector direction $q_k$ for two different frames $i$ and $j$ (the scattering vector is defined in equation \ref{eq:momentum transfer}), and $\sigma(q_k)$ is the error at the $k^{th}$ data point \cite{franke2015synchrotron}.
-$\chi^2 = 0$ implies that two scattering profiles are identical, $0.9 \le \chi^2 \le 1.1$ still suggests good agreement between two frames.
-$\chi^2 >> 1$ suggests that two frames are very dissimilar.
-The frame with the lowest dose is the first frame so it is assumed that the first frame is of the best quality.
-Therefore all subsequent frames are compared to the first frame and any frames that show dissimilarity to the first are discarded for further data processing.
