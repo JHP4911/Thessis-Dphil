@@ -2,40 +2,39 @@
 \section{1D scatter curve similarity analysis}
 \label{sec:1D scatter curve similarity analysis}
 To increase the signal to noise ratio when processing data in SAXS it is necessary to merge 1D intensity curves from several frames.
-If the scattering for different frames is coming from the same molecule in sample then the frames will be similar i.e. the frames will overlap.
-However as radiation damage progresses during the experiment, the protein begin to aggregate.
-This aggregation causes the intensity curve to change (Figure~\ref{fig:1D Scatter Curves}), therefore it is necessary to determine the similarity between any two pairs of frames to determine which frames to merge.
+If the scattering for different frames is from the same molecule in the sample then the frames will be similar i.e. the frames will overlap.
+However as radiation damage progresses during the experiment, the molecules begin to aggregate.
+This aggregation causes the intensity curve to change (Figure~\ref{fig:1D Scatter Curves}).
+Therefore it is necessary to determine the similarity between any two pairs of frames to determine which frames to merge.
 Due to the fact that a new method of assessing the similarity was published between performing experiment 1 and 2 \cite{franke2015correlation}, the analysis performed on the two sets of data are different.
-This was necessary because the new version of DATCMP, the software program performing the similarity analysis \cite{petoukhov2012new}, apparently does not backwards compatibility as some of the old command no longer work in the new version and the online manual is yet to be updated.
+This was necessary because the new version of DATCMP, the software program performing the similarity analysis \cite{petoukhov2012new}, does not incorporate some of its old functionality and the online manual is yet to be updated.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/saxs/scatter_curves.pdf}
-    \caption{1D scattering curves from the first run of the GI sample with no radioprotectant compounds added. Frames 1 and 2 are considered similar so these curves clearly overlap. Frame 14 is the first frame considered dissimilar to the first frame. By visual inspection the dissimilarity is not obvious. Frame 120 was the last frame collected in this run and it is clear that the molecules in the sample have undergone significant structural changes due to the obvious dissimilarity of frame 120 with the other frames.}
+    \caption{1D scattering curves from the first run of the GI sample with no radioprotectant compounds added. Frames 1 and 2 visually seem to overlap well and the merging analysis determines these frames to be similar. Frame 14 is the first frame found to be dissimilar to frame 1. By visual inspection the dissimilarity is not obvious. Frame 120 was the last frame collected in this run. The dissimilarity of frame 120 with the others is obvious. This suggests that the molecules in the sample have undergone significant changes during the experiment.}
     \label{fig:1D Scatter Curves}
 \end{figure}
 
 \subsection{Data analysis - experiment 1}
 \label{sub:Data analysis - experiment 1}
-Buffer subtraction was first carried in Sc\AA tter (Rambo, R. at DLS, Didcot, UK).
-DATCROP, a utility program from the ATSAS suite \cite{petoukhov2012new} for cropping SAXS data was then used to remove data points from the very low angles around the beam stop and the larger angles where the signal-to-noise ratio drops considerably.
-DATCMP (a program also distributed in the ATSAS suite) was then used to carry out a Scheffe post hoc analysis for each radioprotectant.
-This analysis compares the similarity of the first frame with each of the subsequent frames.
-This is done because the frame with the lowest dose is the first frame so it is assumed that the first frame is of the best quality.
-The result of the Scheffe post hoc analysis is a ‘fidelity value’, one value given for each frame to describe its similarity to the first frame.
+Buffer subtraction was first carried out in Sc\AA tter (Rambo, R. at DLS, Didcot, UK).
+DATCROP, a utility program for cropping SAXS data distributed as part of the ATSAS program suite \cite{petoukhov2012new}, was then used to remove data points from the very low angles around the beam stop and the larger angles where the signal-to-noise ratio drops considerably.
+DATCMP (a program also distributed in the ATSAS suite) was then used to carry out a Scheffe post hoc analysis on the resulting 1D scattering data (frames) for each experimental run.
+This analysis compares the similarity of the first frame with each of the subsequent frames, since the first frame is produced at the lowest dose and so it is assumed to be of the best quality.
+The result of the Scheffe post hoc analysis is a ‘fidelity value’, a value given for each frame to describe its similarity to the first frame.
 An identical frame will be given a fidelity value of 0.
-Increasing fidelity values corresponds to increasing dissimilarity of a particular frame with the first.
-A plot of the fidelity values against time and diffraction weighted dose (DWD) can be seen in Figure~\ref{fig:Rebecca data}.
+Increasing fidelity values correspond to increasing dissimilarity of a particular frame with the first.
+A plot of the fidelity values against time and diffraction weighted dose (DWD) is shown in Figure~\ref{fig:Rebecca data}.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/saxs/rebecca_data.png}
-    \caption{Fidelity value as a function of time and dose. Fidelity values start at 0 for the first frame and increases as the frames become incresingly dissimilar. These curves look like sections of logistic curves (S-shaped curved) and hence it was decided that they could be fitted with logistic functions.}
+    \caption{Fidelity value as a function of time and dose. Fidelity values start at 0 for the first frame and increases as the frames become more dissimilar.}
     \label{fig:Rebecca data}
 \end{figure}
-Although these data show the changing similarity of frames throughout the experiment, they do not necessarily answer the question that an experimenter really wants to know when processing the data: ``what frames should be merged?".
-The answer to this question also addresses the aim of this analysis - is it possible to quantitatively compare the efficacy of different radioprotectant compounds.
-So further analysis was required to provide an answer.
+These data show the changing similarity of frames throughout the experiment, but they do not explicitly provide a quantitative metric to compare the efficacies of the various radioprotectants.
+Further analysis of these data was required to do this.
 
-The curves of fidelity values against the time and DWD look like they obey a logistic relationship (they look like S-shaped curves).
+The curves of fidelity values against the time and DWD visually resemble a logistic relationship (they look like S-shaped curves).
 So 4-parameter logistic (4PL) functions were fitted to the data:
 \begin{equation}
     F(x) = \f{a - d}{(1 + (x/c)^b)^2} + d,
@@ -49,49 +48,49 @@ The 4PL curve was used instead of the commonly used 3 parameter logistic functio
 To decide which frames should be merged it is necessary to decide on the threshold similarity criterion.
 Two criteria were decided:
 \begin{enumerate}
-    \item The DWD required to reach an arbitrary value.
-    \item The DWD required to reach maximum curvature.
+    \item The DWD absorbed to reach an arbitrary value.
+    \item The DWD absorbed to reach maximum curvature.
 \end{enumerate}
 The first of the two criteria is straightforward to assess.
-A fidelity value is chosen and then the fitted logistic function can be rearranged to find the DWD value for which the chose fidelity value is reached.
+A fidelity value is chosen and then the fitted logistic function can be rearranged to find the DWD value for which the chosen fidelity value is reached.
 
 The second of the criteria is slightly more involved. For frames to be similar, their fidelity values have to be close to zero.
 Therefore the early frames should be close in value.
 However when frames start to become dissimilar the fidelity value increases.
-In terms of the fitted logistic curve, this corresponds to the an increasing gradient as the fidelity values increase.
-When this increase in the gradient of the fidelity values reaches maximum (i.e. the increase in fidelity values reach maximum) this is the point at which the experimenter should consider subsequent frames to be too dissimilar.
-To perform this analysis it was necessary to calculate the curvature $\kappa$ of the logistic curves given by:
+In terms of the fitted logistic curve, this corresponds to an increasing gradient as the fidelity values increase.
+The total absorbed dose at the point when the increase in the gradient of the fidelity values reaches maximum is the required value.
+To perform this analysis it was necessary to calculate the curvature $\kappa$ of the logistic curves, which is  given by:
 \begin{equation}
-    \kappa = \f{\f{\mathrm{d}^2F}{\mathrm{d}x^2}}{\left( 1 + \f{\mathrm{d}F}{\mathrm{d}x}\right)^{3/2}}
+    \kappa(x) = \f{\f{\mathrm{d}^2F}{\mathrm{d}x^2}}{\left( 1 + \f{\mathrm{d}F}{\mathrm{d}x}\right)^{3/2}}.
     \label{eq:Curvature}
 \end{equation}
-This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function `fminbnd' to find the minimum value of $-\kappa$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This common for most optimisation problems.
+This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function `fminbnd' to find the minimum value of $-\kappa(x)$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This is a common procedure for optimisation problems.
 
-It is important to note that an implicit assumption has been made with the methods described above.
-It is assumed here that damage is entirely progressive and subsequent frames beyond the threshold are all significantly dissimilar.
-Mathematically this assumption manifests itself as models that assume a non-decreasing in fidelity values.
+An implicit assumption with the methods described is that damage is entirely progressive and subsequent frames beyond the threshold are all significantly dissimilar.
+Mathematically this assumption manifests itself as logistic functions representing the fidelity as a monotonically increasing function of the dose.
 
 \subsection{Data analysis - experiment 2}
 \label{sub:Data analysis - experiment 2}
-In a similar manner to the analysis performed in experiment 1 buffer subtraction and cropping was performed before 1D curve similarity analysis, however the subtraction and cropping was performed with custom written Python scripts.
+In a similar manner to the analysis performed in experiment 1 buffer subtraction and cropping was performed before 1D curve similarity analysis.
+However the subtraction and cropping was performed with custom written Python scripts.
 This was done for two reasons.
-Firstly so that the pipeline could be completely scripted (Sc\AA tter, which was used for buffer subtraction, is a GUI based program written in Java).
-Secondly DATCROP subtracts data from files which would mean the scripts that were written would require lots of file handling operations which are relatively time consuming.
-Therefore writing the scripts to perform these simple operations were going to be much more time efficient and allow for more flexibility.
+Firstly so that the pipeline could be completely scripted (Sc\AA tter, which was used for buffer subtraction for data processing in experiment 1, is a GUI based program written in Java).
+Secondly DATCROP subtracts data from files, which would mean the scripts that were written would require lots of file handling operations which are relatively time consuming.
+Therefore writing the scripts to perform these simple operations (subtraction and cropping) were going to be much more time efficient and allow for more flexibility.
 
 DATCMP was again used for the similarity analysis, however as mentioned in section \ref{sec:1D scatter curve similarity analysis} the method used in the current version is not the same one used when performing the analysis for experiment 1.
 The new method is called the Correlation Map (CorMap) test \cite{franke2015correlation}.
 Unlike the method used to generate the fidelity values, the CorMap test does not require the estimates of the experimental errors to test similarity.
 
-A full explanation of the method can be found in \cite{franke2015correlation}, but here is a summary of the main idea.
-Any two frames can be compared using a pairwise correlation which involves calculating the difference between the two intensity curves.
+A full explanation of the method can be found in \cite{franke2015correlation}, but the main idea is presented here.
+Any two frames can be compared using a pairwise correlation, which involves calculating the difference between the two intensity curves.
 If the two frames are identical up to noise, then the difference between them is a random number.
-Given that the intensity values are assumed to come from a normal distribution \cite{franke2015correlation}, the difference between them is normally distributed with a mean of zero (because the frames are assumed identical up to noise).
+Given that the intensity values are assumed to come from a normal distribution \cite{franke2015correlation}, the difference between them is normally distributed with a mean of zero.
 Due to the symmetry of the normal distribution the probability of the difference of the data being either positive or negative is 0.5.
 The pairwise CorMaps between selected frames from the experiment is shown in (Figure~\ref{fig:Pairwise correlation plots}.
-Notice that for similar frames 1 and 2 (Figure~\ref{fig:1D scatter plot of frames 1 and 2}) the pairwise CorMap is shows a randomised lattice (Figure~\ref{fig:Pairwise correlation frames 1 and 2}) as expected for identical data.
-Conversely for dissimilar frames 1 and 120 (Figure~\ref{fig:1D scatter plot of frames 1 and 120}) the pairwise CorMap shows large regions of white and black patches suggesting that the frames are systematically different.
-DATCMP performs quantitative analysis that formalises the similarity conclusions that can be made from these CorMap maps.
+Notice that for similar frames 1 and 2 (Figure~\ref{fig:1D scatter plot of frames 1 and 2}), the pairwise CorMap looks like a randomised lattice (Figure~\ref{fig:Pairwise correlation frames 1 and 2}) as expected for identical data.
+Conversely for dissimilar frames 1 and 120 (Figure~\ref{fig:1D scatter plot of frames 1 and 120}), the pairwise CorMap shows large regions of white and black patches suggesting that the frames are systematically different.
+DATCMP performs quantitative analysis that formalises the similarity conclusions that can be made from these CorMaps.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -121,18 +120,18 @@ DATCMP performs quantitative analysis that formalises the similarity conclusions
             \caption{}
             \label{fig:Pairwise correlation frames 1 and 120}
     \end{subfigure}
-    \caption{Similarity comparison with selected frames from the first experimental SAXS run with no radioprotectant added. (a) 1D scatter curves for frames 1 and 2. These two curves overlap well and should are classed as similar (b) Pairwise CorMap between frames 1 and 2. The ostensibly randomised lattice pattern suggests that the 1D curves are similar. (c) 1D scatter curves for frames 1 and 120. It is clear that these frames do not overlap. (d) Pairwise CorMap between frames 1 and 120. The dissimilarity between the two frames is represented by the large white region in the top left of the map.}
+    \caption{Similarity comparison with selected frames from the first experimental SAXS run with no radioprotectant added. (a) 1D scatter curves for frames 1 and 2. These two curves overlap well and are classed as similar (b) Pairwise CorMap between frames 1 and 2. The ostensibly randomised lattice pattern suggests that the 1D curves are similar. (c) 1D scatter curves for frames 1 and 120. It is clear that these frames do not overlap. (d) Pairwise CorMap between frames 1 and 120. The dissimilarity between the two frames is represented by the large black and white regions.}
     \label{fig:Pairwise correlation plots}
 \end{figure}
-With the following two conditions:
+
+The problem can be thought of in an identical manner to a coin toss experiment with the following two conditions:
 \begin{enumerate}
     \item the probability of the difference of any two data points being either positive or negative is 0.5,
     \item the result of the difference of any two data points with another two are assumed independent,
 \end{enumerate}
-this problem can be thought of in an identical manner to a coin toss experiment.
-With the coin toss experiment one can ask what is the probability of observing more than $n$ consecutive heads (or tails).
+In the coin toss experiment one can ask what the probability is of observing more than $n$ consecutive heads (or tails).
 The Schilling distribution \cite{schilling1990longest} calculates this probability.
-For the SAXS experiment this is the same as asking for the probability of observing a patch white (+1) or black (-1) larger than the longest patch of white (or black) that was actually observed in the pairwise CorMap.
+For the SAXS experiment this is the same as asking for the probability of observing a patch of white (+1) or black (-1) larger than the longest patch of white or black that was actually observed in the pairwise CorMap.
 More formally we ask for the probability ($P$ value) of obtaining an edge length larger than $C$ (denoted $P(>C)$) within an $n$-by-$n$ correlation matrix.
 This is calculated from the Schilling distribution with parameters $n$ and $C$.
 If the $p$ value is smaller than a threshold value $\alpha$ ($\alpha \le 0.01$ is recommended \cite{franke2015correlation}) then the two frames can be considered dissimilar.
@@ -147,21 +146,21 @@ The set of $P_{adj}(>C)$ values that result from comparing the first frame to al
     \caption{Longest observed edge length $C$ against the frame number for pairwise comparisons with frame 1.
     For similar frames to frame 1 the pairwise CorMaps are more like randomised lattices (Figure~\ref{fig:Pairwise correlation frames 1 and 2}) hence $C$ is fairly small.
     The chance of observing a longer edge length than $C$ is quite high.
-    After Bonferroni correction $P_{adj}(>C) = 1$ and these frames are coloured as blue points.
+    After Bonferroni correction $P_{adj}(>C) = 1$ and the circles representing the comparison with these frames are coloured blue.
     As frames start becoming more dissimilar, the $C$ values increase and the $P_{adj}(>C)$ values fall.
-    These points are coloured teal.
+    These circles are coloured teal.
     When frames are very dissimilar, $C$ becomes very large (Figure~\ref{fig:Pairwise correlation frames 1 and 120}) and $P_{adj}(>C) < 0.01$.
-    These frames are coloured orange.
-    The first dissimilar frame (coloured orange - frame 55) is not completely the point at which frames should stopped being merged according to this analysis because there are frames beyond 55 that are not orange in colour.}
+    The circles representing the comparison with these frames are coloured orange.
+    The first dissimilar frame (coloured orange - frame 55) is may not necessarily be the point at which frames should stopped being merged according to this analysis, because there are circles frame 55 that are not orange in colour.}
     \label{fig:p values for comparisons with frame 1}
 \end{figure}
 
-It can be seen in Figure~\ref{fig:p values for comparisons with frame 1} that the first frame which is calculated to be dissimilar to frame 1 is frame 55 which has a corresponding dose of $14.73\ kGy$.
+It can be seen in Figure~\ref{fig:p values for comparisons with frame 1} that the first frame which is calculated to be dissimilar to frame 1 is frame 55 (first orange circle) which has a corresponding dose of $14.73\ kGy$.
 Therefore the threshold for radiation damage onset to be significant could be set at that frame.
-However the frames immediately after 55 do not have $P_{adj}(>C) < 0.01$ suggesting that these frames are not necessarily dissimilar to frame 1.
+However the frames immediately after 55 do not have $P_{adj}(>C) < 0.01$ (teal or blue circles) suggesting that these frames are not significantly dissimilar to frame 1.
 So frame 55 may be a noisy outlier and radiation damage may not necessarily be significant at that frame.
 A more robust check may be to find the first dissimilar frame for which $m$ consecutive frames are dissimilar.
-This was tested for $m = 1, 3, 5, 7$ and $10$ to determine the number for which point of significant damage remained constant.
+This was tested for $m = 1, 3, 5, 7$ and $10$ to determine the value $m = m_0$ for which $m > m_0$ did not affect the radiation damage analysis significantly.
 Figure~\ref{fig:Num consecutive frame test} shows the result of the test for all of the runs with ascorbate as the added radioprotectant (note that the dose is used as the threshold for radiation damage instead of frame number).
 \begin{figure}
     \centering
@@ -183,7 +182,7 @@ Figure~\ref{fig:alpha threshold value test} shows the result of the test with th
 \end{figure}
 It can be seen that the median values are very similar for the various $\alpha$ values.
 This observation was generally the case all of the other radioprotectant compounds.
-For $\alpha = 10$ the spread is slightly smaller, particularly for the $1\ mM$ and $10\ mM$ concentrations.
+For $\alpha = 0.1$ the spread is slightly smaller, particularly for the $1\ mM$ and $10\ mM$ concentrations.
 Given the fact that the radiation damage onset values do not significantly differ between $\alpha$ values and $\alpha = 0.01$ is the recommended (and sufficiently strict) threshold, $\alpha = 0.01$ was chosen as the value used for all radioprotectant compounds in the subsequent radiation damage analysis.
-The advantage of using $\alpha = 0.01$ is that frames have to be very dissimilar before the $P_{adj}(>C)$ value falls below it.
-This means that it is less likely that frames are discarded when they actually are similar (in statistical speak, there is less chance of a type I error).
+The advantage of using $\alpha = 0.01$ is that frames have to be very dissimilar before the $P_{adj}(>C)$ value falls below that value.
+This means that it is less likely that frames are discarded when they actually are similar (in statistical speak this means there is less chance of a type I error).
