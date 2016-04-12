@@ -3,45 +3,46 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                  PREAMBLE                                  %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\input{preamble/packages}
-\input{preamble/newcommands}
-\input{preamble/settings}
+\include{preamble/packages}
+\include{preamble/newcommands}
+\include{preamble/settings}
+\includeonly{chapters/SAXS/introduction, chapters/SAXS/raddose3d_4_saxs, chapters/SAXS/experimental_methods, chapters/SAXS/scatter_curve_analysis, chapters/SAXS/results, chapters/SAXS/discussion}
 
 \begin{document}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%          TITLE PAGE, TABLE AND FIGURE LISTS, CONTENTS PAGE             %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % \input{specialpages/titlepage}
-    % \input{specialpages/listsandcontents}
+    \include{specialpages/titlepage}
+    \include{specialpages/listsandcontents}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                              CHAPTERS                                  %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %----------------- INTRODUCTION -----------------%
-    % \input{chapters/introduction}
+    \include{chapters/introduction}
 
     %----------------- SAXS -----------------%
-    \input{chapters/SAXS/introduction}
-    \input{chapters/SAXS/raddose3d_4_saxs}
-    \input{chapters/SAXS/experimental_methods}
-    \input{chapters/SAXS/scatter_curve_analysis}
-    \input{chapters/SAXS/results}
-    \input{chapters/SAXS/discussion}
-    \input{chapters/SAXS/summary}
+    \include{chapters/SAXS/introduction}
+    \include{chapters/SAXS/raddose3d_4_saxs}
+    \include{chapters/SAXS/experimental_methods}
+    \include{chapters/SAXS/scatter_curve_analysis}
+    \include{chapters/SAXS/results}
+    \include{chapters/SAXS/discussion}
+    \include{chapters/SAXS/summary}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                             BIBLIOGRAPHY                               %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % \bibliographystyle{plain}
-    % \bibliography{bibliography/references}
+    \bibliographystyle{plain}
+    \bibliography{bibliography/references}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                              APPENDICES                                %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % \input{appendices/appendix}
+    \include{appendices/appendix}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                                TODOS                                   %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % \input{specialpages/todos}
+    \include{specialpages/todos}
 \end{document}

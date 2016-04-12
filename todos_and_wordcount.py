@@ -51,6 +51,7 @@ def run_system_command(command_string):
 # --------------------------
 os.chdir(MAIN_THESIS_DIR)
 MAIN_FILENAME = "main.tex"
+FILE_KEYWORDS = ["include", "input"]
 
 # Open the to TODO_FILE for writing the list of todos from the thesis.
 TODO_FILE = open("specialpages/todos.tex", "w")
@@ -66,7 +67,9 @@ with open(MAIN_FILENAME, "r") as mainfile:  # open mainfile
         if not empty_line:
             if "%" in line.lstrip()[0]:  # check if it's a comment line
                 pass
-            elif "input" in line:  # If "input" in line then read the file
+            # If "input" or "include" in line then read the file.
+            elif (any(x in line for x in FILE_KEYWORDS) and
+                  "includeonly" not in line):
                 start_index = line.index('{')
                 end_index = line.index('}')
                 thesis_doc_filename = line[start_index + 1:end_index]
