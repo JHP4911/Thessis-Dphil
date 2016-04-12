@@ -502,7 +502,7 @@
 
     \subsection{Manifestations of damage: Global damage}
     \label{sub:Manifestations of damage: Global damage}
-        The damage processes described in sections \ref{sub:Types of X-ray interactions with atoms: Primary damage} and \ref{sub:Secondary Damage} are observed in a variety of ways in MX which are classified accordingly.
+        The damage processes described in sections \ref{sub:Types of X-ray interactions with atoms: Primary damage} and \ref{sub:Secondary damage} are observed in a variety of ways in MX which are classified accordingly.
         Global radiation damage is observed in reciprocal space and results in changes in mosaicity, increase in the scaling and atomic $B$ factors, unit cell expansion, increases in data quality $R$ values ($R_{merge}, R_{meas}, R_{pim}$) and decreasing $CC_{1/2}$ and $CC^*$ \cite{garman2010}.
         Perhaps the most iconic symptom of global radiation damage is the loss of intensity of reflections in the diffraction pattern, with the reflections corresponding to higher resolution information fading the quickest (Figure~\ref{fig:Intensity decay insulin diffraction images} ).
         Given that the diffraction images constitute the experimental data, it is this loss of reflection intensity that is generally attributed to the failure of structure solution as a result of radiation damage.
@@ -537,8 +537,8 @@
 
         To observe appreciable changes in reciprocal space, radiation damage must be affecting the long range crystalline order of the of the crystal \cite{meents2010}.
         At room temperature, many more radical species are mobile and damage occurs much more quickly than at cryo-temperatures ($100\ K$) \cite{henderson1990cryo,weik2010temperature}.
-        However, global radiation damage still occurs at cryo-temperatures and it has been proposed that this is due to hydrogen gas build up. 
-		This is because diffusion rates are smaller at lower temperatures. 
+        However, global radiation damage still occurs at cryo-temperatures and it has been proposed that this is due to hydrogen gas build up.
+		This is because diffusion rates are smaller at lower temperatures.
 		This build up of hydrogen exerts a disruptive force on the crystalline structure leading to the reduction in structural integrity \cite{meents2010}.
 
         The various symptoms or variants of them have been proposed as metrics to assess the extent of radiation damage as a function of the dose (Figure~\ref{fig:Radiation damage metrics}).
@@ -559,7 +559,7 @@
             The decay R factor, $R_d$ is decay metric that assesses the pairwise difference between symmetry related reflections on different images \cite{diederichs2006}.
             This results in a relatively smooth function against image number (used as a proxy for dose) that can be interpreted as follows: if $R_d$ stays constant for each image then no significant radiation damage has occurred, whereas if the $R_d$ increases then radiation damage is in progressing throughout the dataset.
             A desirable feature of this metric is that it can be used with a single dataset.
-            Therefore radiation damage analysis can be performed on highly sensitive crystals that may only withstand enough dose for a single dataset. 
+            Therefore radiation damage analysis can be performed on highly sensitive crystals that may only withstand enough dose for a single dataset.
 			The problem is that it requires high multiplicity which is not always achievable. This metric is less commonly used in radiation damage studies than the other two.
 
         \subsubsection{Relative B factor}
@@ -587,32 +587,32 @@
             \item Covalent metal bonds are cleaved \cite{ramagopal2005radiation}.
         \end{enumerate}
         Dehydroxylation of tyrosine residues have also been observed \cite{burmeister2000structural}, but the physical basis and the evidence of this being a general symptom of specific radiation damage is contentious (Charlie Bury and Elspeth Garman, personal communication).
-        
+
 		Due to the fact that specific damage changes structural information, it can lead to incorrect biological interpretation from structures.
 		Metrics to assess the progression of specific damage also exist but are not always described as a function of dose.
 
         \subsubsection{Peaks in Fourier difference maps}
         \label{subs:Peaks in Fourier difference maps}
-            Fourier difference maps, $F_n - F_1$, are electron density maps where the amplitudes of the first dataset $F_1$ are subtracted from the amplitudes of a later dataset $F_n$. 
-			Negative values correspond to areas where electron density has been lost as the experiment progressed. 
-			Sometimes this can be due to noise in the data, but significantly high values (difference peaks) that are coincident with the structural model from the first dataset suggest specific structural damage has occurred. 
-			In most studies, this sort of analysis is done via manual inspection of the electron density map \cite{burmeister2000structural,weik2000,ravelli2000}. 
+            Fourier difference maps, $F_n - F_1$, are electron density maps where the amplitudes of the first dataset $F_1$ are subtracted from the amplitudes of a later dataset $F_n$.
+			Negative values correspond to areas where electron density has been lost as the experiment progressed.
+			Sometimes this can be due to noise in the data, but significantly high values (difference peaks) that are coincident with the structural model from the first dataset suggest specific structural damage has occurred.
+			In most studies, this sort of analysis is done via manual inspection of the electron density map \cite{burmeister2000structural,weik2000,ravelli2000}.
 			However work is being done towards automating this analysis and developing new metrics to better characterise the level of specific damage \cite{bury2015radiation}.
 
         \subsubsection{Atomic B-factors}
         \label{subs:Atomic B-factors}
-            Atomic B-factors (also referred to as atomic displacement parameters) describe the level of dynamic disorder of atoms, with each atom having its own B-factor. 
-			Generally this value increases as radiation damage progresses and the level of disorder of the structure increases. 
-			In practice the B-factor is also substantially influenced by other factors such as static disorder (occupancy), errors in model building and the packing density of the atom \cite{gerstel2015identifying}. 
+            Atomic B-factors (also referred to as atomic displacement parameters) describe the level of dynamic disorder of atoms, with each atom having its own B-factor.
+			Generally this value increases as radiation damage progresses and the level of disorder of the structure increases.
+			In practice the B-factor is also substantially influenced by other factors such as static disorder (occupancy), errors in model building and the packing density of the atom \cite{gerstel2015identifying}.
 			This means that atoms with higher B-factors may not necessarily be more damaged than atoms with a smaller B-factor.
 
         \subsubsection{B damage}
         \label{subs:B damage}
-            B damage, $B_{damage}$, is a metric that aims to deconvolute the dependence of the atomic B factor on it's packing density. 
-			It is defined as the ratio of an atom's B-factor and the average B-factor of atoms that have a similar packing density environment \cite{gerstel2015identifying}. 
+            B damage, $B_{damage}$, is a metric that aims to deconvolute the dependence of the atomic B factor on it's packing density.
+			It is defined as the ratio of an atom's B-factor and the average B-factor of atoms that have a similar packing density environment \cite{gerstel2015identifying}.
 			This is a normalised metric, therefore atoms that show damage will have $B_{damage}$ values significantly greater than 1.
 
-        Analysis of PDB structures with $B_{damage}$ showed a positive correlation between radiation damage and solvent accessibility \cite{gerstel2015identifying}, in agreement with statements made in \cite{sygusch1988}. 
+        Analysis of PDB structures with $B_{damage}$ showed a positive correlation between radiation damage and solvent accessibility \cite{gerstel2015identifying}, in agreement with statements made in \cite{sygusch1988}.
 		However other studies have claimed otherwise \cite{coquelle2007activity,homer2011energy} demonstrating the lack of consensus of metrics and conclusions in radiation damage studies.
 
     \subsection{Experimental methods for dealing with radiation damage}
@@ -631,31 +631,31 @@
 
         \subsubsection{Dose rate}
         \label{subs:Dose rate}
-            Damage processes occur over a finite time period and this has been exploited by increasing the rate at which the dose is deposited in the crystal (dose rate) in an attempt to outrun radiation damage. 
-			At cryo-temperatures dose rate effects have been shown to improve crystal lifetimes by up to 10\% \cite{owen2006} although some report that there is no effect at all \cite{sliz2003}. 
-			At RT the evidence that there is a dose rate dependence seems is quite convincing \cite{south2007,owen2012,owen2014}. 
+            Damage processes occur over a finite time period and this has been exploited by increasing the rate at which the dose is deposited in the crystal (dose rate) in an attempt to outrun radiation damage.
+			At cryo-temperatures dose rate effects have been shown to improve crystal lifetimes by up to 10\% \cite{owen2006} although some report that there is no effect at all \cite{sliz2003}.
+			At RT the evidence that there is a dose rate dependence seems is quite convincing \cite{south2007,owen2012,owen2014}.
 			With the increasingly popularity of \textit{in situ} data collection \cite{axford2015structure,axford2012situ}, particularly for protein crystals that are not amenable to cryo-cooling, high dose rate experiments are likely to become even more routine.
 
-            Serial femtosecond crystallography (SFX) at XFELs use incredibly fast X-ray pulses (as little as $5 fs$ \cite{boutet2012high}) to probe protein crystals to obtain ``diffraction before destruction" \cite{chapman2014diffraction}. 
-			Although experimental data have now shown indications that radiation damage is still visible at XFELs if the pulse length is too long \cite{nass2015indications}. 
+            Serial femtosecond crystallography (SFX) at XFELs use incredibly fast X-ray pulses (as little as $5 fs$ \cite{boutet2012high}) to probe protein crystals to obtain ``diffraction before destruction" \cite{chapman2014diffraction}.
+			Although experimental data have now shown indications that radiation damage is still visible at XFELs if the pulse length is too long \cite{nass2015indications}.
 			SFX at XFELs are still in their infancy but progress is continuously being made and is a promising field for the development of structural biology \cite{garman2014,brooks2015nobel}.
 
 
         \subsubsection{Scavengers}
         \label{subs:Scavengers}
-            Scavengers are small molecules introduced to the crystal to mitigate the effects of secondary damage by ``soaking" up radicals. 
-			At present, evidence of the efficacy of scavengers is contradictory. 
-			For example the studies presented in \cite{barker2009room,kmetko2011can} are conflicting in their evidence as to whether scavengers have any effect on global radiation damage metrics. 
-			It is worth noting that the studies used different global radiation damage metrics ($I_n/I_1$ improved with use of scavengers, whereas $B_{rel}$ did not) to come to their conclusions. 
-			The effect of scavengers to protect against specific radiation damage is more promising \cite{southworth2007radioprotectant}. 
+            Scavengers are small molecules introduced to the crystal to mitigate the effects of secondary damage by ``soaking" up radicals.
+			At present, evidence of the efficacy of scavengers is contradictory.
+			For example the studies presented in \cite{barker2009room,kmetko2011can} are conflicting in their evidence as to whether scavengers have any effect on global radiation damage metrics.
+			It is worth noting that the studies used different global radiation damage metrics ($I_n/I_1$ improved with use of scavengers, whereas $B_{rel}$ did not) to come to their conclusions.
+			The effect of scavengers to protect against specific radiation damage is more promising \cite{southworth2007radioprotectant}.
 			A comprehensive summary of all scavenger literature to date is provided in \cite{allan2012}.
 
     \subsection{Modelling intensity decay}
     \label{sub:Modelling intensity decay}
         Structure factor amplitudes are derived from the integrated intensity measurements from the experimental data.
-        Therefore accurate intensity values are required to obtain reliable structural information. 
-		The problem is that the intensity measurements are affected by several systematic factors \cite{evans2005}. 
-		In particular, global radiation damage of the sample can be a significant factor contributing to the overall intensity variation. 
+        Therefore accurate intensity values are required to obtain reliable structural information.
+		The problem is that the intensity measurements are affected by several systematic factors \cite{evans2005}.
+		In particular, global radiation damage of the sample can be a significant factor contributing to the overall intensity variation.
 		For this reason attempts to correct for this effect have been proposed and implemented during data processing.
 
         The first systematic study of radiation damage was carried out on crystals of sperm whale myoglobin in 1962 by Blake and Phillips \cite{blake1962}.
@@ -706,7 +706,7 @@
         It was concluded that all models explain the data well for moderate dose values ($\approx$ 26\% damage), but none explain radiation damage at high doses very well ($\approx$ 72\% damage).
         The general model resulted in refined $k_3$ values that were very close to zero, and the model with $k_3 = 0$ consistently resulted in the best fit to the data at higher dose values.
         This suggests that the radiation damage process is sequential.
-        
+
 		In 1988 Sygusch and Allaire proposed an extension to the Fletterick \textit{et al.} model.
         They suggested that a fourth fraction, $A'_1$, that has only suffered small perturbations of surface residues and disulphide bonds, still has the capability of contributing to diffraction that occurs at all angles \cite{sygusch1988}.
         This is because these surface perturbations are caused before any significant changes in molecular conformation.
@@ -814,8 +814,8 @@
 		\item \textit{Chapter 5} describes the work on assessing errors associated with calculating doses in RADDOSE-3D.
 		This includes the handling of experimentally measured beam profiles with a significant background count and errors associated with uncertainties of crystal shape and other input parameters.
 		Also the development of a graphical user interface for RADDOSE-3D is also discussed and how it can be used to compare the results of several strategies to improve experimental design.
-		\item \textit{Chapter 6} describes the extension of RADDOSE-3D to calculate dose values for SAXS experiments. 
-		This extension is used to assess the dose suffered by samples in an experiment to determine the efficacy of radioprotectants in SAXS experiments. 
+		\item \textit{Chapter 6} describes the extension of RADDOSE-3D to calculate dose values for SAXS experiments.
+		This extension is used to assess the dose suffered by samples in an experiment to determine the efficacy of radioprotectants in SAXS experiments.
 		A new metric to define the threshold at which 1D SAXS curves are significantly damaged is also presented.
         \textcolor{red}{
             \begin{myenumerate}
