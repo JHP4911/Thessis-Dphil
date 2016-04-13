@@ -1,0 +1,49 @@
+%!TEX root = ../../main.tex
+\section{This thesis in context}
+\label{sec:This thesis in context}
+	The work presented in this thesis extends previous work on radiation damage correction models.
+	A new data reduction algorithm to process MX data has been developed that explicitly tracks the changes in the amplitude values throughout the diffraction experiment.
+	The several benefits of this approach include:
+    \begin{itemize}
+        \item Explicit tracking of the amplitude uncertainties, even for negative and weak positive reflections.
+		\item Estimates of amplitude values at every point in the diffraction experiment.
+		\item The possibility to explicitly correct the amplitude values for radiation damage, as opposed to the intensities.
+    \end{itemize}
+	Furthermore, RADDOSE-3D has been extended to calculate doses for SAXS experiments.
+	This has been used to assess the efficacy of several radioprotectants for SAXS experiments.
+	As a result of this work, a new metric has been developed for defining the threshold at which 1D SAXS curves are significantly damaged.
+	\begin{itemize}
+        \item \textit{Chapter 2} describes the experiment that was performed to collect data at $100\ K$ from several crystals of different proteins with a specially designed top-hat profile X-ray beam.
+		The decay models presented in section \ref{sub:Modelling intensity decay} are then tested to assess their validity with these data.
+		Finally the chosen model is used to improve the DWD metric proposed by Zeldin \textit{et al.}
+		\item \textit{Chapter 3} describes the regression model used to make corrections to intensities of individual reflections using RADDOSE-3D and DWD.
+		It also describes work assessing the correlations of structure factor amplitudes derived from a small polypeptide with structural modifications.
+		\item \textit{Chapter 4} reports the main results of the thesis. In this chapter, the new data reduction algorithm is presented.
+		The results are also presented and compared to those using the current data reduction pipeline (AIMLESS \& CTRUNCATE).
+		Considerations of the algorithm and extensions are also discussed.
+		\item \textit{Chapter 5} describes the work on assessing errors associated with calculating doses in RADDOSE-3D.
+		This includes the handling of experimentally measured beam profiles with a significant background count and errors associated with uncertainties of crystal shape and other input parameters.
+		Also the development of a graphical user interface for RADDOSE-3D is also discussed and how it can be used to compare the results of several strategies to improve experimental design.
+		\item \textit{Chapter 6} describes the extension of RADDOSE-3D to calculate dose values for SAXS experiments.
+		This extension is used to assess the dose suffered by samples in an experiment to determine the efficacy of radioprotectants in SAXS experiments.
+		A new metric to define the threshold at which 1D SAXS curves are significantly damaged is also presented.
+        \textcolor{red}{
+            \begin{myenumerate}
+                \item \hypertarget{todo:ExtraChapter}{\textbf{TODO:} Find out from Elspeth if I am allowed Chapters 5 and 6 seem significant enough to be separate chapters. (I think they are)}
+            \end{myenumerate}
+        }
+		\item \textit{Chapter 7} Summarises the work and conclusions drawn from the previous chapters and suggests future directions as a result of the work presented.
+    \end{itemize}
+
+\textcolor{red}{
+    \begin{myenumerate}
+        \item \hypertarget{todo:Add appendix entries}{\textbf{TODO:} Add appendix entries}
+    \end{myenumerate}
+}
+
+\textbf{Appendix entries:}
+\newline
+\begin{itemize}
+    \item mathematical group
+    \item isomorphic groups
+\end{itemize}
