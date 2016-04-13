@@ -1,15 +1,48 @@
 \fancyhf{} % clear all fields
 \pagestyle{fancy}
 
-% \lhead{}
-% \chead{}
-% \rhead{\bfseries The performance of new graduates}
-% \lfoot{From: K. Grant}
-% \cfoot{To: Dean A. Smith}
-% \rfoot{\thepage}
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0.4pt}
+%Define properties of the headers
+\fancyhead[LE,RO]{{\color{black}%
+\bfseries\thepage}}
+\fancyhead[LO]{{\color{black}%
+\bfseries\rightmark}}
+\fancyhead[RE]{{\color{black}%
+\bfseries\leftmark}}
+
+%Define properties of the header line
+\renewcommand{\headrulewidth}{2pt}
+\renewcommand{\footrulewidth}{0pt}
+\renewcommand{\headrule}{{\color{black}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+
+%Set the indentation and distance between paragraphs
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
 
-\renewcommand{\familydefault}{\sfdefault} % Use Sans serif font
+%Set the geometry of the page
+\geometry{a4paper, inner=3.5cm}
+
+%This baselineskip gives sufficient line spacing for an examiner to easily
+%markup the thesis with comments
+\baselineskip=18pt plus1pt
+
+%Set the number of sectioning levels that get number and appear in the contents
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+
+%Set doublespacing
+\doublespacing
+
+%Set Properties of chapter pages
+\titleformat{\chapter}[display]
+{\huge\filcenter}
+{\titlerule[3pt]%
+\vspace{3pt}%
+\titlerule
+\vspace{1pc}%
+\LARGE\MakeUppercase{\chaptertitlename} \thechapter}
+{1pc}
+{\titlerule
+\vspace{1pc}%
+\Huge}
+[\newpage] % creates the new page
