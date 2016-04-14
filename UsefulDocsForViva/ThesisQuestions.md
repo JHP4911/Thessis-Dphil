@@ -59,6 +59,8 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 > Explain the "within a factor of 2" statement
 
+> For Fourier difference map analysis why are the phases not refined for the later datasets?
+
 > Why might dose rate effects not have an effect at cryo temperatures?
 
 ### SAXS Chapter
