@@ -12,8 +12,8 @@ To irradiate the crystal uniformly it is necessary to use a flat (top-hat) beam 
 At the time of the experiment (January 2014) RADDOSE-3D was only able to model cuboid or spherical crystal shapes.
 Therefore the crystals used in the experiment were grown to be as close to cuboid in shape as possible.
 
-\section{Crystallization}
-\label{seccrystallisation}
+\subsection{Crystallization}
+\label{sub:Crystallisation}
 Crystals of bovine pancreatic insulin were grown by the sitting-drop vapour diffusion method.
 The well solution consisted of $0.243\, M$ Na$_2$HPO$_4$, $0.007\, M$ Na$_3$PO$_4$ at pH $10$ and $0.01\, M$ Na$_3$EDTA.
 $2\, \mu l$ of the well solution was added to an equal volume of the protein solution which consisted of $20\, mg/ml$ insulin protein, $0.0195\, M$ Na$_2$HPO$_4$, $0.0005\, M$ Na$_3$PO$_4$ at pH $10$ and $0.01\, M$ Na$_3$EDTA.
@@ -49,7 +49,8 @@ They were cryoprotected in their native well solution with $25\%\, v/v$ glycerol
         \label{figcrystals}
 \end{figure}
 
-\section{Data Collection and Dose Calculation}
+\subsection{Data Collection and Dose Calculation}
+\label{sub:Data Collection and Dose Calculation}
 All data were collected on the PETRA III Hamburg beamline P$14$ with an energy of $12.7\,keV$ ($\lambda = 0.9764\,$\AA) at $100\,K$, in collaboration with beamline scientist Gleb Bourenkov and beamline director Thomas Schneider.
 The experimentally measured beam profile was determined by placing a scintillator combined with an Allied Vision GC1350C CCD camera directly in the beam path.
 This produced a quantitative map of the beam profile in a portable graymap (pgm) file.
@@ -108,7 +109,8 @@ Functionality to handle the experimentally measured beam profile was used to fur
 	\label{tab:Hamburg data collection}
 \end{table}
 
-\section{Data Processing}
+\subsection{Data Processing}
+\label{sub:Data Processing}
 The data collected for the MINA and haspin crystals were non-trivial to process and hence the data processing procedures described here are relevant only for the insulin crystals.
 Data were processed using the Collaborative Computational Project No. 4 (CCP4) suite \cite{winn2011} with a standardised script used to call each program from within the suite to ensure identical treatment of all crystals.
 MOSFLM \cite{leslie2007} was run manually with the space group set to $I2_13$.
@@ -117,7 +119,7 @@ It is well known that the unit cell expands and the mosaicity increases as radia
 The data were then scaled with AIMLESS \cite{evans2013} in batches of 900 frames (equivalent to $90^{\circ}$ rotations) separated 50 frames apart (equivalent to $5^{\circ}$).
 This allowed several overlapping datasets to be extracted which would allow the progression of radiation damage to be tracked much better than would be the case if datasets did not overlap.
 14400 images were collected from each insulin crystal so processing the data in this way produced 271 datasets per crystal.
-Despite the fact that the insulin crystals diffracted to $1.3$\AA, the data were scaled with a resolution limit of $1.8$\AA.
+Despite the fact that the insulin crystals diffracted to $1.3\,$\AA, the data were scaled with a resolution limit of $1.8\,$\AA.
 This was to ensure that the processing for the highly damaged datasets were less likely to fail and to allow more direct comparison of the intensity values between datasets.
 Data processing statistics for each insulin crystal are shown in Table~\ref{tab: Hamburg data processing}.
 
@@ -150,3 +152,32 @@ Data processing statistics for each insulin crystal are shown in Table~\ref{tab:
 	\end{tabular}
 	\label{tab: Hamburg data processing}
 \end{table}
+
+\subsection{Calculating the relative intensity}
+\label{sub:Calculating the relative intensity}
+The relative intensity of a uniformly irradiated crystal is effectively the same as the RDE.
+The relative intensity is defined as $I_n/I_1$, where $I_n$ is the summed mean intensity of a complete data set $n$ (or equivalent sections of data) after a dose $D$, and $I_1$ is the mean intensity of the first data set.
+Implicit in this definition is that the total intensity is integrated for the same reflections for each dataset.
+
+Figure \ref{fig: AIMLESS log file} shows a table from the log file of an AIMLESS job.
+The overall mean intensity given in the table (highlighted red in Figure \ref{fig: AIMLESS log file}) is calculated from measurable reflections within that particular dataset.
+If this value is divided by the overall mean intensity of the first dataset, then the resulting relative intensity value is generally an overestimate of the true value.
+This is because it will not account for reflections that may have been present in the first dataset that are no longer detectable for the current dataset due to the overall intensity loss.
+
+Another way to calculate the relative intensity is to calculate the total summed intensity of a dataset, then divide that by the total summed intensity of the first dataset.
+This was achieved by multiplying the number of measured reflections in each resolution bin (\textit{Nmeas} - highlighted orange in Figure \ref{fig: AIMLESS log file}) by the average intensity in that resolution bin (\textit{AvI} - highlighted blue in Figure \ref{fig: AIMLESS log file}), then summing them.
+Calculating the relative intensity in this way agrees with the values given when calculating the ratio of the overall mean intensities with non-detectable reflections included in the calculation, i.e. taking the \textit{Nmeas} values from the first dataset (Figure \ref{figrelint}).
+Therefore, the method chosen to calculate the relative intensities was to take the ratios of the total summed intensity of a data set with that of the first data set.
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{figures/dwd/aimlesslog.png}
+    \caption{A table given in the log file of an AIMLESS job from an insulin crystal. The table gives data for 24 resolution bins including the number of measured reflections in each resolution bin, Nmeas (highlighted orange), and the Average Intensity in each resolution bin, AvI (highlighted blue). The value highlighted in red is the overall average intensity for a dataset calculated using reflections that are measurable in that data set.}
+    \label{fig: AIMLESS log file}
+\end{figure}
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{figures/dwd/calcrelint.pdf}
+    \caption{Relative intensity plotted against the average absorbed dose for one insulin crystal. The data show that using the overall mean intensity given in the AIMLESS log file increases the relative intensity values because it excludes reflections that can not be measured. On the other hand, calculating the overall mean intensity using all of the measured reflections from the first data set, agrees with the relative intensity calculated by taking the ratio of the total summed intensity of the current data set divided by that of the first data set.}
+    \label{figrelint}
+\end{figure}
