@@ -1,6 +1,6 @@
 %!TEX root = ../../main.tex
 \section{Discussion}
-\label{sec:Discussion}
+\label{sec:Discussion - Dose Decay Modelling}
 The DWD is a dose metric that was introduced by Zeldin \textit{et al.} which represents ``the average dose in the diffracting crystal volume from which the photons making up a given image have scattered" \cite{zeldin2013dwd}.
 In essence, the DWD is a weighted average of the dose where the weights are given by the fluence at each point in the crystal (equation \ref{eq:DWD equation - no RDE}).
 Zeldin \textit{et al.} demonstrated that DWD was superior to other metrics (average dose - whole crystal and the maximum dose) in predicting the relative intensity loss of protein crystals whilst accounting for different beam profiles.
@@ -14,9 +14,9 @@ The improvement in relative intensity decay prediction makes DWD a promising met
 However, data points are still scattered around the line of best fit in Figure~\ref{fig:Dose metric comparisons - zeldin et al} (C) i.e. $I_n/I_1$ against DWD.
 The scatter is thought to be caused by two factors:
 First is the intrinsic variation in crystal quality.
-Secondly is the fact that the DWD does not account for the effects of inhomogeneous dose distribution, such as an uneven loss of diffraction efficiency throughout the crystal \cite{zeldin2013dwd}.
+Second is the fact that the DWD does not account for the effects of inhomogeneous dose distribution, such as an uneven loss of diffraction efficiency throughout the crystal \cite{zeldin2013dwd}.
 
-The incorporation of an additional weighting term in the definition of the DWD that accounts for the loss of diffracting efficiency is hoped to reduce the remaining scatter (equation \ref{eq:DWD equation with RDE}).
+The incorporation of an additional weighting term in the definition of the DWD, which accounts for the loss of diffracting efficiency, is hoped to reduce the remaining scatter (equation \ref{eq:DWD equation with RDE}).
 The RDE was introduced as a function of the absorbed dose that would represent the loss of diffraction efficiency.
 Note that equations \ref{eq:DWD equation - no RDE} and \ref{eq:DWD equation with RDE} are equivalent when $\eta = 1$ (the simple $\eta$ form).
 To obtain experimental estimates of the RDE of a crystal it was necessary to perform an experiment where the crystals are irradiated uniformly.
@@ -28,10 +28,10 @@ Three dose decay models that describe the relationship of intensity decay of a r
 The Sygusch \& Allaire model required the solution of a system of coupled first order linear ordinary differential equations for two domains.
 The interesting feature of this model is that it predicts two different dynamic regions (Figure~\ref{figcrystalstates}).
 The Holton and Leal \textit{et al.} models are relatively simple in comparison and they can easily be converted into linear forms to readily obtain parameter values.
-To study these functions as RDEs and compare them to the relative intensity decay, these functions had to be integrated over a sphere in reciprocal space and normalised.
+To study these functions as RDEs and compare them to the relative intensity decay, these functions had to be integrated over a sphere in reciprocal space and then be normalised with respect to the zero dose integral.
 The RDE forms of these models were then assessed for their ability to explain the observed data for the five crystals using the RMSD.
 The Leal \textit{et al.} model narrowly outperformed the Sygusch \& Allaire model overall.
-However, the behaviour of the relative intensity data above around 27 MGy, particularly for crystals 0259 (Figure~\ref{Relative Intensity Plots - 0259}) and 172 (Figure~\ref{Relative Intensity Plots - 172}), exhibits a slower decay.
+However, the behaviour of the relative intensity data above around 27 MGy, particularly for crystals 0259 (Figure~\ref{Relative Intensity Plots - 0259}) and 172 (Figure~\ref{Relative Intensity Plots - 172}), exhibits a slower decay than the decay below that dose.
 This suggests that the Sygusch \& Allaire model prediction of two behavioural domains may be valid and perhaps the model is a more accurate description of the true dynamics.
 
 The resulting RDE using the Leal \textit{et al.}  model (equation \ref{eqrdeleal}) was investigated to determine how resolution changes would affect the calculated parameter values and its ability to explain the observed data.
@@ -40,10 +40,10 @@ It was found that collecting and processing data to the highest resolution possi
 The RDE model was incorporated into the DWD using equation \ref{eq:DWD equation with RDE} and tested with the data from the Zeldin \textit{et al.} study.
 On its own, the RDE is a monotonically decreasing function of the dose.
 This is sensible when describing intensity decay but not necessarily when being used as a dose metric to represent damage in the crystal.
-Hence by defining $\eta = 1 - RDE$, an increasing function could be used to describe the increase in damage due to increasing dose.
+Hence by defining $\eta = 1 - RDE$, an increasing function could be used to describe the progression of damage as the dose increases.
 The main difference in the resulting DWD values using the new forms of $\eta$ is that the dose values are increased when using the increasing function of $\eta$, whereas the dose values are decreased for the decreasing $\eta$ function.
 One of the important results from the analysis is that the observed scatter in the data is increased when using the dose dependent forms of $\eta$, a result that contradicts the hypothesis that adding the terms would decrease the scatter.
-Another other interesting result from adding the decreasing $\eta$ form to the DWD is that it not only decreases the range of the resulting DWD values, but the DWD values fall after a high enough dose.
+Another other interesting result from adding the decreasing $\eta$ form to the DWD is that it not only decreases the range of the resulting DWD values, but the DWD values decrease once an upper threshold dose limit is reached.
 
 To determine which $\eta$ form is correct the offset simulations should be carried out as actual experiments.
 This is because the different $\eta$ forms suggest slightly different results about the expected benefits obtained by offsetting the rotation axis from the beam axis with crystals of different sizes.
@@ -55,6 +55,8 @@ This could be due to different mosaicity or unit cell volumes of the two crystal
 These are not accounted for by the absorbed dose alone and hence a function that takes these into account, in theory, should account for the additional variation between crystals.
 In the analysis the scatter of the data was increased by incorporating a term that was supposed to reduce it.
 This result could be due to incorrect parameter values for the RDE model.
+The method used to determine the parameter values (transforming the data to a linear form before performing a linear fit) may not give the best parameter values.
+The values may be improved by fitting the function to the original data without any transformation.
 It is unknown how sensitive the dose values are to small deviations from the true parameter values, hence any small change could lead to misleading results.
 
 Another question is whether the $\eta$ function should be an increasing or decreasing function.
@@ -64,6 +66,7 @@ Hence to describe damage, $\eta$ should be an increasing function.
 I do think that the results presented in the chapter are unconvincing evidence for using the increasing function of $\eta$ over the simple form.
 Hence an experiment, like the offsetting one described above, would need to be carried out to determine which form to use.
 
-When framing the DWD as a metric to describe the extent of damage it helps to think about an experiment where a crystal is irradiated by a Gaussian beam so it has tails.
-When ``highly damaged" data are processed, the structure factors that are obtained are more similar to the zero-dose case than they were in the middle of the dataset when the crystal in the bright part of the beam was contributing significantly (James Holton, personal communication).
+When framing the DWD as a metric to describe the quality of diffraction, it helps to think about an experiment where a crystal is irradiated by a Gaussian beam.
+In this case, the Gaussian beam has tails that are being diffracted from relatively undamaged regions of the crystal, even at late stages of the experiment.
+So when ``highly damaged" data are processed, the structure factors that are obtained are more similar to the zero-dose case than they were in the middle of the dataset when the crystal in the bright part of the beam was contributing significantly (James Holton, personal communication).
 In this case it makes sense for the DWD to go down because it tells us that the quality of the diffraction has improved, despite the overall damage state of the crystal being worse.

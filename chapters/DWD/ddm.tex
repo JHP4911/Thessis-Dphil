@@ -19,15 +19,15 @@ assuming isotropic atomic vibrations, where $B$ is the thermal parameter related
 \newline
 The crystal fractions are assumed to evolve according to the following system of coupled first order linear ordinary differential equations (ODEs)
 \begin{subequations}
-\begin{align}
-\f{\mathrm{d}A_1}{\mathrm{d}t}  &= - k_0 I_0,                        \\
-\f{\mathrm{d}A'_1}{\mathrm{d}t} &=   k_0 I_0  - k_1 A'_1,            \\
-\f{\mathrm{d}A_2}{\mathrm{d}t}  &=              k_1 A'_1  - k_2 A_2, \\
-\f{\mathrm{d}A_3}{\mathrm{d}t}  &=                          k_2 A_2,
-\end{align}
+	\begin{align}
+		\f{\mathrm{d}A_1}{\mathrm{d}t}  &= - k_0 I_0,                        \\
+		\f{\mathrm{d}A'_1}{\mathrm{d}t} &=   k_0 I_0  - k_1 A'_1,            \\
+		\f{\mathrm{d}A_2}{\mathrm{d}t}  &=              k_1 A'_1  - k_2 A_2, \\
+		\f{\mathrm{d}A_3}{\mathrm{d}t}  &=                          k_2 A_2,
+	\end{align}
 \label{eq:ODE system Syg and All}
 \end{subequations}
-subject to the following constraints
+subject to the following constraints:
 \begin{subequations}
 \begin{align}
 A_1(D) + A'_1(D) + A_2(D) + A_3(D) &= A_0, \\
@@ -41,9 +41,9 @@ where $I_0$ represents the intensity of the incident irradiation and $A_0$ is th
 The solution of the set of ODEs (\ref{eq:ODE system Syg and All}) subject to the constraints (\ref{eq: ODE constraints Syg and All}) is presented here:
 \begin{subequations}
 \begin{align}
-A_1  &= A_0 - k_0 I_0 D \label{eq:Sygusch and Allaire ODE solution - a}\\
-A'_1 &= \f{k_0 I_0}{k_1} \left( 1 - e^{-k_1 D}\right) \label{eq:Sygusch and Allaire ODE solution - b}\\
-A_2  &= \f{k_0 I_0}{k_2} \left( 1 - e^{-k_2 D}\right) + \f{k_0 I_0}{k_2 - k_1} \left(e^{-k_2 D} - e^{-k_1 D}\right) \label{
+A_1  &= A_0 - k_0 I_0 D, \label{eq:Sygusch and Allaire ODE solution - a}\\
+A'_1 &= \f{k_0 I_0}{k_1} \left( 1 - e^{-k_1 D}\right), \label{eq:Sygusch and Allaire ODE solution - b}\\
+A_2  &= \f{k_0 I_0}{k_2} \left( 1 - e^{-k_2 D}\right) + \f{k_0 I_0}{k_2 - k_1} \left(e^{-k_2 D} - e^{-k_1 D}\right), \label{
 eq:Sygusch and Allaire ODE solution - c}\\
 A_3  &= k_0 I_0 D + \left(\f{k_0 I_0}{k_2 - k_1} - \f{k_0 I_0}{k_2}\right)\left( 1 - e^{-k_2 D}\right) - \f{k_2 k_0 I_0}{k_1(k_2 - k_1)}\left(1 - e^{-k_1 D} \right) \label{eq:Sygusch and Allaire ODE solution - d}.
 \end{align}
@@ -64,7 +64,7 @@ A_3  &= A_{30} + \left(A_{20} - \f{k_1 A'_{10}}{k_2 - k_1}\right) \left(1 - e^{-
 \label{eq:Sygusch and Allaire ODE solution - set 2}
 \end{subequations}
 where $A'_{10}, A_{20}$ and $A_{30}$ are the values of the crystal fractions $A'_{1}, A_{2}$ and $A_{3}$ at dose $D = D_L$ respectively.
-A solution for the model is undefined for $k_1 = k_2$, however, Table \ref{tabparams1} shows that the best fit values for the two parameters are different enough to neglect this case. \newline
+A solution for the model is undefined for $k_1 = k_2$, however, Table \ref{tab:RDE params1} shows that the best fit values for the two parameters are different enough to neglect this case. \newline
 The strength of this model lies in the fact it explicitly predicts the proportions of damaged states of the crystal with the absorbed dose via the system of ODEs, and uses that solution to determine the intensity of a reflection.
 The drawbacks of this model are that it requires 3 parameters to be found and its analytical form is not easy to intuitively interpret.
 
@@ -73,9 +73,9 @@ The second model was proposed by James Holton and assumes that the average inten
 I(D) = I_{ND} \exp \left[ -\ln(2) \f{Dh}{H} \right],
 \label{eq:Holton DDM}
 \end{equation}
-where $I_{ND}$ is the average reflection intensity expected in the absence of radiation damage, $\ln(2)$ is the natural logarithm of 2 ($\approx 0.693$) and $H$ is Howell's criterion ($10\, MGy\,$\AA$^{-1}$).
+where $I_{ND}$ is the average reflection intensity expected in the absence of radiation damage, $\ln(\text{2})$ is the natural logarithm of 2 ($\approx$ 0.693) and $H$ is Howell's criterion (10$\, $MGy$\,$\AA$^{-1}$).
 The advantages of this model are that it is very simple and only has a maximum of two parameters to be determined, $I_{ND}$ and $H$.
-To simplify the parameter value extraction, the value of $H$ can be assumed to be $10\, MGy\,$\AA$^{-1}$ and $I_{ND}$ can be approximated by the intensity values from the first data set.
+To simplify the parameter value extraction, the value of $H$ can be assumed to be 10$\,$MGy$\,$\AA$^{-\text{1}}$ and $I_{ND}$ can be approximated by the intensity values from the first data set.
 Therefore this model is relatively easy to apply and does not require further simplifying assumptions.
 
 However the simplicity of this model is also the cause of its main disadvantages.
@@ -100,12 +100,12 @@ where $J(D)$ is the expected intensity after the crystal has absorbed a dose $D$
 This model essentially describes a Gaussian decay of the intensity with dose.
 This gives it the potential to predict lag phases, which will be dependent on the parameter values obtained from the data.
 It has already been shown to successfully predict relative intensity decay at room temperature \cite{leal2012} at dose rates below those used in \cite{owen2014}.
-The main disadvantage of this model is that the scale function $K \exp\left[-\gamma^2 D^2 \right]$ is completely empirical and has no physical obvious physical interpretation.
+The main disadvantage of this model is that the scale function $K \exp\left[-\gamma^2 D^2 \right]$ is completely empirical and has no obvious physical interpretation.
 
 \subsection{Validity Test}
 \label{sub:Validity Test}
 Since the parameters for the models are fitted, judging the models based on how well they fit to the data would not necessarily validate any particular model.
-A more robust test would be to check whether the data transforms in the way that the model predicts it should.
+A more robust test would be to check whether the data transforms in the way that the model predicts they should.
 In particular, models given by equations \ref{eq:Holton DDM} and \ref{eq:Leal DDM} can be transformed into linear forms
 \begin{align}
 \ln(I)                          &= \ln\left( I_{ND} \right) - \f{h \ln(2)}{H} \times D \label{eq:Holton linearly transformed DDM}, \\
@@ -116,11 +116,11 @@ These equations are of the linear form:
 y = mx + c
 \end{equation*}
 Note that the Sygusch \& Allaire model does not transform easily into a linear form.
-If the data follow the relationships described by the models, then transforming the data according to equations \ref{eq:Holton linearly transformed DDM}) and (\ref{eq:Leal linearly transformed DDM} means that they should resemble straight lines.
+If the data follow the relationships described by the models, then transforming the data according to equations \ref{eq:Holton linearly transformed DDM} and \ref{eq:Leal linearly transformed DDM} means that they should resemble straight lines.
 A Pearson Correlation Coefficient (PCC) value\footnote{The Pearson Correlation Coefficient is a measure of linear correlation between two variables and gives values between -1 and 1 inclusive.
 A value of 1 represents a positive correlation, -1 represents a negative correlation and 0 represents no correlation.} can then be used to determine the strength of the linear relationship.
 PCC values were found for all data in each resolution shell where the relative intensity values were above 0.7 (beyond this point the data are likely to be biologically compromised \cite{owen2006}).
-Table \ref{tabPCC} shows the results from this test.
+Table \ref{tab:PCC} shows the results from this test.
 The Leal \emph{et al.} model seem to explain the data better.
 However the correlation coefficients determined in Holton's model are generally strong enough not to reject the possibility that this model may still sufficiently describe the data.
 \begin{table}[ht!]
@@ -141,11 +141,11 @@ However the correlation coefficients determined in Holton's model are generally 
 \subsection{Obtaining Model Parameter Values}
 \label{sub:Obtaining Model Parameter Values}
 The transformations given by equations (\ref{eq:Holton linearly transformed DDM}) and (\ref{eq:Leal linearly transformed DDM}) produce suitably linear plots (Table \ref{tab:PCC}), which allow the parameters for the Holton and Leal \emph{et al.} models to be determined by calculating the gradient and intercepts for each plot respectively.
-Data collected before the experimental dose limit was reached (the dose required to reduce the relative intensity to $70\%$ of its initial total intensity \cite{owen2006}) were used to obtain fitted parameters for each of the models.
-$I_{ND}$ was obtained by exponentiating (with Euler's number $e = 2.718...$) the intercept of the plot of $\ln(I)$ against dose, where $I$ is the average reflection intensity in a given resolution bin.
+Data collected before the experimental dose limit was reached (the dose required to reduce the relative intensity to 70\% of its initial total intensity \cite{owen2006}) were used to obtain fitted parameters for each of the models.
+$I_{ND}$ was obtained by exponentiating (with Euler's number $e =$ 2.718...) the intercept of the plot of $\ln(I)$ against dose, where $I$ is the average reflection intensity in a given resolution bin.
 Note that $I_{ND}$ will be different for each resolution bin.
 $H$ was obtained by calculating the gradient from the same plot.
-However $H$ is constant for each resolution bin so the best estimate for $H$ was found by calculating the gradient from the plot that gave the best straight line fit.
+However $H$ is constant for each resolution bin so the best estimate was found by calculating the gradient from the plot that gave the best straight line fit.
 \newline
 The $B(D)$ and $scale(D)$ values for the Leal \emph{et al.} model were found for each dose by calculating the gradient and intercept from a plot of $\ln \left(\f{J(D)}{J(h)}\right)$ against $h^2$ for each dose.
 The $J(h)$ values are given by the BEST intensity curve \cite{popov2003} (Figure~\ref{fig:BEST curve}).
@@ -172,7 +172,13 @@ The Cauchy M-estimator\footnote{M-estimation is a fitting technique designed to 
                 \caption{}
                 \label{figscalevalues}
         \end{subfigure}
-        \caption{(a) $B$ values plotted against average dose (whole crystal). Initially the B values increase linearly as reported in the literature \cite{kmetko2006, warkentin2010, leal2012}, however the linearity begins to break down as radiation damage progresses. This was a major factor in the decision to fit the parameters in Tables \ref{tabparams1} and \ref{tabparams2} only using data where the relative intensity was above a given threshold value. The threshold relative intensity value of 0.7 was chosen since other data quality indicators suggest that data beyond this point become significantly compromised \cite{owen2006}. (b) Scale values plotted against the average dose (whole crystal). The blue and red curves are fits to the data using equation \ref{eqscale} and are almost coincident. The same function was also used successfully to fit data from crystals irradiated at room temperature \cite{leal2012}, suggesting that this function is suitable for parameterising both cryo and room temperature data.}
+        \caption{(a) $B$ values plotted against average dose (whole crystal).
+		Initially the B values increase linearly as reported in the literature \cite{kmetko2006, warkentin2010, leal2012}, however the linearity begins to break down as radiation damage progresses.
+		This was a major factor in the decision to fit the parameters in Tables \ref{tab:RDE params1} and \ref{tab:RDE params2} only using data where the relative intensity was above a given threshold value.
+		The threshold relative intensity value of 0.7 was chosen since other data quality indicators suggest that data beyond this point become significantly compromised \cite{owen2006}.
+		(b) Scale values plotted against the average dose (whole crystal).
+		The blue and red curves are fits to the data using equation \ref{eqscale} and are almost coincident.
+		The same function was also used successfully to fit data from crystals irradiated at room temperature \cite{leal2012}, suggesting that this function is suitable for parameterising both cryo and room temperature data.}
         \label{figlealparam}
 \end{figure}
 
@@ -183,7 +189,13 @@ The parameter values for the Sygusch \& Alliare model ($k'_0$, $k_1$ and $k_2$) 
     \caption{Flow chart outlining the structure of the objective function used to find best fit parameters for $k'_0$, $k_1$ and $k_2$.}
     \label{figobjfun}
 \end{figure}
-The objective function was minimised using the MATLAB \verb+lsqnonlin+ function which in turn uses the trust-region-reflective algorithm \cite{coleman1996}.  The results are shown in Figure \ref{figsyg}. The fit to the relative intensity data is very good and the crystal proportions change in a similar manner to \cite{owen2014}. It is worth noting that numerical minimisation procedures can return values that correspond to local minima in the parameter space, and therefore the initial choice of values for $k'_0$, $k_1$ and $k_2$ will affect the resulting values returned by the procedure. Initial values in this case were determined by inspection to make sure the calculated relative intensity values were a close match to the measured intensities. A full parameter analysis has not been performed and therefore the values for $k'_0$, $k_1$ and $k_2$ presented in Table \ref{tabparams1} may not be the combination that provide the best overall fit to the data. Therefore more analysis is required before the model can be properly evaluated, but these results show the model to be very promising.
+The objective function was minimised using the MATLAB \verb+lsqnonlin+ function which in turn uses the trust-region-reflective algorithm \cite{coleman1996}.
+The results are shown in Figure \ref{figsyg}.
+The fit to the relative intensity data is very good and the crystal proportions change in a similar manner to \cite{owen2014}.
+It is worth noting that numerical minimisation procedures can return values that correspond to local minima in the parameter space, and therefore the initial choice of values for $k'_0$, $k_1$ and $k_2$ will affect the resulting values returned by the procedure.
+Initial values in this case were determined by inspection to make sure the calculated relative intensity values were a close match to the measured intensities.
+A full parameter analysis has not been performed and therefore the values for $k'_0$, $k_1$ and $k_2$ presented in Table \ref{tab:RDE params1} may not be the combination that provide the best overall fit to the data.
+Therefore more analysis is required before the model can be properly evaluated, but these results show the model to be very promising.
 \begin{figure}
         \centering
         \begin{subfigure}[b]{0.825\textwidth}
@@ -199,6 +211,11 @@ The objective function was minimised using the MATLAB \verb+lsqnonlin+ function 
                 \caption{}
                 \label{figcrystalstates}
         \end{subfigure}
-        \caption{(a) Relative intensity against dose (whole crystal) for the 2.73\AA\ resolution bin. The Sygusch \& Allaire model was fitted to these data to obtain parameter values for $k'_0$, $k_1$ and $k_2$ using a non-linear least squares procedure. This resolution bin was chosen for this crystal because the data in the resolution bin gave the best PCC value after transformation via equation (\ref{eqholtonlin}). (b) Crystal state proportions as function of the average absorbed dose (whole crystal) according to the Sygusch \& Allaire model. The dose at which all of the $A_1$ proportion has been converted, $D_L = 27.42\,MGy$, is marked as a black vertical dashed line. The overall relative intensity data, $I_n/I_1$, for the crystal are also overlaid on the graph.}
+        \caption{(a) Relative intensity against dose (whole crystal) for the 2.73$\,$\AA\ resolution bin.
+		The Sygusch \& Allaire model was fitted to these data to obtain parameter values for $k'_0$, $k_1$ and $k_2$ using a non-linear least squares procedure.
+		This resolution bin was chosen for this crystal because the data in the resolution bin gave the best PCC value after transformation via equation (\ref{eq:Holton linearly transformed DDM}).
+		(b) Crystal state proportions as a function of the average absorbed dose (whole crystal) according to the Sygusch \& Allaire model.
+		The dose at which all of the $A_1$ proportion has been converted, $D_L = 27.42\,MGy$, is marked as a black vertical dashed line.
+		The overall relative intensity data, $I_n/I_1$, for the crystal are also overlaid on the graph.}
         \label{figsyg}
 \end{figure}

@@ -63,6 +63,10 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 > Why might dose rate effects not have an effect at cryo temperatures?
 
+### DWD Chapter
+
+> Why would you use linear fitting procedures over non-linear ones and what's the difference?
+
 ### SAXS Chapter
 
 > With regard to SAXS radioprotectants, what are DTT and TCEP

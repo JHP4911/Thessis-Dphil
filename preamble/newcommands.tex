@@ -5,6 +5,10 @@
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
 
+%Make sure the bullet points for the itemize environment explicitly come from
+%the math environment so that my warnings are stopped.
+\renewcommand\textbullet{\ensuremath{\bullet}}
+
 %Set a new enumeration environment to count my TODOs
 \newcounter{myenumi}
 \setcounter{myenumi}{0}

@@ -3,11 +3,17 @@
 \label{chap:Dose Decay Modelling}
 
 \section{Introduction}
-\label{sec:Introduction}
+\label{sec:Introduction - Dose Decay Modelling}
 
-The diffraction weighted dose (DWD) is a dose metric that exhibits a consistent and reproducible relationship with the relative decay in total diffraction intensity from a protein crystal in the low to medium dose range \cite{zeldin2013dwd}.
-This is because DWD takes into account the damage caused due to the amount that the crystal is exposed to the X-ray beam.
-Mathematically this is incorporated via the fluence weighting in the DWD calculation (equation \ref{eq:DWD equation - no RDE}).
+The diffraction weighted dose (DWD) is a dose metric that exhibits a consistent and reproducible relationship with the relative decay in total diffraction intensity from a protein crystal down to a relative intensity of 40\% \cite{zeldin2013dwd}.
+This is because DWD spatially resolves the exposure of the crystal to the X-ray beam in addition to accounting for the absorbed dose.
+Mathematically this spatial resolution of the exposure is incorporated via the fluence weighting in the DWD calculation (equation \ref{eq:DWD equation - no RDE}).
+\textcolor{red}{
+    \begin{myenumerate}
+        \item \hypertarget{todo:include DWD equation again}{\textbf{TODO:} The \textbf{??} is a reference to the DWD equation}
+        which is given in the introduction (it works when I include the whole thesis). Should I give the equation again here in this section?
+    \end{myenumerate}
+}
 However, the DWD currently does not take into account the loss of diffraction ability due to the current damage state of the crystal.
 The \textit{relatitive diffraction efficiency (RDE)}, $\eta$, is introduced as a function of the absorbed dose that describes the diffracting ability of any given volume of the crystal.
 The RDE is defined as the ratio of the proportion of incident photons that are currently being diffracted to the proportion that initially diffracted.

@@ -6,7 +6,7 @@
 \label{sub:Uniform irradiation}
 
 To validate the subsequent analysis performed to find a suitable DDM, it was essential that the crystals were uniformly irradiated.
-A homogeneous dose distribution resulting from uniform irradiation would mean that the various dose metrics; average dose, maximum dose and DWD (with $\eta = 1$), should give the same value.
+A homogeneous dose distribution resulting from uniform irradiation would mean that the various dose metrics; average dose, maximum dose and DWD, should give the same value.
 Simulations performed in RADDOSE-3D show that all crystals were completely immersed in the X-ray beam and the predictions displayed showed a very homogeneous dose distribution (Figure \ref{fig:Uniform}).
 \begin{figure}
         \centering
@@ -23,14 +23,16 @@ Simulations performed in RADDOSE-3D show that all crystals were completely immer
                 \caption{}
                 \label{fig:RADDOSE-3D dose contours uniform irradiation}
         \end{subfigure}
-        \caption{(a) The three dose metric values are predicted to be very similar throughout the experiment. The first DWD value is approximately half of the other two metrics due to the way DWD is implemented numerically. (b) The calculated dose map from an MX simulation in RADDOSE-3D of an insulin crystal ($89\,\mu m \times 74\,\mu m \times 40\,\mu m$) exposed to the beam shown in Figure \ref{figbeam}(a) over a $1440^{\circ}$ rotation. The dose isosurfaces are: green $= 38\, MGy$, dark blue $= 38.5\, MGy$ and red $= 39\, MGy$. The dose distribution is very homogeneous.}
+        \caption{(a) The three dose metric values are predicted to be very similar throughout the experiment.
+        Here the DWD values are calculated using equation \ref{eq:DWD equation - no RDE}.
+        (b) The calculated dose map from an MX simulation in RADDOSE-3D of an insulin crystal ($89\,\mu m \times 74\,\mu m \times 40\,\mu m$) exposed to the beam shown in Figure \ref{fig: Hamburg beam PGM} over a $1440^{\circ}$ rotation. The dose isosurfaces are: green $= 38\, MGy$, dark blue $= 38.5\, MGy$ and red $= 39\, MGy$. The dose distribution is very homogeneous.}
         \label{fig:Uniform}
 \end{figure}
 
 \subsection{Calculating the RDE}
 \label{sub:Calculating the RDE}
-To compare the theoretical RDEs calculated from the DDMs with the experimentally measured relative intensities, a spherically symmetric volume integral is performed on each of equations (\ref{eq: Sygusch and Allaire DDM}), (\ref{eq:Holton DDM}) and (\ref{eq:Leal DDM}) up to the resolution limit of the data ($1.8\,$\AA) at each of the recorded dose values.
-These values are then divided by the same integral at dose $D = 0\,MGy$ to give an estimate of the relative intensities.
+To compare the theoretical RDEs calculated from the DDMs with the experimentally measured relative intensities, a spherically symmetric volume integral is performed on each of equations (\ref{eq: Sygusch and Allaire DDM}), (\ref{eq:Holton DDM}) and (\ref{eq:Leal DDM}) up to the resolution limit of the data (1.8$\,$\AA) at each of the recorded dose values.
+These values are then divided by the same integral at dose $D =$ 0$\,$MGy to give an estimate of the relative intensities.
 The resulting equations are given below and plotted in Figure \ref{fig:Relative Intensity Plots} along with the experimentally measured relative intensity values $I_n/I_1$ for the insulin crystals using the parameter values given in tables \ref{tab:RDE params1} and \ref{tab:RDE params2}.
 \begin{align}
 \text{RDE Holton} &= \f{\int^{h_{max}}_{h_{min}}{h^2 I_{ND}(h) \exp \left[ \f{- \ln(2) \times D \times h}{H}\right]}\, \dd h}{\int^{h_{max}}_{h_{min}}{h^2 I_{ND}(h)}\, \dd h} \label{eqrdeholt}\\
@@ -40,7 +42,7 @@ The resulting equations are given below and plotted in Figure \ref{fig:Relative 
 The root mean squared deviation (RMSD) was used to assess the fit of the RDE models to the data.
 A lower RMSD suggests a better fit to the data.
 Although the parameter values were determined only using the data down to 70\% of the initial intensity, the RMSD values are found using the entire range of data for each crystal.
-Figure \ref{fig:Relative Intensity Plots} shows that RDE using the Leal \textit{et al.} intensity decay model best describes the crystal intensity decay for three out of the five crystals (crystal IDs: 0259, 137 and 128) according to the RMSD.
+Figure \ref{fig:Relative Intensity Plots} shows that the RDE using the Leal \textit{et al.} intensity decay model best describes the crystal intensity decay for three out of the five crystals (crystal IDs: 0259, 137 and 128) according to the RMSD.
 For two of the five crystals (crystal IDs: 180 and 172) RDE Sygusch model gives the lowest RMSD, suggesting that this model is also adequate at describing the relative intensity decay.
 An important feature of the RDE Sygusch model is that it displays at least two phases to the relative intensity decay.
 Both phases appear to decay linearly, with the first linear phase decaying faster than the second phase.
