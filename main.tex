@@ -16,8 +16,11 @@
 % chapters/Introduction/raddam_mx, chapters/Introduction/raddam_saxs, chapters/Introduction/in_context}
 
 % Include DWD chapter only
-\includeonly{chapters/DWD/introduction, chapters/DWD/experimental_methods, chapters/DWD/ddm, chapters/DWD/ddm_rde_comparison,
-chapters/DWD/rde_considerations, chapters/DWD/dwd, chapters/DWD/discussion}
+% \includeonly{chapters/DWD/introduction, chapters/DWD/experimental_methods, chapters/DWD/ddm, chapters/DWD/ddm_rde_comparison,
+% chapters/DWD/rde_considerations, chapters/DWD/dwd, chapters/DWD/discussion}
+
+% Include Zero-Dose extrapolation chapter only
+\includeonly{chapters/ZDE/introduction, chapters/ZDE/get_intensity_and_dose, chapters/ZDE/extrapolation}
 
 % Include SAXS chapter only
 % \includeonly{chapters/SAXS/introduction, chapters/SAXS/raddose3d_4_saxs, chapters/SAXS/experimental_methods,
@@ -27,43 +30,48 @@ chapters/DWD/rde_considerations, chapters/DWD/dwd, chapters/DWD/discussion}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%          TITLE PAGE, TABLE AND FIGURE LISTS, CONTENTS PAGE             %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \include*{specialpages/titlepage}
-    \include*{specialpages/listsandcontents}
+    \include{specialpages/titlepage}
+    \include{specialpages/listsandcontents}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                              CHAPTERS                                  %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %----------------- INTRODUCTION -----------------%
-    \include*{chapters/Introduction/introduction}
-    \include*{chapters/Introduction/macromolecular_crystallography}
-    \include*{chapters/Introduction/small_angle_xray_scattering}
-    \include*{chapters/Introduction/limitations}
-    \include*{chapters/Introduction/raddam_mx}
-    \include*{chapters/Introduction/raddam_saxs}
-    \include*{chapters/Introduction/in_context}
+    \include{chapters/Introduction/introduction}
+    \include{chapters/Introduction/macromolecular_crystallography}
+    \include{chapters/Introduction/small_angle_xray_scattering}
+    \include{chapters/Introduction/limitations}
+    \include{chapters/Introduction/raddam_mx}
+    \include{chapters/Introduction/raddam_saxs}
+    \include{chapters/Introduction/in_context}
 
     %----------------- DWD -----------------%
-    \include*{chapters/DWD/introduction}
-    \include*{chapters/DWD/experimental_methods}
-    \include*{chapters/DWD/ddm}
-    \include*{chapters/DWD/ddm_rde_comparison}
-    \include*{chapters/DWD/rde_considerations}
-    \include*{chapters/DWD/dwd}
-    \include*{chapters/DWD/discussion}
+    \include{chapters/DWD/introduction}
+    \include{chapters/DWD/experimental_methods}
+    \include{chapters/DWD/ddm}
+    \include{chapters/DWD/ddm_rde_comparison}
+    \include{chapters/DWD/rde_considerations}
+    \include{chapters/DWD/dwd}
+    \include{chapters/DWD/discussion}
+
+    %----------------- ZDE -----------------%
+    \include{chapters/ZDE/introduction}
+    \include{chapters/ZDE/get_intensity_and_dose}
+    \include{chapters/ZDE/extrapolation}
 
     %----------------- SAXS -----------------%
-    \include*{chapters/SAXS/introduction}
-    \include*{chapters/SAXS/raddose3d_4_saxs}
-    \include*{chapters/SAXS/experimental_methods}
-    \include*{chapters/SAXS/scatter_curve_analysis}
-    \include*{chapters/SAXS/results}
-    \include*{chapters/SAXS/discussion}
+    \include{chapters/SAXS/introduction}
+    \include{chapters/SAXS/raddose3d_4_saxs}
+    \include{chapters/SAXS/experimental_methods}
+    \include{chapters/SAXS/scatter_curve_analysis}
+    \include{chapters/SAXS/results}
+    \include{chapters/SAXS/discussion}
     % \include{chapters/SAXS/summary}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                             BIBLIOGRAPHY                               %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bibliography{bibliography/references}
+    %\bibliography{bibliography/references}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                              APPENDICES                                %%

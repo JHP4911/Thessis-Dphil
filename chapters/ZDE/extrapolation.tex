@@ -1,0 +1,11 @@
+%!TEX root = ../../main.tex
+\section{Extrapolation routine}
+\label{sec:Extrapolation routine}
+With both the reflection intensities and the doses extracted, extrapolation can be performed using standard regression techniques.
+In particular, parametric regression in which a particular functional form describing the relationship between the two variables was implemented.
+The function chosen to describe the relationship between the reflection intensity, $I$, and the dose, $D$, was:
+\begin{equation}
+    I(D) = K_{\bs{h}} e^{A_{\bs{h}}D^2}
+    \label{eq:Extrapolation regression function}
+\end{equation}
+Where $K, A, B$ are
