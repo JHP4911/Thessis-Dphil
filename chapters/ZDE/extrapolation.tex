@@ -129,7 +129,7 @@ Equation \ref{eq:Corrected sigma value - Extrapolation method} takes the same fo
     \item the standard deviation is inflated by the addition of a term which involves the standard deviation a decay factor which is assumed common to all observations in a dataset.
     Because a different decay formed is used for the extrapolation in the current work there is no single term which is directly analogous to the decay factor.
     \item $D_{min}$ is used instead of the actual dose of the crystal during the observation because I believe a big factor in the reliability of the extrapolation is how early the initial measurement was made.
-    A thought experiment to see this is to suppose a reflection is observed on every frame in a MX experiment where the dose range is 1-10 MGy, and another reflection is observed on every frame from a dose of 5 MGy onwards.
+    A thought experiment to see this is to suppose a reflection is observed on every frame in a MX experiment where the dose range is 1-10 MGy, and another reflection is observed on every frame from a dose of 5.5 MGy onwards.
     Assume that observations of these reflections on the same image have the same sigma values.
     It is also assumed that the regression fits are theoretically perfect for both reflections.
     In the case where the dose value at which the observation was made is used to inflate the standard deviations, the inflated values for the extrapolation of the observations will have the same value.
@@ -139,3 +139,74 @@ Equation \ref{eq:Corrected sigma value - Extrapolation method} takes the same fo
 
 \subsection{Probabilistic extrapolation}
 \label{sub:Probabilistic extrapolation}
+The regression analysis performed as described above requires several checks to be made to ensure that the model fit to the data is reasonable.
+This essentially filters out reflections that do not behave according to the relationship expected by equation \ref{eq:Extrapolation regression function}, so some reflections are not extrapolated.
+Therefore Bayesian inference is used to extrapolate these remaining reflections.
+Bayes theorem in model form states
+\begin{equation}
+P(model|data) \propto P(data | model) \times P(model),
+\label{eq:Bayesian Theorem in model form}
+\end{equation}
+where $P(model|data)$ is the posterior distribution, the updated probability of the model given the observed data, $P(data|model)$ is the likelihood function, the probability of observing the data given the current model, and $P(model)$ is the prior distribution, which represents the probability of the model in the absence of any data.
+In this case, the $model \equiv J$, where $J$ is the expected intensity, and $data \equiv I, D$ where $I$ represent the observed intensity and $D$ the observed dose.
+
+$P(J|I,D)$ is the distribution of interest because this will give the probability of an observation having a particular intensity value, $J$, given the intensity observed, $I$, at a particular dose, $D$.
+The expected value of this distribution will be the extrapolated intensity value.
+The expected value is given by
+\begin{equation}
+    E(J|I, D) = \int_0^{\infty} J \times P(J|I,D)\, \mathrm{d}J.
+    \label{eq:Expected intensity value - Extrapolation method}
+\end{equation}
+Furthermore the variance if the observation can be obtained from the posterior distribution as
+\begin{equation}
+    var(J|I, D) = \int_0^{\infty}  \left( J - E(J|I, D) \right)^2 \times P(J|I,D)\, \mathrm{d}J
+    \label{eq:Variance of intensity value - Extrapolation method}
+\end{equation}
+Therefore the likelihood $\equiv P(I | J, D)$ and prior $\equiv P(J)$ distributions are thus required to calculate the posterior distribution.
+
+The prior, $P(J)$, is given by the Wilson distribution for intensities \cite{wilson1949probability}.
+For acentric reflections the Wilson distribution is
+\begin{equation}
+    f(n) =
+    \begin{cases}
+        (\varepsilon_{\bs{h}}\Sigma)^{-1} \exp(-J/\varepsilon_{\bs{h}}\Sigma) & \mbox{if } J \ge 0, \\
+        0                           & \mbox{if } J < 0,
+    \end{cases}
+    \label{eq:Wilson Distribution for acentric reflections - Intensities}
+\end{equation}
+whereas for centric reflections it is
+\begin{equation}
+    f(n) =
+    \begin{cases}
+        (2\pi\varepsilon_{\bs{h}}\Sigma J)^{-1/2} \exp(-J/2\varepsilon_{\bs{h}}\Sigma) & \mbox{if } J \ge 0, \\
+        0                                      & \mbox{if } J < 0,
+    \end{cases}
+    \label{eq:Wilson Distribution for centric reflections - Intensities}
+\end{equation}
+where $\Sigma$ is the distribution parameter, which here represents the mean intensity in the corresponding resolution shell of reciprocal space and $\varepsilon_{\bs{h}}$ is the multiplicity of the reflection with reciprocal lattice vector $\bs{h}$. $\varepsilon_{\bs{h}}$ is an integer value and the multiplication with $\Sigma$ is to account for the increase in the expected intensity due to the space group symmetry \cite{blessing1998intensity}. A rule for calculating $\varepsilon$ is proposed by Stewart and Karle (1976) \cite{stewart1976}: ``$\varepsilon$ is the number of times the transformed vector, $\bs{h}_t = (h,k,l)_t$, is identical to a given reflection, $\bs{h} = (h,k,l)$, under all distinct pure rotational symmetry operations $\bs{R}$ of the space group; $\bs{h}_t = \bs{h}\bs{R}_t$.''
+The mean intensity of a resolution bin, $\Sigma$ must be corrected for $\varepsilon$.
+Therefore, the mean intensity of a resolution bin is given by
+\begin{equation}
+    \Sigma = <I/\varepsilon> = \f{\sum^{n_{bin}}_i I^i_{\bs{h},obs}/\varepsilon_{\bs{h}}}{n_{bin}},
+    \label{eq:Mean intensity of resolution bin}
+\end{equation}
+where $n_{bin}$ is the number of reflection observations in a resolution shell and $I^i_{\bs{h},obs}$ is the intensity if the $i^{\text{th}}$ reflection observation with reciprocal lattice vector $\bs{h}$.
+
+It should be noted here that since the aim is to extract the zero dose intensity of observations, the mean intensity value in the resolution bins, $\Sigma$, are not calculated from the intensity measurements of the data.
+Instead they are calculated from the zero dose values that were calculated from the regression analysis.
+
+Now that the prior distribution has been specified, it is left to specify the likelihood distribution, $P(I | J, D)$.
+In exactly the same approach used in the French and Wilson truncation algorithm, the likelihood is assumed to be a normal distribution.
+The main difference is that the intensity data is assumed to have been changed by a scale factor, $s$, which is a function of the dose, $D$.
+Therefore the intensity of an observation is normally distributed:
+\begin{equation}
+    I_{obs} \quad \text{\textasciitilde} \quad N(Js(D_{obs}),\sigma_{obs}^2).
+    \label{eq:Normally distributed intensity - Extrapolation method}
+\end{equation}
+Or more explicitly
+\begin{equation}
+    P(I_{obs} | J, D_{obs}) = \f{1}{\sigma_{obs} \sqrt{2\pi}} \exp \left[-\f{(I_{obs} - J s(D_{obs}))^2}{2 \sigma^2_{obs}} \right].
+    \label{eq:Normally distributed intensity full equation - Extrapolation method}
+\end{equation}
+
+So all that remains is to find $s(D)$.
