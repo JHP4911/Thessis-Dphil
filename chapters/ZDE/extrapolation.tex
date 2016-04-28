@@ -193,7 +193,14 @@ Therefore, the mean intensity of a resolution bin is given by
 where $n_{bin}$ is the number of reflection observations in a resolution shell and $I^i_{\bs{h},obs}$ is the intensity if the $i^{\text{th}}$ reflection observation with reciprocal lattice vector $\bs{h}$.
 
 It should be noted here that since the aim is to extract the zero dose intensity of observations, the mean intensity value in the resolution bins, $\Sigma$, are not calculated from the intensity measurements of the data.
-Instead they are calculated from the zero dose values that were calculated from the regression analysis.
+Instead they are calculated from the zero dose values that were calculated from the regression analysis (Figure~\ref{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}).
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{figures/zde/extrapolationscaling.pdf}
+    \caption{Logarithm of the mean intensities in 13 resolution shells.
+    The mean intensities are calculated from the zero-dose extrapolated intensities that were found using the regression analysis.}
+    \label{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}
+\end{figure}
 
 Now that the prior distribution has been specified, it is left to specify the likelihood distribution, $P(I | J, D)$.
 In exactly the same approach used in the French and Wilson truncation algorithm, the likelihood is assumed to be a normal distribution.
@@ -210,3 +217,97 @@ Or more explicitly
 \end{equation}
 
 So all that remains is to find $s(D)$.
+
+An estimate of $s(D)$ can be found in resolution shells by calculating the mean intensity inside resolution bins of observations that were observed within a \textit{dose shell}.
+For example, if data were collected up to a dose of 10 MGy, then 5 dose shells can be : 0 - 2 MGy, 2 - 4 MGy, 4 - 6 MGy, 6 - 8 MGy, 8 - 10 MGy.
+The mean intensities will be different from the zero-dose mean intensity as depicted in Figure~\ref{fig:mean intensity in resolution shells, various doses - Extrapolation method}.
+If $<I(D_1)>$ represents the mean intensity of a reflection observed in a particular resolution shell in a dose shell with average dose $D_1$, then the scale factor, $s(D_1)$, can be estimated as the value $s_f$ such that $<I(0)> = s_f <I(D_1)>$, where $<I(0)>$ is the average zero-dose intensity in that resolution shell.
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{figures/zde/extrapolationscaling_scale_points.pdf}
+    \caption{Logarithm of the mean intensities in 13 resolution shells for the zero-dose dataset and reflections in other dose shells denoted $D_1$.
+    $s(D_1)$ can be estimated as the value $s_f$ such that $<I(0)> = s_f <I(D_1)>$.}
+    \label{fig:mean intensity in resolution shells, various doses - Extrapolation method}
+\end{figure}
+This can be performed over several resolution shells to build a set of points of $s(D)$ at $D_1, D_2,\ldots, D_m$, as long as there are a suitable number of reflections in the dose shell and resolution shell.
+This allows interpolation of scale factors for doses between the values used in the dose shells.
+A cubic spline was used to interpolate scale factors in the present work.
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{1\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/zde/scale_fit_bin9.pdf}
+                \caption{}
+                \label{fig:monotonic scale factor - Extrapolation method}
+        \end{subfigure}
+				\\
+        \begin{subfigure}[b]{1\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/zde/scale_fit_bin2.pdf}
+                \caption{}
+                \label{fig:scale factor not monotonic - Extrapolation method}
+        \end{subfigure}
+        \caption{Cubic interpolation of estimated scale factors against dose in a single resolution shell.
+        The blue circles represent the calculated $s(D_{obs})$ values whereas the orange line represents the cubic spline interpolation.
+        (a) At high resolution the scale factor is exhibits a monotonic decrease in scale factor suggesting an overall decrease in average intensity.
+        (b) At lower resolutions the scale factor dose not necessarily display a monotonic relationship with the dose.}
+        \label{fig:Scale factors, cubic interpolation - Extrapolation method}
+\end{figure}
+
+When performing this analysis it is important to take into account the fact that there may not be enough reflections in a resolution shell to get reliable estimates of the average intensity.
+This would correspond to missing points in Figure~\ref{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}.
+Two ways to get around this issue are:
+\begin{enumerate}
+    \item choose larger resolution shells, hence the number of reflections in a given resolution shell increases.
+    \item interpolate/extrapolate with the data points that are available.
+\end{enumerate}
+The minimum number of reflections in a resolution bin is a parameter that can be manually set in the current implementation. The interpolation/extrapolation method has also been implemented.
+This uses a simple line of best fit through the existing points, however a more sophisticated implementation would involve using information from the BEST curve.
+
+Another point that needs to be considered is that not all of the reflections in a resolution shell will follow the behaviour pattern of the ``\textit{average}'' reflection according to the scale factor, $s(D)$.
+Therefore only a fraction of the scale factor value may be applied when considering each reflection.
+A measure to determine whether a reflection may behave like the ``\textit{average}'' is the absolute difference in intensity between the observed intensity and the mean intensity multiplied by the corresponding reflection multiplicity $\varepsilon_{\bs{h}}$, which will be denoted, $r$.
+If the difference is large then the reflection may not behave like the ``\textit{average}'' and hence only a small fraction of $s(D_{obs})$ should be applied when performing the extrapolation.
+The logistic function that is bounded between $s(D_{obs})$ and 1 can be used to quantify the extent of the $s(D_{obs})$ that should be applied to the expected zero dose intensity $J$, and is a function of the absolute residual $r$.
+Effectively it represents the extent to which the data are corrected according to the model.
+Mathematically $f$ is given by
+\begin{equation}
+f(r; D) = \f{s(D) - 1}{1 + (r^2/A)^B} + 1;
+\label{eq:Fraction of scale factor to be applied - Extrapolation method}
+\end{equation}
+where $f$, is the amount of $s(D)$ that actually multiplies $J$ and $A$ and $B$ are user specified parameters that determine where the inflection point occurs and the steepness of function slope respectively.
+The relationship between $f$ and $r$ can be seen in Figure~\ref{fig:Scale factor weighting - Extrapolation method} for $s(D_{obs})$ = 0.5, $A$ = 10 and $B$ = 5.
+It can be seen that $f(r)$ can only take values between $s(D_{obs})$ and 1.
+When the residual is small ($r \approx$ 0), i.e. the difference between the observed intensity and the mean intensity is small, $f(r) \approx$ 5.
+As the residual increases, $f(r) \rightarrow$ 1.
+How fast this change occurs depends on the values of $A$ and $B$ and will be crystal dependent.
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{figures/zde/scale_factor_function.pdf}
+    \caption{Scale factor weighting against the residual of the observed and mean intensities.
+    The function always gives values between $s(D_{obs})$ and 1.0 and can therefore be viewed as the amount of the $s(D_{obs})$ correction that is applied.}
+    \label{fig:Scale factor weighting - Extrapolation method}
+\end{figure}
+Diederichs \textit{et al.} \cite{diederichs2003} use a similar principal of down weighting their decay factors and standard deviations ``to avoid overcorrecting the effects of radiation damage, as it is always safe not to correct at all''\cite{diederichs2003}.
+
+If $f(r)$ is preferred over using the calculated scale factor $s(D)$, then the likelihood distribution takes the form
+\begin{equation}
+    P(I_{obs} | J, D_{obs}) = \f{1}{\sigma_{obs} \sqrt{2\pi}} \exp \left[-\f{(I_{obs} - J f(r))^2}{2 \sigma^2_{obs}} \right].
+    \label{eq:Normally distributed intensity with weighted scale factor - Extrapolation method}
+\end{equation}
+However a robust method for determining suitable values of the parameters $A$ and $B$ is yet to be implemented.
+
+Now that the prior and likelihood distributions have been specified the posterior distribution can be found by multiplying the both distributions and dividing through by a normalising constant (the marginal distribution of the data).
+This can be written as
+\begin{equation}
+P(J|I_{obs},D_{obs}) = \f{P(I_{obs} | J, D_{obs}) \times P(J)}{P(I_{obs})}.
+\label{eq:Posterior for probabilistic extrapolation, with marginal denominator - Extrapolation method}
+\end{equation}
+However finding the exact value of the marginal distribution of the data (the denominator in equation \ref{eq:Posterior for probabilistic extrapolation, with marginal denominator - Extrapolation method}) is not practical and is an active area of research.
+Instead the marginal distribution is found by multiplying the likelihood and prior distributions and integrating out the model parameter, $J$, so explicitly the posterior distribution is given by
+\begin{equation}
+P(J|I_{obs},D_{obs}) = \f{P(I_{obs} | J, D_{obs}) \times P(J)}{\int_0^{\infty} P(I_{obs} | J, D_{obs}) \times P(J)\, \mathrm{d}J},
+\label{eq:Posterior for probabilistic extrapolation, explicit - Extrapolation method}
+\end{equation}
+which is calculated numerically.
+The zero dose intensity is then determined by calculating the expected value and the variance according to equations \ref{eq:Expected intensity value - Extrapolation method} and \ref{eq:Variance of intensity value - Extrapolation method}.
