@@ -37,19 +37,19 @@ To ensure that the \verb|fminsearch| routine converges to sensible final paramet
 One of the main problems with obtaining accurate data in crystallography is the limited multiplicity of reflection observations.
 This can also be problematic for performing accurate regression.
 Equation \ref{eq:Extrapolation regression function} requires three parameter values, therefore there should be at least three observations to perform extrapolation.
-However with only three observations, the regression is likely to lead to overfitting of the model to the data (Figure~\ref{fig:Data Overfitting to few data points - Extrapolation method}).
-To prevent overfitting a minimum of 6 observations was required before extrapolation was performed.
+However with only three observations, the regression is likely to lead to overfitting of the model to the data (Figure~\ref{fig:Data Overfitting to few data points - Extrapolation method}), so more observations are required.
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/zde/ReflectionPlot_h,k,l_0,11,29-3obs.pdf}
     \caption{Regression performed where the model has been overfitted to the data.
-    The function passes perfectly through all three data points but predicts a zero-dose intensity of zero.}
+    The function passes perfectly through all three data points but predicts a zero-dose intensity of zero.
+    The solid black vertical lines are the standard deviations $\sigma_{obs}$ of the reflection intensity observations.}
     \label{fig:Data Overfitting to few data points - Extrapolation method}
 \end{figure}
 
 An additional procedure to prevent overfitted was to ensure that the fit correlated with the data.
 Therefore after the regression was performed, a correlation coefficient was calculated between the model fit and the data.
-If the resulting correlation was below a specified value (0.5 was chosen acceptable then the extrapolation was not performed.
+If the resulting correlation was below a specified value then the extrapolation procedure was abandoned.
 A bad correlation suggested that there were problems with the fit as in Figure~\ref{fig:Bad correlation bad fit - Extrapolation method} where the correlation coefficient was 0.209.
 However a bad correlation value did not always suggest a bad fit as shown in Figure~\ref{fig:Bad correlation good fit - Extrapolation method}, where the correlation was  quite low (0.231) but the fit looks reasonably good when accounting for the noise level.
 \begin{figure}
@@ -137,6 +137,36 @@ Equation \ref{eq:Corrected sigma value - Extrapolation method} takes the same fo
     In the case where the reflection was only observed half way through the experiment, I believe that the zero-dose value should have a higher uncertainty than the zero-dose value for the reflection that was observed from the first frame regardless of the dose at which an observation is made.
 \end{enumerate}
 
+\subsubsection{Assessing the quality of the regression fit}
+\label{subs:Assessing the quality of the regression fit}
+Even though checks are performed to make sure that the zero-dose extrapolation fit is sensible, it is useful to assess the quality of all regression fits.
+A relatively obvious criterion for deciding whether a fit is adequate is to determine how close the calculated intensity of an observation is to a given intensity observation.
+The $R_{fit}$ metric was created to assess this and is explicitly given by
+\begin{equation}
+    R_{fit} = \f{\sum_{hkl} R^{hkl}_{err}}{N_{ref}},
+    \label{eq:R_fit equation - Extrapolation method}
+\end{equation}
+where $N_{ref}$ represents the number of extrapolated reflections, the numerator is a sum over the number of extrapolated reflections where
+\begin{equation}
+    R^{hkl}_{err} = \f{\sum_i^{n_{obs}} w_i |I^i_{obs}(D_{obs}) - I^i_{calc}(D_{obs})|}{\sum_i^{n_{obs}} w_i I^i_{obs}(D_{obs})},
+\end{equation}
+Where $n_{obs}$ is the number of observations of a particular reflection.
+To understand how $R_{fit}$ is a suitable metric it can be seen that $R^{hkl}_{err}$ is of a very similar form to a weighted relative error over all observations of a reflection.
+$R_{fit}$ is then an average of all of these ``relative errors" for all reflections.
+
+The $R_{fit}$ metric represents a global assessment of the quality of the overall regression fits to the data.
+However assessing the quality of the zero-dose extrapolated values is also desirable.
+Although the actual zero-dose values are never observed, the $R_{fit}$ metric determined for only the \textbf{first} observation of a reflection gives an idea of how well the first observation is predicted by the regression fits.
+This metric is termed $R_{zero}$.
+
+$R_{fit}$ and $R_{zero}$ are global metrics that quantify the quality of the overall regression fits and the ability to predict the first observation of reflections respectively.
+The lower the value, the better the quality of the model fits.
+However, what constitutes a ``good'' quality fit is not immediately obvious.
+One criterion to determine whether a fit is good is that the calculated intensity value is within one standard deviation of the observed intensity value.
+Therefore $R_{fit}$ and $R_{zero}$ can be calculated such that $|I_{obs}(D_{obs}) - I_{calc}(D_{obs})| = \sigma_{obs}$ for every observation.
+These values are termed $R^{thresh}_{fit}$ and $R^{thresh}_{zero}$ respectively.
+A fit can then be considered adequate if $R_{fit} < R^{thresh}_{fit}$ and $R_{zero} < R^{thresh}_{zero}$ because this would mean that the calculated intensity values are generally within 1 standard deviation of the observed intensity values.
+
 \subsection{Probabilistic extrapolation}
 \label{sub:Probabilistic extrapolation}
 The regression analysis performed as described above requires several checks to be made to ensure that the model fit to the data is reasonable.
@@ -167,7 +197,7 @@ Therefore the likelihood $\equiv P(I | J, D)$ and prior $\equiv P(J)$ distributi
 The prior, $P(J)$, is given by the Wilson distribution for intensities \cite{wilson1949probability}.
 For acentric reflections the Wilson distribution is
 \begin{equation}
-    f(n) =
+    P_a(J) =
     \begin{cases}
         (\varepsilon_{\bs{h}}\Sigma)^{-1} \exp(-J/\varepsilon_{\bs{h}}\Sigma) & \mbox{if } J \ge 0, \\
         0                           & \mbox{if } J < 0,
@@ -176,7 +206,7 @@ For acentric reflections the Wilson distribution is
 \end{equation}
 whereas for centric reflections it is
 \begin{equation}
-    f(n) =
+    P_c(J) =
     \begin{cases}
         (2\pi\varepsilon_{\bs{h}}\Sigma J)^{-1/2} \exp(-J/2\varepsilon_{\bs{h}}\Sigma) & \mbox{if } J \ge 0, \\
         0                                      & \mbox{if } J < 0,
@@ -197,7 +227,7 @@ Instead they are calculated from the zero dose values that were calculated from 
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/zde/extrapolationscaling.pdf}
-    \caption{Logarithm of the mean intensities in 13 resolution shells.
+    \caption{Logarithm of the mean intensities in 14 resolution shells.
     The mean intensities are calculated from the zero-dose extrapolated intensities that were found using the regression analysis.}
     \label{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}
 \end{figure}
@@ -220,38 +250,39 @@ So all that remains is to find $s(D)$.
 
 An estimate of $s(D)$ can be found in resolution shells by calculating the mean intensity inside resolution bins of observations that were observed within a \textit{dose shell}.
 For example, if data were collected up to a dose of 10 MGy, then 5 dose shells can be : 0 - 2 MGy, 2 - 4 MGy, 4 - 6 MGy, 6 - 8 MGy, 8 - 10 MGy.
+The average dose in these dose shells represent the dose at which the mean intensity was observed.
 The mean intensities will be different from the zero-dose mean intensity as depicted in Figure~\ref{fig:mean intensity in resolution shells, various doses - Extrapolation method}.
 If $<I(D_1)>$ represents the mean intensity of a reflection observed in a particular resolution shell in a dose shell with average dose $D_1$, then the scale factor, $s(D_1)$, can be estimated as the value $s_f$ such that $<I(0)> = s_f <I(D_1)>$, where $<I(0)>$ is the average zero-dose intensity in that resolution shell.
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/zde/extrapolationscaling_scale_points.pdf}
-    \caption{Logarithm of the mean intensities in 13 resolution shells for the zero-dose dataset and reflections in other dose shells denoted $D_1$.
+    \caption{Logarithm of the mean intensities in 14 resolution shells for the zero-dose dataset and reflections in other dose shells denoted $D_1$.
     $s(D_1)$ can be estimated as the value $s_f$ such that $<I(0)> = s_f <I(D_1)>$.}
     \label{fig:mean intensity in resolution shells, various doses - Extrapolation method}
 \end{figure}
 This can be performed over several resolution shells to build a set of points of $s(D)$ at $D_1, D_2,\ldots, D_m$, as long as there are a suitable number of reflections in the dose shell and resolution shell.
 This allows interpolation of scale factors for doses between the values used in the dose shells.
-A cubic spline was used to interpolate scale factors in the present work.
+A smoothing spline was used to interpolate scale factors in the present work.
 \begin{figure}
         \centering
         \begin{subfigure}[b]{1\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/zde/scale_fit_bin9.pdf}
+                \includegraphics[width=\textwidth]{figures/zde/scale_fit_bin1.pdf}
                 \caption{}
                 \label{fig:monotonic scale factor - Extrapolation method}
         \end{subfigure}
 				\\
         \begin{subfigure}[b]{1\textwidth}
                 \centering
-                \includegraphics[width=\textwidth]{figures/zde/scale_fit_bin2.pdf}
+                \includegraphics[width=\textwidth]{figures/zde/scale_fit_bin12.pdf}
                 \caption{}
                 \label{fig:scale factor not monotonic - Extrapolation method}
         \end{subfigure}
-        \caption{Cubic interpolation of estimated scale factors against dose in a single resolution shell.
-        The blue circles represent the calculated $s(D_{obs})$ values whereas the orange line represents the cubic spline interpolation.
+        \caption{smoothing spline interpolation of estimated scale factors against dose in a single resolution shell.
+        The blue circles represent the calculated $s(D_{obs})$ values whereas the orange line represents the smoothing spline interpolation.
         (a) At high resolution the scale factor is exhibits a monotonic decrease in scale factor suggesting an overall decrease in average intensity.
         (b) At lower resolutions the scale factor dose not necessarily display a monotonic relationship with the dose.}
-        \label{fig:Scale factors, cubic interpolation - Extrapolation method}
+        \label{fig:Scale factors, smoothing interpolation - Extrapolation method}
 \end{figure}
 
 When performing this analysis it is important to take into account the fact that there may not be enough reflections in a resolution shell to get reliable estimates of the average intensity.
