@@ -21,7 +21,7 @@ The doses here represent the average doses in the dose shells used in the probab
 \end{table}
 The 25,000 rows of data from the \textit{HKL} list in the MTZ files resulted in 1255 unique reflections on which the extrapolation as described in section \ref{sec:Extrapolation routine} was performed.
 The minimum number of reflections to perform the extrapolation was set at 8 reflections, and the threshold correlation coefficient was set at 0.5.
-If the natural logarithm of any intensity values was over 14 then regression was not performed on the reflection.
+If the natural logarithm of any intensity values were over 14 then regression based extrapolation was not performed on the reflection.
 With those criteria, the conventional regression analysis was only performed on 748 (59.60\%) of the 1255 unique reflections.
 The rejection list is as follows:
 \begin{itemize}
@@ -43,7 +43,7 @@ Both $R_{fit} < R^{thresh}_{fit}$ and $R_{zero} < R^{thresh}_{zero}$ hence sugge
 \end{table}
 Fits from two of the successfully extrapolated reflections are shown in Figure~\ref{fig:Successful zero-dose extrapolations}.
 It is apparent from these two reflections that the behaviour of the intensities are very different.
-Although there is a general decrease in the average reflection intensities, some reflection intensities increase before they go down Figure~\ref{fig:Non-monotonic extrapolation}.
+Despite the general decrease in the average reflection intensities throughout the experiment, some reflection intensities increase before they start to decay Figure~\ref{fig:Non-monotonic extrapolation}.
 \begin{figure}
         \centering
         \begin{subfigure}[b]{1\textwidth}
@@ -69,10 +69,10 @@ Although there is a general decrease in the average reflection intensities, some
 In total 507 of the 1255 reflections (40.40\%) were rejected for the regression fits and were thus extrapolated using the probabilistic approach.
 The calculated distributions for 2 centric reflections are shown in Figure~\ref{fig:Probabilistic distributions - Extrapolation method}.
 The extrapolated intensities for negative reflection intensities are made positive because the Wilson distribution has a zero probability value for negative reflection intensities.
-The intensity values for weak reflections are significantly affected by the Bayesian approach.
+The intensity values for weak reflections are significantly affected by the prior distribution.
 This is evidence by the fact that the posterior distribution resembles the prior distribution for weak reflections (Figure~\ref{fig:Weak negative reflection intensity - Extrapolation method}).
-In contrast, strong reflections are almost unaffected by the Bayesian approach (Figure~\ref{fig:Strong positive reflection intensity - Extrapolation method}).
-As a result, the scaling factor $f(r)$ dominates the resulting zero-dose extrapolated intensity value.
+In contrast, strong reflections are almost unaffected by the prior distribution (Figure~\ref{fig:Strong positive reflection intensity - Extrapolation method}).
+As a result, the scaling factor $f(r)$ dominates the resulting zero-dose extrapolated intensity value for strong reflections.
 \begin{figure}
         \centering
         \begin{subfigure}[b]{0.94\textwidth}
@@ -88,9 +88,9 @@ As a result, the scaling factor $f(r)$ dominates the resulting zero-dose extrapo
                 \caption{}
                 \label{fig:Strong positive reflection intensity - Extrapolation method}
         \end{subfigure}
-        \caption{Prior, likelihood and posterior distributions for two centric reflections.
-		(a) Reflection 0,11,49. The observed intensity is negative $I_{obs} =$ -1.4 with a relatively large standard deviation ($\sigma_{obs} =$ 42.9) in comparison.
-		The posterior distribution resembles the prior distribution because the reflection intensity is weak.
+        \caption{Prior, likelihood and (unnormalised) posterior distributions for two centric reflections.
+		(a) Reflection 0,11,49. The observed intensity is negative, $I_{obs} =$ -1.4, with a relatively large standard deviation ($\sigma_{obs} =$ 42.9) in comparison.
+		The posterior distribution resembles the prior distribution which is a consequence of the fact that the reflection intensity is weak.
 		The resulting zero-dose value calculated as the expected value from the posterior distribution is 19.35.
 		(b) Reflection 0,17,3. $I_{obs} =$ 1009.33 and $\sigma_{obs} =$ 86.99).
 		This reflection is very strong ($I_{obs}/\sigma_{obs}  =$ 11.60), hence the posterior distribution resembles the likelihood distribution.
@@ -105,15 +105,15 @@ It can also be seen that there are no negative intensity values after the extrap
 This is due to the zero probability given to negative intensities in the prior (Wilson) distribution (Figure~\ref{fig:Probabilistic distributions - Extrapolation method}).
 
 The red and blue solid lines in Figure~\ref{fig:Before and after extrapolation results - Extrapolation method} represent the spherically averaged intensity observations in the resolution shells before and after the extrapolation respectively.
-The relative increase in the extrapolated intensities is higher on average for higher resolution reflections as evidence by the increase in the gap between the red and blue solid lines with increasing resolution.
+The relative increase in the extrapolated intensities is higher on average for higher resolution reflections as evidenced by the increase in the gap between the red and blue solid lines with increasing resolution.
 
-There are some reflection observations that have been extrapolated intensity values that look abnormally high.
-These act to highly skew the spherically average intensity of resolution shells, as can be seen by the blue line sharply increasing for the first and last resolution shells.
-These high intensity values do not result from the regression extrapolation because the averaged zero-dose intensities after the regression analysis do not exhibit this feature Figure~\ref{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}.
-Therefore these are the result of the probabilistic extrapolation and is most likely due to $f(r) \approx s(D_{obs})$ where a reflection does not behave like the ``average'' reflection in the resolution shell.
+There are some reflection observations that have abnormally high extrapolated intensity values.
+These act to highly skew the spherically averaged mean intensity of resolution shells, as can be seen by the blue line sharply increasing for the first and last resolution shells.
+These high intensity values are not a result of the regression based extrapolation because the averaged zero-dose intensities after the regression analysis do not exhibit this feature (Figure~\ref{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}).
+Therefore these are the result of the probabilistic extrapolation and is most likely due to applying $f(r) \approx s(D_{obs})$ to a reflection intensity where the reflection does not behave like the ``average'' reflection in the resolution shell.
 These outliers could simply be rejected using suitable outlier criteria.
 An obvious choice would be to reject observations where the intensity is above a given threshold.
-Or a more sophisticated method using Wilson statistics could be implemented \cite{read1999detecting}.
+A more sophisticated outlier rejection method using Wilson statistics could be implemented \cite{read1999detecting}.
 \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.94\textwidth}
@@ -129,6 +129,8 @@ Or a more sophisticated method using Wilson statistics could be implemented \cit
 		\caption{}
 		\label{fig:After extrapolation all observations - Extrapolation method}
 	\end{subfigure}
-	\caption{}
+	\caption{Reflection intensities of 5000 reflections before and after zero-dose extrapolation.
+	The points on the red and blue solid lines represent the mean intensity of the resolution shells before and after the extrapolation respectively.
+	There is a general increase in the reflection intensities after extrapolation.}
 	\label{fig:Before and after extrapolation results - Extrapolation method}
 \end{figure}

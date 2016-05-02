@@ -4,13 +4,13 @@
 To perform the extrapolation it is necessary to know both the intensities of each observation of a reflection and the dose absorbed by the crystal at the time of the observation.
 To extract the reflection intensity data, the diffraction images were integrated using MOSFLM as described in section \ref{sub:Data Processing}.
 The data were then scaled using AIMLESS, however the $B$ factor correction was turned off to prevent correcting for overall radiation damage.
-The reflection intensities were then output into an unmerged MTZ file and the data were read by running MTZDUMP.
-Importantly each reflection intensity observation was stored along with its corresponding \textit{batch} number, which would ultimately allow it to be assigned the correct dose.
+The reflection intensities were then output to an unmerged MTZ file and the data were read by running MTZDUMP and parsing the log.
+Importantly each reflection intensity observation was stored along with its corresponding \textit{batch} (image) number, which would ultimately allow it to be assigned the correct dose.
 
 To extract the correct DWD values RADDOSE-3D was run with the corresponding experimental parameters as described in section \ref{sub:Data Collection and Dose Calculation}.
 The difference is that rather than outputting one DWD value to represent the average DWD for all images in the dataset, the DWD values are obtained for each image.
 To use the DWD with the dose dependent $\eta$ functions developed in chapter \ref{chap:Dose Decay Modelling}, the parameter values $B_0, \beta$ and $\gamma$ need to be found.
-However the method used to obtain the parameter values in section \ref{sub:Obtaining Model Parameter Values} requires the collection of multiple datasets, which may not be possible if the crystal is very sensitive.
+However the method used to obtain the parameter values in section \ref{sub:Obtaining Model Parameter Values} requires the collection of multiple datasets, which may not be possible if the crystal is very radiation sensitive.
 So a new way to obtain the parameter values was developed.
 
 The idea is to exploit the fact that the volume element (voxel) of the crystal has its own relative diffraction efficiency.
@@ -19,9 +19,9 @@ Mathematically this is
 \begin{equation}
     I_n/I_0 = \f{\int_{\bs{x}} RDE(D(\bs{x}); B_0, \beta, \gamma) \times F(\bs{x})\,\mathrm{d}\bs{x}}{\int_{\bs{x}} F(\bs{x})\,\mathrm{d}\bs{x}},
 \end{equation}
-where $I_n/I_0$ is the theoretical relative intensity value (note that the denominator is $I_0$ rather than $I_1$), $RDE$ is the RDE given by equation \ref{eqrdeleal}, $D$ is the absorbed dose, $F$ is the fluence and $\bs{x}$ is the position in the crystal.
+where $I_n/I_0$ is the theoretical relative intensity value (note that the denominator is $I_0$ rather than $I_1$), $RDE$ is the RDE function given by equation \ref{eqrdeleal}, $D$ is the absorbed dose, $F$ is the fluence and $\bs{x}$ is the position in the crystal.
 The absorbed dose and fluence for each voxel is returned in a file output by RADDOSE-3D representing the dose state of the crystal.
-The parameters can then be found using an optimisation routine to minimise the residual between $I_n/I_0$ and $I_n/I_1$, where $I_n/I_1$ represent the measured relative intensities.
+The parameters can then be found using an optimisation routine to minimise the squared residual between $I_n/I_0$ and $I_n/I_1$, where $I_n/I_1$ represent the measured relative intensities.
 Matlab's \verb+lsqnonlin+ function was used for the optimisation, which in turn uses the trust-region-reflective algorithm \cite{coleman1996} or the Levenberg-Marquardt algorithm \cite{more1978levenberg} if the number of relative intensity measurements is less than the number of parameters.
 Further to being able to use this method to fit the decay parameters for a single dataset, this method is able to deal with fitting parameters from inhomogeneous dose distributions.
 An example case where ten 90$^{\circ}$ wedge datasets from crystal 0259 are used, the parameter values obtained are: $B_0 = 14.28, \beta = 0.510$ and $\gamma = 0.047$, which are comparable to the values given in Table \ref{tab:RDE params1}.
