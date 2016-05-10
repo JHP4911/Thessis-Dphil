@@ -1,0 +1,268 @@
+%!TEX root = ../../main.tex
+\section{2D X-ray beam profile measurements}
+\label{sec:2D X-ray beam profile measurements}
+The previous section presented work on beam processing performed on measurements of the beam profile obtained from 1D aperture scans.
+In this section the measurement of the X-ray beam profile was carried out at PETRA III synchrotron, beamline P14, Hamburg as described in section \ref{sub:Data Collection and Dose Calculation}.
+Specifically the measurement was made using a scintillator combined with an Allied Vision GC1350C CCD camera, which results in a 2D image of the X-ray beam.
+The processing of these images presents different challenges to those that arise from 1D aperture scan measurements.
+
+The 2D image of the X-ray beam profile was exported as a portable graymap (pgm) file where each pixel contains an integer value between 0 and 255 inclusive (Figure~\ref{fig: Hamburg beam PGM}).
+These values are determined by the strength of the signal from the scintillator.
+To spatially resolve the flux over the beam image, each pixel value is multiplied by the ratio of the total absolute flux with the total sum of the pixel values multiplied by the area of a pixel.
+This means that the pixel values can be regarded as weights that correspond to the relative photon flux at that spatial position.
+In general the pgm file will always contain non-zero values that correspond to background signal.
+This can be seen in Figure~\ref{fig:Hamburg beamslice} where the pixel values never decay to zero at any point in the vertical slice through the beam.
+So despite the fact that the pgm file can be directly read by RADDOSE-3D without any manipulation, the distribution of flux over the non-zero background values will result in an underestimate of the true overall dose distribution.
+Therefore it is important to identify the background and remove it from the file before the simulation is performed.
+Several methods for removing the background are explored and the results are compared to observe the affects on the RADDOSE-3D simulations.
+
+\subsection{PGM file preprocessing}
+\label{sub:PGM file preprocessing}
+
+\subsubsection{Original beam profile}
+\label{subs:Original beam profile}
+The first profile that will be considered is the original pgm file. No preprocessing is performed on the file so that the results from other processed beams can be compared with the results when there has been no preprocessing at all. Figure \ref{figallbeams1} shows the profile of this beam.
+
+\subsubsection{Deconvolution of beam profile}
+\label{subs:Deconvolution of beam profile}
+The beam profile was measured by placing a scintillator combined with an Allied Vision GC1350C CCD camera directly in the beam path.
+However charge diffusion into adjacent pixels due to CCD pixel subvariations cause the image to smear.
+This response is known as the point spread function (PSF).
+This means that the image formed in the pgm file is a convolution of the actual X-ray beam and the PSF.
+To deconvolve the beam image, the following procedure was undertaken:
+\begin{enumerate}
+\item An initial blind deconvolution (using the MATLAB \verb+deconvblind+ function) was performed to determine an estimate of the PSF (Figure \ref{figpsf}). The blind deconvolution requires an initial guess for the PSF, but the PSF restoration in the blind deconvolution is heavily affected by the grid size rather than its value. With no knowledge of the PSF (or of the signal to noise power spectrum) an initial guess for the PSF was given as a 7 $\times$ 7 grid of 1's.
+\item The restored PSF was then modelled using a Laplacian function of the form
+\begin{equation}
+f_{lap} = \exp \left(-\f{|x| + |y|}{b}\right)
+\label{eqlap}
+\end{equation}
+where $b$ is a parameter whose value is to be determined (Figure \ref{figmodelpsf}). The Laplacian function was chosen because it modelled the shape of the recovered PSF function very well.
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/Initial_psf.pdf}
+                \caption{}
+                \label{figpsf}
+        \end{subfigure}
+				\\
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/model_psf.pdf}
+                \caption{}
+                \label{figmodelpsf}
+        \end{subfigure}
+        \caption{(a) PSF recovered from performing a blind deconvolution. (b) Laplacian function of the form given in equation (\ref{eqlap}) with a 7 $\times$ 7 grid and $b =$ 10.}
+        \label{figpsfs}
+\end{figure}
+\item The pgm file was then segmented using the MATLAB \verb+activecontour+ function, which uses the Chan and Vese region based energy model \cite{chan2001}, to find the area of the beam.
+Additionally the centroid of the resulting image (the centre of the beam) was determined (Figure \ref{figcentroid}).
+\item A rectangle that bounded the beam (inner red rectangle in Figure \ref{figbounds}) was determined and it dimensions were stored.
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/seg_image.pdf}
+                \caption{}
+                \label{figcentroid}
+        \end{subfigure}
+				\\
+        \begin{subfigure}[b]{0.9\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/bounding_areas2.pdf}
+                \caption{}
+                \label{figbounds}
+        \end{subfigure}
+        \caption{(a) Segmented image of the beam with its centroid marked as a red circle in the middle.
+        (b) Beam image with the centroid and two bounding boxes overlaid.
+        The inner box is an estimate of the beam size with dimensions 145$\, \mu m \times$ 140$\, \mu m$.
+        These dimensions were chosen according to the coverage of the beam area in the image as opposed to the size of the aperture from the slit separation (slits were set at 140$\,\mu m \times$ 140$\,\mu m$).
+        The outer box is the boundary,170$\, \mu m \times$ 170$\, \mu m$, where the pixels outside the box are considered part of the background (section \ref{secthresh}).}
+        \label{figimagemanip}
+\end{figure}
+\item The (square) grid size for the PSF, $b$ in equation \ref{eqlap} and the rectangular dimensions were then used as inputs for an objective function in a minimisation process to determine optimal values for these parameters. The objective function was constructed as follows:
+\begin{itemize}
+\item A perfect (hypothetical) top hat beam was created inside the inner box (Figure \ref{figbounds}).
+\item The Laplacian PSF was created using the grid size and $b$.
+\item The top hat beam was convolved with the PSF to create a theoretical (convolved) beam image.
+\item the positions of zero pixel values from the theoretical beam image were also set to zero in the original beam image.
+\item The height of the theoretical beam image was adjusted by a factor of the mean of the original beam height, divided by the modal value of the theoretical beam height (the zero pixel values were discarded for the mean and mode calculations).
+This was done to ensure that the values of the beams were on the same scale.
+\item The matrix 2-norm of the difference between the original beam image with zeroed outer pixel values and the theoretical beam image was calculated and used as the output of the objective function to be minimised (the matrix 2-norm is equal to the square root of the maximum eigenvalue of the matrix multiplied by its conjugate transpose matrix).
+\end{itemize}
+\item Another blind deconvolution was performed as before but this time with the returned grid size from the minimisation procedure as the input.
+The resulting beam profile was then returned for input into RADDOSE-3D (Figure \ref{figallbeams2}).
+\end{enumerate}
+
+\subsubsection{Removal of Background using Deconvolution Results}
+Since the rectangular dimensions of the hypothetical top-hat beam were given as outputs of the minimisation procedure, this shape can be used to distinguish between the X-ray beam and background.
+The two beams that were described above were also further manipulated by setting any values outside of the rectangle dimensions to zero (Figures \ref{figallbeams3} and \ref{figallbeams4}).
+
+\subsubsection{Perfect Top Hat Beam}
+A perfect top hat beam was created within the inner boundary of Figure~\ref{figbounds}  i.e. the value 100 was inserted for pixels that lay inside the inner rectangle, otherwise the pixel values were set to zero (Figure \ref{figallbeams9}).
+
+\subsubsection{Beam Thresholding}
+\label{secthresh}
+In his DPhil thesis, Dr. Oliver Zeldin preprocessed pgm files by setting a threshold value \cite{zeldin2013thesis}.
+The threshold (or dark current) value was determined by taking the average of the pixel values that were ``far away'' from the main beam centre.
+However, to my knowledge, there was no systematic way to determine ``far away''.
+In the current MX experiment the slits were adjusted to leave an aperture of 140 $\times$ 140$\, \mu m^{\text{2}}$.
+To determine how the choice of ``far away'' affects the threshold to be subtracted it was decided that background would be considered as any pixel value beyond 30$\,\mu m$ away from the slit edge (outer red box 170 $\times$ 170$\, \mu m^{\text{2}}$ - Figure \ref{figbounds}).
+Another two beams were created assuming that the background could be considered as any pixel beyond 20$\,\mu m$ (160 $\times$ 160$\, \mu m^{\text{2}}$) from the slit edge and 85$\,\mu m$ (225 $\times$ 225$\, \mu m^{\text{2}}$) from the slit edge (Figure \ref{figbackgrounds}).
+\begin{figure}
+	\begin{adjustwidth}{-0.75cm}{}
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=7cm, height=8cm, angle =270 ]{figures/beam/figbackground170.pdf}
+                \caption{}
+                \label{figbackgrounds170}
+        \end{subfigure}
+				\qquad
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=7cm, height=8cm,, angle =270 ]{figures/beam/figbackground160.pdf}
+                \caption{}
+                \label{figbackgrounds160}
+        \end{subfigure}
+				\\
+				\begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=7cm, height=8cm,, angle =270 ]{figures/beam/figbackground225.pdf}
+                \caption{}
+                \label{figbackgrounds225}
+        \end{subfigure}
+        \caption{Background pixel values for the beam image (Beam image dimensions are 457.0$\, \mu m \times$ 244.9$\, \mu m$ for all images).
+        The pixel values in the central box for all images are set to zero and the mean and maximum values of the non-zero pixel values are taken for each of the backgrounds.
+        (a) Rounded mean pixel value = 5, maximum pixel value = 10.
+        (b) Rounded mean pixel value = 5, maximum pixel value = 13.
+        (c) Rounded mean pixel value = 4, maximum pixel value = 9.}
+        \label{figbackgrounds}
+	\end{adjustwidth}
+\end{figure}
+The threshold value to subtract was determined by taking a mean average of the background pixel values and rounding it (Figures \ref{figallbeams5}, \ref{figallbeams6} and \ref{figallbeams10}). Another way to determine the background was to take the maximum value of the background values and subtract that value from the image (Figures \ref{figallbeams7}, \ref{figallbeams8} and \ref{figallbeams11}).
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_orig.pdf}
+                \caption{}
+                \label{figallbeams1}
+        \end{subfigure}
+				\qquad
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind.pdf}
+                \caption{}
+                \label{figallbeams2}
+        \end{subfigure}
+				\\
+				\begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_orig_cut.pdf}
+                \caption{}
+                \label{figallbeams3}
+        \end{subfigure}
+				\qquad
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_cut.pdf}
+                \caption{}
+                \label{figallbeams4}
+        \end{subfigure}
+				\\
+				\begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_thres170_mean.pdf}
+                \caption{}
+                \label{figallbeams5}
+        \end{subfigure}
+				\qquad
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_thres160_mean.pdf}
+                \caption{}
+                \label{figallbeams6}
+        \end{subfigure}
+				\\
+				\begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_thres170_max.pdf}
+                \caption{}
+                \label{figallbeams7}
+        \end{subfigure}
+				\qquad
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_thres160_max.pdf}
+                \caption{}
+                \label{figallbeams8}
+        \end{subfigure}
+		\label{figallbeams}
+\end{figure}
+
+\begin{figure}
+\ContinuedFloat
+	\centering
+	\begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_thres225_max.pdf}
+                \caption{}
+                \label{figallbeams10}
+        \end{subfigure}
+				\qquad
+        \begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_blind_thres225_mean.pdf}
+                \caption{}
+                \label{figallbeams11}
+        \end{subfigure}
+				\\
+				\begin{subfigure}[b]{0.45\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{figures/beam/fig_beam_ideal.pdf}
+                \caption{}
+                \label{figallbeams9}
+        \end{subfigure}
+        \caption{Processed beam profiles used for simulations in RADDOSE-3D.
+        Each figure is a plot with all vertical slices across the corresponding pgm images overlaid on a graph.
+        It is essentially the same as Figure \ref{fig:Hamburg beamslice} except in these images all vertical slices are shown as opposed to just the central slice.}
+        \label{figallbeamscont}
+\end{figure}
+
+\section{RADDOSE-3D Simulation Results}
+All of the beams in Figure~\ref{figallbeamscont} were used as input for RADDOSE-3D to simulate the experiment described in section \ref{sub:Data Collection and Dose Calculation} for insulin crystal ID 0259.
+Each RADDOSE-3D run produced a set of DWD values, each value corresponded to one of the 271 datasets produced using the rolling window processing method described in section \ref{sub:Data Processing}.
+These doses could be plotted against the relative intensities ($I_n / I_1$) for each dataset and a line of best fit was determined using data where $I_n / I_1$ > 0.4.
+$D_{1/2}$ values were then obtained from the line of best fit for each processed beam and plotted against the percentage of pixel values in the image that are equal to 0 in Figure~\ref{figdhalf}.
+The results show that the higher the threshold value (i.e. the more pixels that are considered background and are set to zero) the higher the $D_{1/2}$ value.
+This occurs because RADDOSE-3D is run independently to scaling and therefore the intensity values are the same for each run.
+With more zero pixel values the same total photon flux is distributed over a smaller area (which always contained the crystal), and hence the crystal absorbs more energy which contributes to higher doses.
+This has the appearance that the crystal is less radiation sensitive (because the $D_{1/2}$ is higher).
+The other major factor in the calculation of the dose values are the calculated absorption coefficients.
+In Figure \ref{figdhalf} the blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 \cite{pait2009} (denoted RDV2 in Figure \ref{figdhalf}) giving an absorption coefficient of 4 $\times$ 10$^{\text{-4}}\, \mu m^{\text{-1}}$.
+The red markers represent simulations where the absorption coefficients were calculated for an ``average protein'' (denoted \textit{``default''} in Figure \ref{figdhalf}) giving a value of 2.37 $\times 10^{\text{-4}}\, \mu m^{\text{-1}}$.
+The difference between these methods of calculating the absorption coefficients is significant and leads to differences in calculated doses of about a factor of 2.
+\newline
+The results seem to suggest that the two factors mentioned above are the two most important factors for dose calculations.
+The differences between the profiles of the original beam image, the top hat beam and the deconvolved beam have a much less pronounced affect on the dose calculations.
+For example, the percentage difference between the orginal beam with no background (denoted Original$_{\text{NB}}$ in the figure legend of Figure \ref{figdhalf}) and the deconvolved beam with no background is 0.8\% (using coefficients calculated using RADDOSE version 2).
+This shows that deconvolution of the image will not significantly affect the dose estimate.
+This is because the differences in the pixel values are relatively small when compared to the differences one may expect if a Gaussian beam profile is compared to a tophat profile.
+\newline
+Using the threshold method, there is a difference in $D_{1/2}$ values if the maximum pixel value from the background is subtracted from the image or the mean pixel value is subtracted from the image.
+This is consistent with the observation that the higher the threshold value, the higher the $D_{1/2}$ value.
+The difference between the maximum threshold value from the 160 $\times$ 160$\, \mu m^2$ rectangle and the mean value is $3.89\%$ (using RDV2 calculated absorption coefficients).
+This result demonstrates that even if the area that is considered background is the same (Figure \ref{figbackgrounds}), deciding whether to subtract the mean background pixel value or the maximum pixel value will also affect the resulting $D_{1/2}$ value.
+
+\begin{figure}
+  \centering
+    \includegraphics[width=1\textwidth]{figures/beam/d_half_plot.pdf}
+    \caption{$D_{1/2}$ values plotted against the percentage of zero pixel values in the processed pgm beam images.
+    Blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 (denoted `RDV2' in figure legend) and red markers represent simulations where the absorption coefficients were calculated for an ``average protein'' (denoted `default' in figure legend).
+    The subscript `NB' denotes beam profiles where the ``background'' was removed.
+    The figure shows a trend that the higher the proportion of zero pixel values, the higher the $D_{1/2}$ value.
+    It also shows that the method used to calculate the absorption coefficients can also significantly affect the estimated doses.}
+    \label{figdhalf}
+\end{figure}
