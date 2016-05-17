@@ -100,7 +100,7 @@ for acentric reflections and
     P_c(\bs{F}_{i+1} ; \bs{F}_i) = \f{1}{\left[ 2 \pi \varepsilon \sigma^2 \right]^{1/2}} \exp \left(-\f{|\bs{F}_{i+1} - \bs{D}\bs{F}_i|^2}{2 \varepsilon \sigma^2}\right),
     \label{eq:Luzzati distribution for centric reflections}
 \end{equation}
-for centric reflections where $P(\bs{F}_{i+1} ; \bs{F}_i)$ denotes the probability of structure factor, $\bs{F}_{i+1}$, at time i + 1 given the structure factor, $\bs{F}_{i}$, at time i, $\varepsilon$ is the multiplicity of the reflection, $\sigma^2 = \left(1 - |\bs{D}|^2 \right)\Sigma_N$, where $\Sigma_N$ is the expected intensity of the reflection and $\bs{D}$ is a (complex) multiplier.
+for centric reflections where $P(\bs{F}_{i+1} ; \bs{F}_i)$ denotes the probability of structure factor, $\bs{F}_{i+1}$, at time i + 1 given the structure factor, $\bs{F}_{i}$, at time i, $\varepsilon$ is the multiplicity of the reflection, $\sigma^2 = \left(1 - |\bs{D}|^2 \right)\Sigma_N$, where $\Sigma_N$ is the expected intensity of the reflection, in this work the expected intensity value was calculated as the sum of the squared atomic scattering factors, and $\bs{D}$ is a (complex) multiplier.
 
 As discussed previously the phases are unknown during the data reduction stage and hence the only quantity that can be inferred is the amplitude of the reflection.
 The unknown phase can be integrated over equations \ref{eq:General distribution for acentric reflections} and \ref{eq:General distribution for centric reflections} (marginalisation) to obtain the probability of the structure factor amplitudes (transition probability):
@@ -188,10 +188,48 @@ For simplicity the B factor is assumed linear and the scale factor is assumed co
 The assumption of linearity for the B factor is valid for low dose ranges \cite{kmetko2006,borek2007many,leal2012} and hence $\Delta B$ can be given as the difference in B factor between images.
 On the other hand the constant scale factor assumption is not valid for general MX experiments, but may be a suitable approximation for the case where a crystal is completely immersed in a top-hat profile X-ray beam.
 
-\subsection{Summary of hidden Markov model}
-\label{sub:Summary of hidden Markov model}
+\subsection{Convergence of the forward-backward algorithm}
+\label{sub:Convergence of the forward-backward algorithm}
+The initial guess of the structure factor amplitude required to start the forward-backward algorithm may not be close to the true value.
+The algorithm will thus propagate the incorrect amplitude value through the filter until time point when the first actual observation is made.
+From then on the estimates should be closer to the true values of the amplitude in the experiment.
+In particular, the backwards pass should result in a better estimate of the true initial amplitude.
+The improved initial amplitude estimate can then be provided to the forward-backward algorithm again to obtain better estimates of the amplitude evolution of a reflection, including a further improved initial structure factor amplitude value.
+Hence the procedure is iterative.
+
+The question then becomes \textit{"When has the solution reached convergence?"}
+
+\subsubsection{Log Likelihood}
+\label{subs:Log Likelihood}
+One way to determine when the solution has converged is to determine the point at which the increase in the log likelihood is smaller than a given tolerance.
+The likelihood is a function describing how likely the data observed are likely to occur given the current model.
+For the Kalman filter it is defined as \cite{cressie2015statistics}
+\begin{equation}
+    L = \prod_i P(I_i | F_i) \times P( F_i | F_{i-1}),
+\end{equation}
+where $F_i = |\bs{F}_i|$ is the structure factor amplitude of a reflection and $I_i$ is the intensity of the reflection at time point $i$.
+Initially it seems that $P(I_i | F_i)$ and $P( F_i | F_{i-1})$ should represent the emission and transition probabilities respectively.
+However this is not exactly the case because the UKF propagates Gaussian models.
+This means that the mean and covariance of the states calculated at each time point in the HMM are used as a Gaussian approximation for the true state (Figure~\ref{fig:State propagation for different filters}).
+Hence $P(I_i | F_i)$ and $P( F_i | F_{i-1})$ are Gaussian distributions.
+The log likelihood is computationally more convenient to deal with (and often analytically too) than the likelihood and hence it is the log likelihood that is calculated instead.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/datared/StateTransformation.png}
+    \caption{Propagation of states $\mathbf{x}$ through a non linear function $\mathbf{f}$ for different transformation techniques.
+    The left plot shows the true mean and covariance propagation which uses Monte-Carlo sampling.
+    The middle shows the linearisation performed by the extended Kalman filter (EKF), another non-linear Kalman filter.
+    The right plot shows the propagation performed with the unscented transform used by the UKF.
+    The performace of the UKF is superior to that of the EKF and uses much less sampling points (called sigma points) than Monte-Carlo samping.}
+    \label{fig:State propagation for different filters}
+\end{figure}
+
+\subsection{Summary of hidden Markov model formulation}
+\label{sub:Summary of hidden Markov model formulation}
 In summary the diffraction experiment has been represented as a hidden Markov model where a process function describes how the (hidden) state of the crystal at a particular time point i generates the consecutive crystal state due to X-ray irradiation.
 An observation model also describes how the crystal, which is in a particular state, generates the observed intensities.
 The UKF and the URTSS algorithms together give the forward-backward algorithm, which is designed to give the optimal sequence of crystal states that best describe the observed data that is consistent with the defined process and observation functions.
 The process and observation (co)variances quantify the level of uncertainty of the corresponding processes.
-Therefore the result of the algorithm is a sequence of the set of structure factor amplitudes for each time point in the data collection experiment.
+The forward-backward algorithm is applied iteratively to obtain the improved estimates of the structure factor amplitude of a reflection with each iteration.
+The log likelihood is calculated for each cycle and when the improvement of the log likelihood is smaller than a given tolerance value, the solution is considered to have converged.
+The final result of the algorithm is a sequence of the set of structure factor amplitudes for each time point in the data collection experiment.

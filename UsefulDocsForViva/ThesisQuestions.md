@@ -67,6 +67,12 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 > Why would you use linear fitting procedures over non-linear ones and what's the difference?
 
+### Data Reduction Chapter
+
+> What's the difference between the profile fitted and the summed intensity estimates?
+
+> What is the Lorentz-Polarisation correction factor
+
 ### SAXS Chapter
 
 > With regard to SAXS radioprotectants, what are DTT and TCEP
