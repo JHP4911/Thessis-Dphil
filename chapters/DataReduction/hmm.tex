@@ -205,7 +205,7 @@ One way to determine when the solution has converged is to determine the point a
 The likelihood is a function describing how likely the data observed are likely to occur given the current model.
 For the Kalman filter it is defined as \cite{cressie2015statistics}
 \begin{equation}
-    L = \prod_i P(I_i | F_i) \times P( F_i | F_{i-1}),
+    L = P(F_0) \prod_i P(I_i | F_i) \times P( F_i | F_{i-1}),
 \end{equation}
 where $F_i = |\bs{F}_i|$ is the structure factor amplitude of a reflection and $I_i$ is the intensity of the reflection at time point $i$.
 Initially it seems that $P(I_i | F_i)$ and $P( F_i | F_{i-1})$ should represent the emission and transition probabilities respectively.
