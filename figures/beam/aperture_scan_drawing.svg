@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1627.6046"
+   width="1862.4291"
    height="1447.0157"
    id="svg2"
    version="1.1"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="645.70104"
-     inkscape:cy="608.48909"
+     inkscape:cx="842.05869"
+     inkscape:cy="608.48918"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -80,6 +80,16 @@
        fx="1634.2858"
        fy="466.01877"
        r="302.85715" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient5770"
+       id="linearGradient4415"
+       x1="1647.3214"
+       y1="285.58719"
+       x2="1646.9642"
+       y2="1054.1586"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(-45.785764,-404.70142)" />
   </defs>
   <metadata
      id="metadata7">
@@ -5729,5 +5739,50 @@
        sodipodi:ry="34.345188"
        d="m 1969.7975,1133.1688 c 0,18.9683 -15.3769,34.3452 -34.3452,34.3452 -18.9684,0 -34.3452,-15.3769 -34.3452,-34.3452 0,-18.9683 15.3768,-34.3452 34.3452,-34.3452 18.9683,0 34.3452,15.3769 34.3452,34.3452 z"
        transform="matrix(0.29966244,0,0,0.29966244,967.41589,476.50989)" />
+    <rect
+       style="fill:url(#linearGradient4415);fill-opacity:1;stroke:none"
+       id="rect4407"
+       width="134.28572"
+       height="722.85712"
+       x="1534.2142"
+       y="-117.68568" />
+    <text
+       xml:space="preserve"
+       style="font-size:59.80657578px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+       x="1684.2195"
+       y="-114.06586"
+       id="text4417"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4419"
+         x="1684.2195"
+         y="-114.06586">High </tspan><tspan
+         sodipodi:role="line"
+         x="1684.2195"
+         y="-39.307636"
+         id="tspan4423">beam</tspan><tspan
+         sodipodi:role="line"
+         x="1684.2195"
+         y="35.450581"
+         id="tspan4421">flux</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:59.80657578px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Open Sans;-inkscape-font-specification:Open Sans"
+       x="1685.224"
+       y="515.69781"
+       id="text4417-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4419-1"
+         x="1685.224"
+         y="515.69781">Low </tspan><tspan
+         sodipodi:role="line"
+         x="1685.224"
+         y="590.45605"
+         id="tspan4423-6">beam</tspan><tspan
+         sodipodi:role="line"
+         x="1685.224"
+         y="665.21423"
+         id="tspan4421-8">flux</tspan></text>
   </g>
 </svg>

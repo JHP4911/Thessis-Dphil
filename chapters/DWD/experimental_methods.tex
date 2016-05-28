@@ -14,13 +14,14 @@ Therefore the crystals used in the experiment were grown to be as close to cuboi
 
 \subsection{Crystallization}
 \label{sub:Crystallisation}
-Crystals of bovine pancreatic insulin were grown by the sitting-drop vapour diffusion method.
+Crystals of bovine pancreatic insulin purchased from Sigma-Aldrich (Lot \# SLBJ0654V) were grown by the sitting-drop vapour diffusion method.
 The well solution consisted of 0.243$\, M$ Na$_{\text{2}}$HPO$_{\text{4}}$, 0.007$\, M$ Na$_{\text{3}}$PO$_{\text{4}}$ at pH 10 and 0.01$\,M$ Na$_{\text{3}}$EDTA.
 2$\, \mu l$ of the well solution was added to an equal volume of the protein solution which consisted of 20$\, mg/ml$ insulin protein, 0.0195$\, M$ Na$_{\text{2}}$HPO$_{\text{4}}$, 0.0005$\, M$ Na$_{\text{3}}$PO$_{\text{4}}$ at pH 10 and 0.01$\, M$ Na$_\text{3}$EDTA.
 The crystals were stored at room temperature ($\approx$ 293$\,K$) and grew in a morphologically cuboid shape within 48 hours (Figure \ref{fig: Cubic insulin crystals}).
-Cuboid shaped crystals less than 140$\, \mu m$ in each dimension were selected and soaked for 30 - 60 seconds in a cryoproctectant solution with an identical composition to that of the well solution except with 30\%$\, v/v$ glycerol substituted for water, before being flash cooled in liquid nitrogen.
+Cuboid shaped crystals less than 140$\, \mu m$ in each dimension were selected and soaked for 30 - 60 seconds in a cryoproctectant solution with an identical composition to that of the well solution except with 30\%$\, v/v$ glycerol substituted for water, before being flash cooled in liquid nitrogen (77$\,$K).
 \newline
-Haspin and myelocytomatosis (MYC) induced nuclear antigen (MINA) protein crystals that were cuboid in shape were collected from the Structural Genomics Consortium (SGC) (Figures \ref{fig: Cubic haspin crytals} and \ref{fig: Cubic MINA crystals}).
+Human Haspin and myelocytomatosis (MYC) induced nuclear antigen (MINA) protein crystals that were cuboid in shape were kindly provided by the Structural Genomics Consortium (SGC) (Figures \ref{fig: Cubic haspin crytals} and \ref{fig: Cubic MINA crystals}).
+These crystals were selected for their cubic shape out of the many human proteins crystallised at the SGC.
 They were cryoprotected in their native well solution with 25\%$\, v/v$ glycerol substituted for water.
 
 \begin{figure}
@@ -51,22 +52,22 @@ They were cryoprotected in their native well solution with 25\%$\, v/v$ glycerol
 
 \subsection{Data Collection and Dose Calculation}
 \label{sub:Data Collection and Dose Calculation}
-All data were collected on the PETRA III Hamburg beamline P14 with an energy of 12.7$\,keV$ ($\lambda = \text{0.9764}\,$\AA) at 100$\,K$, in collaboration with beamline scientist Gleb Bourenkov and beamline director Thomas Schneider.
+All data were collected on the PETRA III Hamburg beamline P14 with an energy of 12.7$\,keV$ ($\lambda = \text{0.9764}\,$\AA) at 100$\,K$, in collaboration with beamline scientist Dr. Gleb Bourenkov and EMBL beamline director Dr. Thomas Schneider.
 The experimentally measured beam profile was determined by placing a scintillator combined with an Allied Vision GC1350C CCD camera directly in the beam path.
 This produced a quantitative map of the beam profile in a portable graymap (pgm) file.
-The flat profile of the beam was achieved by removing the focusing mirrors, and the slits were adjusted to achieve an aperture of 140$\,\mu m \times $140$\,\mu m$ (Figure \ref{fig: Hamburg beam pgm and slice}).
+The flat profile of the beam (coefficient of variation\footnote{The coefficient of variation is defined at the ratio of the standard deviation to the mean of a set of values which can also be expressed as a percentage by multiplying by 100\%} of the beam is 2.09\% vertically and  2.24\% horizontally) was achieved by removing the focusing mirrors, and the slits were adjusted to achieve an aperture of 140$\,\mu m \times $140$\,\mu m$ (Figure \ref{fig: Hamburg beam pgm and slice}).
 The beam current was measured using a 500$\,\mu m$ thick silicon PIN diode placed in the sample position from which the photon flux could be calculated \cite{owen2009}.
-Before the data were collected from each crystal, an indexing set (100 frames of 0.1$^{\circ}$ rotation and 0.1$\,s$ exposure time per frame) was taken.
+Before the data were collected from each crystal, an indexing set (100 frames of 0.1$^{\circ}$ rotation and 0.1$\,s$ exposure time per frame) was acquired.
 These frames were then indexed to provide the information necessary to reorient the crystal.
 One of the crystal faces was then aligned perpendicular to the beam direction such that the plane containing the beam direction vector was perpendicular to two of the edges of the aligned face (Figure \ref{fig: indexing flow diagram}).
-Alignment was performed using a mini kappa goniometer.
+Alignment was performed using an Arinax MD3 mini kappa goniometer with the spindle axis mounted in a vertical and downward configuration.
 The crystal was centred on the beam position to make sure the entire crystal volume was completely immersed in the beam during the experiment.
-The dimensions of the crystals were measured on screen before data collection took place.
-Table~\ref{tab:Hamburg data collection} contains the details for the data collection strategies for each crystal type.
+The dimensions of the crystals were measured on screen prior to data collection.
+Table~\ref{tab:Hamburg data collection} contains the details of the data collection strategies for each crystal type.
 Dose values were calculated using RADDOSE-3D.
-The photon flux was determined to be 1.9 $\times$ 10$^{\text{11}}\,ph/s$, the composition of the crystal was obtained from Oliver B. Zeldin's thesis \cite{zeldin2013thesis} and from the crystallisation solution as in Section \ref{sub:Crystallisation}.
-Although the crystal composition in Zeldin's thesis is incorrect, using the same composition allows direct comparison with the results obtained in \cite{zeldin2013dwd}.
-Functionality to handle the experimentally measured beam profile was used to further improve the MX simulation.
+The photon flux was determined to be 1.9 $\times$ 10$^{\text{11}}\,ph/s$, the composition of the crystal was obtained from Dr. Oliver B. Zeldin's thesis \cite{zeldin2013thesis} and from the constituents of the crystallisation solution as in Section \ref{sub:Crystallisation}.
+Although the crystal composition in Zeldin's thesis is incorrect (he specifies that there is a zinc atom for every insulin monomer in the unit cell whereas the true composition has only two zinc atoms per insulin hexamer), using the same composition allows direct comparison with the results obtained in \cite{zeldin2013dwd}.
+Functionality to handle the experimentally measured beam profile was added to RADDOSE-3D to further improve the simulation of the absorbed dose.
 \begin{figure}
         \centering
         \begin{subfigure}[b]{1\textwidth}
@@ -82,9 +83,19 @@ Functionality to handle the experimentally measured beam profile was used to fur
                 \caption{}
                 \label{fig:Hamburg beamslice}
         \end{subfigure}
-        \caption{(a) Image of the experimentally determined beam profile.
-        (b) Vertical slice through the beam image showing the flat profile of the beam.}
-        \label{fig: Hamburg beam pgm and slice}
+\end{figure}
+\begin{figure}
+    \ContinuedFloat
+    \begin{subfigure}[b]{1.0\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/dwd/beamslice_horizontal.pdf}
+        \caption{}
+        \label{fig:Hamburg beamslice horizontal}
+    \end{subfigure}
+    \caption{(a) Image of the experimentally determined beam profile.
+    (b) Vertical slice through the beam image showing the flat profile of the beam.
+    (c) Horizontal slice through the beam image showing the flat profile of the beam.}
+    \label{fig: Hamburg beam pgm and slice}
 \end{figure}
 
 \begin{figure}
@@ -97,13 +108,13 @@ Functionality to handle the experimentally measured beam profile was used to fur
 \begin{table}[ht!]
 	\caption{Data collection strategy for each protein crystal type}
 	\centering
-	\begin{tabular}{p{2.3cm} p{2.0cm} p{2.6cm} p{2.3cm} p{3.5cm}}
+	\begin{tabular}{p{1.6cm} p{1.4cm} p{2.0cm} p{1.3cm} p{1.5cm} p{2.0cm} p{2.0cm}}
 		\hline
-		Protein Crystal Type & Number of Crystals & Total Number of Frames per crystal & Rotation per image ($^\circ$) & Exposure Time per image (seconds) \\
+		Protein Crystal Type & Number of Crystals & Total Number of Frames per crystal & Rotation per image ($^\circ$) & Total rotation ($^\circ$) & Exposure Time per image (seconds) & Approx resolution \\
 		\hline
-		Insulin      & 8   & 14400  		& 0.1 & 0.5  \\
-		Haspin       & 5   & 7200   		& 1 	& 1  	 \\
-		MINA         & 3   & 7200/3600  & 0.1 & 1    \\
+		Insulin      & 8   & 14400  		& 0.1 & 1440    & 0.5 & 1.38$\,$\AA \\
+		Haspin       & 5   & 7200   		& 1   & 7200    & 1   & 2.9$\,$\AA\\
+		MINA         & 3   & 7200/3600      & 0.1 & 720/360 & 1   & 3.0$\,$\AA\\
 		\hline
 	\end{tabular}
 	\label{tab:Hamburg data collection}
@@ -111,17 +122,18 @@ Functionality to handle the experimentally measured beam profile was used to fur
 
 \subsection{Data Processing}
 \label{sub:Data Processing}
-The data collected for the MINA and haspin crystals were non-trivial to process and hence the data processing procedures described here are relevant only for the insulin crystals.
+The data collected for the MINA and haspin crystals were non-trivial to analyse and hence the data processing procedures described here are relevant only for the insulin crystals.
 Data were processed using the Collaborative Computational Project No. 4 (CCP4) suite \cite{winn2011} with a standardised script used to call each program from within the suite to ensure identical treatment of all crystals.
 MOSFLM \cite{leslie2007} was run manually with the space group set to $I$2$_{\text{1}}$3.
-All images collected from a crystal were integrated together fixing the unit cell angles and the detector distance, but allowing the unit cell dimensions and mosaicity to be refined during integration.
+All images collected from a crystal were integrated together, fixing the unit cell angles and the detector distance but allowing the unit cell dimensions and mosaicity to be refined during integration.
 This was done because it is well documented that the unit cell expands and the mosaicity increases as radiation damage progresses \cite{garman2010}.
 The data were then scaled with AIMLESS \cite{evans2013} in batches of 900 frames (equivalent to 90$^{\circ}$ rotations) separated 50 frames apart (equivalent to 5$^{\circ}$).
-This allowed several overlapping datasets to be extracted which would allow the progression of radiation damage to be tracked much better than would be the case if datasets did not overlap.
-14400 images were collected from each insulin crystal so processing the data in this way produced 271 datasets per crystal.
+This allowed several overlapping datasets to be extracted which allowed the progression of radiation damage to be tracked in much more detail than would be the case if datasets did not overlap.
+14400 images were collected from each insulin crystal, so processing the data in this way produced 271 datasets per crystal.
 Despite the fact that the insulin crystals diffracted to 1.38$\,$\AA, the data were scaled with a resolution limit of 1.8$\,$\AA.
 This was to ensure that the processing for the highly damaged datasets were less likely to fail and to allow more direct comparison of the intensity values between datasets.
-Data processing statistics for each insulin crystal are shown in Table~\ref{tab: Hamburg data processing}.
+Only five of the 8 insulin datasets produced data that were processed straightforwardly in MOSFLM.
+Data processing statistics for those five insulin crystals are shown in Table~\ref{tab: Hamburg data processing}.
 
 \begin{table}[ht!]
 \centering
@@ -156,7 +168,7 @@ Data processing statistics for each insulin crystal are shown in Table~\ref{tab:
 \subsection{Calculating the relative intensity}
 \label{sub:Calculating the relative intensity}
 The relative intensity of a uniformly irradiated crystal is effectively the same as the RDE.
-The relative intensity is defined as $I_n/I_1$, where $I_n$ is the summed mean intensity of a complete data set $n$ (or equivalent sections of data) after a dose $D$, and $I_1$ is the mean intensity of the first data set.
+Recall that the relative intensity is defined as $I_n/I_1$, where $I_n$ is the summed mean intensity of a complete data set $n$ (or equivalent sections of data) after a dose $D$, and $I_1$ is the mean intensity of the first data set.
 Implicit in this definition is that the total intensity is integrated for the same reflections for each dataset.
 
 Figure \ref{fig: AIMLESS log file} shows a table from the log file of an AIMLESS job.

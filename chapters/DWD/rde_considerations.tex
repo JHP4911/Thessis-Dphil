@@ -1,11 +1,7 @@
 %!TEX root = ../../main.tex
-\section{Considerations for RDE Leal}
-\label{sec:Considerations for RDE Leal}
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:new title?}{\textbf{TODO:} Not too sure about the title of this section}
-    \end{myenumerate}
-}
+\section{Further investigation of the RDE Leal model}
+\label{sec:Further investigation of the RDE Leal model}
+
 One of the factors that will affect the parameter values that are obtained from the analysis is the resolution of the data collected \cite{leal2012}.
 It is well known that the intensity of higher resolution reflections decay more quickly than lower resolution reflections.
 Therefore if the data were collected at a lower resolution the relative intensity throughout the experiment may be expected to be systematically higher than data collected from the same crystal at a higher resolution.
@@ -13,18 +9,18 @@ To find out the effect that the resolution dependence would have on the paramete
 The parameter values found for each resolution are given in Table \ref{tab:RDE params3} and the resulting RDE models plotted with the experimental data are shown in Figure~\ref{fig:Resolution comparison plot - scaled to diff res}.
 It is clear that the calculated relative intensity predictions become worse as the resolution of the data decreases.
 
-The other factor that will affect the results of the RDE model are the resolution limits used to perform the RDE Leal integral (equation \ref{eqrdeleal}).
-The resolution limits of the \textit{BEST} data extend from 12345.68\,\AA\ to 0.66\,\AA, thus the integral can be performed between these limits provided the parameter values have been determined.
-What is unclear is whether performing the integral to the high resolution \textit{BEST} limit, 0.66\,\AA, would allow the model to converge to the high resolution relative intensity data despite obtaining the parameter values using low resolution data.
-Figure~\ref{fig:Resolution comparison plot - integrated to diff res} shows the RDE models derived from processing the data to the three different resolutions (1.8\,\AA, 3\,\AA, and 4\,\AA) but with the integration performed over the \textit{BEST} limits.
+The other factor that will affect the results of the RDE model are the resolution limits used to perform the RDE Leal integrals (equation \ref{eqrdeleal}).
+The resolution of the \textit{BEST} data extend from 12345.68\,\AA\ to 0.66\,\AA (Figure~\ref{fig:BEST curve}), thus the integrals can be performed between these limits provided the parameter values have been determined.
+What is unclear is whether performing the integral to the high resolution \textit{BEST} limit, 0.66\,\AA, would allow the model to converge for the high resolution relative intensity data despite obtaining the parameter values using low resolution data.
+Figure~\ref{fig:Resolution comparison plot - integrated to diff res} shows the RDE models derived from processing the data to the three different resolutions (1.8\,\AA, 3\,\AA, and 4\,\AA) but with the integration performed over the resolution limits of the \textit{BEST} data.
 The magenta, red and green curves correspond to the RDE models using the parameters determined from the data processed to 1.8\,\AA, 3\,\AA, and 4\,\AA\ respectively.
 The green and red curves clearly do not converge towards the expected values of intensity decay (blue circles).
-The green curve suggests that the crystal is much more resilient than even the 1.8$\,$\AA\ data suggests.
-The red curve displays an exponential decay shape that is not seen in relative intensity data of crystals at cryotemperatures.
+The green curve suggests that the crystal is much more resilient than the measured 1.8$\,$\AA\ data.
+The red curve displays an exponential decay shape that is not seen in relative intensity decay data of crystals at cryotemperatures.
 On the other hand the magenta curve looks much more reasonable for the decay of cryotemperature data.
 
-These results suggest that to get the best predictions from the data, it is necessary to collect the data to the highest resolution possible.
-Furthermore, if the data are collected to a high enough resolution then calculating the RDE using the \textit{BEST} limits should give a more representative model of the true RDE of the crystal.
+These results suggest that to obtain the best predictions of the RDE from the data, it is necessary to collect the data to the highest resolution possible.
+Furthermore, if the data are collected to a high enough resolution, then calculating the RDE using the \textit{BEST} limits should give a more representative model of the true RDE of the crystal.
 This is because the integral is performed over a large resolution range regardless of the diffraction resolution, which will affect the apparent radiation sensitivity.
 
 \begin{table}[ht!]

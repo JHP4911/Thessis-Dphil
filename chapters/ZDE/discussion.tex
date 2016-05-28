@@ -17,12 +17,12 @@ The advances of particular interest to the research are the development of RADDO
 Data from a uniformly irradiated insulin crystal (section \ref{sub:Data Collection and Dose Calculation}) were used to perform the extrapolation.
 Dose calculations were carried out using RADDOSE-3D and the DWD metric was used as the independent variable in which to track the changes in reflection intensities.
 In a similar manner to the approach used by Diederichs \textit{et al.} some of the reflection intensities were extrapolated to zero-dose using regression analysis.
-However, in the method presented here, multiple criteria had to be satisfied before the extrapolation was carried out.
+However, in the method presented here, multiple criteria had to be satisfied by a reflection before the extrapolation was carried out on it.
 This was done to reduce the likelihood of overfitting the model to the data.
 These included checking that the fits correlated well with the data, there were a minimum number of observations, the intensity observations were not too small and that the extrapolated intensity values did not give intensity values that were significantly different from the observed distribution.
 
 To check the quality of the model fits and the zero-dose extrapolated intensity values, the $R_{fit}$ and $R_{zero}$ metrics were created.
-Furthermore the $R^{thresh}_{fit}$ and $R^{thresh}_{zero}$ metrics were used as thresholds to compare with the $R_{fit}$ and $R_{zero}$ and ensure that the overall regression extrapolations were reasonable.
+Furthermore, the $R^{thresh}_{fit}$ and $R^{thresh}_{zero}$ metrics were used as thresholds to compare with the $R_{fit}$ and $R_{zero}$ and ensure that the overall regression extrapolations were reasonable.
 
 Further to the regression based analysis, a probabilistic extrapolation using Bayesian inference was applied to the subset of data that was unsuitable for regression.
 Using the data from the already extrapolated reflection observations, it was possible to estimate distribution parameters for the prior and likelihood distributions, which ultimately enabled estimates of the zero-dose intensity values for other observations.
@@ -30,16 +30,16 @@ This approach is new for zero-dose extrapolation and means that only a subset of
 It is important because the low multiplicity of diffraction data is regarded as a major problem with the traditional regression based approach.
 
 The extrapolation method presented gave results consistent with what was expected.
-The Leal \textit{et al.} model was able to capture some of the non-linear and non-monotonic behaviour of the reflection intensities, sand for the majority of reflections, the probabilistic method seemed to give reasonable zero-dose estimates.
+The Leal \textit{et al.} model was able to capture some of the non-linear and non-monotonic behaviour of the reflection intensities, and for the majority of reflections, the probabilistic method seemed to give reasonable zero-dose estimates.
 In general the extrapolated intensities of reflections showed an increase from the observed values.
 
 However the method presented still requires some work before it can be used reliably for general crystallographic data.
 The most obvious improvement is preventing the probabilistic extrapolation method giving abnormally high intensity values.
 As mentioned earlier, this could be corrected by using an outlier rejecting method.
-There is also no check for the quality of the extrapolation from the probabilistic approach, which would aid in highlighting potential problems.
+There is also currently no check for the quality of the extrapolation from the probabilistic approach, which would aid in highlighting potential problems.
 A possible validation criteria may be that the probabilistic extrapolation gives values that are similar to the regression based extrapolation values for the reflections that have already been extrapolated.
 This basically checks the consistency of the two methods.
-The reason that the consistency check is good validation that the probabilistic method works is that the regression based method is already validated with several checks and its own validation metrics.
+The reason that the consistency check is a good way to validate that the probabilistic method works is that the regression based method is already validated with several checks and its own validation metrics.
 The problem with this is that the distribution parameters are calculated from the intensities extrapolated using the regression method.
 This means that it is more likely that the two methods will seem consistent, and thus may not be reliable for other reflections.
 
@@ -51,18 +51,18 @@ However, there is no apparent evidence to support this assumption, so it may not
 Secondly the parameter values $A$ and $B$ in the equation \ref{eq:Fraction of scale factor to be applied - Extrapolation method} are not guaranteed to be optimal.
 They were chosen by visual inspection of the behaviour of a limited set of observations and therefore were not rigorously determined.
 
-Furthermore there are improvements that can be made to the regression based extrapolation.
+Furthermore, there are improvements that can be made to the regression based extrapolation.
 It was observed that a ``bad" correlation between the fitted model and the data was simply due to noise.
 This implies that the correlation coefficient check may be too stringent, and in fact some reflections may be rejected despite the possibility that the model would have given a reasonable extrapolated zero-dose intensity.
 Perhaps removing the correlation requirement in favour of a different criterion could improve the data quality by not rejecting ``well behaved" reflections due to systematic noise.
-The reason this was not done in the present analysis is because I felt it was more important have fewer reliable zero-dose estimates than a huge quantity where some estimates were questionable.
+The reason this was not done in the present analysis is because it was thought to be more important to have fewer reliable zero-dose estimates than a huge quantity where some estimates were questionable.
 
 The corrected standard deviation equation (\ref{eq:Corrected sigma value - Extrapolation method}) is based on the form of the analogous equation in \cite{diederichs2003}.
 Other forms of the correction function should be explored with a good physical/statistical justification.
 
 A limitation of using the Leal \textit{et al.} model for the regression fits is that the model assumes positive intensity values for all (real) dose values.
 As a physical model, this assumption is completely valid, however real intensity data can be both positive and negative.
-In the regression analysis, any reflection which had too many negative/small intensity values were rejected because this could lead to unreliable extrapolated intensity values.
+In the regression analysis, any reflection which had too many negative/small intensity values was rejected because this could lead to unreliable extrapolated intensity values.
 Further work could include suggesting alternative physical dose decay models or amendments of the Leal \textit{et al.} model to reasonably account for negative intensity values.
 However, it is currently reasonable to suggest that perhaps a single parametric dose decay model is not capable of describing the relationship between the change in intensity and the dose.
 With this in mind, it could be the case that non-parametric regression techniques, such as Gaussian process regression, may prevail over parametric ones.

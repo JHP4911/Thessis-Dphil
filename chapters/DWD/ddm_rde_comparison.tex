@@ -6,7 +6,7 @@
 \label{sub:Uniform irradiation}
 
 To validate the subsequent analysis performed to find a suitable DDM, it was essential that the crystals were uniformly irradiated.
-A homogeneous dose distribution resulting from uniform irradiation would mean that the various dose metrics; average dose, maximum dose and DWD, should give the same value.
+A homogeneous dose distribution resulting from uniform irradiation would mean that the various dose metrics; average dose, maximum dose and DWD, should all give the same value.
 Simulations performed in RADDOSE-3D show that all crystals were completely immersed in the X-ray beam and the predictions displayed showed a very homogeneous dose distribution (Figure \ref{fig:Uniform}).
 \begin{figure}
         \centering
@@ -48,8 +48,9 @@ An important feature of the RDE Sygusch model is that it displays at least two p
 Both phases appear to decay linearly, with the first linear phase decaying faster than the second phase.
 The RDE Holton model consistently gives the highest RMSD value for all five crystals and the decay curve visually does not correlate well with the decay shown in the data.
 
-The RDE Leal model was chosen as the RDE to investigate with the DWD due to its simplicity and superior predictive ability.
-Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relative intensity values predicted by the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaged for each of the 5 insulin crystals processed to the resolution limit of the data (1.4\,\AA).
+The RDE Leal model was chosen as the one to investigate with the DWD due to its simplicity and superior predictive ability.
+Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relative intensity values predicted by the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaged for each of the 5 insulin crystals processed.
+However this time the data were processed to a resolution limit of 1.4\,\AA (as opposed the 1.8$\,$\AA which was done previously) to ensure that the difference in resolution would not affect the predictive ability of the model.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{1\textwidth}
@@ -93,34 +94,9 @@ Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relat
         \caption{}
         \label{Relative Intensity Plots - 128}
     \end{subfigure}
-    \caption{Relative intensity plotted against the average dose over the whole crystal for each of the insulin crystals. Grey circles represent the experimental data processed to 1.8\,\AA. Blue, red and green solid lines represent the RDE-Leal, RDE-Holton and RDE-Sygusch models respectively. The RMSDs for each model is given in the figure legend on each plot.}
+    \caption{(a)-(e) Relative intensity plotted against the average dose over the whole crystal for each of the insulin crystals. Grey circles represent the experimental data processed to 1.8\,\AA. Blue, red and green solid lines represent the RDE-Leal, RDE-Holton and RDE-Sygusch models respectively. The RMSDs for each model are given in the figure legend on each plot.}
     \label{fig:Relative Intensity Plots}
 \end{figure}
-
-
-\begin{table}[H]
-\small
-\captionsetup{justification=centering}
-	\caption{Parameter values for the dose decay models (insulin crystal 0259).
-	Note: $K$ does not explicitly appear in equation (\ref{eqrdeleal}) and hence is not required for the analysis.
-	The large $k_1$ parameter value for crystal 172 seems highly unphysical when compared to the other values.
-	This large value implies that any site specific damaged crystal proportion in the crystal immediately becomes disordered, which suggests that the site specific state is present in negligible quantities for this crystal.
-	\newline
-	units: $k'_0,\ k_1,\ k_2 \equiv MGy^{-1}, \quad H \equiv MGy\,\text{\AA}^{-1}, \quad B_0 \equiv \text{\AA}^2 \quad \beta \equiv \text{\AA}^2 MGy^{-1} \quad \gamma \equiv MGy^{-1}$}
-	\centering
-	\begin{tabular}{p{1.6cm} p{1.6cm} p{1.6cm} p{1.6cm} p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm}}
-		\hline
-		Crystal	&$k'_0$	& $k_1$	&$k_2$ &$H$	 &$B_0$	&$\beta$	&$\gamma$	\\
-		\hline
-		0259     &$3.6 \times 10^{-2}$   &$0.648$   	&$5.0 \times 10^{-2}$   &$5.466$    &$13.329$    &$0.383$  &$0.030$ \\
-	  180      &$4.3 \times 10^{-2}$   &$0.772$   	&$5.0 \times 10^{-2}$   &$5.274$    &$13.408$    &$0.377$  &$0.036$ \\
-		172      &$4.1 \times 10^{-2}$   &$2309.619$  &$5.0 \times 10^{-2}$   &$6.345$    &$14.818$    &$0.266$  &$0.037$ \\
-	  137      &$5.1 \times 10^{-2}$   &$0.473$   	&$5.0 \times 10^{-2}$   &$5.391$    &$14.136$    &$0.353$  &$0.036$ \\
-		128      &$4.3 \times 10^{-2}$   &$0.624$   	&$5.0 \times 10^{-2}$   &$5.842$    &$14.538$    &$0.338$  &$0.029$ \\
-		\hline
-	\end{tabular}
-	\label{tab:RDE params1}
-\end{table}
 
 \begin{table}[H]
 \small
@@ -131,16 +107,16 @@ Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relat
 	\cline{2-6}
 		& \multicolumn{5}{c}{Crystal ID} \\
 		\hline
-		resolution (\AA) ($1/h_{mid}$)	&	0259	& 180 		& 172 		& 137 		& 128\\
+		resolution (\AA) ($1/h_{mid}$)	&	0259	& 180 		& 172 		& 137 		    & 128\\
 		\hline
-		12.53     				&12984	&8271 		&20087		&29840		&37536\\
-		7.23     					&5161		&3342  		&7857			&12277		&14732\\
-		5.60     					&7764		&4946  		&11258		&17550		&21769\\
-		4.74     					&11244	&7043  		&15363		&25479		&31497\\
-		4.18     					&12772	&8000  		&18242		&28230		&35589\\
-		3.78     					&11325	&7050  		&16401		&25625		&31156\\
-		3.47     					&8234		&5197  		&11827		&19044		&22606\\
-		3.23     					&6035		&3787  		&9008			&13885		&16543\\
+		12.53     				    &12984	    &8271 		&20087		    &29840		    &37536\\
+		7.23     					&5161		&3342  		&7857			&12277		    &14732\\
+		5.60     					&7764		&4946  		&11258		    &17550		    &21769\\
+		4.74     					&11244	    &7043  		&15363		    &25479		    &31497\\
+		4.18     					&12772	    &8000  		&18242		    &28230		    &35589\\
+		3.78     					&11325	    &7050  		&16401		    &25625		    &31156\\
+		3.47     					&8234		&5197  		&11827		    &19044		    &22606\\
+		3.23     					&6035		&3787  		&9008			&13885		    &16543\\
 		3.04     					&4293		&2673  		&6447			&9662			&11656\\
 		2.87     					&3328		&2104  		&5075			&7592			&9092\\
 		2.73     					&3021		&1904  		&4426			&6903			&8122\\
@@ -160,6 +136,31 @@ Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relat
 		\hline
 	\end{tabular}
 	\label{tab:RDE params2}
+\end{table}
+
+\begin{table}[H]
+\small
+\captionsetup{justification=centering}
+	\caption{Parameter values for the dose decay models (insulin crystal 0259).
+	Note: $K$ does not explicitly appear in equation (\ref{eqrdeleal}) and hence is not required for the analysis.
+	The large $k_1$ parameter value for crystal 172 seems highly unphysical when compared to the other values.
+	This large value implies that any site specific damaged crystal proportion in the crystal immediately becomes disordered, which suggests that the site specific state is present in negligible quantities for this crystal.
+    Accounting for the intrinsic variability of crystals and the fact that the surface modification fraction of crystal 0259 was never higher than 5\% of the total crystal fraction, it is not too surprising that at least one of the crystals may show a negligible surface modification fraction.
+	\newline
+	units: $k'_0,\ k_1,\ k_2 \equiv MGy^{-1}, \quad H \equiv MGy\,\text{\AA}^{-1}, \quad B_0 \equiv \text{\AA}^2 \quad \beta \equiv \text{\AA}^2 MGy^{-1} \quad \gamma \equiv MGy^{-1}$}
+	\centering
+	\begin{tabular}{p{1.6cm} p{1.6cm} p{1.6cm} p{1.6cm} p{1.2cm} p{1.2cm} p{1.2cm} p{1.2cm}}
+		\hline
+		Crystal	&$k'_0$	& $k_1$	&$k_2$ &$H$	 &$B_0$	&$\beta$	&$\gamma$	\\
+		\hline
+		0259     &$3.6 \times 10^{-2}$   &$0.648$   	&$5.0 \times 10^{-2}$   &$5.466$    &$13.329$    &$0.383$  &$0.030$ \\
+	  180      &$4.3 \times 10^{-2}$   &$0.772$   	&$5.0 \times 10^{-2}$   &$5.274$    &$13.408$    &$0.377$  &$0.036$ \\
+		172      &$4.1 \times 10^{-2}$   &$2309.619$  &$5.0 \times 10^{-2}$   &$6.345$    &$14.818$    &$0.266$  &$0.037$ \\
+	  137      &$5.1 \times 10^{-2}$   &$0.473$   	&$5.0 \times 10^{-2}$   &$5.391$    &$14.136$    &$0.353$  &$0.036$ \\
+		128      &$4.3 \times 10^{-2}$   &$0.624$   	&$5.0 \times 10^{-2}$   &$5.842$    &$14.538$    &$0.338$  &$0.029$ \\
+		\hline
+	\end{tabular}
+	\label{tab:RDE params1}
 \end{table}
 
 \begin{figure}

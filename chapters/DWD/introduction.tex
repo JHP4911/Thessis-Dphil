@@ -5,17 +5,11 @@
 \section{Introduction}
 \label{sec:Introduction - Dose Decay Modelling}
 
-The diffraction weighted dose (DWD) is a dose metric that exhibits a consistent and reproducible relationship with the relative decay in total diffraction intensity from a protein crystal down to a relative intensity of 40\% \cite{zeldin2013dwd}.
+The diffraction weighted dose (DWD) is a dose metric that exhibits a consistent and reproducible relationship with the relative decay in total diffraction intensity from a protein crystal down to a relative intensity of 40\% \cite{zeldin2013dwd} (relative intensity is defined as $I_n/I_1$, where $I_n$ is the summed mean intensity of a complete data set $n$ (or equivalent sections of data) after a dose $D$, and $I_1$ is the mean intensity of the first data set).
 This is because DWD spatially resolves the exposure of the crystal to the X-ray beam in addition to accounting for the absorbed dose.
 Mathematically this spatial resolution of the exposure is incorporated via the fluence weighting in the DWD calculation (equation \ref{eq:DWD equation - no RDE}).
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:include DWD equation again}{\textbf{TODO:} The \textbf{??} is a reference to the DWD equation}
-        which is given in the introduction (it works when I include the whole thesis). Should I give the equation again here in this section?
-    \end{myenumerate}
-}
-However, the DWD currently does not take into account the loss of diffraction ability due to the current damage state of the crystal.
-The \textit{relatitive diffraction efficiency (RDE)}, $\eta$, is introduced as a function of the absorbed dose that describes the diffracting ability of any given volume of the crystal.
+However, the DWD currently does not take into account the loss of diffraction power due to the current damage state of the crystal.
+The \textit{relative diffraction efficiency (RDE)}, $\eta$, is introduced as a function of the absorbed dose that describes the diffracting power of any given volume of the crystal.
 The RDE is defined as the ratio of the proportion of incident photons that are currently being diffracted to the proportion that initially diffracted.
 This is graphically depicted in Figure~\ref{fig: Graphical depiction of RDE}.
 \begin{figure}
@@ -36,7 +30,8 @@ This is graphically depicted in Figure~\ref{fig: Graphical depiction of RDE}.
         \caption{A visual example of the relative diffraction efficiency (RDE).
         (a) Initially at dose = $0\, MGy$ the crystal voxel elastically scatters 6 photons for a given number of incident photons.
         (b) Later in the experiment when the crystal voxel has absorbed a dose $= D\, MGy$, it elastically scatters only 2 photons for the same number of incident photons.
-        The ratio of the current number of diffracted photons with the initial number is $2/6 = 1/3$, therefore in this example the RDE is 1/3.}
+        The ratio of the current number of diffracted photons with the initial number is $2/6 = 1/3$, therefore in this example the RDE is 1/3.
+        The components in the figure are not drawn to scale.}
         \label{fig: Graphical depiction of RDE}
 \end{figure}
 
@@ -48,4 +43,4 @@ Explicitly this is
 \end{equation}
 
 The work presented in this chapter describes the experiment and analysis carried out to determine a suitable functional form for the RDE.
-Finally the RDE is then incorporated to the DWD using equation \ref{eq:DWD equation with RDE} and compared to the simple DWD (equation \ref{eq:DWD equation - no RDE}) with the data used in the previous DWD study \cite{zeldin2013dwd}.
+The RDE is then incorporated into the DWD using equation \ref{eq:DWD equation with RDE} and compared with the simple DWD (equation \ref{eq:DWD equation - no RDE}) and applied to the data used in the previous DWD study \cite{zeldin2013dwd}.

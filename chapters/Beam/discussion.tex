@@ -1,8 +1,8 @@
 %!TEX root = ../../main.tex
 \section{Discussion}
 \label{sec:Discussion - Beam Chapter}
-The ability to calculate the absorbed dose within a crystal is vital for the comparison of results from different radiation damage studies.
-To ensure that the dose estimates are reliable it is necessary to accurately parameterise the diffraction experiment.
+The ability to calculate the dose absorbed by a crystal is vital for the comparison of results from different radiation damage studies.
+To ensure that the dose estimates are reliable, it is necessary to accurately parameterise the diffraction experiment.
 A custom module was written into RADDOSE-3D by Dr. Oliver Zeldin to allow the experiment to be simulated with experimentally measured X-ray beam profiles \cite{zeldin2013dwd}.
 However the experimentally measured beam profiles often need some form of preprocessing before they can be used in the simulation.
 The type of preprocessing largely depends on the experimental method used to measure the beam profile.
@@ -10,24 +10,25 @@ The type of preprocessing largely depends on the experimental method used to mea
 One method to measure the beam profile is to use an aperture to scan across the X-ray beam and measure the current produced by the X-ray photons at each position.
 Often a single aperture scan is performed horizontally and again vertically.
 If the scans resemble Gaussian profiles (Figure~\ref{fig:Original aperture measurments - DLS}) then it is possible to use the parameter values obtained from 1D Gaussian fits to the data in a 2D Gaussian model representation of the beam.
-This approach enabled accurate predictions of the data that would be generated using apertures of various sizes, hence the validating the method.
+This approach enabled accurate predictions of the data that would be generated using apertures of various sizes, hence validating the method.
 The model also highlighted another important aspect.
-It showed that the FWHM values of the true beam is very likely to be close to the FWHM measured from the diode readings of the aperture scans.
-The implication of this result for modelling is that deconvolving (with subsequent smoothing of the noise) the X-ray beam profile does not lead to a significantly different beam profile.
+It showed that the FWHM values of the true beam are very likely to be close to the FWHMs measured from the diode readings of the aperture scans.
+The implication of this result for modelling is that deconvolving (with subsequent smoothing of the noise) the X-ray beam profile from the aperture size does not lead to a significantly different beam profile.
+However, more experiments with different aperture and beam sizes may need to be performed to verify the generality of this result.
 
 A different method of measuring the beam profile involves taking a 2D image of the beam using a scintillator and a camera.
 The advantage of this method is that there is no need to explicitly model the 2D beam profile.
 However, the drawback is that regions of the image that represent background (i.e. areas of zero flux from the X-ray beam) have non-zero pixel values.
 Several beam processing methods including deconvolution, image segmentation and standard average subtraction, were applied to remove background.
-It was found that the various methods gave similar results in terms of the calculated half dose ($D_{1/2}$) values i.e. the resulting beam profiles after the processing did not affect the dose values.
-The biggest factor affecting the dose values is the amount of the image that corresponds to background.
+It was found that the various methods gave similar results in terms of the calculated half dose ($D_{1/2}$) values i.e. the resulting beam profiles following the processing did not affect the dose values.
+The biggest factor affecting the dose values is the proportion of the image area that corresponds to background.
 This suggests that to get an accurate beam profile from a 2D image it is necessary to know the collimation of the X-ray beam so that a suitable background region can be masked.
-It is important that the scintillator is placed at the sample position because beam divergence will result in a slightly different beam profile if the scintillator is placed elsewhere.
+It is important that the scintillator is placed at the sample position because beam divergence will result in a slightly different beam profile if the scintillator is placed in a different plane.
 
-A more reliable (and recommended) method to measure the experimental beam profile is to take a series of 1D aperture scans to sample as much of the beam profile region as possible.
+A more reliable (and thus recommended) method to measure the experimental beam profile is to take a series of 1D aperture scans to sample as much of the beam profile region as possible.
 This bypasses the need to subtract background from an image because flux is measured via the current it produces on the diode.
 Sampling the 2D space allows the beam to be interpolated between data points.
 This negates the requirement to explicitly model the beam profile with a 2D Gaussian function for example.
-In the work presented, the interpolation was performed separately on horizontal scans and vertical scans and then averaged.
-This method still results in a loss of some features as evidenced by lack of the ``valley'' in the final averaged beam which was present in the vertical scans.
-To avoid the loss of features it would be desirable to perform the spline interpolation on all data as opposed to the vertical and horizontal data separately.
+In the work presented here, the interpolation was performed separately on horizontal scans and vertical scans and then averaged.
+This method still results in a loss of some features as evidenced by lack of the ``valley'' in the final averaged beam profile, even though it was clearly present in the vertical scans.
+To avoid the loss of features, in the future it would be desirable to perform the spline interpolation on all data, as opposed to the vertical and horizontal data separately.

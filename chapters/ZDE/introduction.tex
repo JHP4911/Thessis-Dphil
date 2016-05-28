@@ -10,16 +10,16 @@ Functions to describe the intensity loss took the form of the Blake and Phillips
 
 Radiation damage correction is still an integral part of current scaling methods \cite{otwinowski2003multiparametric,evans2005,kabsch2010integration}.
 However, these correction models only compensate for the average decay of reflection intensities.
-Correction of specific changes are not accounted for.
-Diederichs \textit{et al.}  introduced a linear model to perform zero-dose extrapolation \cite{diederichs2003}, and later introduced exponential and quadratic models \cite{diederichs2006}, to account for these specific changes.
-They showed that zero-dose extrapolation can improve phasing statistics and SAD electron density maps.
+Account is not taken of specific changes in the correction algorithms.
+Diederichs \textit{et al.}  introduced a linear model to perform zero-dose extrapolation, which was tested on data collected on bovine brain tubulin at 15$\,$K \cite{diederichs2003}, and later introduced exponential and quadratic models \cite{diederichs2006}, to account for these specific changes.
+These authors showed that zero-dose extrapolation can improve phasing statistics and SAD electron density maps.
 The problem is that reflections exhibit a diverse range of behaviours that are yet to be accounted for by a single Mathematical relationship \cite{blake1962,abrahams1973}.
 
 Over the last decade there have been several developments in the methods and understanding of radiation damage in MX.
-Some of the key developments for this work were:
+Some of the key developments in this field have been:
 \begin{itemize}
     \item RADDOSE-3D \cite{zeldin2013}, which allows accurate 3D modelling of the diffraction experiment.
     \item the introduction of DWD \cite{zeldin2013dwd}, which is a useful metric for assessing the damage state of a crystal which resulted in the diffraction for a given image.
-    \item the Leal \textit{et al.} dose decay model \cite{leal2012}. This relatively simple model was shown to accurately describe the intensity decay of reflections at both RT and cryo-temperatures.
+    \item the Leal \textit{et al.} dose decay model \cite{leal2012}. This relatively simple model was shown to accurately describe the intensity decay of reflections at RT.
 \end{itemize}
-The work in this chapter is concerned with using the developments presented above to perform zero-dose extrapolation on data collected on one of the cubic crystals (crystal ID 0259) described in chapter \ref{chap:Dose Decay Modelling}.
+The work described in this chapter is concerned with using the developments presented above to perform zero-dose extrapolation on data collected from one of the cubic crystals (crystal ID 0259) described in chapter \ref{chap:Dose Decay Modelling}.
