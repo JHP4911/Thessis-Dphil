@@ -2,7 +2,8 @@
 \section{Simulation Results}
 \label{sec:Simulation Results}
 A simulation of the behaviour of a reflection in a diffraction experiment was performed to test the performance of the forward-backward algorithm.
-In the simulation 100 images were recorded in a diffraction experiment where the intensity of a particular reflection was observed twice, once on the 27th image and again on the 76th image with simulated Gaussian noise.
+In the simulation, 100 images were recorded in a diffraction experiment where the intensity of a particular reflection was observed twice, once on the 27th image and again on the 76th image with simulated Gaussian noise.
+The observed intensities were 71.43 and 40.13 on images 27 and 76 respectively.
 The true structure factor amplitude of the reflection is initially 100 and it decays by 1\% after each image is collected (whether it is observed or not).
 The forward-backward algorithm is applied where the process function is defined such that the amplitude decays by 1\% for each image and the observation function is defined as in equation \ref{eq:Observation Model}.
 The estimate supplied to the forward-backward algorithm for the initial amplitude is 200, double the value of the true value of 100.
@@ -59,18 +60,18 @@ The results of the forward-backward algorithm for cycles 1, 2 and 10 are shown i
     \label{fig:forward-backward algorithm simulation results - good}
 \end{figure}
 
-At the very beginning of the algorithm the filtering estimates (solid blue line Figure~\ref{fig:UKF simulation results - cycle 1 - good}) do not predict the true value (solid pink line) very well.
-This is because no observations are made until the 26th image, therefore the estimates propagate according to the defined process function.
-At image 26 the first observation is made, represented by the vertical solid gold line, which is when the filtering estimate approaches the optimal amplitude value required to produce the observed intensity.
+At the very beginning of the algorithm, the filtering estimates (solid blue line Figure~\ref{fig:UKF simulation results - cycle 1 - good}) do not predict the true value (solid pink line) very well.
+This is because no observations are made until the 27th image, therefore the estimates propagate according to the defined process function.
+At image 27 the first observation is made, represented by the vertical solid gold line, which is when the filtering estimate approaches the amplitude value required to produce the observed intensity according to the observation equation \ref{eq:Observation Model}.
 The forward pass continues to propagate the estimates according to the process function until it reaches the second observation and sharply changes value to what it deems optimum.
 The smoothing algorithm attempts to consolidate the optimal values found during the forwards pass whilst maximising the probability of the estimate of the state at time i producing the state at time i + 1.
-This results in smoother state predictions, as evidenced by the smoother blue solid line in Figure~\ref{fig:URTSS simulation results - cycle 1 - good}, and a reduced overall uncertainty (the light blue shaded region represents the 95\% confidence interval.
+This results in smoother state predictions, as evidenced by the smoother blue solid line in Figure~\ref{fig:URTSS simulation results - cycle 1 - good}, and a reduced overall uncertainty (the light blue shaded region represents the 95\% confidence interval).
 The initial value found during the smoothing is also closer to the true value.
-The second forward-backward pass shows the same characteristics where the smoother gives a smaller uncertainty estimate and smoothes the values from the filtering pass (Figures~\ref{fig:UKF simulation results - cycle 2 - good} and \ref{fig:URTSS simulation results - cycle 2 - good}).
+The second forward-backward pass shows the same characteristics, whereby the smoother gives a smaller uncertainty estimate and smoothes the values from the filtering pass (Figures~\ref{fig:UKF simulation results - cycle 2 - good} and \ref{fig:URTSS simulation results - cycle 2 - good}).
 After 10 forward-backward cycles the smoothed estimates are very close to the true values (Figure~\ref{fig:URTSS simulation results - cycle 10 - good}).
 Importantly the uncertainty values are smallest at the points where the observations are made as expected.
 
-The log likelihood of the 10 cycles were also calculated and are shown in Figure~\ref{fig:Simulation Log likelihood - good}.
+The log likelihoods for the 10 cycles, calculated using the natural logarithm of equation \ref{eq:FBA likelihood function}, were also calculated and are shown in Figure~\ref{fig:Simulation Log likelihood - good}.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/loglik.pdf}
@@ -79,17 +80,17 @@ The log likelihood of the 10 cycles were also calculated and are shown in Figure
     \label{fig:Simulation Log likelihood - good}
 \end{figure}
 
-It can be seen that as the number of forward-backward passes increases, the relative increase in the log likelihood decreases.
+It can be seen that as the number of forward-backward passes increases, rate of increase (gradient) tends to zero.
 Therefore showing that the smoothed estimates are converging to the optimal solution for the observed data.
 
 \subsection{Weak Data}
 \label{sub:Weak Data}
 Simulations of the forward-backward algorithm show that the method works very well for strong reflections.
-A further simulation was performed to see how well the algorithm would do for weak reflections.
+A further simulation was performed to see how effective the algorithm would be for weak reflections.
 Again the simulation consisted of 100 images where the intensity of a particular reflection was observed twice, this time on the 41st image and the 99th image with simulated Gaussian noise.
 The true structure factor amplitude of this reflection is initially 10 and again decays by 1\% after each image is collected (whether it is observed or not).
 The same process and observation functions are defined but the estimate supplied to the forward-backward algorithm for the initial amplitude is 20.
-The observed intensities were -1.92 and 2.91 on images 41 and 99 respectively.
+Additive zero-mean Gaussian noise was applied to the observation model to obtain observed intensities of -1.92 and 2.91 on images 41 and 99 respectively.
 The results of the forward-backward algorithm for cycles 1 and 8 are shown
 \begin{figure}
     \ContinuedFloat
@@ -124,7 +125,7 @@ The results of the forward-backward algorithm for cycles 1 and 8 are shown
     \end{subfigure}
     \caption{Forward-backward algorithm results for a simulated weak reflection observed on image 41 and 99 (solid gold lines) of a dataset consisting of 100 images.
     The forward-backward pass for cycle looks like it may lead to a good estimation of the true value.
-    However, by cycle 8 the estimates seem to have converged to zero and the 95\% confidence interval does not seem to have improved.}
+    However, by cycle 8 the estimates have converged to zero and the 95\% confidence interval has not improved.}
     \label{fig:forward-backward algorithm simulation results - bad}
 \end{figure}
 
@@ -165,3 +166,4 @@ As discussed in section \ref{sub:Probabilistic extrapolation}, the denominator o
 \end{equation}
 This procedure ensures that the initial amplitude value for the next forwards pass is positive.
 If the final value for the amplitude at the end of a forwards pass is negative then that value is set to zero for the smoother.
+Systematic testing is required to determine whether this is a robust solution to the problem 

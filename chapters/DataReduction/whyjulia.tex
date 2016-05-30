@@ -1,15 +1,15 @@
 %!TEX root = ../../main.tex
 \section{Why Julia?}
 \label{sec:Why Julia?}
-The code for the algorithm presented in this chapter is all written in a recently released programming language called Julia.
-Given that this language is still in beta version (it has yet to reach version 1 release) and is relatively unknown in the crystallography community, this choice may seem very unorthodox, so it is worth discussing why this was an adequate choice.
+The code for the algorithm presented in this chapter was all written in a recently released programming language called Julia.
+Given that this language is still in its beta version (it has yet to reach version 1 release) and is relatively unknown in the crystallography community, this choice may seem very unorthodox, so it is worth discussing why this language was chosen.
 
 The total time of the implementation and run time of any piece of code can be crudely given as
 \begin{equation*}
     \text{Total time} = \text{Computation time} + \text{Development time}
 \end{equation*}
-A compromise between the development time and the computation time has to be met, with the additional restraint that the developer's time is more important than the time of a computer.
-Given that the development of a new algorithm requires lots of data and parameter exploration, writing prototype code in a low-level language such as C/C++ or Fortran would not necessarily be the optimum choice, particularly when the developer is unfamiliar with these languages.
+A compromise between the development time and the computation time has to be made, with the additional restraint that the developer's time is more important than the time of a computer.
+Given that the development of a new algorithm requires a lot of data and parameter exploration, writing prototype code in a low-level language such as C/C++ or Fortran would not necessarily be the optimum choice, particularly when the developer is unfamiliar with these languages.
 A popular alternative is to use a high-level dynamic language such as Python, R or Matlab, which are usually designed, or have packages to support technical computing.
 The productivity that can be achieved with these languages is counteracted by the relatively slow computation time when compared to low-level languages.
 
@@ -23,11 +23,11 @@ Generally the computational performance of algorithms written in Julia run withi
     The table of data for this plot can be found on the main Julia programming language webpage, \url{http://julialang.org/}, along with a link to the plot.}
     \label{fig:Language performance benchmarks}
 \end{figure}
-Therefore despite having to learn the Julia language, it seemed to be the best trade-off for the algorithm.
+Therefore despite having to learn the Julia language, it seemed to be the best trade-off for coding the algorithm described here.
 
 As a dynamic language that employs type inference, code can be written in Julia which may not be compiled to performance optimised machine code.
 This means that Julia has to be written in a particular manner to achieve the performance claimed by the language authors.
 A further argument for using Python or C/C++ over Julia is the large library of existing crystallographic packages that have been written in those languages.
 However Julia has built-in support for calling methods from C/Fortran libraries with a single line of code.
-Additionally the \verb+PyCall+ package was written in Julia to allow Python libraries to be accessed directly from Julia with a single line of code.
-Therefore the crystallographic libraries were still easily accessible.
+Additionally, the \verb+PyCall+ package was written in Julia to allow Python libraries to be accessed directly from Julia with a single line of code.
+Thus the crystallographic libraries were still easily accessible.

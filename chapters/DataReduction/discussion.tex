@@ -7,63 +7,61 @@
 The work presented in this chapter introduces a representation of the data collection experiment as a hidden Markov model (HMM).
 The fundamental idea is that each image obtained in a diffraction experiment is generated from different crystals.
 These crystals are related by the fact that the atomic composition of the crystal is the same, and the structural changes due to the X-ray exposure between images are small.
-The Markov property makes the assumption that the state of one crystal is only dependent on its previous state, not its entire history.
-With these assumptions the Luzzati distribution \cite{luzzati1952traitement,read1990structure} can then be used to mathematically describe how the crystal state evolves (process function).
+The Markov property makes the assumption that the state of one crystal is only dependent on its previous state, not on its entire history.
+With these assumptions, the Luzzati distribution \cite{luzzati1952traitement,read1990structure} can then be used to mathematically describe how the crystal state evolves (process function).
 Furthermore the intensity observations are directly proportional to the square of the structure factor amplitude giving the observation function.
-With this representation the UKF and URTSS together (FBA) are used to find the optimal amplitude estimates during the experiment.
+With this representation, the UKF and URTSS together (FBA) are used to find the optimal amplitude estimates during the experiment.
 The log likelihood of the resulting amplitude estimates can then be used to determine whether the FBA has converged for each reflection.
 
-Before FBA is applied, the reflections observation data had to be pre-processed to the required format, which required some data manipulation.
+Before FBA is applied, the reflection observation data had to be pre-processed to the required format, which required some data manipulation.
 The main objective was to allocate each observation to an image.
-For fully recorded reflections there is no ambiguity but for partial reflections this was done by matching the calculated centroids of the reflections to the images.
-Additionally intensity and partiality estimates were made for reflection observations that were not fully traversed in the experiment.
-Further to the uncertainty values calculated from the integration software, more uncertainty of the intensity estimates had to be added, which arises from collapsing several partial measurements of an observation to a single image collected at one point in time.
+For fully recorded reflections there is no ambiguity but for partial reflections this was achieved by matching the calculated centroids of the reflections to the images.
+Additionally, intensity and partiality estimates were made for reflection observations that were not fully traversed in the experiment.
+Further to the uncertainty values calculated from the integration software, more uncertainty had to be added to the intensity estimates arising from the collapsing several partial measurements of an observation to a single image collected at one point in time.
 
-The FBA algorithm was run with simulated data and the results were extremely good for strong data.
-The resulting amplitude estimates were close to the true value and the confidence interval was sensible, decreasing in width when observations were made and increasing further away from observations.
-For weak data the FBA estimate did not perform so well so a correction to the initial amplitude value using Bayesian inference (in a similar manner to the French and Wilson truncation algorithm) was created.
+The FBA algorithm was tested on simulated reflection data and the results were extremely good for strong data.
+The resulting amplitude estimates were close to the true values, and the confidence intervals were sensible, decreasing in width when observations were made and increasing further away from observations.
+For weak data the FBA estimate did not perform as well, so a correction to the initial amplitude value using Bayesian inference (in a similar manner to the French and Wilson truncation algorithm) was created.
 
-The FBA was successful in being applied to real crystallographic data.
+The FBA was successful when applied to real crystallographic data.
 It generated amplitudes that led to interpretable electron density maps for both insulin and the C.Esp1396I protein-DNA complex.
-Furthermore the final refinement statistics are on par with those that result from using current data reduction pipeline programs (AIMLESS and CTRUNCATE).
+Furthermore, the final model refinement statistics are on par with those that result from using current data reduction pipeline programs (AIMLESS and CTRUNCATE).
 
 \subsubsection{Advantages of the FBA}
 \label{subs:Advantages of the FBA}
 One of the major advantages of the FBA algorithm is that the error estimates are calculated explicitly at each time point in the data collection experiment.
-These error estimates are a combination of the uncertainty in the integrated measurement (observation covariance) and the uncertainty of the crystal changes (process covariance) propagated through time.
-Since the amplitudes are found directly by the FBA, its use abrogates the need to use existing truncation algorithms including the commonly used French and Wilson truncation algorithm \cite{french1978treatment}.
-This is an advantage because for large experimental uncertainties the French and Wilson algorithm produces error estimates that resemble the Wilson distribution, which result in weak measurements giving significant influence on a structural model \cite{read2015log}.
+These error estimates are a combination of the uncertainty in the integrated measurement (observation covariance) and the uncertainty of the changes suffered by the crystal (process covariance) propagated through time.
+Since the amplitudes are found directly by the FBA, its use abrogates the need to use existing truncation algorithms including the commonly used French and Wilson algorithm \cite{french1978treatment}.
+This is an advantage, because for large experimental uncertainties the French and Wilson algorithm produces error estimates that resemble the Wilson distribution, which result in weak measurements having a significant influence on a structural model \cite{read2015log}.
 
-The other major advantage of the FBA is the fact that the amplitude estimates are time/dose resolved.
-This means that several electron density maps can be obtained from a single diffraction dataset.
-In theory the set of structure factor amplitudes given at each point in time could lead to slightly different models showing structural changes throughout the experiment (e.g. due to radiation damage).
-However it is unclear how sensitive downstream processing (such as refinement) is to small amplitude changes in a subset of reflections and whether it will influence the resulting models enough adopt certain conformations.
+The other major advantage of the FBA is the fact that the amplitude estimates are time/dose resolved, so that several electron density maps can be obtained from a single diffraction dataset.
+In theory, the set of structure factor amplitudes given at each point in time could lead to slightly different models showing structural changes throughout the experiment (e.g. due to radiation damage).
+However it is unclear how sensitive downstream processing (such as refinement) is to small amplitude changes in a subset of reflections and whether it will influence the resulting models enough to enable the observation of altered conformations.
 For example, if it is the case that the applied restraints in refinement are weighted highly, then subtle structural deviations from the ``ideal'' conformation may be missed.
-Further investigation will be required to assess this.
+Further investigation will be required to assess this issue.
 
 An additional, albeit minor, advantage to the FBA is that the framework is very modular by design.
 The process and observation functions are simply based on the current theoretical understanding of structure factor statistics and diffraction theory.
-If the description of the crystal evolution process were to change then this is simply incorporated by changing the process function and covariance functions, and it doesn't require a refactoring of the code.
-Similarly, if the detector were to operate differently and the theory of how the observations (intensities or not) were to change then this only changes the process and observation functions.
-An example of this is that both the Gaussian and Rician process functions exist in the code as separate functions and either one can be called very simply.
-This means it is also very easy to compare different processes.
+If the description of the crystal evolution process were to change, then this could simply be incorporated by changing the process function and covariance functions, and it would not require a refactoring of the code.
+Similarly, if the detector were to operate differently and the theory of how the observations (intensities or not) were to alter, then this would only changes the process and observation functions.
+An example of this is that both the Gaussian and Rician process functions exist in the code as separate functions, and either one can be called very simply.
+Thus it is also very easy to compare different processes.
 
 \subsubsection{Disadvantages of the FBA}
 \label{subs:Disadvantages of the FBA}
-The main disadvantage of the FBA is that it is currently computationally expensive as it is currently written.
-The insulin dataset which consists of 450 images took about 16 hours to run whereas the C.Esp1396I dataset which only had 100 images took around 4 hours to run despite containing around twice the number of reflections.
+The main disadvantage of the FBA is that in its current implementation, it is computationally expensive.
+The insulin dataset which consists of 450 images took about 16 hours to process through the algorithm, whereas the C.Esp1396I dataset which only had 100 images took around 4 hours to run despite containing around twice the number of reflections.
 This suggests that the computational time is largely dependent on the total number of images.
 There are many ways in which the performance can be improved.
-An obvious one would be to write it in a more performant language like C++, but the code would still need to be written is a more optimal manner.
+An obvious one would be to write it in a faster language such as C++, but the code would still need to be written is a more optimal manner.
 For example (although not the biggest bottleneck), to read reflection information the program runs MTZDUMP and then parses the resulting text to retrieve the information.
 This can be improved if the binary MTZ file contents are read directly using the MTZLIB.
-Another way to speed up the code is to run the FBA in parallel.
-This can be done because the reflections are assumed to be independent.
+Another way to speed up the code would be to run the FBA in parallel, which is possible because the reflections can be assumed to be independent.
 
 A fundamental feature of the HMM is that the scale factor is simply a parameter concerned with the observation and it is not intrinsic to the crystal.
-At first this seems at odds with the current scaling assumption that the scale factor contains terms that are intrinsic properties of the crystal e.g. unit-cell volume, and the fact that the radiation damage parameter(s) are refined simultaneously with the other scaling factors (absorption, detector response to X-ray photon).
-However it should be theoretically possible to separate the factors that are affected by the crystal changes and those that are a property of the observation method (i.e. observing intensities on a pilatus detector).
-A simple thought experiment to demonstrate this is to think about a crystal that is irradiated by X-rays with no detector present.
+At first this seems at odds with the current scaling assumption that the scale factor contains terms that are intrinsic properties of the crystal e.g. unit-cell volume, and the fact that the radiation damage parameter(s) are refined simultaneously with the other scaling factors (absorption, detector response to X-ray photon etc.).
+However it should be theoretically possible to separate the factors that are affected by the crystal changes and those that are a property of the observation method (i.e. observing intensities on a Pilatus detector).
+A simple thought experiment to demonstrate this is to consider a crystal that is irradiated by X-rays with no detector present.
 The crystal is still going to change due to radiation damage regardless of whether intensity measurements are made.
 Hence a description of the crystal changes must (in theory) be possible without reference to a scale factor that describes how the intensity observations are made.
 Therefore it can be inferred that the HMM representation would operate optimally in the ideal scenario where the scale factor is known.
@@ -71,37 +69,38 @@ This is not that case as ``the only information we have is the measured differen
 
 \subsection{Improvements and Extensions}
 \label{sub:Improvements and Extensions}
-The algorithm presented has yielded promising results but there are still several improvements that can be made to the software.
-One of the obvious improvements is to improve the scaling procedure.
-The current procedure is very primitive and better methods to obtain the scale and B factors have already been proposed \cite{popov2003}.
+The algorithm presented has yielded promising results but there are still several improvements that can be made to the software, one of the obvious being to improve the scaling procedure.
+The current method is very primitive and better methods to obtain the scale and B factors have already been proposed \cite{popov2003}.
 Furthermore, the program should accommodate methods to handle varying scale and B factors.
-Non-parametric regression methods such as Gaussian process regression could be used to do this because it makes no assumption about the functional form to describe the evolution of the scale or B factors.
-An additional benefit is that the Gaussian errors in the regression are also calculated which allows for the explicit propagation of errors in the algorithm so that a more accurate uncertainty represented by the process and observation covariance values can be used.
+Non-parametric regression methods such as Gaussian process regression (GPR) could be utilised to do this.
+GPR makes no assumption about the functional form to describe the evolution of the scale or B factors.
+An additional benefit is that the Gaussian errors in the regression are also calculated, which allows for the explicit propagation of errors in the algorithm so that a more accurate uncertainty represented by the process and observation covariance values can be obtained.
 Rather than defining parameters for a certain family of functions (e.g. the gradient and intercept of linear curves) as is the case for parametric regression, non-parametric regression methods usually require the user to loosely define more general properties of a function such as the smoothness and covariance \cite{rasmussen2006gaussian}.
 Restraints would have to be applied during the regression to ensure that the behaviour of resulting amplitude estimates were ``sensible''.
 This may require iterative feedback between the amplitude values and the scale and B factors.
 
-Ultimately the scaling procedure would benefit from utilising the methods that are currently implemented in software programs like AIMLESS and XSCALE rather than reinventing the wheel.
+Ultimately, the scaling procedure would benefit from utilising the methods that are currently implemented in software programs like AIMLESS and XSCALE rather than reinventing the wheel.
 These are very mature algorithms that reflect the current knowledge and best practice in scaling.
 Therefore an immediate improvement would be to run AIMLESS and output unmerged, scaled intensity values with B factor correction turned off.
-Therefore the scale factor can be assumed to take the value 1 for every image and the FBA would only then be required to track the resulting changes in the crystal state.
+Thus the scale factor can be assumed to take the value 1 for every image and the FBA would only then be required to track the resulting changes in the crystal state.
 The other advantages of doing this is that the current method implemented to extract reflection intensities (described in section \ref{sec:Extraction and treatment of reflection intensity data}) would effectively be carried out by AIMLESS.
-Additionally AIMLESS incorporates an outlier rejection algorithm so one wouldn't have to necessarily be written for the FBA.
-In this capacity where AIMLESS is used to scale the data, the FBA algorithm can be used simply as a truncation algorithm giving dose resolved amplitude estimates with sensible error estimates for all reflections.
+Additionally AIMLESS incorporates an outlier rejection algorithm so another one would not necessarily have to be written for the FBA.
+In the case where AIMLESS is used to scale the data, the FBA algorithm could be used simply as a truncation algorithm giving dose resolved amplitude estimates with sensible error estimates for all reflections.
 
 One of the assumptions that was made in deriving the process function is that the changes in the structure factor amplitude resulting from the coordinate errors could be absorbed into the temperature factor term.
-This assumption may not hold and investigation into the coordinate error distributions should also be carried out to determine the true effect of this.
+This assumption may not hold and investigation into the coordinate error distributions should also be carried out to determine the true effect of it.
 
-To extend the use of the algorithm, the FBA can be used to merge data from several crystals.
-This can be done by calculating the pairwise covariance matrix between sets of amplitude values resulting from applying the FBA to several crystals (Garib Murshudov, personal communication).
+To extend the use of the algorithm, the FBA could be used to merge data from several crystals.
+First, pairwise cross-covariance matrices between sets of amplitude values resulting from applying the FBA to several different crystals should be calculated.
+The elements of the resulting matrices can be used to determine whether the data from different crystals can be merged (Garib Murshudov, personal communication).
 
 As mentioned above, one of the major features of the algorithm is that it produces dose resolved amplitude estimates, which provides a unique opportunity to perform radiation damage correction.
 This means that the behaviour of reflections can be tracked explicitly, particularly for reflections that are observed multiple times.
 If the assumption is made that reflections in the same resolution bin behave similarly, then the behaviour of reflections that were only observed once can be predicted by determining the ``average'' behaviour of multiply observed reflections in the same resolution bin.
-The obstacle that needs to be overcome is how to average `behaviour' irrespective of the varying scales on which the reflections are observed.
+The obstacle with this method that must be overcome is how to average `behaviour' irrespective of the varying scales on which the reflections are observed.
 
 \subsection{Future work}
 \label{sub:Future work}
-It should be noted that the main goal of the FBA algorithm is to improve the data for experimental phasing, in particular the uncertainty estimates for weak reflections.
-Additionally, radiation damage correction should also improve the phasing signal.
-Therefore the next steps are to apply the algorithm to SAD data (with the improvements listed above) to determine whether these improvements can be made.
+It should be noted that the main goal of the FBA algorithm is to improve diffraction data for experimental phasing, in particular the uncertainty estimates for weak reflections.
+Additionally, correction for radiation damage should also improve the phasing signal.
+Therefore the next steps are to apply the algorithm to SAD data (with the extensions/alterations listed above) to determine whether these improvement gains can be realised.

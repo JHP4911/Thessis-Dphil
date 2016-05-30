@@ -5,7 +5,7 @@
 \subsubsection{RADDOSE-3D extensions to SAXS}
 \label{subs:RADDOSE-3D extensions to SAXS}
 
-The analysis of data from the two SAXS experiments have relied on extensions to RADDOSE-3D to allow it to simulate the SAXS data collection experiment.
+The analysis of data from the two SAXS experiments has relied on extensions to RADDOSE-3D to allow it to simulate SAXS data collection.
 In particular the three major additions were:
 \begin{enumerate}
     \item Implementation of a cylindrical sample geometry.
@@ -17,53 +17,64 @@ RADDOSE-3D then converts the description of the cylinder provided by the user to
 In fact the current cuboid geometry implementation does exactly the same thing.
 Currently the only shape modelled by RADDOSE-3D that is not converted to a polyhedral representation for the simulation is the sphere.
 
-Some of the RADDOSE-3D code was refactored so that the library of residue information (atomic composition, molecular weight) is now stored as a separate class to the atomic information. This refactoring reduced the complexity of the implementation for RADDOSE-3D to read a FASTA sequence file. The extension for RADDOSE-3D to read any other type of sequence file should now be trivial.
+Some of the RADDOSE-3D code was refactored so that the library of residue information (atomic composition, molecular weight) is now stored as a separate class to the atomic information. This refactoring reduced the complexity of the implementation for RADDOSE-3D to read a FASTA sequence file. The extension for RADDOSE-3D to read any other sequence file format should now be trivial.
 
 RADDOSE-3D now implements a \textit{container} class which defines the material that houses the sample.
 The attenuation of the beam by the container is considered for all experiments.
 For SAXS experiments this is usually a quartz capillary, whereas for MX it is assumed to be a container that is \textit{transparent} to X-rays.
-However the user can define any container for any experiment, SAXS or MX. So it is very flexible.
+However the user can define any container for any experiment, SAXS or MX giving greater flexibility.
+An immediate application is for in situ RT MX data collection.
 
 It is worth mentioning that RADDOSE-3D has been written in a very modular style so that extensions to existing functionality are as seamless as possible.
-At the fundamental abstract level RADDOSE-3D essentially deals with three main objects: a sample, a beam and some experimental strategy to expose the sample to the beam.
+At the fundamental abstract level, RADDOSE-3D essentially deals with three main objects: a sample, a beam and some experimental strategy to expose the sample to the beam.
 The beam does not necessarily need to be a beam of X-rays if the properties of the beam are defined differently.
 In a similar manner the sample can currently be either a crystal or a liquid SAXS sample depending on the sample input.
 
-One of the currents drawbacks to the extension of RADDOSE-3D to simulate SAXS experiments is that the implementation does not yet support sample flow.
+One of the current drawbacks of the extension of RADDOSE-3D to simulate SAXS experiments is that the implementation does not yet support sample flow.
 This is a common method used in SAXS experiments to mitigate radiation damage \cite{jeffries2015limiting}.
 This sample flow results in any given small volume of fluid passing across the X-ray beam.
 In RADDOSE-3D this situation reduces to how long a given volume of fluid is exposed to each region of the X-ray beam.
-A sufficiently small discretisation of time would be necessary so that the fluid volume does not completely `pass' the entire beam in a single time step.
-Care would be needed to avoid the case where the time discretisation is so small that the computation is unnecessarily long.
+In order to implement this method of data collection in RADDOSE-3D, a sufficiently small discretisation of time would be necessary so that the fluid volume does not completely `pass' the entire beam in a single time step.
+Care would be needed to avoid the case where the time discretisation is so small that the computational time is unnecessarily long.
+\textcolor{red}{
+    \begin{myenumerate}
+        \item \hypertarget{todo:includeFluiddynamics}{\textbf{TODO:} Include discussion on the fluid dynamics.}
+    \end{myenumerate}
+}
 
-The formal tests for the SAXS extensions need to be written before the code is officially released.
+The formal tests for the SAXS extensions still need to be written before the code is officially released.
+\textcolor{red}{
+    \begin{myenumerate}
+        \item \hypertarget{todo:SpecifyTest}{\textbf{TODO:} Specify the tests that need to be written}
+    \end{myenumerate}
+}
 However the code is currently public on the RADDOSE-3D Github repository in the branch named ``SAXS" \url{https://github.com/GarmanGroup/RADDOSE-3D}.
-Alpha versions of the SAXS extensions have already been distributed to test the usability and find any bugs.
+Alpha versions of the SAXS extensions have already been distributed to Dr. Eddie Snell and Dr. Adam Round for user testing.
 
 \subsubsection{Radioprotectant analysis}
 \label{subs:Radioprotectant analysis}
 Two experiments to compare the efficacy of different radioprotectants for SAXS samples have been carried out and analysed.
 Although methods already exist to assess the similarity of frames in a pairwise manner, few established methods deal with determination of a threshold for significant radiation damage onset.
 Establishing a threshold was necessary to compare the efficacy of various radioprotectants.
-Therefore metrics were developed to establish thresholds for merging analysis so compare radioprotectant efficacy could be compared using the data that were collected.
+Therefore metrics were developed to establish thresholds for merging analysis so radioprotectant efficacy could be compared using the data that were collected.
 
 For experiment 1 the analysis performed by DATCMP gave a fidelity value which was a measure of the similarity between frame 1 and a subsequent frame.
-Overall these frames resembled logistic curves, hence 4PLs were fitted to the data.
+Overall these frames resembled logistic curves, and hence 4PLs were fitted to the data.
 Two metrics were then developed to give a merging threshold. The first metric was the total dose absorbed that was required to reach an arbitrary fidelity value.
-This metric is fundamentally flawed because there is no universal value to choose and would have to change for each comparison experiment.
+This metric is fundamentally flawed because there is no universal value to choose and it would have to change for each comparison experiment.
 It is also a relative metric i.e. it only compares the efficacy of one radioprotectant to another, but it does not give any absolute information about whether the frames at that fidelity value are damaged or not.
 
 The second metric that was developed was the dose absorbed before reaching maximum curvature.
 This metric is absolute in the sense that the threshold represents the point at which the fidelity values begin to deviate maximally from the initial frame(s).
 A downside to the maximum curvature metric is that if it is being used to ultimately determine which frames to merge, then the value that is determined may be too strict.
-If the overall curvature of the function is fairly small then it is possible that merging some frames beyond the threshold may still improve data quality because they may not be too significantly dissimilar.
+If the overall curvature of the function is fairly small then it is possible that merging some frames beyond the threshold may still improve data quality because they may not be significantly dissimilar.
 
 Potentially a big problem with the fitting approach overall is that it relies on a parametric function to be fitted to data where there is no guarantee that the data obey that particular form.
 
-More recently the DATCMP similarity analysis was extended to implement the CorMap test which assesses the similarity of two frames without need for estimating the experimental error.
+More recently, the DATCMP similarity analysis was extended to implement the CorMap test which assesses the similarity of two frames.
 As this is the default test in DATCMP, it is likely that this is the analysis that the SAXS community will adopt.
 During the analysis of the SAXS data, there was no open source package available to generate the plots related to the CorMap analysis, including the pairwise CorMap plots themselves (Figures \ref{fig:Pairwise correlation frames 1 and 2} and \ref{fig:Pairwise correlation frames 1 and 120}).
-Therefore a library was written to perform all of the analysis and produce the plots as well.
+Therefore a library was written to perform all of the analysis and also to produce the plots.
 This library is currently available on Github \url{https://github.com/JonnyCBB/AnalyseSAXSLib/blob/master/CorMapAnalysis.py} but is intended to be released as a distributable Python package.
 
 On its own, the CorMap test performs pairwise comparisons of frames.
@@ -71,11 +82,11 @@ This means that an individual frame can be detected as being dissimilar to anoth
 This dissimilarity of an individual frame therefore may not indicate a true systematic change in the molecules of the sample.
 It may just be an outlier.
 Therefore a more robust metric was used whereby three consecutive dissimilar frames were detected to establish a merging threshold.
-This metric was used to determine that there is a concentration dependence on the efficacy of individual radioprotectants. Some radioprotectants such as glycerol, ascorbate and sodium nitrate exhibited a positive concentration dependence, whereas DTT showed a negative concentration dependence.
+It was used to determine that there is a concentration dependence on the efficacy of individual radioprotectants. Some radioprotectants such as glycerol, ascorbate and sodium nitrate exhibited a positive concentration dependence, whereas DTT showed a negative concentration dependence.
 It was also found that glycerol, ascorbate and ethylene glycol were the most effective scavengers at high concentrations $10\ mM$.
 These compounds are all hydroxyl scavengers, a radical species which is known to be mobile at room temperature.
-On the other hand sodium nitrate, which is an electron scavenger generally does not protect as well.
-DTT was found to be the most effective radioprotectant at lower concentrations $1\ mM$ and $2\ mM$.
+On the other hand sodium nitrate, which is an electron scavenger, generally does not protect as well.
+DTT was found to be the most effective radioprotectant at the lower concentrations of 1$\,$mM and 2$\,$mM, which were tested.
 \textcolor{red}{
     \begin{myenumerate}
         \item \hypertarget{todo:more chemical information}{\textbf{TODO:} Perhaps I may need more radiation chemistry}
@@ -84,12 +95,12 @@ DTT was found to be the most effective radioprotectant at lower concentrations $
 }
 
 One aspect that was not considered in the analysis is how the radioprotectants affect the environment of the sample.
-For example it is known that DTT reduces disulphide bonds and undergoes oxidation.
+For example, it is known that DTT reduces disulphide bonds and undergoes oxidation.
 Glycerol on the other hand is known to reduce the scattering intensities of the sample \cite{jeffries2015limiting}.
 These are considerations that the experimenter must also take into account when deciding on which radioprotectant compound to use.
 
 The heatmap shown in Figure~\ref{fig:heatmap - DTT} displays some exciting possibilities for data analysis.
-Firstly it shows that pairwise comparisons with the first frame alone may not necessarily be the best approach to get all of the information possible from SAXS data.
+Firstly, it shows that pairwise comparisons with the first frame alone may not necessarily be the best approach to get all of the information possible from SAXS data.
 Secondly it shows distinct regions of frame similarity.
-These regions may correspond to distinct and functionally important molecular conformations that would otherwise not be seen.
+These regions may correspond to distinct and functionally important molecular conformations that would otherwise not be noticed.
 This finding warrants further analysis to determine how physiologically significant these regions are.

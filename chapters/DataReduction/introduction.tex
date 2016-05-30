@@ -4,10 +4,9 @@
 
 \section{Introduction}
 \label{sec:Introduction - Data Reduction}
-Radiation damage correction models have all focussed on correcting reflection intensities.
-Scaling methods generally employ an average resolution dependent correction to all reflection intensities \cite{evans2005,evans2013,kabsch2010integration}.
-Whereas specific correction methods employ regression analysis on individual reflections \cite{diederichs2003,diederichs2006}.
+Radiation damage correction models implemented thus far have all focussed on correcting reflection intensities.
+Scaling methods generally employ an average resolution dependent correction to all reflection intensities \cite{evans2005,evans2013,kabsch2010integration}, whereas specific correction methods employ regression analysis on individual reflections \cite{diederichs2003,diederichs2006}.
 However correcting the reflection intensities presents many problems because each independent reflection exhibits its own behaviour, which is not necessarily linear, nor monotonic \cite{abrahams1987anisotropy}.
-Therefore rather than addressing the problem of damage at the level of the reflection intensities, it is worth thinking about the changes at the level of the sample undergoing the radiation damage.
+Therefore, rather than addressing the problem of damage at the level of the reflection intensities, an alternative approach is to track the changes at the level of the sample undergoing the radiation damage.
 
 This chapter presents a (parametric) time series model used to describe crystal changes during the X-ray crystallography experiment as a Markovian process. Within this framework existing algorithms - the Unscented Kalman filter and the Unscented Rauch-Tung-Striebel smoother - are used to determine the ``optimal'' values of the underlying crystal state, defined as the set of structure factor amplitudes, at each point in time during the MX experiment.
