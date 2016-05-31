@@ -25,29 +25,25 @@ For SAXS experiments this is usually a quartz capillary, whereas for MX it is as
 However the user can define any container for any experiment, SAXS or MX giving greater flexibility.
 An immediate application is for in situ RT MX data collection.
 
-It is worth mentioning that RADDOSE-3D has been written in a very modular style so that extensions to existing functionality are as seamless as possible.
-At the fundamental abstract level, RADDOSE-3D essentially deals with three main objects: a sample, a beam and some experimental strategy to expose the sample to the beam.
-The beam does not necessarily need to be a beam of X-rays if the properties of the beam are defined differently.
-In a similar manner the sample can currently be either a crystal or a liquid SAXS sample depending on the sample input.
+As mentioned in section \ref{sub:RADDOSE-3D Architecture}, RADDOSE-3D has been written in a very modular style so that extensions to existing functionality can be easily incorporated.
+At its core, RADDOSE-3D essentially deals with three main objects: a sample, a beam and a wedge.
+The work on RADDOSE-3D presented here shows how the ``crystal'' description was extended to incorporate liquid SAXS samples, which ultimately depends on the input specification.
+In a similar manner the beam, which currently describes incident X-ray photons, could be extended to represent other beam types (e.g. an electron beam) if its properties are defined differently.
 
 One of the current drawbacks of the extension of RADDOSE-3D to simulate SAXS experiments is that the implementation does not yet support sample flow.
 This is a common method used in SAXS experiments to mitigate radiation damage \cite{jeffries2015limiting}.
-This sample flow results in any given small volume of fluid passing across the X-ray beam.
-In RADDOSE-3D this situation reduces to how long a given volume of fluid is exposed to each region of the X-ray beam.
+This sample flow results in any given small volume of fluid passing across the X-ray beam as described in section \ref{sub:Model considerations}.
+In RADDOSE-3D this situation reduces to how long a given volume of fluid is exposed to each region of the X-ray beam, which will be dependent on the radial position from the centre of the tube due to the Poiseuille flow velocity profile \cite{hopkins2016quantifying}.
 In order to implement this method of data collection in RADDOSE-3D, a sufficiently small discretisation of time would be necessary so that the fluid volume does not completely `pass' the entire beam in a single time step.
 Care would be needed to avoid the case where the time discretisation is so small that the computational time is unnecessarily long.
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:includeFluiddynamics}{\textbf{TODO:} Include discussion on the fluid dynamics.}
-    \end{myenumerate}
-}
+
+Additionally diffusive turnover, as described in section \ref{sub:Model considerations}, could be incorporated into the dose calculations.
+However beams sizes in SAXS experiments are typically quite large and exposure times are not long enough for the diffusive turnover to cause significant effect (500$\,\mu m$ $\times$ 250$\,\mu m$ with maximum exposure time 141 seconds (RT) \cite{jeffries2015limiting}, 220$\,\mu m$ $\times$ 190$\,\mu m$ with 60 seconds exposures (100$\,$K) \cite{meisburger2013breaking}).
+Therefore this would not be a high priority extension.
 
 The formal tests for the SAXS extensions still need to be written before the code is officially released.
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:SpecifyTest}{\textbf{TODO:} Specify the tests that need to be written}
-    \end{myenumerate}
-}
+These include testing that the cylindrical implementation is stable for different inputs and is aligned with the axial length perpendicular to the beam by default.
+It is also necessary to check that the absorption coefficient calculation works for different types of elemental and mixture compositions.
 However the code is currently public on the RADDOSE-3D Github repository in the branch named ``SAXS" \url{https://github.com/GarmanGroup/RADDOSE-3D}.
 Alpha versions of the SAXS extensions have already been distributed to Dr. Eddie Snell and Dr. Adam Round for user testing.
 
@@ -62,7 +58,7 @@ For experiment 1 the analysis performed by DATCMP gave a fidelity value which wa
 Overall these frames resembled logistic curves, and hence 4PLs were fitted to the data.
 Two metrics were then developed to give a merging threshold. The first metric was the total dose absorbed that was required to reach an arbitrary fidelity value.
 This metric is fundamentally flawed because there is no universal value to choose and it would have to change for each comparison experiment.
-It is also a relative metric i.e. it only compares the efficacy of one radioprotectant to another, but it does not give any absolute information about whether the frames at that fidelity value are damaged or not.
+It is also a relative metric i.e. it only compares the efficacy of one radioprotectant to another, but it does not give any absolute stand-alone information about whether the frames at that fidelity value are damaged or not.
 
 The second metric that was developed was the dose absorbed before reaching maximum curvature.
 This metric is absolute in the sense that the threshold represents the point at which the fidelity values begin to deviate maximally from the initial frame(s).
@@ -81,11 +77,11 @@ On its own, the CorMap test performs pairwise comparisons of frames.
 This means that an individual frame can be detected as being dissimilar to another frame regardless of the similarity assessment of frames immediately before and after the frame in question.
 This dissimilarity of an individual frame therefore may not indicate a true systematic change in the molecules of the sample.
 It may just be an outlier.
-Therefore a more robust metric was used whereby three consecutive dissimilar frames were detected to establish a merging threshold.
+Therefore a more robust metric was developed for this work whereby three consecutive dissimilar frames were detected to establish a merging threshold.
 It was used to determine that there is a concentration dependence on the efficacy of individual radioprotectants. Some radioprotectants such as glycerol, ascorbate and sodium nitrate exhibited a positive concentration dependence, whereas DTT showed a negative concentration dependence.
-It was also found that glycerol, ascorbate and ethylene glycol were the most effective scavengers at high concentrations $10\ mM$.
-These compounds are all hydroxyl scavengers, a radical species which is known to be mobile at room temperature.
-On the other hand sodium nitrate, which is an electron scavenger, generally does not protect as well.
+It was also found that glycerol, ascorbate and ethylene glycol were the most effective scavengers at high concentrations 10$\,$mM.
+These compounds are all hydroxyl scavengers (k = 1 - 5 $\times$ 10$^{\text{9}}\,$M$^{\text{-1}}\,$s$^{\text{-1}}$ \cite{garrison1987reaction}), a radical species which is known to be mobile at room temperature.
+On the other hand sodium nitrate, which is an electron scavenger (k = 10$^{\text{8}}$ -  10$^{\text{9}}\,$M$^{\text{-1}}\,$s$^{\text{-1}}$ \cite{garrison1987reaction,allan2012}), generally does not protect as well.
 DTT was found to be the most effective radioprotectant at the lower concentrations of 1$\,$mM and 2$\,$mM, which were tested.
 \textcolor{red}{
     \begin{myenumerate}

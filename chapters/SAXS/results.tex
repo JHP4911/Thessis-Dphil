@@ -19,14 +19,14 @@ Similar conclusions are obtained from Figure~\ref{fig:Scavenger plot - maximum c
 This illustrates that there is sensitivity of results to the chosen metric.
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{1.0\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/ScavengerComparisonPlot.pdf}
             \caption{Expt 1: Dose taken to reach a fidelity value of 0.71 for each scavenger.}
             \label{fig:Scavenger plot - arbitrary fidelity value}
     \end{subfigure}
     \\
-    \begin{subfigure}[b]{0.8\textwidth}
+    \begin{subfigure}[b]{1.0\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/ScavengerCurvatureComparisonPlot.pdf}
             \caption{Expt 1: Dose at which maximum curvature is reached}
@@ -100,7 +100,7 @@ However, this does not necessarily seem to be true for the 10$\,$mM concentratio
 Thus it was necessary to re-evaluate some of the underlying assumptions.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/saxs/DTT_Num_consec_fr_comp.pdf}
+    \includegraphics[width=1.0\textwidth]{figures/saxs/DTT_Num_consec_fr_comp.pdf}
     \caption{Dose at which significant radiation damage is determined to have occurred for different values of $m$ for all runs with DTT as the added radioprotectant.}
     \label{fig:Num consec frames - DTT}
 \end{figure}
@@ -118,7 +118,7 @@ However, if the reference frame was frame 7, then the threshold frame would be 5
 This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = $22.92\ kGy$).
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/saxs/dtt_first_n_plot.pdf}
+    \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_first_n_plot.pdf}
     \caption{Radiation damage threshold value against reference frame ($m = 3$) for the first repeat with DTT as the added radioprotectant at a concentration of $10\ mM$.}
     \label{fig:First n diff frames - DTT}
 \end{figure}
@@ -134,7 +134,7 @@ Perhaps merging frames from these different regions may result in molecular enve
 It may be the case that some of these states are functionally important.
 \begin{figure}
     \centering
-    \includegraphics[width=0.8\textwidth]{figures/saxs/dtt_heatmap.pdf}
+    \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_heatmap.pdf}
     \caption{Heat map of all possible pairwise frame comparisons for the first GI sample run with $10\ mM$ concentration DTT added. The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared. Blue - $P_{adj}(>C) = 1$. Teal - $0.01 \le P_{adj}(>C) < 1 $. Orange - $P_{adj}(>C) < 0.01$.}
     \label{fig:heatmap - DTT}
 \end{figure}
@@ -177,7 +177,7 @@ The spread of the threshold values for those compounds is also smaller using dos
             \caption{}
             \label{fig:SAXS frame- 10mM}
     \end{subfigure}
-    \caption{Value at which radiation damage is considered significant. Figures on the left, [(a), (c)], correspond to the dose value whereas figures on the right, [(b), (d)], correspond to the frame number. Each box plot is created from the threshold dose values for three different runs of the same radioprotectant compound. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric.}
+    \caption{Value at which radiation damage is considered significant. Figures on the left, [(a), (c)], show the dose value whereas those on the right, [(b), (d)], show the frame number. Each box plot is created from the threshold dose values for three different runs of the same radioprotectant compound. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric.}
     \label{fig:SAXS dose vs frame}
 \end{figure}
 

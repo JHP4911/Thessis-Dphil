@@ -1,0 +1,64 @@
+%!TEX root = ../../main.tex
+\chapter{Conclusions}
+\label{chap:Conclusions}
+
+\section{Radiation damage in MX}
+\label{sec:Radiation damage in MX}
+The work presented in this thesis builds on existing research in MX for quantifying global radiation damage.
+
+\subsection{Extending the DWD metric}
+\label{sub:Extending the DWD metric}
+Extensions to the original DWD metric were proposed by Zeldin \textit{et al.} in the original paper in which it was introduced \cite{zeldin2013dwd}.
+In this thesis, those extensions were investigated in the form of increasing and decreasing $\eta$ functions.
+They represented the effect of the loss in diffraction efficiency of the crystal on the dose.
+Inclusion of these terms did not result in a decreased variability of the relative intensity as suggested by Zeldin \textit{et al.}, but this work does suggests that two metrics should be considered.
+One metric which represents the damaged state of the crystal, which is typically what most radiation damage studies use.
+The other metric would represent the diffraction quality from the crystal using a decreasing $\eta$ form.
+To the author's knowledge, this type of metric has not been used before, but could have implications for processing of diffraction data.
+In particular, it could be used, in addition to existing methods, to determine which images to merge to obtain good quality, reliable data.
+
+\subsection{Zero-dose extrapolation}
+\label{sub:Zero-dose extrapolation}
+A new model of radiation induced intensity decay was used along with the DWD metric to perform zero-dose extrapolation of reflection intensities.
+This new model was able to capture the non-monotonic behaviour of reflection intensities.
+The procedure also incorporated several quality checks to ensure the reliability of the regression fits.
+Furthermore, a probabilistic extrapolation procedure was developed to overcome the low reflection multiplicity problem.
+Further investigation of this method is required before it can be used reliably for any crystal, but the probabilistic extrapolation addition should allow the method to be used more efficiently for low multiplicity data than current zero-dose extrapolation methods.
+
+\subsection{Measuring X-ray Beam profiles}
+\label{sub:Measuring X-ray Beam profiles}
+Several methods for measuring beam profiles and processing the resulting data were also investigated.
+It was shown that the factor, which relates to the beam profile data, that led to the biggest error in the dose calculation was the method for determining the background from a 2D image.
+For this reason it is recommended that beam profile measurements are performed by collecting several vertical and horizontal aperture scans.
+These data can then be interpolated to give a representative profile of the X-ray beam.
+
+\section{Data Reduction}
+\label{sec:Data Reduction}
+An alternative mathematical representation of the data collection experiment was developed, which led to successful structure determination.
+The Hidden Markov model (HMM) representation allows the time resolved prediction of structure factor amplitudes throughout the experiment.
+Thus electron density maps can be calculated for each point in the experiment.
+Additionally the error estimates are calculated explicitly in the forward-backward algorithm as a combination of the uncertainty in the measurement and the uncertainty in the (damage) process.
+This means that the error estimates should be more representative of the expected error, which may lead to more reliable results in experimental phasing.
+But this is not verified and still needs to be investigated.
+
+The HMM representation is not just useful for data reduction.
+In fact the idea of the HMM in crystallography was spawned from the idea of modelling radiation damage in refinement (Garib Murshudov, personal communication).
+The time resolved nature of the HMM means that refinement would directly lead to electron density movies.
+The data reduction pipeline presented in this thesis is a successful proof of concept for the applicability of the HMM to crystallographic data, and the extension for refinement should not be significant.
+Essentially the state is no longer a set of structure factor amplitudes, but instead the state is the set of structure factors.
+The process function would need to be extended to incorporate a model for the change in atomic positions as well as the B factor.
+
+\section{Quantifying radiation damage in SAXS experiments}
+\label{sec:Quantifying radiation damage in SAXS experiments}
+The work presented in this thesis presents a huge step forward in automating and exploring radiation damage in SAXS experiments.
+Firstly, RADDOSE-3D has now been extended to allow dose calculations for SAXS experiments, just as easily as it is for MX experiments.
+Prior to this there was no open source, dose calculation standard for SAXS.
+Further to this, a Python library has been written to allow exploratory data analysis of SAXS datasets.
+It provides a wrapper for executing DATCMP, which performs the similarity analysis described in section \ref{sub:Data analysis - experiment 2}, and more methods to visualise the data.
+These tools were used to analyse datasets collected on glucose isomerase with different concentrations of radioprotectant compounds.
+Glucose was found to be the most effective radioprotectant overall.
+Additionally it was found that DTT exhibits odd behaviour, particularly at high concentrations.
+One of the most intriguing visualisation tools in the Python library is the heatmap.
+For DTT it showed regions of frame similarity which cannot be easily determined via other analytical methods.
+This indicates that it may have implications for deciding which frames experimenters should merge to improve data quality, and possibly distinguish regions of different conformational states.
+More work needs to be done to verify the importance of these regions.

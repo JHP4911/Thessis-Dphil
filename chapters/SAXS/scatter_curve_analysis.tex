@@ -3,13 +3,11 @@
 \label{sec:1D scatter curve similarity analysis}
 To increase the signal to noise ratio when processing data in SAXS it is necessary to merge 1D intensity curves from several frames.
 If the scattering for different frames is from the same molecule in the sample then the frames will be similar i.e. the frames will overlap.
-However as radiation damage progresses during the experiment, the molecules begin to aggregate.
-This aggregation causes the intensity curve to change (Figure~\ref{fig:1D Scatter Curves}).
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:Fragmentation}{\textbf{TODO:} Need to discuss the idea of Fragmentation here}
-    \end{myenumerate}
-}
+However as radiation damage progresses during the experiment, the molecules begin to aggregate, which causes the intensity curve to increase at low $q$ angles and is speculated to decrease at high $q$ angles \cite{hopkins2016quantifying}.
+Fragmentation on the other hand, causes a decrease in scattering at low $q$ angles and an increase at high $q$ angles.
+Figure~\ref{fig:1D Scatter Curves} shows the scattering profile of several SAXS frames collected from the same glucose isomerase sample.
+As the dose increases, there is a clear decrease in the scattered intensity at low angles suggesting that the sample is undergoing fragmentation.
+This was also observed with the glucose isomerase samples used in the study conducted by Hopkins and Thorne \cite{hopkins2016quantifying}.
 Therefore it is necessary to determine the similarity between any two pairs of frames to determine which frames to merge.
 Due to the fact that a new method of assessing the similarity was published between performing experiment 1 and 2 \cite{franke2015correlation}, the analysis performed on the two sets of data and presented here are different.
 This was necessary because the new version of DATCMP, the software program used to perform the similarity analysis \cite{petoukhov2012new}, does not incorporate some of its old functionality utilised in Expt 1, and the online manual describing the mew features has not yet been updated.

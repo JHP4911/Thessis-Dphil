@@ -7,8 +7,8 @@
 \include{preamble/newcommands}
 \include{preamble/settings}
 
-% Include Title page only
-% \includeonly{specialpages/titlepage}
+% Include front matter only
+% \includeonly{specialpages/titlepage, specialpages/dedication, specialpages/abstract, specialpages/acknowledgements}
 
 % Include Introduction chapter only
 % \includeonly{chapters/Introduction/introduction, chapters/Introduction/macromolecular_crystallography,
@@ -33,14 +33,20 @@
 % chapters/Beam/multiple_ap_scans, chapters/Beam/discussion}
 
 % Include SAXS chapter only
-\includeonly{chapters/SAXS/introduction, chapters/SAXS/raddose3d_4_saxs, chapters/SAXS/experimental_methods,
-chapters/SAXS/scatter_curve_analysis, chapters/SAXS/results, chapters/SAXS/discussion}
+% \includeonly{chapters/SAXS/introduction, chapters/SAXS/raddose3d_4_saxs, chapters/SAXS/experimental_methods,
+% chapters/SAXS/scatter_curve_analysis, chapters/SAXS/results, chapters/SAXS/discussion}
+
+% Include Conclusion chapter only
+% \includeonly{chapters/Conclusion/conclusion}
 
 \begin{document}
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%          TITLE PAGE, TABLE AND FIGURE LISTS, CONTENTS PAGE             %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \include{specialpages/titlepage}
+    \include{specialpages/abstract}
+    \include{specialpages/dedication}
+    \include{specialpages/acknowledgements}
     \include{specialpages/listsandcontents}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,6 +101,9 @@ chapters/SAXS/scatter_curve_analysis, chapters/SAXS/results, chapters/SAXS/discu
     \include{chapters/SAXS/results}
     \include{chapters/SAXS/discussion}
     % \include{chapters/SAXS/summary}
+
+    %----------------- Conclusion -----------------%
+    \include{chapters/Conclusion/conclusion}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                             BIBLIOGRAPHY                               %%

@@ -7,11 +7,36 @@ Currently dose estimates in SAXS are calculated using
     D = \f{tfE(1-T)}{V\rho},
 \end{equation}
 where $D$ is the dose, $t$ is the exposure time, $f$ is the X-ray flux, $E$ is the energy of the incident photons, $T$ is the transmission factor, $V$ is the illuminated volume and $\rho$ is the mass density of the sample \cite{meisburger2013breaking,jeffries2015limiting}.
-This model effectively reduces the problem to a 1D representation of the experiment.
+To ease the calculation of the dose, the explicit geometry of the sample is not taken into account.
 A more accurate calculation can be performed if the SAXS experiment is simulated in three dimensions, providing a spatially resolved dose field.
 This dose field can then be interpreted with the various dose metrics already developed for MX \cite{zeldin2013dwd,zeldin2012}.
 
 This section presents the extensions written into RADDOSE-3D to perform simulations of SAXS experiments for improved dose calculations.
+
+\subsection{RADDOSE-3D Architecture}
+\label{sub:RADDOSE-3D Architecture}
+At its core, RADDOSE-3D takes a description of a crystal and exposes it to a computational beam model via a user specified exposure strategy (wedge) \cite{zeldin2013}.
+The crystal is computationally modelled as a 3D voxel grid, where each grid element stores information about $x, y, z$ coordinates, the dose and the fluence.
+The dose is calculated using the beam intensity at the leading edge of the voxel and the proportion of the beam that is absorbed by the voxel, which is governed by the absorption coefficient.
+The beam is described by the intensity profile, photon energy and the total flux.
+Finally, the wedge specifies the total angular rotation of the sample, exposure time and any rotation offsets or translations.
+The structure of the program is illustrated in Figure~\ref{fig:RADDOSE-3D Flow diagram}.
+A single RADDOSE-3D job performs the MX simulation on a single crystal, but it can be exposed to multiple beams with multiple wedges.
+Output files giving information about the crystal state are updated after the crystal is exposed to a beam via a single wedge.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/saxs/raddose_flow.png}
+    \caption{Flow chart illustrating the structure of the RADDOSE-3D code.
+    Reproduced from \cite{zeldin2013}.}
+    \label{fig:RADDOSE-3D Flow diagram}
+\end{figure}
+
+At an abstract level, the crystal is defined by several properties that are typically associated with crystals in MX.
+These include the unit cell volume and the number of molecules in the unit cell.
+RADDOSE-3D uses this information to calculate the composition of the crystal so that an absorption coefficient can be calculated.
+However, there is no reason that the composition has to be defined by information specific to the crystal, in which case it is more appropriate to refer to what has been termed the ``crystal'' so far as the ``sample''.
+If the sample is a liquid, as is the case in SAXS experiments, then the sample composition should be determined with different inputs.
+The modular design of RADDOSE-3D enables this type of extension to be easily incorporated to the existing functionality.
 
 \subsection{Cylindrical sample geometry}
 \label{sub:Cylindrical sample geometry}
@@ -76,7 +101,7 @@ Secondly, a suitable volume needs to be specified to calculate the atomic compos
 A suitable volume is one that is large enough to contain at least one complete molecule.
 By default this volume is defined to be (1000$\,$\AA)$^\text{3}$ but this can be changed by specifying the length, width and height dimensions of the volume in the input file using the \textit{unit cell} input keyword.
 
-The number of monomers/molecules in the volume can now be calculated by multiplying the molarity, volume (converted to litres) and Avogadro's number ($N_A = 6.022 \times 10^{23} mol^{-1}$), which is then rounded to the nearest integer.
+The number of monomers/molecules in the volume can now be calculated by multiplying the molarity, volume (converted to litres) and Avogadro's number ($N_A$ = 6.022 $\times$ 10$^{\text{23}}$ mol$^{\text{-1}}$), which is then rounded to the nearest integer.
 The absorption coefficient can then be computed in the usual way as is described in \cite{pait2009}.
 If there is less than 1 molecule in the volume then this is flagged up and the user is advised to increase the volume.
 
@@ -116,6 +141,34 @@ When mixtures of atomic species are used (the most commonly used capillary mater
 \end{equation}
 where $w_i$ and $(\mu/\rho)_i$ are the fraction by weight and mass attenuation coefficient of the $i^{\text{th}}$ atomic constituent respectively.
 
+\subsection{Summary of SAXS extensions}
+\label{sub:Summary of SAXS extensions}
+Figure~\ref{fig:Updated RADDOSE-3D Flow diagram} puts into context where the SAXS extensions fit into the RADDOSE-3D program design.
+All of the changes have been made in the ``crystal'' definition which has been referred to as the \textit{sample} in this section.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{figures/saxs/Sample_definitions.pdf}
+    \caption{RADDOSE-3D flowchart from Figure~\ref{fig:RADDOSE-3D Flow diagram} with the updated sample implementation, which extends the previous ``crystal'' implementation.
+    The text coloured red show the SAXS extensions covered in this section.}
+    \label{fig:Updated RADDOSE-3D Flow diagram}
+\end{figure}
+
+Figure~\ref{fig:SAXS Flow diagram} shows explicitly how the extensions described above combine to allow accurate dose calculations for SAXS experiments.
+The cylindrical sample geometry is defined first from the specified height and diameter of the sample in the capillary.
+Then the atomic sample composition is defined from the protein concentration and buffer components.
+Once the container material is specified, the attenuated X-ray beam flux can then be calculated.
+Finally the SAXS sample is exposed to the attenuated X-ray beam according to the wedge.
+\begin{figure}
+    \centering
+    \includegraphics[width=1\textwidth]{figures/saxs/SAXS_flowchart.pdf}
+    \caption{Flow diagram showing how the extensions described in this section are combined to enable dose calculation.
+    A: the cylindrical geometry of the SAXS sample is defined (section \ref{sub:Cylindrical sample geometry}).
+    B: the atomic composition is determined (section \ref{sub:Determining the sample composition}).
+    C: Determine the attenuation of the beam due to the sample container (section \ref{sub:Attenuation of X-ray flux due to capillary}).
+    D: Expose the SAXS sample to the attenuated beam according to the defined wedge.}
+    \label{fig:SAXS Flow diagram}
+\end{figure}
+
 \subsection{Model considerations}
 \label{sub:Model considerations}
 The model of the SAXS experiment in RADDOSE-3D makes many implicit assumptions.
@@ -127,16 +180,23 @@ The sample itself is assumed static, moving as a rigid body when rotated or tran
 This greatly reduces the computational cost when compared to the possibility of modelling the exact fluid dynamics.
 The assumption that the capillary volume is completely filled is generally valid since this is usually the case during an experiment.
 The static assumption is not always valid, especially when the sample is flowed through the capillary.
-However the rigid body assumption may still hold.
-During the time that the sample is flowed through the X-ray beam, a small volume element of liquid may have a constant position with respect to another small volume element of fluid.
-In other words, the fluid sample moves as one rigid body in the time it takes to pass through the X-ray beam.
-To verify this assumption, SAXS experiments would have to be performed where the damage rates and signatures are found in runs where the fluid is kept static.
-Then those results would have to be compared to results obtained from experiments where the sample is flowed through the capillary, and doses are calculated using the rigid body assumption to observe whether similar damage rates and signatures are observed.
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:DiscussionOnFluidDynamics}{\textbf{TODO:} Need to include discussion about fluid dynamics here}
-    \end{myenumerate}
-}
+Hopkins and Thorne calculated that for typical experimental parameters (capillary diameters: 1.5-2$\,$mm, flow velocities: 0.5-15$\,$mm$\,$s$^{\text{-1}}$) the Reynolds numbers\footnote{The Reynolds number is defined as the ratio of inertial forces to viscous forces and is a quantities used in fluid mechanics to determine properties of fluid flow \cite{purcell1977life}.} are in the range 1-25 implying a laminar flow regime \cite{hopkins2016quantifying}.
+In this case the velocity profile is expected to exhibit the quadratic Poiseuille flow profile, which arises from the axial symmetry and no-slip boundary assumptions (the velocity at the centre of the tube moves the fastest while the velocity at the boundary is equal to zero provided the capillary is also stationary).
+Furthermore, Hopkins and Thorne also calculated that the residence times of the of the sample in the beam were too short for any appreciable radial diffusive mixing, hence the flow profile results in radius-dependent residence times in the X-ray beam.
+Therefore the static assumption here will give misleading dose values if calculated for experiments where the sample is flowed through the beam.
+
+Hopkins and Thorne additionally discuss diffusive turnover as a phenomenon that will affect the dose calculation \cite{hopkins2016quantifying}.
+Molecules have the ability to diffuse into and out of the illuminated volume, with the additional complexity that a non-uniform beam profile will cause differential diffusion across the beam.
+In the current work, molecular diffusion is not accounted for.
+Extrapolation of the plot from \cite{hopkins2016quantifying} (reproduced in Figure~\ref{fig:Diffusive turnover effect} ) shows that diffusion is likely to be negligible for the experiment performed here (section \ref{sec:Experimental methods - SAXS}) where the beam size was 600 $\times$ 600$\,\mu m^{\text{2}}$ and the total exposure time was 120 seconds.
+\begin{figure}
+    \centering
+    \includegraphics[width=0.75\textwidth]{figures/saxs/diffusive_turnover_effect.png}
+    \caption{Reduction in the dose absorbed by the sample due to diffusive exchange of lysozyme against time for three beam sizes.
+    Extrapolation of these curves for a beam size of 600 $\times$ 600$\,\mu m^{\text{2}}$ along with 120 second exposure times suggests that the dose reduction due to diffusive turnover is negligible for our experiment.
+    Figure reproduced from \cite{hopkins2016quantifying}.}
+    \label{fig:Diffusive turnover effect}
+\end{figure}
 
 The SAXS sample can also be manipulated in the same way as a crystal in RADDOSE-3D.
 Hence helical scanning, translations and rotations of the sample can all be performed.
