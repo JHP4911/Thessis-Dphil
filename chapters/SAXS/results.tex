@@ -4,19 +4,28 @@
 
 \subsection{Experiment 1}
 \label{sub:Experiment 1 - Results}
-Figure~\ref{fig:Main radioprotectant plot - Rebecca data} shows the results of the logistic curve fits to the fidelity data plotted in Figure~\ref{fig:Rebecca data}. The five-pointed stars are the points where the fitted logistic curves reach a fidelity value of 0.71. This was an arbitrary value chosen because all samples reached that value. The six-pointed stars are the maximum curvature points of the fitted logistic curves. To compare the efficacies of each radioprotectant compound, the dose at which these points occur are plotted for each scavenger in Figure~\ref{fig:Combined Scavenger results - Rebecca data}.
+Figure~\ref{fig:Main radioprotectant plot - Rebecca data} shows the results of the logistic curve fits to the fidelity data plotted in Figure~\ref{fig:Rebecca data}.
+The five-pointed stars are the points where the fitted logistic curves reach a fidelity value of 0.71.
+This was an arbitrary value chosen because all samples reached that value.
+The six-pointed stars are the maximum curvature points of the fitted logistic curves.
+To compare the efficacies of each radioprotectant compound, the dose at which these points occur are plotted for each scavenger in Figure~\ref{fig:Combined Scavenger results - Rebecca data}.
 
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/ScavengerPlot.pdf}
-    \caption[Fidelity values as a function of dose for each radioprotectant]{Fidelity values against dose for each radioprotectant along with their corresponding fitted logistic curves. The five-pointed stars represent the points where the fitted logistic curves reach a fidelity value of 0.71. The six-pointed stars are the maximum curvature points of the fitted curves.}
+    \caption[Fidelity values as a function of dose for each radioprotectant]{Fidelity values against dose for each radioprotectant along with their corresponding fitted logistic curves.
+    The five-pointed stars represent the points where the fitted logistic curves reach a fidelity value of 0.71.
+    The six-pointed stars are the maximum curvature points of the fitted curves.}
     \label{fig:Main radioprotectant plot - Rebecca data}
 \end{figure}
 
-Figure~\ref{fig:Scavenger plot - arbitrary fidelity value} shows the dose taken to reach a fidelity value of 0.71 for each scavenger. Ethylene glycol is the most effective radioprotectant at 5$\,$mM concentration, closely followed by the glycerol/sodium nitrate mixture and then glycerol alone. It is clear from these results that adding a radioprotectant allows useable data to be collected for longer because the sample is less sensitive to irradiation.
+Figure~\ref{fig:Scavenger plot - arbitrary fidelity value} shows the dose taken to reach a fidelity value of 0.71 for each scavenger.
+Ethylene glycol is the most effective radioprotectant at 5$\,$mM concentration, followed by the glycerol/sodium nitrate mixture and then glycerol alone.
+It is clear from these results that adding a radioprotectant allows useable data to be collected for longer because the sample is less sensitive to irradiation.
 
-Similar conclusions are obtained from Figure~\ref{fig:Scavenger plot - maximum curvature} where the dose at which maximum curvature is reached is plotted for each radioprotectant. Again ethylene glycol is shown to be the most effective radioprotectant at 5\,mM concentration, followed by the glycerol/sodium nitrate mixture and then glycerol alone. The only difference in the ordering of the relative efficacies of the radioprotectants between the two plots is that trehalose is more effective than ascorbate when using the maximum curvature metric, whereas the opposite is true when using the time to reach a fidelity of 0.71 metric.
-This illustrates that there is sensitivity of results to the chosen metric.
+Similar conclusions are obtained from Figure~\ref{fig:Scavenger plot - maximum curvature} where the dose at which maximum curvature is reached is plotted for each radioprotectant.
+The results obtained using this metric give an identical relative efficacy ordering to the order seen when using the other metric. i.e. ethylene glycol is most effective, followed by the glycerol/sodium nitrate mixture etc.
+The main difference between the metrics is that
 \begin{figure}
     \centering
     \begin{subfigure}[b]{1.0\textwidth}
@@ -60,34 +69,37 @@ It suggests that the \textit{BsxCuBE} metric employs a very different method to 
 }
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.75\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_1_dose.pdf}
             \caption{}
             \label{fig:SAXS Metric comparison - 1mM}
     \end{subfigure}
-    \qquad
-    \begin{subfigure}[b]{0.45\textwidth}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_2_dose.pdf}
             \caption{}
             \label{fig:SAXS Metric comparison - 2mM}
     \end{subfigure}
-    \\
-    \begin{subfigure}[b]{0.45\textwidth}
+\end{figure}
+\begin{figure}
+    \ContinuedFloat
+    \centering
+    \begin{subfigure}[b]{0.72\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_5_dose.pdf}
             \caption{}
             \label{fig:SAXS Metric comparison - 5mM}
     \end{subfigure}
-    \qquad
-    \begin{subfigure}[b]{0.45\textwidth}
+    \\
+    \begin{subfigure}[b]{0.72\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_10_dose.pdf}
             \caption{}
             \label{fig:SAXS Metric comparison - 10mM}
     \end{subfigure}
-    \caption[Radioprotectant efficacy comparison  boxplots for each concentration in the experiment.]{Dose value at which radiation damage is considered significant. Each box plot is created from the threshold dose values calculated for three different experimental runs of the same radioprotectant compound. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric}
+    \caption[Radioprotectant efficacy comparison  boxplots for each concentration in the experiment.]{Dose value at which radiation damage is considered significant for each concentration of radioprotectant used. Each box plot is created from the threshold dose values calculated for three different experimental runs of the same radioprotectant compound at a particular concentration. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric}
     \label{fig:SAXS Metric comparison}
 \end{figure}
 
@@ -95,15 +107,9 @@ The biggest discrepancy between the two metrics is the result for DTT.
 The \textit{BsxCuBE} metric predicts a much higher dose tolerance than the \textit{CMD} metric, especially for the 5$\,$mM and 10$\,$mM concentrations.
 One reason thought to cause this discrepancy in the current work was the choice of $m$ = 3 for the \textit{CMD} metric.
 Figure~\ref{fig:Num consec frames - DTT} shows the results of the various values of $m$ for DTT.
-Unlike the results for ascorbate (Figure~\ref{fig:Num consecutive frame test}) and the other compounds, the chosen value of $m$ could be the problem for 5$\,$mM concentrations.
+Unlike the results for the other compounds (Figure~\ref{fig:Num consecutive frame test}), the chosen value of $m$ could be the problem for 5$\,$mM concentrations.
 However, this does not necessarily seem to be true for the 10$\,$mM concentration.
 Thus it was necessary to re-evaluate some of the underlying assumptions.
-\begin{figure}
-    \centering
-    \includegraphics[width=1.0\textwidth]{figures/saxs/DTT_Num_consec_fr_comp.pdf}
-    \caption{Dose at which significant radiation damage is determined to have occurred for different values of $m$ for all runs with DTT as the added radioprotectant.}
-    \label{fig:Num consec frames - DTT}
-\end{figure}
 
 \subsubsection{Pairwise comparisons with all frames}
 \label{subs:Pairwise comparisons with all frames}
@@ -113,13 +119,13 @@ Figure~\ref{fig:First n diff frames - DTT} addresses this question by performing
 Along the $y$-axis are the frames which would be considered as the merging limit if the corresponding frame on the $x$-axis was chosen as the `reference frame'.
 It can be seen that the radiation threshold value obtained using the \textit{CMD} metric is highly dependent on the reference frame.
 This will greatly affect the conclusions that would be drawn from the analyses.
-From Figure~\ref{fig:First n diff frames - DTT}, if the reference frame is 1, as is the case for the main analysis, then the frame at which radiation damage is considered as significant is frame 8 (DWD = 2.24$\,$kGy).
-However, if the reference frame was frame 7, then the threshold frame would be 57 (DWD = 15.93\,kGy).
-This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = 22.92\,kGy).
+From Figure~\ref{fig:First n diff frames - DTT}, if the reference frame is 1, as is the case for the main analysis, then the frame at which radiation damage is considered as significant is frame 8 (DWD = 4.32$\,$kGy).
+However, if the reference frame was frame 7, then the threshold frame would be 57 (DWD = 32.50\,kGy).
+This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = 46.88\,kGy).
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_first_n_plot.pdf}
-    \caption{Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
+    \caption[Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.]{Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
     \label{fig:First n diff frames - DTT}
 \end{figure}
 
@@ -135,7 +141,9 @@ It may be the case that some of these states are functionally important.
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_heatmap.pdf}
-    \caption{Heat map of all possible pairwise frame comparisons for the first GI sample run with 10\,mM concentration DTT added. The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared. Blue - $P_{adj}(>C)$ = 1. Teal - $0.01 \le P_{adj}(>C)$ < 1. Orange - $P_{adj}(>C)$ < 0.01.}
+    \caption[Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added]{Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added.
+    The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared.
+    Blue - $P_{adj}(>C)$ = 1. Teal - 0.01 $\le P_{adj}(>C)$ < 1. Orange - $P_{adj}(>C)$ < 0.01.}
     \label{fig:heatmap - DTT}
 \end{figure}
 
@@ -150,34 +158,41 @@ However if the dose value is used instead (Figures \ref{fig:SAXS dose- 1mM}, \re
 The spread of the threshold values for those compounds is also smaller using dose instead of frame number for the 10\,mM concentration.
 \begin{figure}
     \centering
-    \begin{subfigure}[b]{0.45\textwidth}
+    \begin{subfigure}[b]{0.75\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_1_dose.pdf}
             \caption{}
             \label{fig:SAXS dose- 1mM}
     \end{subfigure}
-    \qquad
-    \begin{subfigure}[b]{0.45\textwidth}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_1_frame_num.pdf}
             \caption{}
             \label{fig:SAXS frame- 1mM}
     \end{subfigure}
+\end{figure}
     \\
-    \begin{subfigure}[b]{0.45\textwidth}
+\begin{figure}
+    \ContinuedFloat
+    \centering
+    \begin{subfigure}[b]{0.72\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_10_dose.pdf}
             \caption{}
             \label{fig:SAXS dose- 10mM}
     \end{subfigure}
-    \qquad
-    \begin{subfigure}[b]{0.45\textwidth}
+    \\
+    \begin{subfigure}[b]{0.72\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/Conc_10_frame_num.pdf}
             \caption{}
             \label{fig:SAXS frame- 10mM}
     \end{subfigure}
-    \caption{Value at which radiation damage is considered significant. Figures on the left, [(a), (c)], show the dose value whereas those on the right, [(b), (d)], show the frame number. Each box plot is created from the threshold dose values for three different runs of the same radioprotectant compound. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric.}
+    \caption[Comparing dose and frame number as the metric by which to track radiation damage in SAXS.]{Comparing dose and frame number as the metric by which to track radiation damage in SAXS for all SAXS repeats.
+    Figures (a) and (c) use the dose value as the y axis whereas (b) and (d) use the frame number.
+    Each box plot is created from the threshold dose values for three different runs of the same radioprotectant compound.
+    Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric.}
     \label{fig:SAXS dose vs frame}
 \end{figure}
 
@@ -198,7 +213,7 @@ Thus the protection ability of ethylene glycol is not a simple monotonic functio
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/RatioPlots.pdf}
-    \caption{Expt 2: RD onset ratio against concentration for the 8 radioprotectants.}
+    \caption[RD onset ratio against concentration for the 8 radioprotectants]{Expt 2: RD onset ratio against concentration for the 8 radioprotectants.}
     \label{fig:SAXS Ratio plot}
 \end{figure}
 
@@ -212,8 +227,12 @@ On the otherhand, the \textit{CMD} metric suggests that the most effective radio
 Furthermore, it also suggests that DTT is the least effective radioprotectant.
 However, it is important to take into account that using a different reference frame to perform pairwise comparisons can result in different results with the \textit{CMD} metric as shown in Figures~\ref{fig:First n diff frames - DTT} and \ref{fig:heatmap - DTT}.
 
-The \textit{CMD} metric result also disagrees with the results from experiment 1 where ethylene glycol was found to be the most effective radioprotectant at 5$\,$mM.
+The \textit{CMD} metric result also disagrees with the results from Expt 1 where ethylene glycol was found to be the most effective radioprotectant at 5$\,$mM.
 Furthermore, in Expt 1 ascorbate was the one of the least effective radioprotectants.
-It only outperformed sucrose.
+It only outperformed sucrose and Trehalose.
 Whereas in Expt 2, ascorbate was the second most effective radioprotectant when used at a 5$\,$mM concentration.
 These results could be caused by the fact that the experimental parameters were not as well characterised in the first experiment as opposed to the second.
+
+An important difference between the results reported for Expt 1 and Expt2 is that the dose thresholds for Expt 1 are consistently higher than for Expt 2.
+This is not surprising according to Figure~\ref{fig:Main radioprotectant plot - Rebecca data} because all of the threshold values occur after the fidelity curves have already began to increase steeply away from the original similarity value.
+Whether the resulting statistics for the structural data can be improved beyond the threshold values given by the \textit{CMD} metric, remains to be seen, but this discrepancy go some way to explaining why the \textit{BsxCuBE} metric gives different results for the DTT data.

@@ -119,14 +119,14 @@ DATCMP performs quantitative analysis that formalises the similarity conclusions
     \centering
     \begin{subfigure}[b]{0.9\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/saxs/scatter_curve_frames_1_2.pdf}
+            \includegraphics[width=\textwidth]{figures/saxs/scatter_curve_frames_1_2_amended.pdf}
             \caption{}
             \label{fig:1D scatter plot of frames 1 and 2}
     \end{subfigure}
     \\
     \begin{subfigure}[b]{0.9\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/saxs/pwcormap_frames_1_2.pdf}
+            \includegraphics[width=\textwidth]{figures/saxs/pwcormap_frames_1_2_amended.pdf}
             \caption{}
             \label{fig:Pairwise correlation frames 1 and 2}
     \end{subfigure}
@@ -135,14 +135,14 @@ DATCMP performs quantitative analysis that formalises the similarity conclusions
     \ContinuedFloat
     \begin{subfigure}[b]{0.9\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/saxs/scatter_curve_frames_1_120.pdf}
+            \includegraphics[width=\textwidth]{figures/saxs/scatter_curve_frames_1_120_amended.pdf}
             \caption{}
             \label{fig:1D scatter plot of frames 1 and 120}
     \end{subfigure}
     \\
     \begin{subfigure}[b]{0.9\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/saxs/pwcormap_frames_1_120.pdf}
+            \includegraphics[width=\textwidth]{figures/saxs/pwcormap_frames_1_120_amended.pdf}
             \caption{}
             \label{fig:Pairwise correlation frames 1 and 120}
     \end{subfigure}
@@ -188,28 +188,146 @@ However the frames immediately after 55 do not have $P_{adj}(>C) <$ 0.01 (teal o
 Thus frame 55 may be a noisy outlier and radiation damage may not necessarily be significant at that frame.
 A more robust check may be to find the first dissimilar frame for which $m$ consecutive frames are dissimilar.
 This possibility was thus investigated and tested for $m$ = 1, 3, 5, 7 and 10 to determine the value $m = m_0$ for which $m > m_0$ did not significantly change the dose at which frames were determined to be dissimilar.
-Figure~\ref{fig:Num consecutive frame test} shows the result of the test for all of the runs with ascorbate as the added radioprotectant (note that the dose is used as the threshold for radiation damage instead of frame number).
+Figure~\ref{fig:Num consecutive frame test} shows the result of the test for all of the radioprotectant experiments (note that the dose is used as the threshold for radiation damage instead of frame number).
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/saxs/Ascorbate_Num_consec_fr_comp.pdf}
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Ascorbate_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/DTT_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{fig:Num consec frames - DTT}
+    \end{subfigure}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Ethylene_Glycol_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Glycerol_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Sodium_Nitrate_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Sucrose_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+\end{figure}
+\begin{figure}
+    \ContinuedFloat
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/TEMPO_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Trehalose_Num_consec_fr_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
     \caption[Dose at which significant radiation damage is determined to have occurred for different values of $m$, the number of consecutive dissimilar frames.]{Dose at which significant radiation damage is determined to have occurred for different values of $m$, the number of consecutive dissimilar frames.}
     \label{fig:Num consecutive frame test}
 \end{figure}
-It can be seen that if $m$ = 1, the spread of the apparent radiation damage onset is generally larger than for $m$ = 3, 5, 7, 10.
-For $m$ = 3, 5, 7, 10 the values corresponding to the onset of significant radiation damage are practically identical.
-This observation was reproducible across the analysis for all radioprotectant compounds, so for the subsequent radiation damage analysis, the comparisons were performed with $m$ = 3.
+It can be seen that for most radio protectant compounds if $m$ = 1, the spread of the apparent radiation damage onset is generally larger than for $m$ = 3, 5, 7, 10.
+For $m$ = 3, 5, 7, 10 the values corresponding to the onset of significant radiation damage are practically identical (except for DTT, but this is dealt with in section \ref{sub:Experiment 2 - Results}).
+Thus for the subsequent radiation damage analysis, the comparisons were performed with $m$ = 3.
 
 The other parameter that may affect the conclusions this method of the radiation damage analysis is the threshold level $\alpha$. Therefore three different thresholds were set, $\alpha$ = 0.01, 0.05 and 0.1.
-Figure~\ref{fig:alpha threshold value test} shows the result of the test with the data from all of the runs with ascorbate as the added radioprotectant.
+Figure~\ref{fig:alpha threshold value test} shows the result of the test with all of the radioprotectant data.
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{figures/saxs/Ascorbate_PThresh_comp.pdf}
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Ascorbate_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/DTT_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Ethylene_Glycol_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Glycerol_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+\end{figure}
+\begin{figure}
+    \centering
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Sodium_Nitrate_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Sucrose_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+\end{figure}
+\begin{figure}
+    \ContinuedFloat
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/TEMPO_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
+    \\
+    \begin{subfigure}[b]{0.75\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{figures/saxs/Trehalose_PThresh_comp.pdf}
+            \caption{}
+            \label{}
+    \end{subfigure}
     \caption[Dose at which significant radiation damage is determined to have occurred for different values of $\alpha$, the threshold probability value to determine frame similarity.]{Dose at which significant radiation damage is determined to have occurred for different values of $\alpha$, the threshold probability value to determine frame similarity.}
     \label{fig:alpha threshold value test}
 \end{figure}
 It can be seen that the median values are very similar for the various $\alpha$ values.
-This observation was generally the case all for the data from the other radioprotectant compounds.
-For $\alpha$ = 0.1 the spread is slightly smaller, particularly for the 1$\,$mM and 10$\,$mM concentrations.
-Given the fact that the radiation damage onset values do not significantly differ between $\alpha$ values and that $\alpha$ = 0.01 is the recommended (and sufficiently strict) threshold \cite{franke2015correlation}, $\alpha$ = 0.01 was chosen as the value used for all radioprotectant compounds in the subsequent radiation damage analysis.
+Given this fact and that $\alpha$ = 0.01 is the recommended (and sufficiently strict) threshold \cite{franke2015correlation}, $\alpha$ = 0.01 was chosen as the value used for all radioprotectant compounds in the subsequent radiation damage analysis.
 The advantage of using $\alpha$ = 0.01 is that frames have to be very dissimilar before the $P_{adj}(>C)$ value falls below that value.
 This means that it is less likely that frames are discarded when they actually are similar (in statistical speak this means there is less chance of a type I error).
