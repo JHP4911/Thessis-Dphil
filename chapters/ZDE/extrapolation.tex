@@ -41,7 +41,7 @@ However with only three observations, the regression is likely to lead to overfi
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/zde/ReflectionPlot_h,k,l_0,11,29-3obs.pdf}
-    \caption{Regression performed where the model (solid blue line) has been overfitted to the data (grey circles).
+    \caption[Poor regression fit: overfitting.]{Regression performed where the model (solid blue line) has been overfitted to the data (grey circles).
     The function passes perfectly through all three data points but predicts a zero-dose intensity of 0.
     The solid black vertical lines are the standard deviations, $\sigma_{obs}$, of the reflection intensity observations.}
     \label{fig:Data Overfitting to few data points - Extrapolation method}
@@ -67,7 +67,7 @@ However a low correlation value did not always suggest a bad fit as shown in Fig
                 \caption{}
                 \label{fig:Bad correlation good fit - Extrapolation method}
         \end{subfigure}
-        \caption{(a) Regression performed for a reflection where the correlation coefficient was determined to be 0.209.
+        \caption[Regression fits to reflections that result in a low correlation coefficient.]{(a) Regression performed for a reflection where the correlation coefficient was determined to be 0.209.
         The low correlation coefficient is consistent with the bad fit of the model to the data.
         (b) Regression performed for a reflection where the correlation coefficient was determined to be 0.231.
         The low correlation coefficient in this case is clearly due to the noisy measurements but the fit looks reasonable given that the intensity predictions are consistently within 1 standard deviation of every observation.}
@@ -100,7 +100,7 @@ Other checks were also performed to make sure that the resulting fits and zero-d
                 \caption{}
                 \label{fig:Unphysically high zero-dose intensity - Extrapolation method}
         \end{subfigure}
-        \caption{(a) Poor model fit as a result of using data where the values are too small or negative.
+        \caption[Poor regression fits.]{(a) Poor model fit as a result of using data where the values are too small or negative.
         Equation \ref{eq:Extrapolation regression function} is always positive for all positive real-valued dose values so the fit does not exhibit the expected relationship when fitting to negative data, which results in an unsatisfactory fit.
         (b) A zero-dose estimate that is unphysically high despite a good fit to 5 data points.
         This often happens when the only observations of a reflection occur relatively close to each other but far away from the zero-dose state.}
@@ -230,7 +230,7 @@ Instead they are calculated from the zero dose values that were calculated from 
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/zde/extrapolationscaling.pdf}
-    \caption{Logarithm of the mean intensities in 14 resolution shells.
+    \caption[Logarithm of the zero-dose mean intensities in 14 resolution shells.]{Logarithm of the mean intensities in 14 resolution shells.
     The mean intensities are calculated from the zero-dose extrapolated intensities that were found using the regression analysis.}
     \label{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}
 \end{figure}
@@ -259,7 +259,7 @@ If $<I(D_1)>$ represents the mean intensity of a reflection observed in a partic
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/zde/extrapolationscaling_scale_points.pdf}
-    \caption{Logarithm of the mean intensities in 14 resolution shells for the extrapolated zero-dose dataset (obtained using the regression based extrapolation described in \ref{sub:Regression extrapolation}) and theoretical mean intensity values at dose $D_1$.
+    \caption[Logarithm of the zero-dose mean intensities in 14 resolution shells with theoretical means for a later dataset.]{Logarithm of the mean intensities in 14 resolution shells for the extrapolated zero-dose dataset (obtained using the regression based extrapolation described in \ref{sub:Regression extrapolation}) and theoretical mean intensity values at dose $D_1$.
     $s(D_1)$ for each resolution shell can be estimated as the value $s_f$ such that $<I(0)> = s_f <I(D_1)>$.}
     \label{fig:mean intensity in resolution shells, various doses - Extrapolation method}
 \end{figure}
@@ -281,7 +281,7 @@ A smoothing spline was used to interpolate scale factors in the present work as 
                 \caption{}
                 \label{fig:scale factor not monotonic - Extrapolation method}
         \end{subfigure}
-        \caption{smoothing spline interpolation of estimated scale factors against dose in a single resolution shell.
+        \caption[Smoothing spline interpolation of estimated scale factors against dose in a single resolution shell.]{Smoothing spline interpolation of estimated scale factors against dose in a single resolution shell.
         The blue circles represent the calculated $s(D_{obs})$ values whereas the orange line represents the smoothing spline interpolation.
         (a) At high resolution the scale factor exhibits a monotonic decrease in scale factor suggesting an overall decrease in average intensity with dose.
         (b) At lower resolutions the scale factor dose not necessarily display a monotonic relationship with dose.}
@@ -318,8 +318,8 @@ As the residual increases, $f(r) \rightarrow$ 1.
 How fast this change occurs depends on the values of $A$ and $B$, which in turn will be crystal dependent.
 \begin{figure}
   \centering
-    \includegraphics[width=1\textwidth]{figures/zde/scale_factor_function.pdf}
-    \caption{Scale factor weighting against the residual of the observed and mean intensities.
+  \includegraphics[width=1\textwidth]{figures/zde/scale_factor_function.pdf}
+    \caption[Scale factor weighting against the residual of the observed and mean intensities.]{Scale factor weighting against the residual of the observed and mean intensities.
     The function always gives values between $s(D_{obs})$ and 1.0 and can therefore be viewed as the amount of the $s(D_{obs})$ correction that is applied.}
     \label{fig:Scale factor weighting - Extrapolation method}
 \end{figure}

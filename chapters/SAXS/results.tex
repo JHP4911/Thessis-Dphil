@@ -9,13 +9,13 @@ Figure~\ref{fig:Main radioprotectant plot - Rebecca data} shows the results of t
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/ScavengerPlot.pdf}
-    \caption{Fidelity values against dose for each radioprotectant along with their corresponding fitted logistic curves. The five-pointed stars represent the points where the fitted logistic curves reach a fidelity value of 0.71. The six-pointed stars are the maximum curvature points of the fitted curves.}
+    \caption[Fidelity values as a function of dose for each radioprotectant]{Fidelity values against dose for each radioprotectant along with their corresponding fitted logistic curves. The five-pointed stars represent the points where the fitted logistic curves reach a fidelity value of 0.71. The six-pointed stars are the maximum curvature points of the fitted curves.}
     \label{fig:Main radioprotectant plot - Rebecca data}
 \end{figure}
 
 Figure~\ref{fig:Scavenger plot - arbitrary fidelity value} shows the dose taken to reach a fidelity value of 0.71 for each scavenger. Ethylene glycol is the most effective radioprotectant at 5$\,$mM concentration, closely followed by the glycerol/sodium nitrate mixture and then glycerol alone. It is clear from these results that adding a radioprotectant allows useable data to be collected for longer because the sample is less sensitive to irradiation.
 
-Similar conclusions are obtained from Figure~\ref{fig:Scavenger plot - maximum curvature} where the dose at which maximum curvature is reached is plotted for each radioprotectant. Again ethylene glycol is shown to be the most effective radioprotectant at $5\ mM$ concentration, followed by the glycerol/sodium nitrate mixture and then glycerol alone. The only difference in the ordering of the relative efficacies of the radioprotectants between the two plots is that trehalose is more effective than ascorbate when using the maximum curvature metric, whereas the opposite is true when using the time to reach a fidelity of 0.71 metric.
+Similar conclusions are obtained from Figure~\ref{fig:Scavenger plot - maximum curvature} where the dose at which maximum curvature is reached is plotted for each radioprotectant. Again ethylene glycol is shown to be the most effective radioprotectant at 5\,mM concentration, followed by the glycerol/sodium nitrate mixture and then glycerol alone. The only difference in the ordering of the relative efficacies of the radioprotectants between the two plots is that trehalose is more effective than ascorbate when using the maximum curvature metric, whereas the opposite is true when using the time to reach a fidelity of 0.71 metric.
 This illustrates that there is sensitivity of results to the chosen metric.
 \begin{figure}
     \centering
@@ -32,7 +32,7 @@ This illustrates that there is sensitivity of results to the chosen metric.
             \caption{Expt 1: Dose at which maximum curvature is reached}
             \label{fig:Scavenger plot - maximum curvature}
     \end{subfigure}
-    \caption{}
+    \caption[Radiation damage onset threshold dose values for both metrics used to assess the fidelity values.]{}
     \label{fig:Combined Scavenger results - Rebecca data}
 \end{figure}
 
@@ -42,7 +42,7 @@ This illustrates that there is sensitivity of results to the chosen metric.
 \subsubsection{Comparing radiation damage onset metrics}
 \label{subs:Comparing radiation damage onset metrics}
 In section \ref{sub:Data analysis - experiment 2} a metric for assessing the frame at which radiation damage had become significant was presented based on the CorMap test.
-Explicitly, this metric was defined as the point at which three consecutive frames were defined as dissimilar ($m = 3$) resulting from the CorMap test with threshold $\alpha = 0.01$.
+Explicitly, this metric was defined as the point at which three consecutive frames were defined as dissimilar ($m$ = 3) resulting from the CorMap test with threshold $\alpha$ = 0.01.
 This metric will be referred to as the \textit{CMD} (CorMap Derived) metric.
 
 In addition to the \textit{CMD} metric, an automatic data analysis pipeline at beamline BM29 \cite{brennich2016online} is integrated into the beamline control system, \textit{BsxCuBE}.
@@ -55,7 +55,7 @@ It suggests that the \textit{BsxCuBE} metric employs a very different method to 
 \textcolor{red}{
     \begin{myenumerate}
         \item \hypertarget{todo:Ask Adam about BsxCuBE}{\textbf{TODO:} ask adam about the BsxCuBE metric.}
-        The paper suggest that it too uses the CorMap method with the same $\alpha = 0.01$ but the results don't match up.
+        The paper suggest that it too uses the CorMap method with the same $\alpha$ = 0.01 but the results don't match up.
     \end{myenumerate}
 }
 \begin{figure}
@@ -87,7 +87,7 @@ It suggests that the \textit{BsxCuBE} metric employs a very different method to 
             \caption{}
             \label{fig:SAXS Metric comparison - 10mM}
     \end{subfigure}
-    \caption{Dose value at which radiation damage is considered significant. Each box plot is created from the threshold dose values calculated for three different experimental runs of the same radioprotectant compound. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric}
+    \caption[Radioprotectant efficacy comparison  boxplots for each concentration in the experiment.]{Dose value at which radiation damage is considered significant. Each box plot is created from the threshold dose values calculated for three different experimental runs of the same radioprotectant compound. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric}
     \label{fig:SAXS Metric comparison}
 \end{figure}
 
@@ -114,12 +114,12 @@ Along the $y$-axis are the frames which would be considered as the merging limit
 It can be seen that the radiation threshold value obtained using the \textit{CMD} metric is highly dependent on the reference frame.
 This will greatly affect the conclusions that would be drawn from the analyses.
 From Figure~\ref{fig:First n diff frames - DTT}, if the reference frame is 1, as is the case for the main analysis, then the frame at which radiation damage is considered as significant is frame 8 (DWD = 2.24$\,$kGy).
-However, if the reference frame was frame 7, then the threshold frame would be 57 (DWD = $15.93\ kGy$).
-This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = $22.92\ kGy$).
+However, if the reference frame was frame 7, then the threshold frame would be 57 (DWD = 15.93\,kGy).
+This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = 22.92\,kGy).
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_first_n_plot.pdf}
-    \caption{Radiation damage threshold value against reference frame ($m = 3$) for the first repeat with DTT as the added radioprotectant at a concentration of $10\ mM$.}
+    \caption{Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
     \label{fig:First n diff frames - DTT}
 \end{figure}
 
@@ -135,19 +135,19 @@ It may be the case that some of these states are functionally important.
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_heatmap.pdf}
-    \caption{Heat map of all possible pairwise frame comparisons for the first GI sample run with $10\ mM$ concentration DTT added. The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared. Blue - $P_{adj}(>C) = 1$. Teal - $0.01 \le P_{adj}(>C) < 1 $. Orange - $P_{adj}(>C) < 0.01$.}
+    \caption{Heat map of all possible pairwise frame comparisons for the first GI sample run with 10\,mM concentration DTT added. The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared. Blue - $P_{adj}(>C)$ = 1. Teal - $0.01 \le P_{adj}(>C)$ < 1. Orange - $P_{adj}(>C)$ < 0.01.}
     \label{fig:heatmap - DTT}
 \end{figure}
 
 \subsubsection{Using dose value and frame number as damage thresholds}
 \label{subs:Using dose value and frame number as damage thresholds}
 Using the dose as the metric to evaluate the efficacy of the different radioprotectants means that the results are normalised for the energy absorption of the compounds. It is sensible to ask whether this normalisation changes the conclusions that would be drawn if the frame number alone was used as the threshold metric.
-Figure~\ref{fig:SAXS dose vs frame} shows the results for the $1\ mM$ and the $10\ mM$ concentrations of radioprotectants with dose value and frame number as the damage thresholds.
+Figure~\ref{fig:SAXS dose vs frame} shows the results for the 1\,mM and the 10\,mM concentrations of radioprotectants with dose value and frame number as the damage thresholds.
 For the more radiation tolerant samples (ascorbate, ethylene glycol, glycerol and even DTT) there is not much difference in using either the dose or the frame number.
 However for the less efficient radioprotectants (sucrose, TEMPO and trehalose) there is a significant difference.
 If the frame number is used (Figures \ref{fig:SAXS frame- 1mM}, \ref{fig:SAXS frame- 10mM}) the order of the relative efficacies of those radioprotectants is not too obvious.
-However if the dose value is used instead (Figures \ref{fig:SAXS dose- 1mM}, \ref{fig:SAXS dose- 10mM}) then the order becomes much clearer, particularly at $1\ mM$ concentration.
-The spread of the threshold values for those compounds is also smaller using dose instead of frame number for the $10\ mM$ concentration.
+However if the dose value is used instead (Figures \ref{fig:SAXS dose- 1mM}, \ref{fig:SAXS dose- 10mM}) then the order becomes much clearer, particularly at 1\,mM concentration.
+The spread of the threshold values for those compounds is also smaller using dose instead of frame number for the 10\,mM concentration.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -191,9 +191,9 @@ Significant concentration dependence can be observed for several radioprotectant
 In particular, ascorbate, glycerol, and sodium nitrate all exhibit a strong positive concentration dependence i.e. the higher the concentration, the better the protection ability.
 DTT exhibits the opposite behaviour.
 At low concentrations DTT has the highest ratio but this decreases at the higher concentrations.
-Sucrose, TEMPO and Trehalose show a very small positive dependence but even at the highest concentration ($10\ mM$) the RD onset ratio is less than 2.
+Sucrose, TEMPO and Trehalose show a very small positive dependence but even at the highest concentration (10\,mM) the RD onset ratio is less than 2.
 This suggests that these radioprotectants are not very efficient at increasing the dose tolerance of the sample.
-The RD onset ratio for ethylene glycol decreases as the concentration increases from $1\ mM$ to $5\ mM$, but then there is a large increase at 10$\,$mM.
+The RD onset ratio for ethylene glycol decreases as the concentration increases from 1\,mM to 5\,mM, but then there is a large increase at 10$\,$mM.
 Thus the protection ability of ethylene glycol is not a simple monotonic function of the concentration.
 \begin{figure}
     \centering

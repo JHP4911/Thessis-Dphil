@@ -124,7 +124,7 @@ Table \ref{tab:PCC} shows the results from this test.
 The Leal \emph{et al.} model seem to explain the data better.
 However the correlation coefficients determined in Holton's model are generally strong enough not to reject the possibility that this model may still sufficiently describe the data.
 \begin{table}[ht!]
-	\caption{Pearson Correlation Coefficient (PCC) values for linearly transformed data. The values are negative showing the negative correlation between intensity and dose i.e. as the dose increases, the intensity decreases.}
+	\caption[Pearson Correlation Coefficient (PCC) values for linearly transformed intensity data]{Pearson Correlation Coefficient (PCC) values for linearly transformed intensity data. The values are negative showing the negative correlation between intensity and dose i.e. as the dose increases, the intensity decreases.}
 	\centering
 	\begin{tabular}{p{3cm} | p{3cm} | p{3cm}}
 		\hline
@@ -152,7 +152,8 @@ The $J(h)$ values are given by the BEST intensity curve \cite{popov2003} (Figure
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/dwd/bestcurve.pdf}
-    \caption{Logarithm of the expected intensity values against resolution for 72 different protein crystals which were scaled together \cite{popov2003}. The proteins had different folds, molecular masses, space groups, data collection resolutions and were collected at different temperatures (both RT and cryo).}
+    \caption[\textit{BEST} intensity curve.]{Logarithm of the expected intensity values against resolution for 72 different protein crystals which were scaled together \cite{popov2003}. The proteins had different folds, molecular masses, space groups, data collection resolutions and were collected at different temperatures (both RT and cryo).
+	This curve is reproduced from data kindly provided by Dr. Gleb Bourenkov.}
     \label{fig:BEST curve}
 \end{figure}
 The values of $B_0$, $\beta$, $K$ and $\gamma$ are found by fitting the functions given by equations (\ref{eqscale}) and (\ref{eqB}) to the data values of $scale(D)$ and $B(D)$ using the Cauchy M-estimator (Figure \ref{figlealparam}).
@@ -172,7 +173,7 @@ The Cauchy M-estimator\footnote{M-estimation is a fitting technique designed to 
                 \caption{}
                 \label{figscalevalues}
         \end{subfigure}
-        \caption{(a) $B$ values plotted against average dose (whole crystal).
+        \caption[Scale and B factor values plotted against the average dose over the whole crystal.]{(a) $B$ values plotted against average dose (whole crystal).
 		Initially the B values increase linearly as reported in the literature \cite{kmetko2006, warkentin2010, leal2012}, however the linearity begins to break down as radiation damage progresses.
 		This was a major factor in the decision to fit the parameters in Tables \ref{tab:RDE params1} and \ref{tab:RDE params2} only using data where the relative intensity was above a given threshold value.
 		The threshold relative intensity value of 0.7 was chosen since other data quality indicators suggest that data beyond this point become significantly biologically compromised \cite{owen2006}.
@@ -186,7 +187,7 @@ The parameter values for the Sygusch \& Alliare model ($k'_0$, $k_1$ and $k_2$) 
 \begin{figure}
   \centering
     \includegraphics[width=0.7\textwidth]{figures/dwd/objective_function_syg.pdf}
-    \caption{Flow chart outlining the structure of the objective function used to find best fit parameters for $k'_0$, $k_1$ and $k_2$.}
+    \caption[Structure of the objective function to determine parameter values for dose decay models.]{Flow chart outlining the structure of the objective function used to find best fit parameters for $k'_0$, $k_1$ and $k_2$.}
     \label{figobjfun}
 \end{figure}
 The objective function was minimised using the Matlab \verb+lsqnonlin+ function which in turn uses the trust-region-reflective algorithm \cite{coleman1996}.
@@ -211,7 +212,7 @@ Thus more analysis is required before the model can be fully evaluated, but thes
                 \caption{}
                 \label{figcrystalstates}
         \end{subfigure}
-        \caption{(a) Relative intensity against dose (whole crystal) for the 2.73$\,$\AA\ resolution bin.
+        \caption[Crystal states as predicted by the Sygusch and Alliare model applied to insulin data.]{(a) Relative intensity against dose (whole crystal) for the 2.73$\,$\AA\ resolution bin.
 		The Sygusch \& Allaire model was fitted to these data to obtain parameter values for $k'_0$, $k_1$ and $k_2$ using a non-linear least squares procedure.
 		This resolution bin was chosen for this crystal because the data in the resolution bin gave the best PCC value after transformation via equation (\ref{eq:Holton linearly transformed DDM}).
 		(b) Crystal state proportions as a function of the average absorbed dose (whole crystal) according to the Sygusch \& Allaire model.

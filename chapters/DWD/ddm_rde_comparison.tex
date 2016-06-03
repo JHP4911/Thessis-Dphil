@@ -23,7 +23,7 @@ Simulations performed in RADDOSE-3D show that all crystals were completely immer
                 \caption{}
                 \label{fig:RADDOSE-3D dose contours uniform irradiation}
         \end{subfigure}
-        \caption{(a) The three dose metric values are predicted to be very similar throughout the experiment.
+        \caption[Dose metrics and dose state of crystal showing uniform irradiation.]{(a) The three dose metric values are predicted to be very similar throughout the experiment.
         Here the DWD values are calculated using equation \ref{eq:DWD equation - no RDE}.
         (b) The calculated dose map from an MX simulation in RADDOSE-3D of an insulin crystal ($89\,\mu m \times 74\,\mu m \times 40\,\mu m$) exposed to the beam shown in Figure \ref{fig: Hamburg beam PGM} over a $1440^{\circ}$ rotation. The dose isosurfaces are: green $= 38\, MGy$, dark blue $= 38.5\, MGy$ and red $= 39\, MGy$. The dose distribution is very homogeneous.}
         \label{fig:Uniform}
@@ -94,14 +94,14 @@ However this time the data were processed to a resolution limit of 1.4\,\AA (as 
         \caption{}
         \label{Relative Intensity Plots - 128}
     \end{subfigure}
-    \caption{(a)-(e) Relative intensity plotted against the average dose over the whole crystal for each of the insulin crystals. Grey circles represent the experimental data processed to 1.8\,\AA. Blue, red and green solid lines represent the RDE-Leal, RDE-Holton and RDE-Sygusch models respectively. The RMSDs for each model are given in the figure legend on each plot.}
+    \caption[Comparison of each dose decay model's ability to predict intensity decay for all insulin data.]{(a)-(e) Relative intensity plotted against the average dose over the whole crystal for each of the insulin crystals. Grey circles represent the experimental data processed to 1.8\,\AA. Blue, red and green solid lines represent the RDE-Leal, RDE-Holton and RDE-Sygusch models respectively. The RMSDs for each model are given in the figure legend on each plot.}
     \label{fig:Relative Intensity Plots}
 \end{figure}
 
 \begin{table}[H]
 \small
 \captionsetup{justification=centering}
-	\caption{Best fit zero dose average intensity values ($I_{ND} = I(D=0,h)$ (arb. units)) for each resolution bin. Note that $1/h_{mid} = d_{mid}$ where $d_{mid}$ is the mid-point resolution in each resolution bin}
+	\caption[Best fit zero dose average intensity values for each resolution bin for the Holton dose decay model.]{Best fit zero dose average intensity values ($I_{ND} = I(D=0,h)$ (arb. units)) for each resolution bin. Note that $1/h_{mid} = d_{mid}$ where $d_{mid}$ is the mid-point resolution in each resolution bin}
 	\centering
 	\begin{tabular}{p{2cm} p{2cm} p{2cm} p{2cm} p{2cm} p{2cm}}
 	\cline{2-6}
@@ -141,7 +141,7 @@ However this time the data were processed to a resolution limit of 1.4\,\AA (as 
 \begin{table}[H]
 \small
 \captionsetup{justification=centering}
-	\caption{Parameter values for the dose decay models (insulin crystal 0259).
+	\caption[Parameter values for the dose decay models.]{Parameter values for the dose decay models.
 	Note: $K$ does not explicitly appear in equation (\ref{eqrdeleal}) and hence is not required for the analysis.
 	The large $k_1$ parameter value for crystal 172 seems highly unphysical when compared to the other values.
 	This large value implies that any site specific damaged crystal proportion in the crystal immediately becomes disordered, which suggests that the site specific state is present in negligible quantities for this crystal.
@@ -166,6 +166,6 @@ However this time the data were processed to a resolution limit of 1.4\,\AA (as 
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/dwd/relintall_14A.pdf}
-    \caption{Relative intensity plotted against the average dose over the whole crystal for all of the insulin crystals. Discrete data points represent the experimental data for each crystal processed to 1.4\,\AA. The black solid line is the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaging the parameter values for each crystal.}
+    \caption[Leal \textit{et al.} RDE model fitted to all insulin relative intensity data.]{Relative intensity plotted against the average dose over the whole crystal for all of the insulin crystals. Discrete data points represent the experimental data for each crystal processed to 1.4\,\AA. The black solid line is the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaging the parameter values for each crystal.}
     \label{fig:Relative Intensity - All crystals 1.4 Angstroms}
 \end{figure}

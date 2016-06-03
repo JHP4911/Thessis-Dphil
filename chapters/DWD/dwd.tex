@@ -28,7 +28,7 @@ The difference between them is that equation \ref{eq:Decreasing eta form} decrea
                 \caption{}
                 \label{fig:Increasing Eta}
         \end{subfigure}
-        \caption{Two different forms of $\eta$ used in equation \ref{eq:DWD equation with RDE}. (a) $\eta = \text{RDE}$. (b) $\eta = 1-\text{RDE}$.}
+        \caption[Increasing and decreasing $\eta$ functions]{Two different forms of $\eta$ used in equation \ref{eq:DWD equation with RDE}. (a) $\eta = \text{RDE}$. (b) $\eta = 1-\text{RDE}$.}
         \label{fig:Different Eta forms}
 \end{figure}
 
@@ -41,7 +41,7 @@ The three beams used in the study: big, medium and small, can be seen in Figure~
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/dwd/Oli_beams.png}
-    \caption{False color images of the beam profiles used for the experiments in \cite{zeldin2013dwd}.
+    \caption[Beam profiles used in the varying dose contrast regime experiment in \cite{zeldin2013dwd}.]{False color images of the beam profiles used for the experiments in \cite{zeldin2013dwd}.
     The pixel size is $\text{5} \times \text{5}\,\mu m^2$ in all cases.
     (a) big beam, (b) medium beam and (c) Small beam.}
     \label{fig:Big, medium and small beams - Oli experiment}
@@ -80,7 +80,7 @@ However this is an undesirable feature because DWD should already account for th
         \caption{}
         \label{fig:Relative intensity - Decreasing Eta}
     \end{subfigure}
-	\caption{Relative intensity decay against the DWD using the different forms of $\eta$ given by equations \ref{eq:Simple eta form}, \ref{eq:Decreasing eta form} and \ref{eq:Increasing eta form}.
+	\caption[Relative intensity plots comparing DWD with different $\eta$ forms.]{Relative intensity decay against the DWD using the different forms of $\eta$ given by equations \ref{eq:Simple eta form}, \ref{eq:Decreasing eta form} and \ref{eq:Increasing eta form}.
     (a) Simple $\eta$.
     (b) Decreasing $\eta$.
     (c) Increasing $\eta$.}
@@ -94,7 +94,7 @@ This suggests that the data are less spread overall without adding a dose depend
 \begin{table}[ht!]
 \small
 \captionsetup{justification=centering}
-	\caption{Squared Euclidean norm values of the line of best fit with the data in Figure~\ref{fig:Relative intensity - DWD eta forms}.}
+	\caption[Squared Euclidean norm values representing the scatter of the relative intensity data from the line of best fit.]{Squared Euclidean norm values of the line of best fit with the data in Figure~\ref{fig:Relative intensity - DWD eta forms}.}
 	\centering
 	\begin{tabular}{p{5cm} p{4.5cm}}
 		$\eta$ form			                & Squared Euclidean norm    \\
@@ -113,7 +113,9 @@ Furthermore $s_{AD}$ values (as defined in section \ref{subs:Relative B factor})
 \begin{table}[ht!]
 \small
 \captionsetup{justification=centering}
-	\caption{Parameter values for Leal \emph{et al.} model determined by the method described in section \ref{sub:Obtaining Model Parameter Values} with data scaled to different resolution limits.}
+	\caption[Comparison of $D_{1/2}$ and $s_{AD}$ values using DWD with different $\eta$ forms]{$D_{1/2}$ and $s_{AD}$ values calculated using DWD with different $\eta$ forms.
+    The DWD with the simple $\eta$ form results in the most similar $D_{1/2}$ values, whereas using the increasing or decreasing $\eta$ forms gives significantly different $D_{1/2}$ values.
+    The differences in the ranges of $s_{AD}$ are relatively large and are not significantly altered by including the various $\eta$ forms.}
 	\centering
 	\begin{tabular}{p{2cm}*{6}{c}r}
 		& \multicolumn{3}{c}{$D_{1/2}$ (MGy)} & \multicolumn{3}{c}{$s_{AD}$ (\AA$^2$/MGy)} \\
@@ -202,7 +204,7 @@ However the increasing $\eta$ form suggests the opposite i.e. for a rotation ran
         \caption{}
         \label{fig:Offset simulations 60 - Increasing Eta}
     \end{subfigure}
-    \caption{Results from the offset simulations showing the diffracted dose efficiency (DDE) plotted against the total rotation range for two different sized cubic crystals: 400$\,\mu m$ and 60$\,\mu m$ edge lengths.
+    \caption[Offset simulations comparing the diffracted dose efficiency against DWD with the different $\eta$ forms.]{Results from the offset simulations showing the diffracted dose efficiency (DDE) plotted against the total rotation range for two different sized cubic crystals: 400$\,\mu m$ and 60$\,\mu m$ edge lengths.
     The DDE values are calculated from the DWD using the different forms of $\eta$ given by equations \ref{eq:Simple eta form}, \ref{eq:Decreasing eta form} and \ref{eq:Increasing eta form}}
     \label{fig:Offset simulations}
 \end{figure}
@@ -214,7 +216,7 @@ In the experiment a cuboid crystal of bovine pancreatic insulin (460 $\times$ 55
 \begin{figure}
   \centering
     \includegraphics[width=0.75\textwidth]{figures/dwd/Oli_offset_exp_beam.png}
-    \caption{False color images of the beam profile used in the offset experiment \cite{zeldin2013dwd}. The colorbar represents 0-255 intensity units.}
+    \caption[Beam profile used in the offset experiment described in \cite{zeldin2013dwd}.]{False color images of the beam profile used in the offset experiment \cite{zeldin2013dwd}. The colorbar represents 0-255 intensity units.}
     \label{fig:Offset experiment - Beam}
 \end{figure}
 The first position corresponds to the rotation axis aligned with the beam axis (standard strategy).
@@ -225,14 +227,14 @@ The final dose state of the crystal as calculated in RADDOSE-3D is shown in Figu
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{figures/dwd/OffsetExperimentDoseState.pdf}
-    \caption{Dose isosurface map for the crystal used in the offset experiment. Isosurfaces are at 0.1 MGy (light blue), 5 MGy (dark blue) and 10 MGy (red). Note that the dose at any point in the crystal for the offset experiment is lower than the maximum dose for the standard strategy.}
+    \caption[Dose isosurface map for the crystal used in the offset experiment described in \cite{zeldin2013dwd}.]{Dose isosurface map for the crystal used in the offset experiment. Isosurfaces are at 0.1 MGy (light blue), 5 MGy (dark blue) and 10 MGy (red). Note that the dose at any point in the crystal for the offset experiment is lower than the maximum dose for the standard strategy.}
     \label{fig:Offset experiment - Dose state}
 \end{figure}
 The results from the data processing of this experiment with the different forms of DWD can be seen in Table~\ref{tab:Offset Experiment Results}.
 \begin{table}[ht!]
 \small
 \captionsetup{justification=centering}
-	\caption{The rows are presented in chronological order of the experiment. Syntax of the first column is: P1: 1st probe dataset, P2: 2nd probe dataset, HD: high dose dataset, -S: standard strategy, -O: offset strategy.}
+	\caption[Offset experiment design.]{The rows are presented in chronological order of the experiment. Syntax of the first column is: P1: 1st probe dataset, P2: 2nd probe dataset, HD: high dose dataset, -S: standard strategy, -O: offset strategy.}
 	\centering
 	\begin{tabular}{p{1.2cm} p{1.5cm} p{2cm} p{1.6cm} p{1.6cm} p{1.6cm}}
 		Wedge   &Total time\footnotemark (s) &Elastic yield (ph)  &DWD simple $\eta$ (MGy)    & DWD decreasing $\eta$ (MGy)  &DWD increasing $\eta$ (MGy) \\

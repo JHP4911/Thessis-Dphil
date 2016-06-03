@@ -38,7 +38,7 @@ Examples of data from the measurements are shown in Figure \ref{fig:Original ape
                 \caption{}
                 \label{fig:Original aperture measurments in y-direction - DLS}
         \end{subfigure}
-        \caption{Examples of the flux measurement data collected at the Diamond Light Source synchrotron.
+        \caption[Flux measurements collected using 1D aperture scans at the Diamond Light Source synchrotron.]{Examples of the flux measurement data collected at the Diamond Light Source synchrotron.
         The horizontal axis represents the aperture position in millimetres and the vertical axis represents the current in the diode ($\mu A$).
         (a) Data collected in the $x$-direction.
         (b) Data collected in the $y$-direction.}
@@ -56,7 +56,7 @@ Only this current profile is necessary for the beam profile measurement because 
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/beam/aperture_scan_drawing.pdf}
-    \caption{A model of the X-ray beam and aperture setup as viewed from the detector looking into the beam.
+    \caption[A schematic of the X-ray beam and aperture setup.]{A schematic of the X-ray beam and aperture setup as viewed from the detector looking into the beam.
     Each point represents a spatial position where a beam measurement is taken, hence the distance between any two horizontally or vertically consecutive spots is 2$\,\mu m$.
     The circle represents the circular aperture which has a 10$\,\mu m$ diameter.
     The colour represents the beam flux intensity (not to scale).
@@ -122,7 +122,7 @@ First the initial diode measurements were read into Matlab and a one-dimensional
                 \caption{}
                 \label{figfity}
         \end{subfigure}
-        \caption{The original miniap readings from translating the 10$\,\mu m$ diameter aperture are shown as blue circles and the solid orange line is the Gaussian fit to the data.
+        \caption[Aperture scan measurements and the Gaussian fits to the data.]{The original miniap readings from translating the 10$\,\mu m$ diameter aperture are shown as blue circles and the solid orange line is the Gaussian fit to the data.
         (a) beam profile in the $x$-direction.
         (b) beam profile in the $y$-direction.
         Data collected on I02, DLS.}
@@ -171,7 +171,7 @@ Given the convolved two-dimensional beam profile, the aperture matrix and $\f{\m
                 \caption{}
                 \label{fig:Deconvolved 2D beam profile - DLS}
         \end{subfigure}
-        \caption{2D X-ray beam profiles.
+        \caption[2D X-ray beam profile reconstructions.]{2D X-ray beam profiles.
         (a) Gaussian approximation of the measured current profile given by equation \ref{eq:2D Gaussian Function - DLS}
         (b) Beam profile after Wiener deconvolution.}
         \label{fig:2D relative X-ray beam profiles, convolved and deconvolved}
@@ -183,7 +183,7 @@ This is carried out by taking 1D slices of the 2D beam profile in both the $x$ a
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/beam/gaussian_fitted_deconvolved_2d_beam.pdf}
-    \caption{Gaussian model fitted to the deconvolved relative X-ray beam profile (Figure~\ref{fig:Deconvolved 2D beam profile - DLS}).}
+    \caption[Gaussian model fitted to the deconvolved X-ray beam profile.]{Gaussian model fitted to the deconvolved X-ray beam profile (Figure~\ref{fig:Deconvolved 2D beam profile - DLS}).}
     \label{fig:Gaussian model fitted to the 2D deconvolved profile - DLS}
 \end{figure}
 
@@ -206,7 +206,7 @@ FWHM values were then calculated from the 1D Gaussians using equation \ref{eq:FW
 \label{sub:Results - DLS}
 FWHM values obtained from the experimentally measured (convolved) i\_pin readings using the 20$\,\mu m$ diameter aperture (referred to as Exp$_{\text{20}}$) were compared with calculated FWHM values derived from the numerical convolving of the deconvolved profile with the 20$\,\mu m$ aperture (referred to as Conv$_{\text{20}}$ - Table~\ref{tab:FWHM comparison - DLS}).
 \begin{table}[h!]
-	\caption{Table comparing calculated FWHM values with experimentally observed FWHM values.
+	\caption[Comparison of calculated FWHM values with experimentally observed FWHM values.]{Comparison of calculated FWHM values with experimentally observed FWHM values.
     The calculated FWHM values using the 10$\,\mu m$ aperture (in italics) are calculated from the deconvolved profile.
     Thus they were not expected to match the experimental values.}
 	\begin{tabular}{p{2.5cm} p{2.5cm} p{2cm} p{1.5cm} p{2cm} p{1.5cm}}

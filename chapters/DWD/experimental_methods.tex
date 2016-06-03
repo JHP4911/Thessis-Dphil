@@ -46,7 +46,7 @@ They were cryoprotected in their native well solution with 25\%$\, v/v$ glycerol
                 \caption{MINA}
                 \label{fig: Cubic MINA crystals}
         \end{subfigure}
-				\caption{Crystals used in the experiment.}
+				\caption[Crystals used in the experiment at PETRA III, Hamburg]{Crystals used in the experiment.}
         \label{figcrystals}
 \end{figure}
 
@@ -92,7 +92,7 @@ Functionality to handle the experimentally measured beam profile was added to RA
         \caption{}
         \label{fig:Hamburg beamslice horizontal}
     \end{subfigure}
-    \caption{(a) Image of the experimentally determined beam profile.
+    \caption[Beam profile at beamline P14, PETRA III, Hamburg.]{(a) Image of the experimentally determined beam profile.
     (b) Vertical slice through the beam image showing the flat profile of the beam.
     (c) Horizontal slice through the beam image showing the flat profile of the beam.}
     \label{fig: Hamburg beam pgm and slice}
@@ -101,12 +101,12 @@ Functionality to handle the experimentally measured beam profile was added to RA
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/dwd/initial_indexing.pdf}
-    \caption{Flow diagram of the crystal reorientation process prior to data collection.}
+    \caption[Flow diagram of the crystal reorientation process prior to data collection at PETRA III.]{Flow diagram of the crystal reorientation process prior to data collection.}
     \label{fig: indexing flow diagram}
 \end{figure}
 
 \begin{table}[ht!]
-	\caption{Data collection strategy for each protein crystal type}
+	\caption[Data collection strategy for each protein crystal type at PETRA III.]{Data collection strategy for each protein crystal type}
 	\centering
 	\begin{tabular}{p{1.6cm} p{1.4cm} p{2.0cm} p{1.3cm} p{1.5cm} p{2.0cm} p{2.0cm}}
 		\hline
@@ -138,7 +138,7 @@ Data processing statistics for those five insulin crystals are shown in Table~\r
 \begin{table}[ht!]
 \centering
 \captionsetup{justification=centering}
-	\caption{Overall data processing statistics for the first data set collected from each of the processed insulin crystals.
+	\caption[Data processing statistics for the first data set collected from each of the processed insulin crystals.]{Overall data processing statistics for the first data set collected from each of the processed insulin crystals.
 	\\[1pt]
 	Values in parentheses are for the outer shell (1.83-1.79\AA). Unit cell and mosaicity are average values for all 14400 images}
 	\centering
@@ -183,13 +183,15 @@ Therefore, the method chosen to calculate the relative intensities was to take t
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/dwd/aimlesslog.png}
-    \caption{A table given in the log file of an AIMLESS job from an insulin crystal. The table gives data for 24 resolution bins including the number of measured reflections in each resolution bin, Nmeas (highlighted orange), and the Average Intensity in each resolution bin, AvI (highlighted blue). The value highlighted in red is the overall average intensity for a dataset calculated using reflections that are measurable in that data set.}
+    \caption[Resolution analysis table from the log file of an AIMLESS job.]{A table given in the log file of an AIMLESS job from an insulin crystal.
+    The table gives data for 24 resolution bins including the number of measured reflections in each resolution bin, Nmeas (highlighted orange), and the Average Intensity in each resolution bin, AvI (highlighted blue).
+    The value highlighted in red is the overall average intensity for a dataset calculated using reflections that are measurable in that data set.}
     \label{fig: AIMLESS log file}
 \end{figure}
 
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/dwd/calcrelint.pdf}
-    \caption{Relative intensity plotted against the average absorbed dose for one insulin crystal. The data show that using the overall mean intensity given in the AIMLESS log file increases the relative intensity values because it excludes reflections that cannot be measured. On the other hand, calculating the overall mean intensity using all of the measured reflections from the first data set, agrees with the relative intensity calculated by taking the ratio of the total summed intensity of the current data set divided by that of the first data set.}
+    \caption[Relative intensity plotted against the average absorbed dose for one insulin crystal.]{Relative intensity plotted against the average absorbed dose for one insulin crystal. The data show that using the overall mean intensity given in the AIMLESS log file increases the relative intensity values because it excludes reflections that cannot be measured. On the other hand, calculating the overall mean intensity using all of the measured reflections from the first data set, agrees with the relative intensity calculated by taking the ratio of the total summed intensity of the current data set divided by that of the first data set.}
     \label{figrelint}
 \end{figure}

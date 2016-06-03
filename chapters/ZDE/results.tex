@@ -7,7 +7,7 @@ The first 5000 reflections from five 90$^{\circ}$ degree datasets were used to p
 The average DWD and scaled relative intensity values for each dataset are given in Table \ref{tab:Average DWD and Relative Intensity}.
 The doses here represent the average doses in the dose shells used in the probabilistic extrapolation.
 \begin{table}[ht!]
-	\caption{Average DWD and scaled relative intensity values. The scaling value, $k$, was 1.0888}
+	\caption[Average DWD and scaled relative intensity values.]{Average DWD and scaled relative intensity values. The scaling value, $k$, was 1.0888}
 	\centering
 	\begin{tabular}{p{3.2cm} | p{3.75cm} | p{3.3cm}}
 		Dataset Number    & Average DWD (MGy)     & Relative Intensity \\
@@ -36,7 +36,7 @@ The rejection list was as follows:
 The assessment criteria for the regression fits are shown in Table~\ref{tab:R_fit and R_zero values}.
 Both $R_{fit} < R^{thresh}_{fit}$ and $R_{zero} < R^{thresh}_{zero}$, suggesting that the regression fits and zero-dose extrapolated intensity values are sensible.
 \begin{table}[ht!]
-	\caption{Regression fit quality indicators}
+	\caption[Regression fit quality indicators.]{Regression fit quality indicators.}
 	\centering
 	\begin{tabular}{p{1.5cm} | p{1.5cm} | p{1.5cm} | p{1.5cm}}
 		$R_{fit}$     & $R^{thresh}_{fit}$    & $R_{zero}$   & $R^{thresh}_{zero}$  \\
@@ -63,7 +63,7 @@ Despite the general decrease in the average reflection intensities throughout th
                 \caption{}
                 \label{fig:Non-monotonic extrapolation}
         \end{subfigure}
-        \caption{Regression fits that satisfied the regression criteria outlined in section \ref{sub:Regression extrapolation} for two centric reflections.
+        \caption[Regression fits that satisfied the regression criteria.]{Regression fits that satisfied the regression criteria outlined in section \ref{sub:Regression extrapolation} for two centric reflections.
 		(a) The intensity of this reflection decreases linearly and monotonically.
 		(b) The intensity increases before it starts to decrease.
 		These are examples of the variety and non-linearity in the behaviour of individual reflection intensities.}
@@ -92,7 +92,7 @@ As a result, the scaling factor $f(r)$ dominates the resulting zero-dose extrapo
                 \caption{}
                 \label{fig:Strong positive reflection intensity - Extrapolation method}
         \end{subfigure}
-        \caption{Prior, likelihood and (unnormalised) posterior distributions for two centric reflections.
+        \caption[Prior, likelihood and (unnormalised) posterior distributions for two centric reflections.]{Prior, likelihood and (unnormalised) posterior distributions for two centric reflections.
 		(a) Reflection 0,11,49. The observed intensity is negative, $I_{obs} =$ -1.4, with a relatively large standard deviation ($\sigma_{obs} =$ 42.9) in comparison.
 		The posterior distribution resembles the prior distribution which is a consequence of the fact that the reflection intensity is weak.
 		The resulting zero-dose value calculated as the expected value from the posterior distribution is 19.35.
@@ -132,7 +132,7 @@ A more sophisticated outlier rejection method using Wilson statistics could be i
 		\caption{}
 		\label{fig:After extrapolation all observations - Extrapolation method}
 	\end{subfigure}
-	\caption{Reflection intensities of 5000 reflections before and after zero-dose extrapolation.
+	\caption[Reflection intensities of 5000 reflections before and after zero-dose extrapolation.]{Reflection intensities of 5000 reflections before and after zero-dose extrapolation.
 	The points on the red and blue solid lines represent the mean intensity of the resolution shells before and after the extrapolation respectively.
 	As expected, there is a general increase in the reflection intensities after extrapolation.}
 	\label{fig:Before and after extrapolation results - Extrapolation method}

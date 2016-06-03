@@ -19,7 +19,7 @@ The model described here is known as a hidden Markov model.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/HiddenMarkovModelDiagram.pdf}
-    \caption{Hidden Markov model of the diffraction experiment.
+    \caption[Hidden Markov model representation of the diffraction experiment.]{Hidden Markov model representation of the diffraction experiment.
     At time t = i - 1 the crystal is in an undamaged state and the constituent atoms have fairly well defined positions.
     After an X-ray exposure the crystal changes state at time t = i.
     Some of the constituent atoms change positions and their atomic B factors increase, which is represented by a slight blurring of the atoms.
@@ -221,7 +221,7 @@ The log likelihood is computationally more convenient to deal with (and often an
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.8\textwidth]{figures/datared/StateTransformation.png}
-    \caption{Propagation of states $\mathbf{x}$ through a non linear function $\mathbf{f}$ for different transformation techniques.
+    \caption[Propagation of states through a non linear function for different transformation techniques.]{Propagation of states $\mathbf{x}$ through a non linear function $\mathbf{f}$ for different transformation techniques.
     The left plot shows the true mean and covariance propagation which uses Monte-Carlo sampling.
     The middle shows the linearisation performed by the extended Kalman filter (EKF), another non-linear Kalman filter.
     The right plot shows the propagation performed with the unscented transform (UT) used by the UKF.

@@ -55,7 +55,7 @@ The results of the forward-backward algorithm for cycles 1, 2 and 10 are shown i
         \caption{Cycle 10: backward pass.}
         \label{fig:URTSS simulation results - cycle 10 - good}
     \end{subfigure}
-    \caption{Forward-backward algorithm results for a simulated reflection observed on image 27 and 76 (solid gold lines) of a dataset consisting of 100 images.
+    \caption[Forward-backward algorithm results for simulated data for a strong reflection.]{Forward-backward algorithm results for a simulated reflection observed on image 27 and 76 (solid gold lines) of a dataset consisting of 100 images.
     As the number of cycles increases, the forward-backward estimate (blue solid line) approaches the true value (pink solid line) and the 95\% confidence interval decreases (light blue shaded region).}
     \label{fig:forward-backward algorithm simulation results - good}
 \end{figure}
@@ -75,7 +75,7 @@ The log likelihoods for the 10 cycles, calculated using the natural logarithm of
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/loglik.pdf}
-    \caption{Log likelihood values calculated for each smoothing pass.
+    \caption[Log likelihood values calculated at the end of each smoothing pass for a strong reflection.]{Log likelihood values calculated for each smoothing pass.
     As the cycle number increase the log likelihood starts to plateau meaning that the forward-backward solution is converging on a final solution.}
     \label{fig:Simulation Log likelihood - good}
 \end{figure}
@@ -123,7 +123,7 @@ The results of the forward-backward algorithm for cycles 1 and 8 are shown
         \caption{Cycle 8: backward pass.}
         \label{fig:URTSS simulation results - cycle 8 - bad}
     \end{subfigure}
-    \caption{Forward-backward algorithm results for a simulated weak reflection observed on image 41 and 99 (solid gold lines) of a dataset consisting of 100 images.
+    \caption[Forward-backward algorithm results for simulated data for a weak reflection.]{Forward-backward algorithm results for a simulated weak reflection observed on image 41 and 99 (solid gold lines) of a dataset consisting of 100 images.
     The forward-backward pass for cycle looks like it may lead to a good estimation of the true value.
     However, by cycle 8 the estimates have converged to zero and the 95\% confidence interval has not improved.}
     \label{fig:forward-backward algorithm simulation results - bad}
@@ -136,7 +136,7 @@ The log likelihood confirms that the estimates are getting worse as the values d
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/loglik_bad.pdf}
-    \caption{Log likelihood values calculated for each smoothing pass.
+    \caption[Log likelihood values calculated at the end of each smoothing pass for a strong reflection.]{Log likelihood values calculated for each smoothing pass.
     Visually the forward-backward passes seemed to give worse estimates as the number of cycles increased (Figure~\ref{fig:forward-backward algorithm simulation results - bad}).
     The log likelihood values confirm this as evidenced by the decrease in the values.}
     \label{fig:Simulation Log likelihood - bad}
@@ -166,4 +166,4 @@ As discussed in section \ref{sub:Probabilistic extrapolation}, the denominator o
 \end{equation}
 This procedure ensures that the initial amplitude value for the next forwards pass is positive.
 If the final value for the amplitude at the end of a forwards pass is negative then that value is set to zero for the smoother.
-Systematic testing is required to determine whether this is a robust solution to the problem 
+Systematic testing is required to determine whether this is a robust solution to the problem

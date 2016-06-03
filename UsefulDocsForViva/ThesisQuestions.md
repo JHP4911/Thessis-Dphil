@@ -73,6 +73,12 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 > What is the Lorentz-Polarisation correction factor
 
+### Beam Chapter
+
+> How does a diode work?
+
+> How does a scintillator work?
+
 ### SAXS Chapter
 
 > With regard to SAXS radioprotectants, what are DTT and TCEP

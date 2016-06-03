@@ -52,7 +52,7 @@ where $b$ is a parameter whose value is to be determined (Figure \ref{figmodelps
                 \caption{}
                 \label{figmodelpsf}
         \end{subfigure}
-        \caption{(a) PSF recovered from performing a blind deconvolution. (b) Laplacian function of the form given in equation (\ref{eqlap}) with a 7 $\times$ 7 grid and $b =$ 10.}
+        \caption[Modelling of the point spread function.]{(a) PSF recovered from performing a blind deconvolution. (b) Laplacian function of the form given in equation (\ref{eqlap}) with a 7 $\times$ 7 grid and $b =$ 10.}
         \label{figpsfs}
 \end{figure}
 \item The pgm file was then segmented using the MATLAB \verb+activecontour+ function, which uses the Chan and Vese region based energy model \cite{chan2001}, to find the spatial area of the beam.
@@ -74,7 +74,7 @@ These dimensions were stored.
                 \caption{}
                 \label{figbounds}
         \end{subfigure}
-        \caption{(a) Segmented image of the beam with its centroid marked as a red circle in the middle.
+        \caption[Beam image segmentation and beam boundaries.]{(a) Segmented image of the beam with its centroid marked as a red circle in the middle.
         (b) Beam image with the centroid and two bounding boxes overlaid.
         The inner box is an estimate of the beam size with dimensions 145$\, \mu m \times$ 140$\, \mu m$.
         These dimensions were chosen according to the coverage of the beam area in the image as opposed to the size of the aperture from the slit separation (slits were set at 140$\,\mu m \times$ 140$\,\mu m$).
@@ -135,7 +135,7 @@ These boundaries are shown in Figure \ref{figbackgrounds}.
                 \caption{}
                 \label{figbackgrounds225}
         \end{subfigure}
-        \caption{Background pixel values for the beam image (beam image dimensions are 457.0$\, \mu m \times$ 244.9$\, \mu m$ for all images).
+        \caption[Background pixels of the X-ray beam image.]{Background pixel values for the beam image (beam image dimensions are 457.0$\, \mu m \times$ 244.9$\, \mu m$ for all images).
         The pixel values in the central box for all images are set to zero and the mean and maximum values of the non-zero pixel values are taken for each of the backgrounds.
         (a) Bkgd$_{\text{30}}$: Rounded mean pixel value = 5, maximum pixel value = 10.
         (b) Bkgd$_{\text{20}}$: Rounded mean pixel value = 5, maximum pixel value = 13.
@@ -227,7 +227,7 @@ The threshold value for subtraction was determined by taking a mean average of t
                 \caption{}
                 \label{figallbeams9}
         \end{subfigure}
-        \caption{Processed beam profiles used for simulations in RADDOSE-3D.
+        \caption[Processed beam profiles used for simulations in RADDOSE-3D.]{Processed beam profiles used for simulations in RADDOSE-3D.
         Each figure is a plot with all vertical slices across the corresponding pgm images overlaid on a graph.
         They are essentially the same as Figure \ref{fig:Hamburg beamslice} except in these images all vertical slices are shown, as opposed to just the central slice.}
         \label{figallbeamscont}
@@ -264,7 +264,7 @@ This result demonstrates that even if the area that is considered background is 
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/beam/d_half_plot.pdf}
-    \caption{$D_{1/2}$ values plotted against the percentage of zero pixel values in the processed pgm beam images.
+    \caption[$D_{1/2}$ values plotted against the percentage of zero pixel values in the processed pgm beam images.]{$D_{1/2}$ values plotted against the percentage of zero pixel values in the processed pgm beam images.
     Blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 (denoted `RDV2' in figure legend) and red markers represent simulations where the absorption coefficients were calculated for an ``average protein'' (denoted `default' in figure legend).
     The subscript `NB' denotes beam profiles where the ``background'' was removed.
     The figure shows a trend that the higher the proportion of zero pixel values, the higher the $D_{1/2}$ value.

@@ -26,7 +26,7 @@ Output files giving information about the crystal state are updated after the cr
 \begin{figure}
     \centering
     \includegraphics[width=0.6\textwidth]{figures/saxs/raddose_flow.png}
-    \caption{Flow chart illustrating the structure of the RADDOSE-3D code.
+    \caption[Flow diagram illustrating the structure of the RADDOSE-3D code.]{Flow chart illustrating the structure of the RADDOSE-3D code.
     Reproduced from \cite{zeldin2013}.}
     \label{fig:RADDOSE-3D Flow diagram}
 \end{figure}
@@ -50,7 +50,7 @@ Therefore a module was written that accepts a diameter and height as input and c
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/saxs/cylinder_implementation.pdf}
-    \caption{Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$ and height $h$. (A) evenly spaced points around a circle are generated given the radius $r = d/2$ of the circular cross-section. RADDOSE-3D defaults to 32 points. (B) In three dimensions the points represent the circles at each end of the cylinder at a distance of $h/2$ from the origin located at the centre of the cylinder. The connectivity of these vertices is hard-coded into the RADDOSE-3D source code.}
+    \caption[Implementation of the cylindrical sample geometry in RADDOSE-3D.]{Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$ and height $h$. (A) evenly spaced points around a circle are generated given the radius $r = d/2$ of the circular cross-section. RADDOSE-3D defaults to 32 points. (B) In three dimensions the points represent the circles at each end of the cylinder at a distance of $h/2$ from the origin located at the centre of the cylinder. The connectivity of these vertices is hard-coded into the RADDOSE-3D source code.}
     \label{fig:Cylindrical implementation}
 \end{figure}
 
@@ -128,7 +128,7 @@ A section of the webpage for the mass attenuation coefficient table of carbon is
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/saxs/nist_table_carbon.png}
-    \caption{Section of the X-ray mass attenuation coefficient data for carbon from NIST \cite{nisttable3}. The mass attenuation coefficient data are tabulated beneath the graph. The exact energy of the X-ray photons used in crystallography and SAXS (typically around $12\ keV$) is not explicitly tabulated therefore the mass attenuation coefficient is obtained by linear interpolation.}
+    \caption[X-ray mass attenuation coefficient data for carbon from NIST.]{Section of the X-ray mass attenuation coefficient data for carbon from NIST \cite{nisttable3}. The mass attenuation coefficient data are tabulated beneath the graph. The exact energy of the X-ray photons used in crystallography and SAXS (typically around $12\ keV$) is not explicitly tabulated therefore the mass attenuation coefficient is obtained by linear interpolation.}
     \label{fig:NIST table for carbon}
 \end{figure}
 The tabulated energy values do not explicitly include the typycial energies used in crystallograpy and SAXS (around $12\ keV$), so the mass attenuation coefficient is linearly interpolated between the closest values.
@@ -148,7 +148,7 @@ All of the changes have been made in the ``crystal'' definition which has been r
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/saxs/Sample_definitions.pdf}
-    \caption{RADDOSE-3D flowchart from Figure~\ref{fig:RADDOSE-3D Flow diagram} with the updated sample implementation, which extends the previous ``crystal'' implementation.
+    \caption[Updated flow diagram illustrating the structure of the RADDOSE-3D code with the SAXS extensions.]{RADDOSE-3D flowchart from Figure~\ref{fig:RADDOSE-3D Flow diagram} with the updated sample implementation, which extends the previous ``crystal'' implementation.
     The text coloured red show the SAXS extensions covered in this section.}
     \label{fig:Updated RADDOSE-3D Flow diagram}
 \end{figure}
@@ -161,7 +161,7 @@ Finally the SAXS sample is exposed to the attenuated X-ray beam according to the
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/saxs/SAXS_flowchart.pdf}
-    \caption{Flow diagram showing how the extensions described in this section are combined to enable dose calculation.
+    \caption[Flow diagram summarising the SAXS extensions to RADDOSE-3D.]{Flow diagram showing how the extensions described in this section are combined to enable dose calculation.
     A: the cylindrical geometry of the SAXS sample is defined (section \ref{sub:Cylindrical sample geometry}).
     B: the atomic composition is determined (section \ref{sub:Determining the sample composition}).
     C: Determine the attenuation of the beam due to the sample container (section \ref{sub:Attenuation of X-ray flux due to capillary}).
@@ -192,7 +192,7 @@ Extrapolation of the plot from \cite{hopkins2016quantifying} (reproduced in Figu
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figures/saxs/diffusive_turnover_effect.png}
-    \caption{Reduction in the dose absorbed by the sample due to diffusive exchange of lysozyme against time for three beam sizes.
+    \caption[Effect of diffusive turnover on the dose in SAXS.]{Reduction in the dose absorbed by the sample due to diffusive exchange of lysozyme against time for three beam sizes.
     Extrapolation of these curves for a beam size of 600 $\times$ 600$\,\mu m^{\text{2}}$ along with 120 second exposure times suggests that the dose reduction due to diffusive turnover is negligible for our experiment.
     Figure reproduced from \cite{hopkins2016quantifying}.}
     \label{fig:Diffusive turnover effect}
@@ -204,7 +204,7 @@ Figure~\ref{fig:SAXS cylinder rotated} is the final dose state of a glucose isom
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figures/saxs/SAXScylinder.pdf}
-    \caption{Final dose state of a glucose isomerase sample in an experiment where the sample was rotated $180^{\circ}$ in a $ 700 \mu m \times 700 \mu m $ top-hat profile beam with a beam flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident energy of $ 12.1 keV $ for a total exposure time of 200 seconds.
+    \caption[RADDOSE-3D dose contour plot of a cylindrical SAXS sample.]{Final dose state of a glucose isomerase sample in an experiment where the sample was rotated $180^{\circ}$ in a $ 700 \mu m \times 700 \mu m $ top-hat profile beam with a beam flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident energy of $ 12.1 keV $ for a total exposure time of 200 seconds.
     The capillary was treated as completely transparent to the X-rays so there was no attenuation.
     The dose state is only calculated and shown for the sample, not the capillary.
     The contours correspond to dose iso-surfaces: light blue = $ 0.1\ MGy $, dark blue = $ 1.5\ MGy $ and red = $ 2\ MGy $ }

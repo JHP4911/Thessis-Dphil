@@ -76,7 +76,7 @@ Despite the small percentage change, this effect was still accounted for in the 
             \caption{}
             \label{fig:Flux estimates}
     \end{subfigure}
-    \caption{Diode readings and flux estimates during the first SAXS repeat for the GI sample with no radioprotecant added (hence concentration = $0\ mM$).
+    \caption[Diode readings and flux estimates during the first SAXS repeat for the GI sample with no radioprotecant added.]{Diode readings and flux estimates during the first SAXS repeat for the GI sample with no radioprotecant added (hence concentration = 0\,mM).
     (a) Diode readings for each frame in the experiment.
     It can clearly be seen that the diode readings decrease throughout the experiment, however the total change during the course of the dataset is 0.54\%.
     (b) Flux estimates for each frame in the same experiment as (a).
@@ -87,7 +87,7 @@ The full 2D X-ray beam profile was determined as outlined in section \ref{sec:Pr
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/saxs/SAXS_beam.pdf}
-    \caption{A 2D reconstruction of the beam used in the second SAXS experiment (Expt 2) shown as a greyscale image.}
+    \caption[A 2D reconstruction of the beam used in the second SAXS experiment]{A 2D reconstruction of the beam used in the second SAXS experiment (Expt 2) shown as a greyscale image.}
     \label{fig:SAXS beam profile}
 \end{figure}
 
@@ -98,7 +98,7 @@ The full 2D X-ray beam profile was determined as outlined in section \ref{sec:Pr
     \end{myenumerate}
 }
 The data were recorded using a \textcolor{red}{...detector type...}.
-\textcolor{red}{...$15\ \mu l$...} of each sample was loaded into a 1.8$\,$mm external diameter quartz capillary ($1.7\ mm$ internal diameter, thus the wall thickness is 50$\,mu m$) held at room temperature.
+\textcolor{red}{...$15\ \mu l$...} of each sample was loaded into a 1.8$\,$mm external diameter quartz capillary (1.7\,mm internal diameter, thus the wall thickness is 50$\,mu m$) held at room temperature.
 For each additive, data were collected at each concentration (given in section \ref{sub:Sample preparation}), and each of these runs was repeated 3 times.
 The exposure time for each frame was 1 second, and a total of 120 frames were collected for a single run with the sample kept static.
 For each radioprotecant concentration a single dataset was collected with only the buffer (no protein) so that a suitable buffer correction (subtraction) could be applied during data analysis.
@@ -111,10 +111,14 @@ The beam profile was assumed Gaussian with full width at half maximum of 110$\,\
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/saxs/rebecca_raddose_input.png}
-    \caption{RADDOSE-3D input file used for the dose calculations in Expt 1.}
+    \caption[RADDOSE-3D input file used for the dose calculations in Expt 1.]{RADDOSE-3D input file used for the dose calculations in Expt 1.}
     \label{fig:SAXS example input - Rebecca}
 \end{figure}
-
+\textcolor{red}{
+    \begin{myenumerate}
+        \item \hypertarget{todo:changeInputFile}{\textbf{TODO:} Change input file used here.}
+    \end{myenumerate}
+}
 For Expt 2, the beam image shown in Figure~\ref{fig:SAXS beam profile} was read directly into RADDOSE-3D and the corresponding flux values recorded for each frame were used to ensure accurate dose estimates.
 The FASTA sequence file used to determine the atomic composition was downloaded from \textcolor{red}{PDB entry 4US6}, a tetrameric form of GI.
 The elemental composition of the quartz capillary was entered into RADDOSE-3D as SiO$_{\text{2}}$.
