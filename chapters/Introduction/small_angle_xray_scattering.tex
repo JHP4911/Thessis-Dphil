@@ -27,11 +27,17 @@
 
     Several graphs are produced during the analysis of SAXS data which can give much information about the state of the protein.
     For example, Kratky plots give information about whether or not a protein is in a folded state (Figure~\ref{fig:Kratky plot}).
-    \textcolor{red}{
-        \begin{myenumerate}
-            \item \hypertarget{todo:more Kratky plot information}{\textbf{TODO:} Need more info about the Kratky plot $q^2I\ vs\ q$}
-        \end{myenumerate}
-    }
+    This is because Debye's equation, which describes the scattering intensities, $I_{Gauss}$, for molecules behaving as a Gaussian coils (equation \ref{eq:Debye function SAXS}), plateaus in a $q^2 \times I(q)$ vs $q$ plot within a limited range of data.
+    \begin{equation}
+        I_{Gauss}(q) = 2 I_0 \f{\exp(-u) + u -1}{u^2},
+        \label{eq:Debye function SAXS}
+    \end{equation}
+    where $I_0$ is incident intensity and
+    \begin{equation}
+        u = q^2 R_g^2,
+    \end{equation}
+    where $R_g$ is the radius of gyration.
+
     The Fourier transform of the SAXS pattern gives the pair-distance distribution function, a function that provides information about the interatomic distances in the protein:
     \begin{equation}
         p(r) = \f{r^2}{2\pi^2}\int_0^{\infty}q^2 I(q) \f{\sin(qr)}{qr}\ \mathrm{d}q.
