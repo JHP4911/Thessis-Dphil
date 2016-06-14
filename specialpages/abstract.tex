@@ -6,22 +6,26 @@
 \small
 \singlespacing
 Quantitative studies of global radiation damage are presented for two different types of experiments in structural biology: macromolecular crystallography (MX) and small angle X-ray scattering (SAXS)
-
-MX is the most common technique in structural biology to elucidate atomic resolution structures of biological macromolecules.
-However, these molecules undergo radiation induced changes during the experiment that undesirably alter the data.
+\textcolor{red}{
+    \begin{myenumerate}
+        \item \hypertarget{todo:RaiseAbstract}{\textbf{TODO:} Raise Abstract title}
+    \end{myenumerate}
+}
+MX is the most common technique to elucidate the atomic resolution structures of biological macromolecules.
+However, these molecules undergo radiation induced changes during the experiment that undesirably affect the data.
 Global radiation damage, which is characterised by an overall loss in the diffracted intensity of Bragg reflections, limits the amount of useful data that can be collected from a single crystal in an experiment.
-Furthermore, the radiation induced intensity changes can be so significant that the phasing signal becomes undetectable, thereby hindering successful structure determination.
-This thesis investigates methods to track and correct the data that are altered as a result of global radiation damage.
-First, extensions to the diffraction weighted dose (DWD) metric are investigated for its ability to track the overall intensity decay of reflections.
-Then this metric is combined with a new mathematical model of intensity decay to perform zero-dose extrapolation.
-An additional probabilistic extrapolation approach is incorporated to the traditional regression based approach to allow extrapolation of low multiplicity reflections.
+Furthermore, for experimental phasing experiments, the radiation induced intensity changes can be so significant that the phasing signal becomes undetectable, thereby hindering successful structure determination.
+This thesis investigates methods to track and correct the diffraction data that are affected as a result of global radiation damage.
+First, extensions to the diffraction weighted dose (DWD) metric are investigated for the ability of DWD to track the overall intensity decay of reflections.
+This metric then is combined with a new mathematical model of intensity decay to perform zero-dose extrapolation.
+An additional probabilistic extrapolation approach is incorporated into the traditional regression based approach to allow extrapolation of low multiplicity reflections.
 As an alternative approach, a new hidden Markov model representation of the data collection experiment is developed that allows the time-resolved calculation of structure factor amplitudes, with error estimates calculated explicitly.
-This approach gives comparable refinement statistics to data processed with the current data reduction pipeline and improvements to the algorithm are proposed.
+This method gives comparable refinement statistics to that obtained from data processed with the current data reduction pipeline, and improvements to the algorithm are proposed.
 
 SAXS, on the other hand, is a complementary structural technique that results in low resolution information about macromolecules.
-But it still requires probing macromolecules with ionising radiation, thus radiation induced changes are still a problem.
-Unfortunately the tools for to assess radiation damage in SAXS experiments are not mature enough for routine analysis.
+However it still requires the probing of the macromolecules with ionising radiation, so radiation induced changes are still a problem.
+Unfortunately the tools for assessing radiation damage in SAXS experiments are not mature enough for them to be used routinely.
 This thesis presents extensions to RADDOSE-3D to perform dose calculations for SAXS samples.
-Additionally a free, open source Python library has been developed to allow the exploration and visualisation of the similarity analysis of frames within a dataset.
-These tools are then used to determine the efficacy of various radioprotectant compounds at different concentrations to mitigate radiation damage.
+Additionally, a free, open source Python library has been developed to allow the exploration and visualisation of the results of a similarity analysis of frames within a dataset.
+These tools are then used to determine the efficacy of various radioprotectant compounds at different concentrations to mitigate radiation damage effects.
 \end{abstract}
