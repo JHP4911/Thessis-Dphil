@@ -54,7 +54,7 @@ Due to the non-linear relationship ($I \propto |\bs{F}|^2$) between the reflecti
 The filter chosen is the Unscented Kalman filter (UKF) because it propagates the probability density function in an effective manner (using the unscented transform) to achieve up to third order accuracy in the posterior mean and covariance estimates \cite{wan2000unscented}.
 The UKF algorithm is outlined in \cite{wan2002Unscented}.
 
-\subsection{Bayesian Smoothing}
+\subsection{Bayesian smoothing}
 \label{sub:Bayesian Smoothing}
 Bayesian Smoothing can be considered to be a class of methods within the field of Bayesian filtering.
 Whereas filters generally compute estimates of the system state based on the observation history, smoothers use all of the information and thus they can estimate states that happened before the current time \cite{sarkka2013}.
@@ -81,7 +81,7 @@ The important difference of this formulation compared to the current data reduct
 The Bayesian smoother chosen for this problem was the unscented Rauch-Tung-Striebel smoother (URTSS).
 The algorithm for this smoother is outlined in \cite{sarkka2008unscented}.
 
-\subsection{Process Function and covariance}
+\subsection{Process function and covariance}
 \label{sub:Process Function and covariance}
 In order to apply the UKF it is necessary to define the function that relates the crystal state at time point i to the crystal state at time point i + 1.
 This function is known as the process function, and is typically taken as the expected value of a conditional probability distribution (transition probability) of the probability of crystal state at i + 1 given the crystal state at i.
@@ -134,7 +134,7 @@ The process function for centric reflections is assumed identical to the process
 For strong reflections this assumption is valid, since the Gaussian distributions (equations \ref{eq:Luzzati distribution for acentric reflections} and \ref{eq:Luzzati distribution for centric reflections}) differ only in the variance.
 For weak reflections this assumption breaks down and the expected value of the Woolfson distribution should be explicitly calculated.
 
-\subsection{Observation Function and covariance}
+\subsection{Observation function and covariance}
 \label{sub:Observation Function and covariance}
 In addition to the process function, it is necessary to define the process by which diffraction images are generated from the crystal state.
 This is known as the observation function.

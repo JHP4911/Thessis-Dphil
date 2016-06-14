@@ -95,14 +95,14 @@ This ensured that the values of the beams were on the same scale.
 The resulting beam profile was then returned for input into RADDOSE-3D (Figure \ref{figallbeams2}).
 \end{enumerate}
 
-\subsubsection{Removal of Background using Deconvolution Results}
+\subsubsection{Removal of background using deconvolution results}
 Since the rectangular dimensions of the hypothetical top-hat beam were given as outputs of the minimisation procedure, this shape can be used to distinguish between the X-ray beam and background.
 The two beams described above were also further manipulated by setting any values outside of the rectangle dimensions (inner box) to zero (Figures \ref{figallbeams3} and \ref{figallbeams4}).
 
-\subsubsection{Perfect Top Hat Beam}
+\subsubsection{Perfect top hat beam}
 A perfect top hat beam was created within the inner boundary of Figure~\ref{figbounds}  i.e. the value 100 was inserted for pixels that lay inside the inner rectangle, otherwise the pixel values were set to zero (Figure \ref{figallbeams9}).
 
-\subsubsection{Beam Thresholding}
+\subsubsection{Beam thresholding}
 \label{secthresh}
 In his D. Phil. thesis, Dr. Oliver Zeldin preprocessed pgm files by setting a threshold value \cite{zeldin2013thesis}.
 The threshold (or dark current) value was determined by taking the average of the pixel values that were ``far away'' from the main beam centre.
@@ -233,7 +233,7 @@ The threshold value for subtraction was determined by taking a mean average of t
         \label{figallbeamscont}
 \end{figure}
 
-\section{RADDOSE-3D Simulation Results}
+\subsection{RADDOSE-3D simulation results}
 All of the beams illustrated in Figure~\ref{figallbeamscont} were used as input for RADDOSE-3D to simulate the experiment described in section \ref{sub:Data Collection and Dose Calculation} for insulin crystal ID 0259.
 Each RADDOSE-3D run produced a set of DWD values; each value corresponded to one of the 271 datasets produced using the rolling window processing method described in section \ref{sub:Data Processing}.
 These doses were plotted against the relative intensities ($I_n / I_1$) for each dataset and a line of best fit was determined using data where $I_n / I_1$ > 0.4.
