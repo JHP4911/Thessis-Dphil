@@ -13,7 +13,7 @@ To compare the efficacies of each radioprotectant compound, the dose at which th
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/ScavengerPlot.pdf}
-    \caption[Fidelity values as a function of dose for each radioprotectant]{Fidelity values against dose for each radioprotectant along with their corresponding fitted logistic curves.
+    \caption[Fidelity values as a function of dose for each radioprotectant]{Fidelity values against dose for each radioprotectant along with their corresponding fitted logistic curves for the data collected in Expt 1.
     The five-pointed stars represent the points where the fitted logistic curves reach a fidelity value of 0.71.
     The six-pointed stars are the maximum curvature points of the fitted curves.}
     \label{fig:Main radioprotectant plot - Rebecca data}
@@ -99,7 +99,7 @@ It suggests that the \textit{BsxCuBE} metric employs a very different method to 
             \caption{}
             \label{fig:SAXS Metric comparison - 10mM}
     \end{subfigure}
-    \caption[Radioprotectant efficacy comparison  boxplots for each concentration in the experiment.]{Dose value at which radiation damage is considered significant for each concentration of radioprotectant used. Each box plot is created from the threshold dose values calculated for three different experimental runs of the same radioprotectant compound at a particular concentration. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric}
+    \caption[Radioprotectant efficacy comparison  boxplots for each concentration in the experiment.]{Expt 2: Dose value at which radiation damage is considered significant for each concentration of radioprotectant used. Each box plot is created from the threshold dose values calculated for three different experimental runs of the same radioprotectant compound at a particular concentration. Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric}
     \label{fig:SAXS Metric comparison}
 \end{figure}
 
@@ -109,27 +109,27 @@ One reason thought to cause this discrepancy in the current work was the choice 
 Figure~\ref{fig:Num consec frames - DTT} shows the results of the various values of $m$ for DTT.
 Unlike the results for the other compounds (Figure~\ref{fig:Num consecutive frame test}), the chosen value of $m$ could be the problem for 5$\,$mM concentrations.
 However, this does not necessarily seem to be true for the 10$\,$mM concentration.
-Thus it was necessary to re-evaluate some of the underlying assumptions.
+Thus it was necessary to re-evaluate some of the underlying assumptions of the analysis.
 
 \subsubsection{Pairwise comparisons with all frames}
 \label{subs:Pairwise comparisons with all frames}
 One assumption that is made in the merging analysis is that because the first frame suffers the least amount of dose, all subsequent frames should be compared to the first frame, the \textit{reference frame}.
 If instead frames were compared to a different `reference frame' would the threshold be different?
-Figure~\ref{fig:First n diff frames - DTT} addresses this question by performing the analysis for the first repeat of GI sample with DTT added at 10$\,$mM concentration.
+The results shown in Figure~\ref{fig:First n diff frames - DTT} address this question, where the analysis was performed for the first repeat of GI sample with DTT added at 10$\,$mM concentration.
 Along the $y$-axis are the frames which would be considered as the merging limit if the corresponding frame on the $x$-axis was chosen as the `reference frame'.
 It can be seen that the radiation threshold value obtained using the \textit{CMD} metric is highly dependent on the reference frame.
-This will greatly affect the conclusions that would be drawn from the analyses.
-From Figure~\ref{fig:First n diff frames - DTT}, if the reference frame is 1, as is the case for the main analysis, then the frame at which radiation damage is considered as significant is frame 8 (DWD = 4.32$\,$kGy).
-However, if the reference frame was frame 7, then the threshold frame would be 57 (DWD = 32.50\,kGy).
+This will greatly affect the conclusions that could be drawn from the analyses.
+From Figure~\ref{fig:First n diff frames - DTT}, if the reference frame is 1, as is the case for the main analysis, then the frame at which radiation damage is considered significant is frame 8 (DWD = 4.32$\,$kGy).
+However, if the reference frame was frame 7, then the threshold frame would be number 57 (DWD = 32.50\,kGy).
 This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = 46.88\,kGy).
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_first_n_plot.pdf}
-    \caption[Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.]{Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
+    \caption[Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.]{Expt 2: Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
     \label{fig:First n diff frames - DTT}
 \end{figure}
 
-The fact that performing the pairwise comparisons with different reference frames gives different results suggests that more information can be gained by analysing the results from all possible pairwise comparisons.
+The fact that performing the pairwise comparisons with different reference frames gives varying results suggests that more information can be gained by analysing the results from all possible pairwise comparisons.
 Figure~\ref{fig:heatmap - DTT} is a heat map showing the results from all possible pairwise frame comparisons.
 The first row shows the results that were obtained using frame 1 as the reference frame.
 It shows the \textit{CMD} metric highlighting frames becoming dissimilar very early on in the experiment (frame 8 out of 120).
@@ -141,7 +141,7 @@ It may be the case that some of these states are functionally important.
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_heatmap.pdf}
-    \caption[Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added]{Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added.
+    \caption[Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added]{Expt 2: Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added.
     The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared.
     Blue - $P_{adj}(>C)$ = 1. Teal - 0.01 $\le P_{adj}(>C)$ < 1. Orange - $P_{adj}(>C)$ < 0.01.}
     \label{fig:heatmap - DTT}
@@ -189,8 +189,8 @@ The spread of the threshold values for those compounds is also smaller using dos
             \caption{}
             \label{fig:SAXS frame- 10mM}
     \end{subfigure}
-    \caption[Comparing dose and frame number as the metric by which to track radiation damage in SAXS.]{Comparing dose and frame number as the metric by which to track radiation damage in SAXS for all SAXS repeats.
-    Figures (a) and (c) use the dose value as the y axis whereas (b) and (d) use the frame number.
+    \caption[Comparing dose and frame number as the metric by which to track radiation damage in SAXS.]{Expt 2: Comparing dose and frame number as the metric by which to track radiation damage in SAXS for all SAXS repeats.
+    Figures (a) and (c) use the dose value as the $y$-axis whereas (b) and (d) use the frame number.
     Each box plot is created from the threshold dose values for three different runs of the same radioprotectant compound.
     Pink boxes correspond to the \textit{BsxCuBE} metric, blue boxes correspond to the \textit{CMD} metric.}
     \label{fig:SAXS dose vs frame}
@@ -198,14 +198,14 @@ The spread of the threshold values for those compounds is also smaller using dos
 
 \subsubsection{Concentration dependence}
 \label{subs:Concentration dependence}
-As a result of this work, a metric, RD onset ratio, was developed to assess the change in radiation tolerance in the sample with the radioprotectant added compared to no protection.
+As a result of this work, a new metric, RD onset ratio, was developed to assess the change in radiation tolerance in the sample with the radioprotectant added compared to no protection.
 This metric is defined as the ratio of the median threshold value with added radioprotectant to the median threshold value with no protection using the \textit{CMD} metric.
 Values below 1 correspond to a reduction in radiation tolerance whereas values above 1 show improved radiation tolerance.
 This metric was calculated for each compound at each concentration and the results are plotted in Figure~\ref{fig:SAXS Ratio plot}.
 Significant concentration dependence can be observed for several radioprotectants.
 In particular, ascorbate, glycerol, and sodium nitrate all exhibit a strong positive concentration dependence i.e. the higher the concentration, the better the protection ability.
 DTT exhibits the opposite behaviour.
-At low concentrations DTT has the highest ratio but this decreases at the higher concentrations.
+At low concentrations DTT exhibits the highest ratio but this decreases at the higher concentrations.
 Sucrose, TEMPO and Trehalose show a very small positive dependence but even at the highest concentration (10\,mM) the RD onset ratio is less than 2.
 This suggests that these radioprotectants are not very efficient at increasing the dose tolerance of the sample.
 The RD onset ratio for ethylene glycol decreases as the concentration increases from 1\,mM to 5\,mM, but then there is a large increase at 10$\,$mM.
@@ -225,7 +225,7 @@ However at higher concentrations these metrics disagree.
 At 5$\,$mM and 10$\,$mM the \textit{BsxCuBE} metric suggests that the most effective radioprotectant is still DTT.
 On the otherhand, the \textit{CMD} metric suggests that the most effective radioprotectant is glycerol.
 Furthermore, it also suggests that DTT is the least effective radioprotectant.
-However, it is important to take into account that using a different reference frame to perform pairwise comparisons can result in different results with the \textit{CMD} metric as shown in Figures~\ref{fig:First n diff frames - DTT} and \ref{fig:heatmap - DTT}.
+It is important to take into account that using a different reference frame to perform pairwise comparisons can result in different results with the \textit{CMD} metric as shown in Figures~\ref{fig:First n diff frames - DTT} and \ref{fig:heatmap - DTT}.
 
 The \textit{CMD} metric result also disagrees with the results from Expt 1 where ethylene glycol was found to be the most effective radioprotectant at 5$\,$mM.
 Furthermore, in Expt 1 ascorbate was the one of the least effective radioprotectants.
@@ -233,6 +233,6 @@ It only outperformed sucrose and Trehalose.
 Whereas in Expt 2, ascorbate was the second most effective radioprotectant when used at a 5$\,$mM concentration.
 These results could be caused by the fact that the experimental parameters were not as well characterised in the first experiment as opposed to the second.
 
-An important difference between the results reported for Expt 1 and Expt2 is that the dose thresholds for Expt 1 are consistently higher than for Expt 2.
+An important difference between the results reported for Expt 1 and Expt 2 is that the dose thresholds for Expt 1 are consistently higher than for Expt 2.
 This is not surprising according to Figure~\ref{fig:Main radioprotectant plot - Rebecca data} because all of the threshold values occur after the fidelity curves have already began to increase steeply away from the original similarity value.
-Whether the resulting statistics for the structural data can be improved beyond the threshold values given by the \textit{CMD} metric, remains to be seen, but this discrepancy go some way to explaining why the \textit{BsxCuBE} metric gives different results for the DTT data.
+Whether the resulting statistics for the structural data can be improved beyond the threshold values given by the \textit{CMD} metric remains to be seen, but this discrepancy may go some way to explaining why the \textit{BsxCuBE} metric gives different results for the DTT data.

@@ -2,7 +2,7 @@
 \section{Experimental methods}
 \label{sec:Experimental methods - SAXS}
 This section describes the experimental details for two experiments comparing the efficacy of various radioprotectant compounds.
-The first of these experiments was carried out in 2014 whereas the second was carried out in Dec 2015, both at the ESRF.
+The first of these experiments was carried out in 2014 whereas the second was carried out in Dec 2015, both at the ESRF, in Grenoble.
 
 \subsection{Sample preparation}
 \label{sub:Sample preparation}
@@ -58,9 +58,9 @@ The photon energy used throughout was 12.5$\,$keV and the photon flux was estima
     \text{flux} = \text{5.72293 + 2.72295} \times \text{10}^{\text{15}} \times \text{d}_{\text{r}},
 \end{equation}
 where d$_{\text{r}}$ is the diode reading.
-The flux obtained using this formula was calibrated with an OSD1-0 photodiode purchased from Optoelectronics, a 500$\,\mu m$ thick silicon diode with a 1$\,$mm$^{\text{2}}$ active area as per \cite{owen2009}.
+The flux obtained using this formula was calibrated with an OSD1-0 photodiode purchased from Optoelectronics, which was a 500$\,\mu m$ thick silicon diode with a 1$\,$mm$^{\text{2}}$ active area as per \cite{owen2009}.
 The flux was calculated for each frame because the diode readings constantly changed between frames (Figure~\ref{fig:Diode and flux readings}), however the overall change in diode reading was only 0.54\%.
-Despite the small percentage change, this effect was still accounted for in the analysis.
+Despite the small percentage change, account was still taken for this effect in the analysis.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{1.0\textwidth}
@@ -76,9 +76,10 @@ Despite the small percentage change, this effect was still accounted for in the 
             \caption{}
             \label{fig:Flux estimates}
     \end{subfigure}
-    \caption[Diode readings and flux estimates during the first SAXS repeat for the GI sample with no radioprotecant added.]{Diode readings and flux estimates during the first SAXS repeat for the GI sample with no radioprotecant added (hence concentration = 0\,mM).
+    \caption[Diode readings and flux estimates during the first SAXS repeat for the 1\,mg/ml GI sample with no radioprotecant added.]{Diode readings and flux estimates during the first SAXS repeat for the GI sample with no radioprotecant added (hence concentration = 0\,mM).
     (a) Diode readings for each frame in the experiment.
-    It can clearly be seen that the diode readings decrease throughout the experiment, however the total change during the course of the dataset is 0.54\%.
+    It can clearly be seen that the diode readings decrease throughout the experiment, which is due to the decay of the electron storage ring current.
+    However, the total change during the course of the dataset is only 0.54\%.
     (b) Flux estimates for each frame in the same experiment as (a).
     As a result of the decreasing diode readings the corresponding flux decreases by 0.54\% too.}
     \label{fig:Diode and flux readings}
@@ -91,14 +92,8 @@ The full 2D X-ray beam profile was determined as outlined in section \ref{sec:Pr
     \label{fig:SAXS beam profile}
 \end{figure}
 
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:Detector type}{\textbf{TODO:} Need to ask Adam Round what the detector was along with frame rate and readout.}
-        \item \hypertarget{todo:Detector type}{\textbf{TODO:} How much sample was loaded into the capillary?}
-    \end{myenumerate}
-}
-The data were recorded using a \textcolor{red}{...detector type...}.
-\textcolor{red}{...$15\ \mu l$...} of each sample was loaded into a 1.8$\,$mm external diameter quartz capillary (1.7\,mm internal diameter, thus the wall thickness is 50$\,mu m$) held at room temperature.
+The data were recorded using a Dectris Pilatus 1M detector.
+\textcolor{red}{...$15\ \mu l$...} of each sample was loaded into a 1.8$\,$mm external diameter quartz capillary (1.7\,mm internal diameter, thus the wall thickness is 50\,$\mu m$) held at room temperature.
 For each additive, data were collected at each concentration (given in section \ref{sub:Sample preparation}), and each of these runs was repeated 3 times.
 The exposure time for each frame was 1 second, and a total of 120 frames were collected for a single run with the sample kept static.
 For each radioprotecant concentration a single dataset was collected with only the buffer (no protein) so that a suitable buffer correction (subtraction) could be applied during data analysis.
@@ -116,6 +111,6 @@ The beam profile was assumed Gaussian with full width at half maximum of 110$\,\
 \end{figure}
 For Expt 2, the beam image shown in Figure~\ref{fig:SAXS beam profile} was read directly into RADDOSE-3D and the corresponding flux values recorded for each frame were used to ensure accurate dose estimates.
 The atomic composition is the same as that defined in Figure~\ref{fig:SAXS example input - Rebecca}, although the 5\,mM concentration of sodium is only defined for the radioprotectants that contain sodium (i.e. sodium ascorbate and sodium nitrate).
-DTT contains a sulphur atoms that also has to be accounted for in the solvent concentration.
+DTT contains a sulphur atom for which account must be taken also in the solvent concentration.
 The elemental composition of the quartz capillary was entered into RADDOSE-3D as SiO$_{\text{2}}$.
 The capillary thickness was given as 50$\,\mu m$ and a density of 2.648$\,$g/cm$^{\text{3}}$ was used.

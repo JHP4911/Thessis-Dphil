@@ -4,12 +4,12 @@
 
 \section{Introduction}
 \label{sec:Introduction - Beam chapter}
-The ability to accurately calculate the dose absorbed by a sample is vital to the reproducibility of experimental results in radiation damage research and to inter-compare in MX.
+The ability to accurately calculate the dose absorbed by a sample is vital to the reproducibility of experimental results in radiation damage research and to inter-compare in MX, as well as to develop protocols aimed at advising experiments on how to spread the dose and thus optimise the use of their crystals.
 As alluded to in the introduction (section \ref{sub:Quantifying energy absorbance: Dose}), the extent of knowledge on some of the parameters in the diffraction experiment is limited, which results in uncertainty in the calculated dose values.
 These uncertainties are not quantified and hence RADDOSE-3D does not explicitly calculate errors on the dose values.
 The uncertainty in some experimental parameters, such as the crystal volume or the unit cell volume, only result in small errors in the aggregate dose metrics (average dose whole crystal, maximum dose, DWD).
 On the other hand, uncertainty in the beam profile can lead to significant errors.
-For this reason a module in RADDOSE-3D was implemented to allow it to read and simulate MX experiments with experimentally measured X-ray beam profiles.
+For this reason, a module in RADDOSE-3D was implemented to allow it simulate MX experiments using experimentally measured X-ray beam profiles which can be read by the program.
 However, the measured beam profiles require preprocessing to remove systematic errors resulting from the actual measurement before they can be used in RADDOSE-3D.
 
 The work presented in this chapter describes the preprocessing of experimentally measured beam profiles and explores the errors that can arise at this stage in the dose calculation.

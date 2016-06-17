@@ -7,7 +7,7 @@ Currently dose estimates in SAXS are calculated using
     D = \f{tfE(1-T)}{V\rho},
 \end{equation}
 where $D$ is the dose, $t$ is the exposure time, $f$ is the X-ray flux, $E$ is the energy of the incident photons, $T$ is the transmission factor, $V$ is the illuminated volume and $\rho$ is the mass density of the sample \cite{meisburger2013breaking,jeffries2015limiting}.
-To ease the calculation of the dose, the explicit geometry of the sample is not taken into account.
+To simplify the calculation of the dose, the explicit geometry of the sample is not taken into account.
 A more accurate calculation can be performed if the SAXS experiment is simulated in three dimensions, providing a spatially resolved dose field.
 This dose field can then be interpreted with the various dose metrics already developed for MX \cite{zeldin2013dwd,zeldin2012}.
 
@@ -36,7 +36,7 @@ These include the unit cell volume and the number of molecules in the unit cell.
 RADDOSE-3D uses this information to calculate the composition of the crystal so that an absorption coefficient can be calculated.
 However, there is no reason that the composition has to be defined by information specific to the crystal, in which case it is more appropriate to refer to what has been termed the ``crystal'' so far as the ``sample''.
 If the sample is a liquid, as is the case in SAXS experiments, then the sample composition should be determined with different inputs.
-The modular design of RADDOSE-3D enables this type of extension to be easily incorporated to the existing functionality.
+The modular design of RADDOSE-3D enables this type of extension into be easily incorporated to the existing functionality.
 
 \subsection{Cylindrical sample geometry}
 \label{sub:Cylindrical sample geometry}
@@ -54,13 +54,13 @@ Therefore a module was written that accepts a diameter and height as input and c
     \label{fig:Cylindrical implementation}
 \end{figure}
 
-The cylindrical implementation, which specifies the geometry of the sample alone, not the capillary it is contained in, is graphically depicted in Figure~\ref{fig:Cylindrical implementation} (the effect of the capillary is dealt with separately in section \ref{sub:Attenuation of X-ray flux due to capillary}).
+The cylindrical implementation, which specifies the geometry of the sample alone, not the capillary in which it is contained, is graphically depicted in Figure~\ref{fig:Cylindrical implementation} (the effect of the capillary is dealt with separately in section \ref{sub:Attenuation of X-ray flux due to capillary}).
 First the points around a circle are generated using the user defined diameter of the circular cross section.
 RADDOSE-3D uses 32 points around the circle by default, no matter what dimensions are specified.
 The points are evenly spaced around the circle with $y, z$ coordinates $(r \cos \theta, r \sin \theta)$.
 The angle (in radians) between any two consecutive points is $2 \pi / 32$.
 A cylinder can be defined by the circles at either end of the shape so this is done using the final coordinate $x$.
-Depending on which end a particular point is on, it will have coordinates $(x, y, z) = (-h/2, r \cos \theta, r \sin \theta)$ or $(x, y, z) = (h/2, r \cos \theta, r \sin \theta)$.
+Depending on which end a particular point is, it will have coordinates $(x, y, z) = (-h/2, r \cos \theta, r \sin \theta)$ or $(x, y, z) = (h/2, r \cos \theta, r \sin \theta)$.
 Note that this assumes the origin of the system is located at the centre of the cylinder.
 
 Regardless of the dimensions of the cylinder, the connectivity of the vertices remains the same because the number of vertices and their orientation with respect to one another is constant.
@@ -82,7 +82,7 @@ This is because the overall absorption coefficient of the sample, $\mu_{\text{ab
     \label{eq:Absorption coefficient calculation}
 \end{equation}
 where, $V_c$ is the volume of the unit cell, $N$ is the number of atoms in the unit cell and $\sigma_j = \sigma_j^{\text{Thompson}} + \sigma_j^{\text{Compton}} + \sigma_j^{\text{Photoelectric}}$ \cite{murray2004}.
-(The previous RADDOSE versions assumed $\mu_{\text{abs}} = \mu_{\text{att}}$ so equation 1 in \cite{murray2004}, which is analogous to equation \ref{eq:Absorption coefficient calculation} here, writes `$\mu_{\text{att}}$' instead of `$\mu_{\text{abs}}$').
+(The previous RADDOSE versions assumed $\mu_{\text{abs}} = \mu_{\text{att}}$ so equation 1 in Murray \textit{et al.} (2004) \nocite{murray2004}, which is analogous to equation \ref{eq:Absorption coefficient calculation} here, writes `$\mu_{\text{att}}$' instead of `$\mu_{\text{abs}}$').
 In MX the crystal composition is calculated from the contents of the unit cell.
 In SAXS the samples are liquids as opposed to crystals, and hence the notion of a unit cell does not apply.
 Thus instead, the approach to determine the atomic composition of the sample is to define a volume of liquid and estimate the contents given its protein concentration and buffer composition.
@@ -92,7 +92,7 @@ First the molarity of the solution is calculated using the formula
     \text{Molarity (moles/litre)} = \f{\text{sample concentration (grams/litre)}}{\text{molecular mass (grams/mole)}}.
     \label{eq:molarity calculation}
 \end{equation}
-The sample concentration is provided by the user in units of grams per litre.
+The sample concentration is provided by the user in units of grams per litre ($\equiv$ mg/ml).
 The molecular mass of the molecule is calculated from other parameters provided in the user input.
 If the sequence file is given for the protein (the sample can also contain DNA and RNA) then the molecular mass can be determined accurately by summing the molecular mass of each residue in the file.
 Otherwise an average molecular weight is used for each residue (110 Da for protein residues, 339.5 Da for RNA residues and 327 Da for DNA residues) and the user has to specify the type and number of residues for the sample.
@@ -102,7 +102,7 @@ A suitable volume is one that is large enough to contain at least one complete m
 By default this volume is defined to be (1000$\,$\AA)$^\text{3}$ but this can be changed by specifying the length, width and height dimensions of the volume in the input file using the \textit{unit cell} input keyword.
 
 The number of monomers/molecules in the volume can now be calculated by multiplying the molarity, volume (converted to litres) and Avogadro's number ($N_A$ = 6.022 $\times$ 10$^{\text{23}}$ mol$^{\text{-1}}$), which is then rounded to the nearest integer.
-The absorption coefficient can then be computed in the usual way as is described in \cite{pait2009}.
+The absorption coefficient can then be computed in the usual way as is described in Paithankar \textit{et al.} (2009)\nocite{pait2009}.
 If there is less than 1 molecule in the volume then this is flagged up and the user is advised to increase the volume.
 
 \subsection{Attenuation of X-ray flux due to capillary}
@@ -143,7 +143,7 @@ where $w_i$ and $(\mu/\rho)_i$ are the fraction by weight and mass attenuation c
 
 \subsection{Summary of SAXS extensions}
 \label{sub:Summary of SAXS extensions}
-Figure~\ref{fig:Updated RADDOSE-3D Flow diagram} puts into context where the SAXS extensions fit into the RADDOSE-3D program design.
+Figure~\ref{fig:Updated RADDOSE-3D Flow diagram} puts into context how the SAXS extensions fit into the RADDOSE-3D program design.
 All of the changes have been made in the ``crystal'' definition which has been referred to as the \textit{sample} in this section.
 \begin{figure}
     \centering
@@ -157,14 +157,14 @@ Figure~\ref{fig:SAXS Flow diagram} shows explicitly how the extensions described
 The cylindrical sample geometry is defined first from the specified height and diameter of the sample in the capillary.
 Then the atomic sample composition is defined from the protein concentration and buffer components.
 Once the container material is specified, the attenuated X-ray beam flux can then be calculated.
-Finally the SAXS sample is exposed to the attenuated X-ray beam according to the wedge.
+Finally the SAXS sample is exposed to the attenuated X-ray beam according to the `wedge' parameters.
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/saxs/SAXS_flowchart.pdf}
     \caption[Flow diagram summarising the SAXS extensions to RADDOSE-3D.]{Flow diagram showing how the extensions described in this section are combined to enable dose calculation.
-    A: the cylindrical geometry of the SAXS sample is defined (section \ref{sub:Cylindrical sample geometry}).
-    B: the atomic composition is determined (section \ref{sub:Determining the sample composition}).
-    C: Determine the attenuation of the beam due to the sample container (section \ref{sub:Attenuation of X-ray flux due to capillary}).
+    A: Define the cylindrical geometry of the SAXS sample (section \ref{sub:Cylindrical sample geometry}).
+    B: Determine the atomic composition (section \ref{sub:Determining the sample composition}).
+    C: Calculate the attenuation of the beam due to the sample container (section \ref{sub:Attenuation of X-ray flux due to capillary}).
     D: Expose the SAXS sample to the attenuated beam according to the defined wedge.}
     \label{fig:SAXS Flow diagram}
 \end{figure}
@@ -182,18 +182,18 @@ The assumption that the capillary volume is completely filled is generally valid
 The static assumption is not always valid, especially when the sample is flowed through the capillary.
 Hopkins and Thorne calculated that for typical experimental parameters (capillary diameters: 1.5-2$\,$mm, flow velocities: 0.5-15$\,$mm$\,$s$^{\text{-1}}$) the Reynolds numbers\footnote{The Reynolds number is defined as the ratio of inertial forces to viscous forces and is a quantities used in fluid mechanics to determine properties of fluid flow \cite{purcell1977life}.} are in the range 1-25 implying a laminar flow regime \cite{hopkins2016quantifying}.
 In this case the velocity profile is expected to exhibit the quadratic Poiseuille flow profile, which arises from the axial symmetry and no-slip boundary assumptions (the velocity at the centre of the tube moves the fastest while the velocity at the boundary is equal to zero provided the capillary is also stationary).
-Furthermore, Hopkins and Thorne also calculated that the residence times of the of the sample in the beam were too short for any appreciable radial diffusive mixing, hence the flow profile results in radius-dependent residence times in the X-ray beam.
+Furthermore, Hopkins and Thorne also calculated that the residence times of the sample in the beam were too short for any appreciable radial diffusive mixing, hence the flow profile results in radius-dependent residence times in the X-ray beam.
 Therefore the static assumption here will give misleading dose values if calculated for experiments where the sample is flowed through the beam.
 
 Hopkins and Thorne additionally discuss diffusive turnover as a phenomenon that will affect the dose calculation \cite{hopkins2016quantifying}.
 Molecules have the ability to diffuse into and out of the illuminated volume, with the additional complexity that a non-uniform beam profile will cause differential diffusion across the beam.
-In the current work, molecular diffusion is not accounted for.
+In the current work, no account was taken for molecular diffusion.
 Extrapolation of the plot from \cite{hopkins2016quantifying} (reproduced in Figure~\ref{fig:Diffusive turnover effect} ) shows that diffusion is likely to be negligible for the experiment performed here (section \ref{sec:Experimental methods - SAXS}) where the beam size was 600 $\times$ 600$\,\mu m^{\text{2}}$ and the total exposure time was 120 seconds.
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figures/saxs/diffusive_turnover_effect.png}
     \caption[Effect of diffusive turnover on the dose in SAXS.]{Reduction in the dose absorbed by the sample due to diffusive exchange of lysozyme against time for three beam sizes.
-    Extrapolation of these curves for a beam size of 600 $\times$ 600$\,\mu m^{\text{2}}$ along with 120 second exposure times suggests that the dose reduction due to diffusive turnover is negligible for our experiment.
+    Extrapolation of these curves for a beam size of 600 $\times$ 600$\,\mu m^{\text{2}}$ along with 120 second exposure times suggests that the dose reduction due to diffusive turnover is negligible for the experiment reported in this chapter.
     Figure reproduced from \cite{hopkins2016quantifying}.}
     \label{fig:Diffusive turnover effect}
 \end{figure}

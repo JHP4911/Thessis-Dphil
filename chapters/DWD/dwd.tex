@@ -32,24 +32,24 @@ The difference between them is that equation \ref{eq:Decreasing eta form} decrea
         \label{fig:Different Eta forms}
 \end{figure}
 
-The remainder of this section presents the results of the analysis carried out with the data from \cite{zeldin2013dwd} using the forms of $\eta$ given above, comparing their performance with the simple DWD (equation \ref{eq:DWD equation - no RDE}).
+The remainder of this section presents the results of the analysis carried out with the data from Zeldin \textit{et al.} (2013) using the forms of $\eta$ given above, comparing their performance with the simple DWD (equation \ref{eq:DWD equation - no RDE}).
 
 \subsection{Predicting intensity loss}
 \label{sub:Predicting intensity loss}
 In the study carried out by Zeldin \textit{et al.} \cite{zeldin2013dwd} cubic crystals of bovine pancreatic insulin were irradiated under different dose contrast conditions.
-The three beams used in the study: big, medium and small, can be seen in Figure~\ref{fig:Big, medium and small beams - Oli experiment}.
+The three beams used in the study: big, medium and small, are shown in Figure~\ref{fig:Big, medium and small beams - Oli experiment}.
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/dwd/Oli_beams.png}
-    \caption[Beam profiles used in the varying dose contrast regime experiment in \cite{zeldin2013dwd}.]{False color images of the beam profiles used for the experiments in \cite{zeldin2013dwd}.
-    The pixel size is $\text{5} \times \text{5}\,\mu m^2$ in all cases.
-    (a) big beam, (b) medium beam and (c) Small beam.}
+    \caption[Beam profiles used in the varying dose contrast regime experiment in Zeldin \textit{et al.} (2013).]{False color images of the beam profiles used for the experiments in Zeldin \textit{et al.} (2013).
+    The pixel size is $\text{5} \times \text{5}\,\mu m^2$ in all cases:
+    (a) big beam, (b) medium beam and (c) small beam.}
     \label{fig:Big, medium and small beams - Oli experiment}
 \end{figure}
-It was shown that the DWD is a significantly better metric for assessing the extent of radiation damage compared to the average dose for the whole crystal (AD-WC) or the maximum dose, because the spread of relative intensity values around the line of best fit of the data was greatly reduced (plots A-C in Figure~\ref{fig:Dose metric comparisons - zeldin et al} reproduced from \cite{zeldin2013dwd}).
-The data for the big and small beams were available so the analysis performed by Zeldin \textit{et al.} in \cite{zeldin2013dwd} was repeated for each of the $\eta$ forms.
+It was shown that the DWD is a significantly better metric for assessing the extent of radiation damage compared to the average dose for the whole crystal (AD-WC) or the maximum dose, because the spread of relative intensity values around the line of best fit of the data was greatly reduced (plots A-C in Figure~\ref{fig:Dose metric comparisons - zeldin et al} reproduced from Zeldin \textit{et al.} (2013.)).
+The data for the big and small beams were available so the analysis performed by Zeldin \textit{et al.} (2013) was repeated for each of the $\eta$ forms.
 The results are shown in Figure~\ref{fig:Relative intensity - DWD eta forms}.
-The main difference that can be seen from the plots is the DWD range.
+The main difference that can be seen in the plots is the DWD range.
 The increasing $\eta$ function results in the largest range of DWD values.
 Conversely, the decreasing $\eta$ function reduces the range of DWD values when compared to the simple DWD.
 Another difference is that introducing a dose dependent $\eta$ function shifts the big beam data relative to the small beam data.
@@ -88,7 +88,7 @@ However this is an undesirable feature because DWD should already account for th
 \end{figure}
 
 A line of best fit was calculated using a least squares fitting procedure and plotted (solid black line Figure~\ref{fig:Relative intensity - DWD eta forms}).
-A measure of the overall deviation of the data from the line was obtained by calculating the squared Euclidean norm\footnote{The squared Euclidean norm is defined as $\sum_i (f(x_i) - y_i)^2$} for each DWD form (Table~\ref{tab:Squared Euclidean norm values - Relative intensity fits}).
+A measure of the overall deviation of the data from the line was obtained by calculating the squared Euclidean norm\footnote{The squared Euclidean norm is defined as $\sum_i (f(x_i) - y_i)^2$.} for each DWD form (Table~\ref{tab:Squared Euclidean norm values - Relative intensity fits}).
 The DWD form that gave the lowest value for the squared Euclidean norm was the simple DWD form.
 This suggests that the data are less spread overall without adding a dose dependent form for $\eta$.
 \begin{table}[ht!]
@@ -99,9 +99,9 @@ This suggests that the data are less spread overall without adding a dose depend
 	\begin{tabular}{p{5cm} p{4.5cm}}
 		$\eta$ form			                & Squared Euclidean norm    \\
 		\hline
-		$\eta = 1$ (simple)     			& 0.2034        \\
-		$\eta = RDE$ (decreasing)     	    & 0.2112        \\
-		$\eta = 1-RDE$ (increasing)    		& 0.2060       \\
+		$\eta = 1$ (simple)     			& 0.203        \\
+		$\eta = RDE$ (decreasing)     	    & 0.211        \\
+		$\eta = 1-RDE$ (increasing)    		& 0.206       \\
 		\hline
 	\end{tabular}
 	\label{tab:Squared Euclidean norm values - Relative intensity fits}
@@ -136,10 +136,11 @@ However, given the fact that DWD does not significantly reduce the data spread f
 \subsection{Offset simulations}
 \label{sub:Offset Simulations}
 To quantify the efficiency of a given data collection strategy, Zeldin \textit{et al.} introduced a metric called the diffracted dose efficiency (DDE) defined as the ratio of elastically scattered photons to DWD.
-The DDE states the number of elastically scattered photons that are diffracted per unit dose and it is this quantity that is intended to be maximised for a given experiment.
+The DDE states the number of elastically scattered photons that are diffracted per unit dose and it is this quantity that should be maximised for a given experiment.
 To explore this metric, the authors simulated experiments where the rotation axis was offset from the beam axis by various distances to determine how spreading the dose affected the DDE.
-In all simulations a cuboid crystal of various sizes and ``average" crystal absorption (absorption coefficient = 0.237$\,$mm$^{-1}$ \cite{zeldin2013}) is exposed to a Gaussian profile beam with a 20 $\times$ 20$\,\mu m^2$ FWHM, a flux of 5 $\times$ 10$^{11}$ ph/s and incoming photon energy of 12.4$\,keV$ (1$\,$\AA).
-The collimation is rectangular and set to 40$\,\mu m \times$ 40$\,\mu m$ and the total exposure time is 60 seconds.
+These simulations were repeated for this work with each $\eta$ form incorporated into the DWD.
+In all simulations a cuboid crystal of various sizes and ``average" crystal absorption (absorption coefficient = 0.237$\,$mm$^{-1}$ \cite{zeldin2013}) was exposed to a Gaussian profile beam with a 20 $\times$ 20$\,\mu m^2$ FWHM, a flux of 5 $\times$ 10$^{11}$ ph/s and incoming photon energy of 12.4$\,keV$ (1$\,$\AA).
+The collimation was rectangular and set to 40$\,\mu m \times$ 40$\,\mu m$ and the total exposure time was 60 seconds.
 The results of these simulations with each of the forms of DWD are presented in Figure~\ref{fig:Offset simulations} for two cubic crystals with edge lengths of 400$\,\mu m$ and 60$\,\mu m$.
 
 For the 400$\,\mu m$ crystal, Figures~\ref{fig:Offset simulations 400 - Simple Eta}, \ref{fig:Offset simulations 400 - Decreasing Eta} and \ref{fig:Offset simulations 400 - Increasing Eta} show that the DDE increases with a greater rotation range up to a 360$^{\circ}$ rotation.
@@ -212,22 +213,22 @@ However the increasing $\eta$ form suggests the opposite i.e. for a rotation ran
 \subsection{Offset experiment}
 \label{sub:Offset Experiment}
 An experiment to validate the offset simulations was performed by Zeldin \textit{et al.} and reported in \cite{zeldin2013dwd}.
-In the experiment a cuboid crystal of bovine pancreatic insulin (460 $\times$ 550 $\times$ 260$\,\mu m^3$) was irradiated in two regions with a beam of approximate size 40 $\times$ 70$\,\mu m^2$ (Figure~\ref{fig:Offset experiment - Beam}).
+In the experiment, a cuboid crystal of bovine pancreatic insulin (460 $\times$ 550 $\times$ 260$\,\mu m^3$) was irradiated in two regions with a beam of approximate size 40 $\times$ 70$\,\mu m^2$ (Figure~\ref{fig:Offset experiment - Beam}).
 \begin{figure}
   \centering
     \includegraphics[width=0.75\textwidth]{figures/dwd/Oli_offset_exp_beam.png}
-    \caption[Beam profile used in the offset experiment described in \cite{zeldin2013dwd}.]{False color images of the beam profile used in the offset experiment \cite{zeldin2013dwd}. The colorbar represents 0-255 intensity units.}
+    \caption[Beam profile used in the offset experiment described in Zeldin \textit{et al.} (2013).]{False colour images of the beam profile used in the offset experiment by Zeldin \textit{et al.} (2013). The colour bar represents 0-255 intensity units.}
     \label{fig:Offset experiment - Beam}
 \end{figure}
-The first position corresponds to the rotation axis aligned with the beam axis (standard strategy).
-The second position corresponds to the rotation axis offset from the beam axis by 1.25 times the beam FWHM (50$\,\mu m$ - offset strategy).
+The first position corresponded to the rotation axis aligned with the beam axis (standard strategy).
+The second position corresponded to the rotation axis offset from the beam axis by 1.25 times the beam FWHM (50$\,\mu m$ - offset strategy).
 At each of the two positions three datasets were collected: first a 180$^{\circ}$ low dose \textit{probe} dataset, then a high-dose burn dataset, and then finally another low dose \textit{probe} dataset to evaluate the damage state of the crystal after it had been subjected to the high dose datasets.
 To achieve the same DWD value (for the simple $\eta$ = 1 form) for each of the high dose datasets, the standard strategy exposed the crystal for 126 seconds whereas for the offset strategy the exposure was 162 seconds.
 The final dose state of the crystal as calculated in RADDOSE-3D is shown in Figure~\ref{fig:Offset experiment - Dose state}.
 \begin{figure}
   \centering
     \includegraphics[width=0.8\textwidth]{figures/dwd/OffsetExperimentDoseState.pdf}
-    \caption[Dose isosurface map for the crystal used in the offset experiment described in \cite{zeldin2013dwd}.]{Dose isosurface map for the crystal used in the offset experiment. Isosurfaces are at 0.1 MGy (light blue), 5 MGy (dark blue) and 10 MGy (red). Note that the dose at any point in the crystal for the offset experiment is lower than the maximum dose for the standard strategy.}
+    \caption[Dose isosurface map for the crystal used in the offset experiment described in Zeldin \textit{et al.} (2013).]{Dose isosurface map for the crystal used in the offset experiment. Isosurfaces are at 0.1 MGy (light blue), 5 MGy (dark blue) and 10 MGy (red). Note that the dose at any point in the crystal for the offset experiment is lower than the maximum dose for the standard strategy.}
     \label{fig:Offset experiment - Dose state}
 \end{figure}
 The results from the data processing of this experiment with the different forms of DWD can be seen in Table~\ref{tab:Offset Experiment Results}.
@@ -261,11 +262,11 @@ The simple and increasing $\eta$ form DWD values suggest that the standard strat
 This is the expected result.
 The main difference however, is the large range in DWD values for the increasing $\eta$ DWD (2.2 MGy) compared to the range for the simple $\eta$ DWD (0.25).
 Given that the relative intensity ($I_{n}/I_{1}$) for the standard and offset strategies for the second probe datasets are 0.79 and 0.85 respectively, the higher DWD difference could account for the relative intensity difference.
-The DWD values using the decreasing $\eta$ form for the second probe datasets can be considered counterintuitive at first sight.
+The DWD values using the decreasing $\eta$ form for the second probe datasets could be considered counterintuitive at first sight.
 The result states that the DWD for the standard strategy is lower than the DWD for the high dose dataset which was taken before the second probe dataset.
 If radiation damage is considered progressive then this result rules out using the decreasing form of $\eta$.
 However it may be that the diffraction quality is better for the probe dataset than the high dose dataset, in which case this form of $\eta$ does not represent the level of damage, but instead, it is a dose value that describes the quality of the diffraction.
-This result suggest that the relationship between the relative intensity and the DWD using the decreasing $\eta$ form is not a one-to-one function.
+This result suggests that the relationship between the relative intensity and the DWD using the decreasing $\eta$ form is not a one-to-one function.
 There are many possible relative intensity values for a given DWD value because the DWD can increase and then decrease again.
 The DWD values are similar for the simple and decreasing $\eta$ forms for the offset strategy in the second probe experiment.
 This is due to the fact that the dose for the offset experiment is smaller and hence the reduction of $\eta$ for the decreasing form was not significant enough to lower the DWD, as occurred for the standard experiment.

@@ -14,7 +14,7 @@ A popular alternative is to use a high-level dynamic language such as Python, R 
 The productivity that can be achieved with these languages is counteracted by the relatively slow computation time when compared to low-level languages.
 
 Julia is a dynamic language designed for technical computing \cite{bezanson2014julia,bezanson2012julia} that is also very fast.
-Generally the computational performance of algorithms written in Julia run within a factor of 2 of the speed of C (Figure~\ref{fig:Language performance benchmarks}).
+Generally the computational performance of algorithms written in Julia executes within a factor of 2 of the speed of C (Figure~\ref{fig:Language performance benchmarks}).
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/language_benchmarks.png}
@@ -25,7 +25,7 @@ Generally the computational performance of algorithms written in Julia run withi
 \end{figure}
 Therefore despite having to learn the Julia language, it seemed to be the best trade-off for coding the algorithm described here.
 
-As a dynamic language that employs type inference, code can be written in Julia which may not be compiled to performance optimised machine code.
+As a dynamic language that employs type inference, code can be written in Julia which may not be compiled to the speed of performance optimised machine code.
 This means that Julia has to be written in a particular manner to achieve the performance claimed by the language authors.
 A further argument for using Python or C/C++ over Julia is the large library of existing crystallographic packages that have been written in those languages.
 However Julia has built-in support for calling methods from C/Fortran libraries with a single line of code.

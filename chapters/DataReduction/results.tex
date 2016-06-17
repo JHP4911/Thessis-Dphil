@@ -31,7 +31,8 @@ The resulting B factor distribution is plotted in Figure~\ref{fig:B factors per 
     \caption[Calculated B factors for each image in the insulin dataset.]{Calculated B factors for each image in the insulin dataset.
     (a) Distribution before outlier removal.
     (b) Distribution after outlier removal.
-    The line of best fit (blue solid line) with gradient, $\Delta B$ = 0.001$\,$\AA$^{\text{2}}$ and intercept = 12.189$\,$\AA$^{\text{2}}$, is overlaid on the data.}
+    The line of best fit (blue solid line) with gradient, $\Delta B$ = 0.001$\,$\AA$^{\text{2}}$ and intercept = 12.189$\,$\AA$^{\text{2}}$, is overlaid on the data.
+    Note the differing $y$ axis scales.}
     \label{fig:B factors per image - insulin}
 \end{figure}
 
@@ -41,7 +42,7 @@ To ensure that the B-factors exhibited linear behaviour, "damage corrected" B fa
 \end{equation}
 where $B_i$ is the B factor calculated at image $i$, and $\Delta B$ is the gradient of the line fitted to the data.
 A histogram of the "damage corrected" B factor distribution was then plotted, which should be a Gaussian distribution centred on the intercept of the line in Figure~\ref{fig:B factors per image after outlier removal - insulin}.
-Additionally a QQ plot was used to ensure that the data were normally distributed (Figure~\ref{fig:B factor QQ plot - insulin}).
+Additionally a QQ plot\footnote{A QQ plot is graphically determines whether two datasets come from the same distribution. It plots the quantiles of the first dataset against the quantiles of the second. If the two datasets come from the same distribution the points should fall on a 45$^{\circ}$ reference line which is typically also plotted.} was used to ensure that the data were normally distributed (Figure~\ref{fig:B factor QQ plot - insulin}).
 The gradient $\Delta B$ was calculated to be 0.001$\,$\AA$^2$.
 \begin{figure}
     \centering
@@ -65,8 +66,8 @@ The gradient $\Delta B$ was calculated to be 0.001$\,$\AA$^2$.
     \label{fig:Gaussian B factor plots - insulin}
 \end{figure}
 
-The set of scale factors calculated from the images, $\{ s_{images} \}$, are shown in Figure~\ref{fig:Scale factors per image - insulin}.
-There did not appear to be any outliers by visual inspection (Figure~\ref{fig:Scale factors per image before outlier removal - insulin}), so there was no outlier rejected method performed for the scale factors.
+The set of scale factors calculated from the images, $\{ s_{images} \}$, are shown in Figure~\ref{fig:Scale factors per image before outlier removal - insulin}.
+There did not appear to be any outliers from visual inspection, so there was no outlier rejection method performed for the scale factors.
 The scale factors that corresponded to images that were removed from the B factor outlier rejection analysis were also omitted for consistency.
 The resulting scale factors, $\{ s^{*}_{images} \}$, are shown in Figure~\ref{fig:Scale factors per image after outlier removal - insulin}.
 \begin{figure}
@@ -87,7 +88,7 @@ The resulting scale factors, $\{ s^{*}_{images} \}$, are shown in Figure~\ref{fi
     \caption[Calculated scale factors for each image in the insulin dataset.]{Calculated scale factors for each image in the insulin dataset.
     (a) Distribution before outlier removal.
     (b) Distribution after outlier removal.
-    The solid greenoise and solid pink lines represent the mean and mode of the distribution respectively.
+    The solid green and solid pink lines represent the mean and mode of the distribution respectively.
     The fact that the mean and mode are close in value suggest that the distribution is Gaussian.}
     \label{fig:Scale factors per image - insulin}
 \end{figure}
@@ -119,10 +120,10 @@ The forward-backward algorithm was applied with the following parameters defined
     \item reflections for which the Rician distribution was used for the amplitude process function (equations \ref{eq:Process function - mean of rice distribution} and \ref{eq:Process covariance - variance of rice distribution}) were defined as reflections where $F_0/\sigma(F_0) <$ 3, where $F_0$ is the initial amplitude estimate.
 \end{itemize}
 Amplitude estimates resulting from applying the forward-backward algorithm for 4 reflections are shown in Figure~\ref{fig:Amplitude estimates - insulin}.
-It can be seen for these reflections that the initial amplitude value estimated using CTRUNCATE is within the 95\% confidence region as estimated by the forward-backward algorithm.
+It can be seen that for these reflections, the initial amplitude value estimated using CTRUNCATE is within the 95\% confidence region as estimated by the forward-backward algorithm.
 This suggests that the constant scale factor assumption used for the simple scaling procedure used for this study is valid for this experiment.
 
-Figures~\ref{fig:Amplitude estimates ref 0,30,38 - insulin} and \ref{fig:Amplitude estimates ref 0,37,11 - insulin} exhibit the expected behaviour of an average refection since both of these reflections decay relatively smoothly as exposure time increases.
+Figures~\ref{fig:Amplitude estimates ref 0,30,38 - insulin} and \ref{fig:Amplitude estimates ref 0,37,11 - insulin} exhibit the expected behaviour of an average refection, since both of these reflections decay relatively smoothly as exposure time increases.
 Figure~\ref{fig:Amplitude estimates ref 0,49,27 - insulin} shows a reflection whose amplitude increases as the exposure increases.
 This demonstrates that the forward-backward algorithm is capable of capturing the different behaviours of various reflections despite the process function describing a monotonic decay of the amplitudes.
 
@@ -134,7 +135,7 @@ Mechanical or chemical changes of the structure can occur within a few seconds \
 
 Another undesirable feature of the forward-backward algorithm is the fact that the initial amplitude estimate is solely influenced by the amplitude estimate at the point where the observation is made.
 This effect is prominent in Figures~\ref{fig:Amplitude estimates ref 0,37,11 - insulin} and \ref{fig:Amplitude estimates ref 0,49,27 - insulin}.
-Therefore the initial amplitude estimate is not influenced by the multiplicity and hence erroneous estimates are more likely to arise if the first observation of a reflection is an outlier.
+Thus the initial amplitude estimate is not influenced by the multiplicity and hence erroneous estimates are more likely to arise if the first observation of a reflection is an outlier.
 This can be overcome by performing the forward-backward algorithm on each observation separately and merging the entire amplitude curves for equivalent reflections.
 The relative uncertainties at each point in the data collection experiment will be different because the observations will be collected on different images.
 This should ensure that the (possibly non-linear) behaviour of the reflection should still be captured by this method.
@@ -204,11 +205,11 @@ The maps are practically identical for the two different data reduction pipeline
     \label{fig:Electron density maps - insulin}
 \end{figure}
 
-A difference map was also calculated to determine where the major differences were using the two different data reduction pipelines.
+A difference map was also calculated to locate the major differences between the results of the two different data reduction pipelines.
 The differences were calculated between the resulting amplitudes from the ACT and FBA pipelines, rather than the calculated amplitudes after refinement.
-Phases were obtained from the final model obtained after refinement of the model using the phases from PDB 2BN3 and the ACT amplitudes.
+Phases were obtained from the final model resulting from refinement using the phases from PDB 2BN3 and the ACT amplitudes.
 Figure~\ref{fig:Difference electron density map - insulin} displays the resulting difference map contoured at the 3$\sigma$ level along with the full insulin structure from which the phases were obtained.
-The difference electron density is distributed quite uniformly over the unit cell rather than large differences overlapping the structure.
+The difference electron density is distributed quite uniformly over the unit cell rather than showing large differences overlapping the structure.
 This supports the result shown above that the two methods give practically identical electron density for the structure.
 \begin{figure}
     \begin{subfigure}[b]{1.0\textwidth}
@@ -226,7 +227,7 @@ Refinement statistics for both pipelines are shown in Table \ref{tab:Refinement 
 Overall the statistics are quite similar but they are consistently better for the ACT pipeline.
 It is likely that the FBA results can be improved by merging the amplitude estimates for symmetry related reflections after the algorithm has been applied to each observation individually, as described in section \ref{subs:Forward-backward algorithm - insulin}.
 Another difference between the two pipelines is that the FBA pipeline does not include any outlier rejection whereas AIMLESS does.
-This is likely to be reason why there were more reflections at the end of data reduction using the FBA pipeline (16261) compared to that when using the ACT pipeline (16233).
+This is likely to be the reason why there were more reflections at the end of data reduction using the FBA pipeline (16261) compared to that when using the ACT pipeline (16233).
 
 \begin{table}[ht!]
 	\caption[Final refinement statistics for data processed with the ACT and FBA pipelines.]{Final refinement statistics for data processed with the ACT and FBA pipelines}
@@ -248,10 +249,10 @@ This is likely to be reason why there were more reflections at the end of data r
 
 \subsubsection{Scale and B factors}
 \label{subs:Scale and B factors - C.Esp1396I}
-Data were collected from a crystal of the bacterial protein-DNA complex (C.Esp1396I) as described in \cite{bury2015radiation} (Figure~\ref{fig:C.Esp1396I structure} ).
+Data were collected from a crystal of the bacterial protein-DNA complex (C.Esp1396I) as described in Bury \textit{et al.} (2015) (Figure~\ref{fig:C.Esp1396I structure}).
 Notably the crystal (30$\,\mu m$ $\times$ 30$\,\mu m$ $\times$ 10$\,\mu m$) was exposed to a 25$\,\mu m$ circular Gaussian profile beam (FWHM dimensions before the 25$\,\mu m$ diameter pinhole are 0.212$\,mm$ $\times$ 0.279$\,mm$), with the crystal oriented such that the 10$\,\mu m$ dimension was aligned parallel to the beam direction.
 A single dataset consisted of 100 frames with each frame generated from a 1$^{\circ}$ rotation (100$^{\circ}$ total wedge).
-Thus not all of the crystal was immersed in the beam and the rotation would lead to the X-ray beam path length and illuminated volume through the crystal changing throughout the experiment.
+Thus not all of the crystal was immersed in the beam and the rotation led to the X-ray beam path length and illuminated volume through the crystal changing throughout the experiment.
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/JSRcoverpic_nobackground.png}
@@ -263,9 +264,9 @@ Thus not all of the crystal was immersed in the beam and the rotation would lead
 The atomic composition used to provide expected intensity values was obtained from the PDB structure 4X4B.
 The B factors were calculated as described above and are shown in Figure~\ref{fig:B factors per image - C.Esp1396I}.
 Four reflections that were removed in the outlier rejection procedure are clearly visible in Figure~\ref{fig:B factors per image before outlier removal - C.Esp1396I} with B factor values of zero.
-The initial B factor is much higher for the C.Esp1396I structure (57.69$\,$\AA$^2$) than it is for the insulin structure (12.19$\,$\AA$^2$).
+The initial B factor is much higher for the C.Esp1396I structure (57.69$\,$\AA$^2$) than it was for the insulin structure (12.19$\,$\AA$^2$).
 In contrast to the behaviour observed with the insulin dataset, the B factor for the C.Esp1396I structure decreases linearly throughout the dataset (Figure~\ref{fig:B factors per image after outlier removal - C.Esp1396I}).
-The assumption of a linear behaviour of the B-factor is again justified (Figure~\ref{fig:Gaussian B factor plots - C.Esp1396I} )
+The assumption of a linear behaviour of the B-factor is again justified (Figure~\ref{fig:Gaussian B factor plots - C.Esp1396I}).
 \begin{figure}
     \centering
     \begin{subfigure}[b]{1.0\textwidth}
@@ -284,7 +285,7 @@ The assumption of a linear behaviour of the B-factor is again justified (Figure~
     \caption[Calculated B factors for each image in the C.Esp1396I dataset.]{Calculated B factors for each image in the C.Esp1396I dataset.
     (a) Distribution before outlier removal.
     (b) Distribution after outlier removal.
-    The line of best fit (blue solid line) with gradient, $\Delta B$ = -0.0296$\,$\AA$^2$ and intercept = 57.5916$\,$\AA$^2$, is overlaid on the data.}
+    The line of best fit (blue solid line) with gradient, $\Delta B$ = -0.0296$\,$\AA$^2$ and intercept = 57.592$\,$\AA$^2$, is overlaid on the data.}
     \label{fig:B factors per image - C.Esp1396I}
 \end{figure}
 
@@ -305,12 +306,12 @@ The assumption of a linear behaviour of the B-factor is again justified (Figure~
     \end{subfigure}
     \caption[Normality of calculated B factor distribution for the C.Esp1396I dataset.]{(a) Histogram of damage corrected B factors for the C.Esp1396I structure.
     (b) QQ plot for the damage corrected B factors.
-    The linearity of the points in the QQ plot support the Gaussian approximation in the histogram, suggesting that the B factors change linearly.}
+    The linearity of the points in the QQ plot supports the Gaussian approximation in the histogram, suggesting that the B factors change linearly.}
     \label{fig:Gaussian B factor plots - C.Esp1396I}
 \end{figure}
 
 The calculated scale factor distribution, $\{ s_{images} \}$, is shown in Figure~\ref{fig:Scale factors per image - C.Esp1396I}.
-As with the insulin dataset, no specific outlier rejection was carried out on the scale factors so the only ones rejected were those that corresponded to the same images on which the rejected B factors were found, i.e. the four scale factors with a value of 1 in Figure~\ref{fig:Scale factors per image before outlier removal - C.Esp1396I}.
+As with the insulin dataset, no specific outlier rejection was carried out on the scale factors, so the only ones rejected were those that corresponded to the same images on which the rejected B factors were found, i.e. the four scale factors with a value of 1 in Figure~\ref{fig:Scale factors per image before outlier removal - C.Esp1396I}.
 The resulting scale factors, $\{ s^{*}_{images} \}$, calculated from the images (Figure~\ref{fig:Scale factors per image after outlier removal - C.Esp1396I}) do not exhibit a constant behaviour.
 This implies that the assumption of a constant scale factor (as was assumed to be the case for insulin) is likely to give incorrect results.
 The kernel density estimate in Figure~\ref{fig:Scale factor distribution after outlier removal - C.Esp1396I} shows that the scale factor distribution is bimodal and hence a single (constant) value does not represent the distribution adequately.
@@ -428,8 +429,8 @@ The FBA pipeline results in 32944 reflections at the end of data reduction, wher
 
 Overall refinement statistics using both pipelines are shown in Table \ref{tab:Refinement statistics - C.Esp1396I}.
 The R values are slightly better for the ACT pipeline but the RMS values are lower for the FBA pipeline.
-The statistics obtained using the FBA method are much better than expected considering the scale factor used in the FBA was incorrect.
-If the amplitude values resulting from the FBA pipeline are indeed incorrect then it is likely that the refinement process is significantly ``mopping up" the errors that are made during the data reduction stage.
+The statistics obtained using the FBA method are much better than expected considering the scale factor used in the FBA was non-optimal.
+If the amplitude values resulting from the FBA pipeline are indeed inaccurate then it is likely that the refinement process is significantly ``mopping up" the errors that are made during the data reduction stage.
 It is also possible that the statistical improvement by manually refining the model may be more limited with the data for the FBA pipeline compared to that of the ACT pipeline.
 \begin{table}[ht!]
 	\caption[Final refinement statistics for data processed with the ACT and FBA pipelines.]{Final refinement statistics for data processed with the ACT and FBA pipelines.}

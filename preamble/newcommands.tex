@@ -19,3 +19,9 @@
 
 %Change \cite commands to \citep
 \let\cite\citep
+
+%force right justification of bibliography
+\renewcommand*{\bibfont}{\raggedright}
+
+%Style labels used in abbreviations page
+\newcommand{\abbrlabel}[1]{\makebox[3cm][l]{\textbf{#1}\ \dotfill}}

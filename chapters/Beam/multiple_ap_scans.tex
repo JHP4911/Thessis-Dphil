@@ -10,7 +10,7 @@ Therefore, a method to generate 2D X-ray beam profiles from multiple 1D aperture
 
 \subsection{Acquiring the 1D aperture scans}
 \label{sub:Acquiring the 1D aperture scans}
-Aperture scans to obtain X-ray beam flux measurements were carried out in collaboration with Dr. Adam Round and Dr. Martha Brennich on the ESRF BM29 (SAXS) beamline.
+In order to estimate the dose for the SAXS experiments described in chapter \ref{chap:Methods to assess radiation damage in SAXS}, aperture scans to obtain X-ray beam flux measurements were carried out in collaboration with Dr. Adam Round and Dr. Martha Brennich on the ESRF BM29 (SAXS) beamline.
 A 100$\,\mu m$ diameter circular aperture was used to scan across the X-ray beam area and measurements were taken at 10$\,\mu m$ intervals with an OSD1-0 photodiode diode purchased from Optoelectronics.
 The scanning was performed 6 times with the collection of 3 horizontal and 3 vertical scans (Figure~\ref{fig:Aperture scans - Beam processing chapter}).
 \begin{figure}
@@ -34,9 +34,9 @@ The scanning was performed 6 times with the collection of 3 horizontal and 3 ver
 
 \subsection{Creating a 2D beam profile}
 \label{sub:Creating a 2D beam profile}
-It is clear from Figure~\ref{fig:Aperture scans - Beam processing chapter} that fitting a Gaussian shape will not model this beam profile well.
+It is clear from the data shown in Figure~\ref{fig:Aperture scans - Beam processing chapter} that fitting a Gaussian shape will not model this beam profile well.
 Instead a rectangular grid is set up with the edges of the measurement positions in Figures \ref{fig:Vertical aperture scans - Beam processing chapter} and \ref{fig:Horizontal aperture scans - Beam processing chapter} used as the boundaries of the grid.
-The flux at the grid boundaries is assumed to be zero.
+The flux at and beyond the grid boundaries is assumed to be zero.
 The diode measurements from the vertical aperture scans were placed in their corresponding positions on the grid and interpolation between these values was performed using the \verb+RectBivariateSpline+ function in SciPy package in the Python programming language \cite{jones2014scipy}.
 The same procedure was performed for the data in the horizontal direction.
 The results are shown in Figure~\ref{fig:Interpolation of aperture scans}.
@@ -87,6 +87,5 @@ Secondly, the method uses data from scans taken anywhere in the X-ray beam profi
 However, the method is not perfect because the final averaging causes a loss of some features.
 Figure~\ref{fig:Interpolation of vertical aperture scans} exhibits a `valley' in the beam profile; however after averaging, the valley resembles a `shoulder' (Figure~\ref{fig:Full averaged interpolated beam}).
 This could be rectified by applying a weighted averaging scheme where positions that contain measured data in one beam profile array and not the other are up weighted.
-A more desirable approach would be to use an interpolation routine that could be applied to all measured data in both directions.
-This would avoid the need to average at all.
-It is also important to collect as many aperture scans as possible because the resulting beam profile will be more representative of the true X-ray beam profile, since then more actual values are measured.
+A more desirable approach would be to use an interpolation routine that could be applied to all measured data in both directions, thus avoiding the need to average at all.
+It is also important to collect as many aperture scans as possible because the resulting beam profile will be more representative of the true X-ray beam profile, as then more actual values are measured.

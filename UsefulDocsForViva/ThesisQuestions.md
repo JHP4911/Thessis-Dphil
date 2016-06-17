@@ -79,6 +79,8 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 > How does a scintillator work?
 
+> Why is the beam smaller in one direction than another?
+
 ### SAXS Chapter
 
 > With regard to SAXS radioprotectants, what are DTT and TCEP

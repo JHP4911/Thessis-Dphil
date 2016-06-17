@@ -16,7 +16,7 @@ The advances of particular interest to the research are the development of RADDO
 
 Data from a uniformly irradiated insulin crystal (section \ref{sub:Data Collection and Dose Calculation}) were used to perform the extrapolation.
 Dose calculations were carried out using RADDOSE-3D and the DWD metric was used as the independent variable in which to track the changes in reflection intensities.
-In a similar manner to the approach used by Diederichs \textit{et al.} some of the reflection intensities were extrapolated to zero-dose using regression analysis.
+In a similar manner to the approach used by Diederichs \textit{et al.}, some of the reflection intensities were extrapolated to zero-dose using regression analysis.
 However, in the method presented here, multiple criteria had to be satisfied by a reflection before the extrapolation was carried out on it.
 This was done to reduce the likelihood of overfitting the model to the data.
 These included checking that the fits correlated well with the data, there were a minimum number of observations, the intensity observations were not too small and that the extrapolated intensity values did not give intensity values that were significantly different from the observed distribution.
@@ -27,43 +27,43 @@ Furthermore, the $R^{thresh}_{fit}$ and $R^{thresh}_{zero}$ metrics were used as
 Further to the regression based analysis, a probabilistic extrapolation using Bayesian inference was applied to the subset of data that was unsuitable for regression.
 Using the data from the already extrapolated reflection observations, it was possible to estimate distribution parameters for the prior and likelihood distributions, which ultimately enabled estimates of the zero-dose intensity values for other observations.
 This approach is new for zero-dose extrapolation and means that only a subset of the data are required to have a high enough multiplicity.
-It is important because the low multiplicity of diffraction data is regarded as a major problem with the traditional regression based approach.
+It is an important development because the low multiplicity of diffraction data is generally regarded as a major problem with the traditional regression based approach.
 
-The extrapolation method presented gave results consistent with what was expected.
+The extrapolation method presented here gave results consistent with that which was expected.
 The Leal \textit{et al.} model was able to capture some of the non-linear and non-monotonic behaviour of the reflection intensities, and for the majority of reflections, the probabilistic method seemed to give reasonable zero-dose estimates.
 In general the extrapolated intensities of reflections showed an increase from the observed values.
 
-However the method presented still requires some work before it can be used reliably for general crystallographic data.
-The most obvious improvement is preventing the probabilistic extrapolation method giving abnormally high intensity values.
-As mentioned earlier, this could be corrected by using an outlier rejecting method.
+However, the method presented still requires some work before it can be used reliably for general crystallographic data.
+The most obvious improvement is to find a method to prevent the probabilistic extrapolation method giving abnormally high intensity values.
+As mentioned earlier, this issue could be corrected by using an outlier rejecting method.
 There is also currently no check for the quality of the extrapolation from the probabilistic approach, which would aid in highlighting potential problems.
 A possible validation criteria may be that the probabilistic extrapolation gives values that are similar to the regression based extrapolation values for the reflections that have already been extrapolated.
 This basically checks the consistency of the two methods.
 The reason that the consistency check is a good way to validate that the probabilistic method works is that the regression based method is already validated with several checks and its own validation metrics.
-The problem with this is that the distribution parameters are calculated from the intensities extrapolated using the regression method.
-This means that it is more likely that the two methods will seem consistent, and thus may not be reliable for other reflections.
+The drawback with this is that the distribution parameters are calculated from the intensities extrapolated using the regression method.
+This means that it is more likely that the two methods will seem consistent, but may not be reliable for other reflections.
 
 It is likely that the abnormally high extrapolated intensities are caused by applying the scale factor, $s(D)$, to reflections that do not obey the behaviour of the scale function.
-$f(r)$ is a factor that was introduced to dampen the amount of $s(D)$ that is applied to reflection observations.
+$f(r)$ is a factor that was introduced to dampen the proportion of $s(D)$ that is applied to reflection observations.
 But there are two problems.
 Firstly, it is assumed that the similarity of the behaviour of a reflection to that of the scale factor is a function of the difference between the observed intensity value and the mean intensity value, $r$, in the appropriate resolution shell.
 However, there is no apparent evidence to support this assumption, so it may not hold.
-Secondly the parameter values $A$ and $B$ in the equation \ref{eq:Fraction of scale factor to be applied - Extrapolation method} are not guaranteed to be optimal.
+Secondly, the parameter values $A$ and $B$ in the equation \ref{eq:Fraction of scale factor to be applied - Extrapolation method} are not guaranteed to be optimal.
 They were chosen by visual inspection of the behaviour of a limited set of observations and therefore were not rigorously determined.
 
-Furthermore, there are improvements that can be made to the regression based extrapolation.
+Furthermore, there are improvements that could be made to the regression based extrapolation.
 It was observed that a ``bad" correlation between the fitted model and the data was simply due to noise.
 This implies that the correlation coefficient check may be too stringent, and in fact some reflections may be rejected despite the possibility that the model would have given a reasonable extrapolated zero-dose intensity.
 Perhaps removing the correlation requirement in favour of a different criterion could improve the data quality by not rejecting ``well behaved" reflections due to systematic noise.
-The reason this was not done in the present analysis is because it was thought to be more important to have fewer reliable zero-dose estimates than a huge quantity where some estimates were questionable.
+The reason this was not done in the present analysis is because it was thought to be more important to have fewer reliable zero-dose estimates than a huge number where some estimates were questionable.
 
 The corrected standard deviation equation (\ref{eq:Corrected sigma value - Extrapolation method}) is based on the form of the analogous equation in \cite{diederichs2003}.
 Other forms of the correction function should be explored with a good physical/statistical justification.
 
 A limitation of using the Leal \textit{et al.} model for the regression fits is that the model assumes positive intensity values for all (real) dose values.
-As a physical model, this assumption is completely valid, however real intensity data can be both positive and negative.
+As a physical model, this assumption is completely valid; however real intensity data can be both positive and negative.
 In the regression analysis, any reflection which had too many negative/small intensity values was rejected because this could lead to unreliable extrapolated intensity values.
-Further work could include suggesting alternative physical dose decay models or amendments of the Leal \textit{et al.} model to reasonably account for negative intensity values.
+Further work could include suggesting alternative physical dose decay models or amendments of the Leal \textit{et al.} model to satisfactorily account for negative intensity values.
 However, it is currently reasonable to suggest that perhaps a single parametric dose decay model is not capable of describing the relationship between the change in intensity and the dose.
 With this in mind, it could be the case that non-parametric regression techniques, such as Gaussian process regression, may prevail over parametric ones.
 The problem is that non-parametric regression techniques often require more data for a reliable fit.
@@ -73,5 +73,5 @@ The current implementation of the extrapolation algorithm was written in the Mat
 This was a suitable language to perform the data exploration necessary to do the analysis.
 However the bottleneck with the program is reading the intensity data from the MTZDUMP output.
 Matlab is over 1000 times slower than C for parsing integers \cite{bezanson2014julia}.
-To make the program useable to the general crystallographic community the program would need to be written in an open source and free programming language.
+To make the program useable to the general crystallographic community, the program would need to be written in an open source and free programming language.
 Python and C/C++ are currently the standard languages in the crystallographic community and would thus make good candidates.

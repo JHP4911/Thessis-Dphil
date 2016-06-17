@@ -6,13 +6,13 @@
 \label{sub:Regression extrapolation}
 With both the reflection intensities and the doses extracted, extrapolation can be performed using standard regression techniques.
 In particular, parametric regression in which a particular functional form describing the relationship between the two variables was implemented.
-The function chosen to describe the relationship between the reflection intensity, $I$, and the dose, $D$, for each individual reflection was:
+The function that was used to describe the relationship between the reflection intensity, $I$, and the dose, $D$, for each individual reflection was:
 \begin{equation}
-    I(D) = K_{\bs{h}} \exp \left[- A^2_{\bs{h}}D^2 - B_{\bs{h}}D h^2/2 \right]
+    I(D) = K_{\bs{h}} \exp \left[- A^2_{\bs{h}}D^2 - B_{\bs{h}}D h^2/2 \right],
     \label{eq:Extrapolation regression function}
 \end{equation}
-Where $\bs{h}$ represents the Miller indices of a reflection, $h = |\bs{h}| = 1/d$, where $d$ is the spacing between adjacent Bragg planes, and $K_{\bs{h}}, A_{\bs{h}}$ and $B_{\bs{h}}$ are reflection specific parameters to be determined.
-Note that this equation is identical to the Leal \textit{et al.} model (equations \ref{eq:Leal DDM}, \ref{eqscale} and \ref{eqB}) where
+where $\bs{h}$ represents the Miller indices of a reflection, $h = |\bs{h}| = 1/d$, $d$ is the spacing between adjacent Bragg planes, and $K_{\bs{h}}, A_{\bs{h}}$ and $B_{\bs{h}}$ are reflection specific parameters to be determined.
+This function was chosen because it is identical to the Leal \textit{et al.} model (equations \ref{eq:Leal DDM}, \ref{eqscale} and \ref{eqB}) where
 \begin{align}
     A^2_{\bs{h}} &= \gamma^2, \\
     B_{\bs{h}} &= \beta, \\
@@ -22,21 +22,21 @@ Essentially equation \ref{eq:Extrapolation regression function} is a Gaussian fu
 Hence the Leal \textit{et al.} model describes a Gaussian decay of reflection intensity with the dose.
 The values of the parameters $K_{\bs{h}}, A_{\bs{h}}$, and $B_{\bs{h}}$ will determine which section of the Gaussian will best describe the change in intensity for a given reflection.
 
-To determine the parameter values (and hence the decay of intensity of a reflection), all observations of equivalent\footnote{Equivalent in this sense means all symmetry equivalents and Friedel pairs} reflections were grouped together to form the set of observed intensities.
-The parameter values were then found as the values that minimised the function
+To determine the parameter values (and hence the decay of intensity of a reflection), all observations of equivalent\footnote{Equivalent in this sense means all symmetry equivalents and Friedel pairs.} reflections were grouped together to form the set of observed intensities.
+The parameter values were then found as the values that minimised the function:
 \begin{equation}
-\sum_{obs} w_{obs}\left(I_{obs}(D_{obs}) - I_{calc}(D_{obs}) \right)^2
+\sum_{obs} w_{obs}\left(I_{obs}(D_{obs}) - I_{calc}(D_{obs}) \right)^2,
 \label{eq:Extrapolation objective function}
 \end{equation}
-Where $w_{obs} = 1/\sigma_{obs}^2$ is the weighting term and $\sigma_{obs}$ is the standard deviation of the observation, $I_{obs}(D_{obs})$ is the observed intensity value at dose $D_{obs}$ and $I_{calc}$ is the calculated intensity as given by equation \ref{eq:Extrapolation regression function}.
+where $w_{obs} = 1/\sigma_{obs}^2$ is the weighting term and $\sigma_{obs}$ is the standard deviation of the observation, $I_{obs}(D_{obs})$ is the observed intensity value at dose $D_{obs}$ and $I_{calc}$ is the calculated intensity as given by equation \ref{eq:Extrapolation regression function}.
 The optimization routine is performed using the MATLAB \verb|fminsearch| routine which uses the simplex search method of Lagarias et al. \cite{lagarias1998convergence}.
 This is a direct search method that does not use numerical or analytic gradients.
 
-To ensure that the \verb|fminsearch| routine converges to sensible final parameter values, it needs to be seeded with suitable initial guesses of the values. To create the initial guesses, 3 observations (first, last and an observation from the middle of a dataset - provided they meet the criteria mentioned later in this section) are used to analytically find the parameter values such that the function passes through all three points.
+To ensure that the \verb|fminsearch| routine converges to sensible final parameter values, it has to be seeded with suitable initial estimates of the values. To create the initial estimates, 3 observations (first, last and an observation from the middle of a dataset - provided they meet the criteria mentioned later in this section) are used to analytically find the parameter values such that the function passes through all three points.
 
 One of the main problems with obtaining accurate data in crystallography is the limited multiplicity of reflection observations.
 This can also be problematic for performing accurate regression.
-Equation \ref{eq:Extrapolation regression function} requires three parameter values, therefore there should be at least three observations to perform extrapolation.
+Equation \ref{eq:Extrapolation regression function} requires three parameter values, therefore there should be at least three observations in order to perform extrapolation.
 However with only three observations, the regression is likely to lead to overfitting of the model to the data (Figure~\ref{fig:Data Overfitting to few data points - Extrapolation method}), so to avoid this, more observations are required.
 \begin{figure}
   \centering
@@ -51,7 +51,7 @@ An additional procedure that was implemented to prevent overfitting was to ensur
 Therefore after the regression was performed, a correlation coefficient was calculated between the model fit and the data.
 If the resulting correlation was below a specified value then the extrapolation procedure was abandoned.
 A low correlation suggests that there were problems with the fit, as illustrated in Figure~\ref{fig:Bad correlation bad fit - Extrapolation method} where the correlation coefficient was 0.209.
-However a low correlation value did not always suggest a bad fit as shown in Figure~\ref{fig:Bad correlation good fit - Extrapolation method}, where the correlation was low (0.231) but the fit looks reasonably good when accounting for the noise level.
+However, despite abandoning the procedure, a low correlation value did not always suggest a bad fit as shown in Figure~\ref{fig:Bad correlation good fit - Extrapolation method}, where the correlation was low (0.231) but the fit looks reasonably good when accounting for the noise level.
 \begin{figure}
         \centering
         \begin{subfigure}[b]{0.9\textwidth}
@@ -124,15 +124,15 @@ The standard deviation is computed as
     \label{eq:Corrected sigma value - Extrapolation method}
 \end{equation}
 where $\sigma_{corr}$ is the corrected standard deviation, $\sigma_{obs}$ is the observed standard deviation and $D_{min}$ is the dose value of the first observation.
-Equation \ref{eq:Corrected sigma value - Extrapolation method} takes the same form as the corrected standard deviation in \cite{diederichs2003}, with a couple of differences:
+Equation \ref{eq:Corrected sigma value - Extrapolation method} takes the same form as the corrected standard deviation in Diederichs \textit{et al.} (2003), with a couple of differences:
 \begin{enumerate}
-    \item in the study by Diederichs \textit{et al.} \cite{diederichs2003}, the standard deviation is inflated as
+    \item in the study by Diederichs \textit{et al.}, the standard deviation is inflated as
     \begin{equation}
         \sigma^{corr}_{ij} = \left[ \sigma^2_{ij} + (\sigma_{\beta}x_{ij})^2 \right]^{1/2},
     \end{equation}
     where $\sigma_{ij}$ is the standard deviation of the $i^{th}$ observation in the $j^{th}$ dataset of a reflection, $\sigma_{\beta}$ is the standard deviation of the damage factor $\beta$ (essentially the gradient of the assumed linear intensity decay) which is common to all observations of a reflection in all datasets, and $x_{ij}$ is the dose at which the observation occurred.
-    In the current work a different decay form is used for the extrapolation, so there is no single term that is directly analogous to the decay factor.
-    \item $D_{min}$ is used instead of the actual dose of the crystal during the observation because I have concluded that a big factor in the reliability of the extrapolation is how early the initial measurement was made.
+    In the current work, a different decay form is used for the extrapolation, so there is no single term that is directly analogous to the decay factor.
+    \item $D_{min}$ is used instead of the actual dose that has been absorbed by the crystal during that particular observation because I have concluded that a big factor in the reliability of the extrapolation is how early the initial measurement was made.
     A thought experiment to illustrate this is to suppose a reflection is observed on every frame in an MX experiment where the dose range is 1-10 MGy, and another reflection is observed on every frame from a dose of 5.5 MGy onwards.
     Assume that observations of these reflections on the same image have the same sigma values and also that the regression fits are theoretically perfect for both reflections.
     In the case where the dose value at which the observation was made is used to inflate the standard deviations, the inflated values for the extrapolation of the observations will have the same value because they have the same dose and same sigma value.
@@ -235,7 +235,7 @@ Instead they are calculated from the zero dose values that were calculated from 
     \label{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}
 \end{figure}
 
-Now that the prior distribution has been specified, it is left to specify the likelihood distribution, $P(I | J, D)$.
+Now that the prior distribution has been specified, it is left to define the likelihood distribution, $P(I | J, D)$.
 Using the same approach as the French and Wilson truncation algorithm, the likelihood is assumed to be a normal distribution.
 The main difference is that the intensity data are assumed to have been changed by a scale factor, $s$, which is a function of the dose, $D$.
 Therefore the intensity of an observation is normally distributed:
@@ -251,9 +251,9 @@ Or more explicitly
 
 So all that remains is to find $s(D)$.
 
-An estimate of $s(D)$ can be found in resolution shells by calculating the mean intensity inside resolution bins of observations that were observed within a \textit{dose shell}.
+An estimate of $s(D)$ can be found for resolution shells by calculating the mean intensity inside resolution bins of observations that were collected within a \textit{dose shell}.
 For example, if data were collected up to a dose of 10 MGy, then 5 dose shells can be chosen as: 0 - 2 MGy, 2 - 4 MGy, 4 - 6 MGy, 6 - 8 MGy, 8 - 10 MGy.
-The average dose in these dose shells represent the dose at which the mean intensity was observed.
+The average dose in these dose shells represents the dose at which the mean intensity was observed.
 The mean intensities will be different from the zero-dose mean intensity as depicted in Figure~\ref{fig:mean intensity in resolution shells, various doses - Extrapolation method}.
 If $<I(D_1)>$ represents the mean intensity of a reflection observed in a particular resolution shell in a dose shell with average dose $D_1$, then the scale factor, $s(D_1)$, can be estimated as the value $s_f$ such that $<I(0)> = s_f <I(D_1)>$, where $<I(0)>$ is the average zero-dose intensity in that resolution shell.
 \begin{figure}
@@ -265,7 +265,7 @@ If $<I(D_1)>$ represents the mean intensity of a reflection observed in a partic
 \end{figure}
 This can be performed over several resolution shells to build a set of points of $s(D)$ at $D_1, D_2,\ldots, D_m$, as long as there are a suitable number of reflections in the dose shell and resolution shell.
 This allows interpolation of scale factors for doses between the values used in the dose shells.
-A smoothing spline was used to interpolate scale factors in the present work as shown in Figure~\ref{fig:Scale factors, smoothing interpolation - Extrapolation method} .
+A smoothing spline was used to interpolate scale factors in the present work, as shown in Figure~\ref{fig:Scale factors, smoothing interpolation - Extrapolation method} .
 \begin{figure}
         \centering
         \begin{subfigure}[b]{0.9\textwidth}
@@ -288,7 +288,7 @@ A smoothing spline was used to interpolate scale factors in the present work as 
         \label{fig:Scale factors, smoothing interpolation - Extrapolation method}
 \end{figure}
 
-When performing this analysis it is important to take into account the fact that there may not be enough reflections in a resolution shell to get reliable estimates of the average intensity.
+When performing this analysis it is important to take into account the fact that there may not be enough reflections in a resolution shell to obtain reliable estimates of the average intensity.
 This would correspond to missing points in Figure~\ref{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}.
 Two ways to resolve this issue are:
 \begin{enumerate}
@@ -303,17 +303,17 @@ This is important because using an incorrect model for the radiation decay is mo
 Therefore only a fraction of the scale factor for that shell value may be applied when considering each reflection.
 A measure to determine whether a reflection may behave like the ``\textit{average}'' is the absolute difference in intensity between the observed intensity and the mean intensity multiplied by the corresponding reflection multiplicity $\varepsilon_{\bs{h}}$, which will be denoted $r$.
 If the difference is large then the reflection may not behave like the ``\textit{average}'' and hence only a small fraction of $s(D_{obs})$ should be applied when performing the extrapolation.
-The logistic function that is bounded between $s(D_{obs})$ and 1 can be used to quantify the extent of $s(D_{obs})$ that should be applied to the expected zero dose intensity $J$, and is a function of the absolute residual $r$.
+The logistic function that is bounded between $s(D_{obs})$ and 1 can be used to quantify the proportion of $s(D_{obs})$ that should be applied to the expected zero dose intensity $J$, and is a function of the absolute residual $r$.
 Effectively it represents the extent to which the data are corrected according to the correction model.
 Mathematically $f$ is given by
 \begin{equation}
 f(r; D) = \f{s(D) - 1}{1 + (r^2/A)^B} + 1;
 \label{eq:Fraction of scale factor to be applied - Extrapolation method}
 \end{equation}
-where $f$, is the amount of $s(D)$ that actually multiplies $J$ and $A$ and $B$ are user specified parameters that determine respectively where the inflection point occurs and the steepness of the function slope.
+where $f$ is the amount of $s(D)$ that actually multiplies $J$, and $A$ and $B$ are user specified parameters that determine respectively where the inflection point occurs and the steepness of the logistic function slope.
 The relationship between $f$ and $r$ can be seen in Figure~\ref{fig:Scale factor weighting - Extrapolation method} for $s(D_{obs})$ = 0.5, $A$ = 10 and $B$ = 5.
 It can be seen that $f(r)$ can only take values between $s(D_{obs})$ and 1.
-When the residual is small ($r \approx$ 0), i.e. the difference between the observed intensity and the mean intensity is small, $f(r) \approx$ 5.
+When the residual is small ($r \approx$ 0), i.e. the difference between the observed intensity and the mean intensity is small, $f(r) \approx$ 0.5.
 As the residual increases, $f(r) \rightarrow$ 1.
 How fast this change occurs depends on the values of $A$ and $B$, which in turn will be crystal dependent.
 \begin{figure}

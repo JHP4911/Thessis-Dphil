@@ -1,13 +1,13 @@
 %!TEX root = ../../main.tex
 \section{Discussion}
 \label{sec:Discussion - Beam Chapter}
-The ability to calculate the dose absorbed by a crystal is vital for the comparison of results from different radiation damage studies.
+The ability to calculate the dose absorbed by a crystal is vital for the comparison of results from different radiation damage studies and to give guidance to experimenters so MX data collections can be optimised.
 To ensure that the dose estimates are reliable, it is necessary to accurately parameterise the diffraction experiment.
 A custom module was written into RADDOSE-3D by Dr. Oliver Zeldin to allow the experiment to be simulated with experimentally measured X-ray beam profiles \cite{zeldin2013dwd}.
 However the experimentally measured beam profiles often need some form of preprocessing before they can be used in the simulation.
 The type of preprocessing largely depends on the experimental method used to measure the beam profile.
 
-One method to measure the beam profile is to use an aperture to scan across the X-ray beam and measure the current produced by the X-ray photons at each position.
+One method to measure the beam profile is to use an aperture to scan across the X-ray beam and measure the current in a silicon diode produced by the X-ray photons at each position.
 Often a single aperture scan is performed horizontally and again vertically.
 If the scans resemble Gaussian profiles (Figure~\ref{fig:Original aperture measurments - DLS}) then it is possible to use the parameter values obtained from 1D Gaussian fits to the data in a 2D Gaussian model representation of the beam.
 This approach enabled accurate predictions of the data that would be generated using apertures of various sizes, hence validating the method.
@@ -26,7 +26,7 @@ This suggests that to get an accurate beam profile from a 2D image it is necessa
 It is important that the scintillator is placed at the sample position because beam divergence will result in a slightly different beam profile if the scintillator is placed in a different plane.
 
 A more reliable (and thus recommended) method to measure the experimental beam profile is to take a series of 1D aperture scans to sample as much of the beam profile region as possible.
-This bypasses the need to subtract background from an image because flux is measured via the current it produces on the diode.
+This bypasses the need to subtract background from an image because flux is measured via the current it produces on the silicon diode.
 Sampling the 2D space allows the beam to be interpolated between data points.
 This negates the requirement to explicitly model the beam profile with a 2D Gaussian function for example.
 In the work presented here, the interpolation was performed separately on horizontal scans and vertical scans and then averaged.

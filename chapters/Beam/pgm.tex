@@ -7,14 +7,18 @@ Specifically, the measurement was made using a scintillator combined with an All
 The processing of these images presents different challenges to those that arise from 1D aperture scan measurements.
 
 The 2D image of the X-ray beam profile was exported as a portable graymap (pgm) file where each pixel contains an integer value between 0 and 255 inclusive (Figure~\ref{fig: Hamburg beam PGM}).
-These values were determined by the strength of the signal from the scintillator.
-To spatially resolve the flux over the beam image, RADDOSE-3D multiplied each pixel value by the ratio of the total absolute flux with the total sum of the pixel values multiplied by the area of a pixel.
+These values were determined by the size of the signal from the scintillator.
+To spatially resolve the flux over the beam image, RADDOSE-3D calculates the flux, $F$, for a particular pixel as:
+\begin{equation}
+    F = \f{p_{ij}T_F}{A_p\sum_{ij}p_{ij}},
+\end{equation}
+where $p_{ij}$ is the pixel value in the image, $T_F$ is the total measured flux, and $A_p$ is spatial area covered by the pixel.
 This means that the pixel values can be regarded as weights that correspond to the relative photon flux at that spatial position.
 In general the pgm file will always contain non-zero values that correspond to background signal.
 This can be seen in Figures~\ref{fig:Hamburg beamslice} and \ref{fig:Hamburg beamslice horizontal} where the pixel values never decay to zero at any point in the slices through the beam.
-RADDOSE-3D interpreted these non-zero values as beam intensity, so some of the flux that should be in the beam was instead allocated to the background pixels, which resulted in an underestimate of the absorbed dose in the crystal.
-Therefore it was important to identify the background and remove it from the file before the dose simulation was performed.
-Several methods for removing the background were explored and the results were compared to observe the effects on the RADDOSE-3D simulations.
+RADDOSE-3D interpreted these non-zero values as beam intensity, so some of the flux that should have been in the beam was instead allocated to the background pixels, which resulted in an underestimate of the absorbed dose in the crystal.
+Therefore it was important to identify the background and remove it from the beam profile measurements before the dose simulation was performed.
+Several methods for removing the background were explored and the results were compared in order to investigate the effects on the RADDOSE-3D simulation output.
 
 \subsection{PGM file preprocessing}
 \label{sub:PGM file preprocessing}
@@ -77,7 +81,7 @@ These dimensions were stored.
         \caption[Beam image segmentation and beam boundaries.]{(a) Segmented image of the beam with its centroid marked as a red circle in the middle.
         (b) Beam image with the centroid and two bounding boxes overlaid.
         The inner box is an estimate of the beam size with dimensions 145$\, \mu m \times$ 140$\, \mu m$.
-        These dimensions were chosen according to the coverage of the beam area in the image as opposed to the size of the aperture from the slit separation (slits were set at 140$\,\mu m \times$ 140$\,\mu m$).
+        These dimensions were chosen according to the coverage of the beam area in the image, as opposed to the size of the aperture from the slit separation (slits were set at 140$\,\mu m \times$ 140$\,\mu m$).
         The outer box is the boundary,170$\, \mu m \times$ 170$\, \mu m$, where the pixels outside the box are considered part of the background (section \ref{secthresh}).}
         \label{figimagemanip}
 \end{figure}
@@ -87,8 +91,7 @@ These dimensions were stored.
 \item The Laplacian PSF was created using the grid size and $b$.
 \item The top hat beam was convolved with the PSF to create a theoretical (convolved) beam image.
 \item the positions of zero pixel values from the theoretical beam image were also set to zero in the original beam image.
-\item The height of the theoretical beam image was adjusted by a factor of the mean of the original beam height, divided by the modal value of the theoretical beam height (the zero pixel values were discarded for the mean and mode calculations).
-This ensured that the values of the beams were on the same scale.
+\item The height of the theoretical beam image was scaled to the height of the original beam.
 \item The matrix 2-norm of the difference between the original beam image with zeroed outer pixel values and the theoretical beam image was calculated and used as the output of the objective function to be minimised (the matrix 2-norm is equal to the square root of the maximum eigenvalue of the matrix multiplied by its conjugate transpose matrix).
 \end{itemize}
 \item Another blind deconvolution was performed as before but this time with the returned grid size from the minimisation procedure as the input.
@@ -238,25 +241,25 @@ All of the beams illustrated in Figure~\ref{figallbeamscont} were used as input 
 Each RADDOSE-3D run produced a set of DWD values; each value corresponded to one of the 271 datasets produced using the rolling window processing method described in section \ref{sub:Data Processing}.
 These doses were plotted against the relative intensities ($I_n / I_1$) for each dataset and a line of best fit was determined using data where $I_n / I_1$ > 0.4.
 $D_{1/2}$ values were then obtained from the line of best fit for each processed beam and plotted against the percentage of pixel values in the image that are equal to 0 as shown in Figure~\ref{figdhalf}.
-The results show that the higher the threshold value (i.e. the more pixels that are considered background and are set to zero) the higher the $D_{1/2}$ value.
+The results show that the higher the threshold value (i.e. the more pixels that are considered as background and are set to zero) the higher the $D_{1/2}$ value.
 This occurs because RADDOSE-3D is run independently from the scaling of the diffraction data and therefore the $I_n/I_1$ values are the same for each run.
 As alluded to above, more zero pixel values means that the same total photon flux is distributed over a smaller area (which always contained the crystal), and hence the crystal absorbs more energy which contributes to higher doses.
 This gives the appearance that the crystal is less radiation sensitive (because the $D_{1/2}$ is higher).
 
-The other major factor in the calculation of the dose values is the calculated absorption coefficients.
-In Figure \ref{figdhalf} the blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 \cite{pait2009} (denoted RDV2 in Figure \ref{figdhalf}) giving an absorption coefficient of 4 $\times$ 10$^{\text{-4}}\, \mu m^{\text{-1}}$.
+The other major factor in the calculation of the dose values is the computed absorption coefficients.
+In Figure \ref{figdhalf}, the blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 \cite{pait2009} (denoted RDV2 in Figure \ref{figdhalf}) which gave an absorption coefficient of 4 $\times$ 10$^{\text{-4}}\, \mu m^{\text{-1}}$ (solvent content supplied as 64\%).
 The red markers represent simulations where the absorption coefficients were calculated for an ``average protein'', H$_{\text{49.8}}$C$_{\text{31.8}}$N$_{\text{8.56}}$O$_{\text{9.54}}$S$_{\text{0.249}}$ (denoted \textit{``default''} in Figure \ref{figdhalf}).
-The absorption coefficient assuming 50\% solvent is 2.37 $\times 10^{\text{-4}}\, \mu m^{\text{-1}}$ (details of the calculation can be found in \cite{holton2010}).
-The absorption coefficient of insulin is bigger than that of the average protein because it contains more sulphur than the average protein, but it also contains zinc, which has a relatively high absorption cross section.
+The absorption coefficient, assuming 50\% solvent, is 2.37 $\times 10^{\text{-4}}\, \mu m^{\text{-1}}$ (details of the calculation can be found in Holton and Frankel (2010)).
+The absorption coefficient of insulin is bigger than that of the average protein because it contains more sulphur than average, and it also contains zinc, which has a relatively high absorption cross section.
 The difference between the absorption coefficients leads to differences in calculated doses of about a factor of 2.
 \newline
 The results seem to suggest that the two factors investigated here: beam profile and absorption coefficient, are the most important for dose calculations.
 However, the differences between the profiles of the original beam image, the top hat beam and the deconvolved beam have a much less pronounced affect on the dose calculations compared to the absorption coefficient.
 For example, the percentage difference of $D_{1/2}$ between the original beam with no background (denoted Original$_{\text{NB}}$ in the figure legend of Figure \ref{figdhalf}) and the deconvolved beam with no background is 0.8\% (using coefficients calculated using RADDOSE version 2).
 This shows that deconvolution of the image will not significantly affect the dose estimate.
-This is because the differences in the pixel values are relatively small when compared to the differences one may expect if a Gaussian beam profile is compared to a tophat profile.
+This is because the differences in the pixel values are relatively small when compared to the differences one may expect if a Gaussian beam profile is compared with a tophat profile.
 \newline
-Using the threshold method, there is a difference in $D_{1/2}$ ($\approx$ 3.9\% - 6.0\%) depending on the background threshold value) values if the maximum pixel value from the background is subtracted from the image or the mean pixel value is subtracted from the image.
+Using the threshold method, there is a difference in $D_{1/2}$ ($\approx$ 3.9\% - 6.0\%) depending on the background threshold value) values if the maximum pixel value of the background is subtracted from the image or the mean pixel value is subtracted from the image.
 This is consistent with the observation that the higher the threshold value, the higher the $D_{1/2}$ value.
 The difference between the maximum threshold value from the 160 $\times$ 160$\, \mu m^2$ rectangle (Bkgd$_{\text{20}}$) and the mean value is 3.89\% (using RDV2 calculated absorption coefficients).
 This result demonstrates that even if the area that is considered background is the same (Figure \ref{figbackgrounds}), deciding whether to subtract the mean background pixel value or the maximum pixel value will also have a small affect on the resulting $D_{1/2}$ value.
@@ -268,6 +271,6 @@ This result demonstrates that even if the area that is considered background is 
     Blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 (denoted `RDV2' in figure legend) and red markers represent simulations where the absorption coefficients were calculated for an ``average protein'' (denoted `default' in figure legend).
     The subscript `NB' denotes beam profiles where the ``background'' was removed.
     The figure shows a trend that the higher the proportion of zero pixel values, the higher the $D_{1/2}$ value.
-    It also shows that the method used to calculate the absorption coefficients can significantly affect the estimated doses.}
+    It also shows that the method used to calculate the absorption coefficients can significantly affect the estimated doses, as expected.}
     \label{figdhalf}
 \end{figure}

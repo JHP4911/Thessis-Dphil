@@ -35,22 +35,21 @@ To compare the theoretical RDEs calculated from the DDMs with the experimentally
 These values are then divided by the same integral at dose $D =$ 0$\,$MGy to give an estimate of the relative intensities.
 The resulting equations are given below and plotted in Figure \ref{fig:Relative Intensity Plots} along with the experimentally measured relative intensity values $I_n/I_1$ for the insulin crystals using the parameter values given in tables \ref{tab:RDE params1} and \ref{tab:RDE params2}.
 \begin{align}
-\text{RDE Holton} &= \f{\int^{h_{max}}_{h_{min}}{h^2 I_{ND}(h) \exp \left[ \f{- \ln(2) \times D \times h}{H}\right]}\, \dd h}{\int^{h_{max}}_{h_{min}}{h^2 I_{ND}(h)}\, \dd h} \label{eqrdeholt}\\
-\text{RDE Leal} &= \f{\exp\left[ -\gamma^2 D^2 \right] \int^{h_{max}}_{h_{min}}{h^2 J(h) \exp\left[ -\f{1}{2}(B_0 + \beta D)h^2\right]}\, \dd h }{\int^{h_{max}}_{h_{min}}{h^2 J(h) \exp\left[ -\f{1}{2} B_0 h^2\right]}\, \dd h }  \label{eqrdeleal}\\
+\text{RDE Holton} &= \f{\int^{h_{max}}_{h_{min}}{h^2 I_{ND}(h) \exp \left[ \f{- \ln(2) \times D \times h}{H}\right]}\, \dd h}{\int^{h_{max}}_{h_{min}}{h^2 I_{ND}(h)}\, \dd h} \label{eqrdeholt}\\[10pt]
+\text{RDE Leal} &= \f{\exp\left[ -\gamma^2 D^2 \right] \int^{h_{max}}_{h_{min}}{h^2 J(h) \exp\left[ -\f{1}{2}(B_0 + \beta D)h^2\right]}\, \dd h }{\int^{h_{max}}_{h_{min}}{h^2 J(h) \exp\left[ -\f{1}{2} B_0 h^2\right]}\, \dd h }  \label{eqrdeleal}\\[10pt]
 \text{RDE Sygusch} &= \f{\int^{h_{max}}_{h_{min}}{h^2 I(D=0,h) \left[ A_1(D) + A'_1(D) + A_2(D) \exp\left( \f{-B h^2}{2}\right)\right]}\, \dd h}{\int^{h_{max}}_{h_{min}}{h^2 I(D=0,h) \left[ A_1(0) + A'_1(0) + A_2(0) \exp\left( \f{-B h^2}{2}\right)\right]}\, \dd h} \label{eqrdesyg}
 \end{align}
-The root mean squared deviation (RMSD) was used to assess the fit of the RDE models to the data.
-A lower RMSD suggests a better fit to the data.
-Although the parameter values were determined only using the data down to 70\% of the initial intensity, the RMSD values are found using the entire range of data for each crystal.
+The root mean squared deviation (RMSD) was used to assess the fit of the RDE models to the data, with a lower RMSD suggesting a superior fit.
+Although the parameter values were determined using only the data down to 70\% of the initial intensity, the RMSD values are found using the entire range of data for each crystal.
 Figure \ref{fig:Relative Intensity Plots} shows that the RDE using the Leal \textit{et al.} intensity decay model best describes the crystal intensity decay for three out of the five crystals (crystal IDs: 0259, 137 and 128) according to the RMSD.
-For two of the five crystals (crystal IDs: 180 and 172) RDE Sygusch model gives the lowest RMSD, suggesting that this model is also adequate at describing the relative intensity decay.
-An important feature of the RDE Sygusch model is that it displays at least two phases to the relative intensity decay.
+For the other two crystals (crystal IDs: 180 and 172), the RDE Sygusch model gives the lowest RMSD, suggesting that this model is also adequate at describing the relative intensity decay.
+An important feature of the RDE Sygusch model is that it displays at least two phases during the relative intensity decay.
 Both phases appear to decay linearly, with the first linear phase decaying faster than the second phase.
-The RDE Holton model consistently gives the highest RMSD value for all five crystals and the decay curve visually does not correlate well with the decay shown in the data.
+The RDE Holton model consistently gives the highest RMSD value for all five crystals and the decay curve does not correlate well visually with the decay shown in the data.
 
 The RDE Leal model was chosen as the one to investigate with the DWD due to its simplicity and superior predictive ability.
 Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relative intensity values predicted by the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaged for each of the 5 insulin crystals processed.
-However this time the data were processed to a resolution limit of 1.4\,\AA (as opposed the 1.8$\,$\AA which was done previously) to ensure that the difference in resolution would not affect the predictive ability of the model.
+However, this time the data were processed to a resolution limit of 1.4\,\AA\ (as opposed to the 1.8$\,$\AA\ limit used previously) to ensure that the difference in resolution would not affect the predictive ability of the model.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{1\textwidth}
@@ -143,7 +142,7 @@ However this time the data were processed to a resolution limit of 1.4\,\AA (as 
 \captionsetup{justification=centering}
 	\caption[Parameter values for the dose decay models.]{Parameter values for the dose decay models.
 	Note: $K$ does not explicitly appear in equation (\ref{eqrdeleal}) and hence is not required for the analysis.
-	The large $k_1$ parameter value for crystal 172 seems highly unphysical when compared to the other values.
+	The large $k_1$ parameter value for crystal 172 seems highly unphysical when compared with the other values.
 	This large value implies that any site specific damaged crystal proportion in the crystal immediately becomes disordered, which suggests that the site specific state is present in negligible quantities for this crystal.
     Accounting for the intrinsic variability of crystals and the fact that the surface modification fraction of crystal 0259 was never higher than 5\% of the total crystal fraction, it is not too surprising that at least one of the crystals may show a negligible surface modification fraction.
 	\newline
@@ -155,7 +154,7 @@ However this time the data were processed to a resolution limit of 1.4\,\AA (as 
 		\hline
 		0259     &$3.6 \times 10^{-2}$   &$0.648$   	&$5.0 \times 10^{-2}$   &$5.466$    &$13.329$    &$0.383$  &$0.030$ \\
 	  180      &$4.3 \times 10^{-2}$   &$0.772$   	&$5.0 \times 10^{-2}$   &$5.274$    &$13.408$    &$0.377$  &$0.036$ \\
-		172      &$4.1 \times 10^{-2}$   &$2309.619$  &$5.0 \times 10^{-2}$   &$6.345$    &$14.818$    &$0.266$  &$0.037$ \\
+		172      &$4.1 \times 10^{-2}$   &$2310$  &$5.0 \times 10^{-2}$   &$6.345$    &$14.818$    &$0.266$  &$0.037$ \\
 	  137      &$5.1 \times 10^{-2}$   &$0.473$   	&$5.0 \times 10^{-2}$   &$5.391$    &$14.136$    &$0.353$  &$0.036$ \\
 		128      &$4.3 \times 10^{-2}$   &$0.624$   	&$5.0 \times 10^{-2}$   &$5.842$    &$14.538$    &$0.338$  &$0.029$ \\
 		\hline
@@ -166,6 +165,6 @@ However this time the data were processed to a resolution limit of 1.4\,\AA (as 
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/dwd/relintall_14A.pdf}
-    \caption[Leal \textit{et al.} RDE model fitted to all insulin relative intensity data.]{Relative intensity plotted against the average dose over the whole crystal for all of the insulin crystals. Discrete data points represent the experimental data for each crystal processed to 1.4\,\AA. The black solid line is the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaging the parameter values for each crystal.}
+    \caption[Leal \textit{et al.} RDE model fitted to all insulin relative intensity data.]{Relative intensity plotted against the average dose over the whole crystal for all of the insulin crystals. Discrete data points represent the experimental data for each crystal processed to 1.4\,\AA. The black solid line is the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and with averaging of the parameter values for each crystal.}
     \label{fig:Relative Intensity - All crystals 1.4 Angstroms}
 \end{figure}

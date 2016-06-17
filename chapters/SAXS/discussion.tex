@@ -8,9 +8,9 @@
 The analysis of data from the two SAXS experiments has relied on extensions to RADDOSE-3D to allow it to simulate SAXS data collection.
 In particular the three major additions were:
 \begin{enumerate}
-    \item Implementation of a cylindrical sample geometry.
-    \item Determination of the sample composition given a protein concentration.
-    \item Attenuation of the X-ray beam due to a surrounding capillary.
+    \item implementation of a cylindrical sample geometry,
+    \item determination of the sample composition given a protein concentration,
+    \item attenuation of the X-ray beam due to a surrounding capillary.
 \end{enumerate}
 The cylinder geometry (diameter and height) is now an explicit input option for the user to specify in a RADDOSE-3D job.
 RADDOSE-3D then converts the description of the cylinder provided by the user to a polyhedral geometry description, which is the base crystal implementation.
@@ -23,7 +23,7 @@ RADDOSE-3D now implements a \textit{container} class which defines the material 
 The attenuation of the beam by the container is considered for all experiments.
 For SAXS experiments this is usually a quartz capillary, whereas for MX it is assumed to be a container that is \textit{transparent} to X-rays.
 However the user can define any container for any experiment, SAXS or MX giving greater flexibility.
-An immediate application is for in situ RT MX data collection.
+An immediate application is for \textit{in situ} RT MX data collection.
 
 As mentioned in section \ref{sub:RADDOSE-3D Architecture}, RADDOSE-3D has been written in a very modular style so that extensions to existing functionality can be easily incorporated.
 At its core, RADDOSE-3D essentially deals with three main objects: a sample, a beam and a wedge.
@@ -45,7 +45,7 @@ The formal tests for the SAXS extensions still need to be written before the cod
 These include testing that the cylindrical implementation is stable for different inputs and is aligned with the axial length perpendicular to the beam by default.
 It is also necessary to check that the absorption coefficient calculation works for different types of elemental and mixture compositions.
 However the code is currently public on the RADDOSE-3D Github repository in the branch named ``SAXS" \url{https://github.com/GarmanGroup/RADDOSE-3D}.
-Alpha versions of the SAXS extensions have already been distributed to Dr. Eddie Snell and Dr. Adam Round for user testing.
+Alpha versions of the SAXS extensions have already been distributed to Dr. Edward Snell (Hauptman-Woodward Institute, Buffalo) and Dr. Adam Round (ESRF, Grenoble) for user testing.
 
 \subsubsection{Radioprotectant analysis}
 \label{subs:Radioprotectant analysis}
@@ -56,11 +56,12 @@ Therefore metrics were developed to establish thresholds for merging analysis so
 
 For experiment 1 the analysis performed by DATCMP gave a fidelity value which was a measure of the similarity between frame 1 and a subsequent frame.
 Overall these frames resembled logistic curves, and hence 4PLs were fitted to the data.
-Two metrics were then developed to give a merging threshold. The first metric was the total dose absorbed that was required to reach an arbitrary fidelity value.
+Two metrics were then developed to give a merging threshold.
+The first metric was the total dose absorbed to reach an arbitrary fidelity value.
 This metric is fundamentally flawed because there is no universal value to choose and it would have to change for each comparison experiment.
-It is also a relative metric i.e. it only compares the efficacy of one radioprotectant to another, but it does not give any absolute stand-alone information about whether the frames at that fidelity value are damaged or not.
+It is also a relative metric i.e. it only compares the efficacy of one radioprotectant with another, but it does not give any absolute stand-alone information about whether the frames at that fidelity value are damaged or not.
 
-The second metric that was developed was the dose absorbed before reaching maximum curvature.
+The second metric developed was the dose absorbed before reaching maximum curvature.
 This metric is absolute in the sense that the threshold represents the point at which the fidelity values begin to deviate maximally from the initial frame(s).
 A downside to the maximum curvature metric is that if it is being used to ultimately determine which frames to merge, then the value that is determined may be too strict.
 If the overall curvature of the function is fairly small then it is possible that merging some frames beyond the threshold may still improve data quality because they may not be significantly dissimilar.
@@ -70,7 +71,7 @@ Potentially a big problem with the fitting approach overall is that it relies on
 More recently, the DATCMP similarity analysis was extended to implement the CorMap test which assesses the similarity of two frames.
 As this is the default test in DATCMP, it is likely that this is the analysis that the SAXS community will adopt.
 During the analysis of the SAXS data, there was no open source package available to generate the plots related to the CorMap analysis, including the pairwise CorMap plots themselves (Figures \ref{fig:Pairwise correlation frames 1 and 2} and \ref{fig:Pairwise correlation frames 1 and 120}).
-Therefore a library was written to perform all of the analysis and also to produce the plots.
+Therefore a library was written to perform all analysis and also to produce the plots.
 This library is currently available on Github \url{https://github.com/JonnyCBB/AnalyseSAXSLib/blob/master/CorMapAnalysis.py} but is intended to be released as a distributable Python package.
 
 On its own, the CorMap test performs pairwise comparisons of frames.
@@ -79,7 +80,7 @@ This dissimilarity of an individual frame therefore may not indicate a true syst
 It may just be an outlier.
 Therefore a more robust metric was developed for this work whereby three consecutive dissimilar frames were detected to establish a merging threshold.
 It was used to determine that there is a concentration dependence on the efficacy of individual radioprotectants. Some radioprotectants such as glycerol, ascorbate and sodium nitrate exhibited a positive concentration dependence, whereas DTT showed a negative concentration dependence.
-It was also found that glycerol, ascorbate and ethylene glycol were the most effective scavengers at high concentrations 10$\,$mM.
+It was also found that glycerol, ascorbate and ethylene glycol were the most effective scavengers at high concentrations (10$\,$mM).
 These compounds are all hydroxyl scavengers (k = 1 - 5 $\times$ 10$^{\text{9}}\,$M$^{\text{-1}}\,$s$^{\text{-1}}$ \cite{garrison1987reaction}), a radical species which is known to be mobile at room temperature.
 On the other hand sodium nitrate, which is an electron scavenger (k = 10$^{\text{8}}$ -  10$^{\text{9}}\,$M$^{\text{-1}}\,$s$^{\text{-1}}$ \cite{garrison1987reaction,allan2012}), generally does not protect as well.
 DTT was found to be the most effective radioprotectant at the lower concentrations of 1$\,$mM and 2$\,$mM, which were tested.

@@ -1,9 +1,9 @@
 %!TEX root = ../../main.tex
 \section{Processing aperture measurements}
 \label{sec:Processing aperture measurements}
-Prior to the measurements reported here (July 2013), users at Diamond Light Source (DLS) beamline I02 were provided with the full width half maximum (FWHM) values of the X-ray beam using a 10$\,\mu m$ aperture (see below).
+Prior to the measurements reported here (July 2013), users at Diamond Light Source (DLS) beamline I02 were provided with the full width half maximum (FWHM) values of the X-ray beam measured by a 10$\,\mu m$ aperture (see below).
 To obtain a more realistic value of the FHWM it was recommended that 5$\,\mu m$ be subtracted from the supplied FWHM values.
-This recommendation however was not backed up by any systematic experiments or studies.
+This recommendation however was not supported by any systematic experiments or studies.
 
 For this reason investigations were carried out to obtain a better estimate of the true beam profile to so that a more trustworthy value of the FWHM could be provided to users.
 This was the initial motivation for processing beam measurements made using aperture scans.
@@ -12,12 +12,8 @@ This was the initial motivation for processing beam measurements made using aper
 \label{sub:Experimental Methods - DLS}
 Aperture scans to obtain X-ray beam flux measurements were carried out in collaboration with Dr. Carina Lobley on the DLS I02 beamline.
 For these scans, a miniap device, a piece of steel with a 10$\,\mu m$ diameter circular hole, is translated across the beam by remote control.
-The position of the aperture is recorded along with a measure of the current in the diode (mA), which is proportional to the beam flux (photons/second), and this is detected using a silicon diode (S3590-09 model purchased from Hamamatsu) on the detector shutter known as i\_pin.
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:Type of diode}{\textbf{TODO:} Determine the type of diode}
-    \end{myenumerate}
-}
+The position of the aperture is recorded along with a measure of the current detected in a silicon diode (S3590-09 model purchased from Hamamatsu) on the detector shutter (i\_pin) \cite{owen2009}.
+The detector current is proportional to the beam flux (photons/second).
 First the `centre' $x$ and $y$ position is found such that the diode reading at this position gives the highest current.
 The aperture is then translated 120$\,\mu m$ in the negative horizontal direction.
 Measurements of the $x$ and $y$ positions and the diode reading are carried out at 2$\,\mu m$ intervals as the aperture is translated across in the positive horizontal direction for a total of 240$\,\mu m$ (+120$\,\mu m$ from the centre).
@@ -66,14 +62,14 @@ Only this current profile is necessary for the beam profile measurement because 
     \label{fig:Aperture scan model - DLS}
 \end{figure}
 
-To define the problem mathematically, the diode readings can be described as a convolution of the true current, $f$, at a point $\bs{x}$, and the area of the aperture, $g$.
+To define the problem mathematically, the diode readings can be described as a convolution of the true diode current, $f$, at a point $\bs{x}$, and the area of the aperture, $g$.
 Explicitly this is
 \begin{equation}
 [f*g](\bs{x}) = \int_0^{\bs{x}} f(\bs{u})g(\bs{x}-\bs{u})\mathrm{d}\bs{u} + n(\bs{x}),
 \label{eq:Convolution equation with noise}
 \end{equation}
 where $[f*g]$ is the measured diode reading and $n(\bs{x})$ represents the additive noise at a particular point in space.
-The aim of deconvolution in this context is to find the current profile, $f(\bs{x})$, given knowledge of the measured current, $[f*g](\bs{x})$, and the aperture contribution, $g(\bs{x})$.
+The aim of deconvolution in this context is to find the diode current profile, $f(\bs{x})$, given knowledge of the measured current, $[f*g](\bs{x})$, and the aperture contribution, $g(\bs{x})$.
 In general, deconvolution is an ill-posed problem, thus it is likely that a unique solution does not exist \cite{wolfram2016Deconvolution}.
 If it is assumed that the noise has zero mean and is spatially independent (white noise assumption) then the Wiener filter \cite{wiener1949extrapolation} can be used to deconvolve the signal to find $f$.
 The Wiener Filter, $W$, is defined mathematically in the Fourier domain as:
@@ -101,7 +97,7 @@ such that $\mathscr{F}[\widehat{f}]$ is the solution found with the minimum mean
 \label{eqerr}
 \end{equation}
 where the true solution is denoted $\mathscr{F}[f]$.
-Parseval's theorem implies that minimising the mean squared error in the Fourier domain is equivalent to minimising the mean squared error in the real domain. For further details on the Wiener Filter and its formal derivation the reader is referred to \cite{gon1992}.
+Parseval's theorem implies that minimising the mean squared error in the Fourier domain is equivalent to minimising the mean squared error in the real domain. For further details on the Wiener Filter and its formal derivation the reader is referred to Gonz\'{a}lez and Woods (1992) \nocite{gon1992}.
 
 \subsubsection{Implementing the deconvolution}
 \label{subs:Implementing the deconvolution}
@@ -138,7 +134,7 @@ where $\mu_x$, $\mu_y$, $\sigma_x$ and $\sigma_y$ are the parameters whose value
 g(x) &= A_{x}\exp\left[-\f{(x - \mu_x)^2}{2\sigma_x^2}\right], \label{eq:1D Guassian Function x} \\
 g(y) &= A_{y}\exp\left[-\f{(y - \mu_y)^2}{2\sigma_y^2}\right], \label{eq:1D Guassian Function y}
 \end{align}
-and $A_{max}$ is the maximum value of $A_{x}$ and $A_{y}$ which are the values of the maximum recorded diode measurement in the $x$ and $y$ directions respectively.
+and $A_{max}$ is the maximum value of $A_{x}$ and $A_{y}$ which are the values of the highest recorded diode current in the $x$ and $y$ directions respectively.
 If the measurements are taken perfectly (i.e. aperture is scanned exactly across the maximum flux in $x$ and $y$) then $A_{x} = A_{y}$ but due to experimental error this is rarely the case.
 \newline
 To obtain an estimate of the true relative X-ray beam profile, equation \ref{eq:2D Gaussian Function - DLS} has to be deconvolved with a matrix that corresponds to the aperture.
@@ -150,9 +146,13 @@ Any points with a Euclidean distance smaller than the aperture radius are determ
 However points with a Euclidean distance bigger than the aperture radius are outside and are set to 0.
 \newline
 The $\f{\mathscr{F}(n)}{\mathscr{F}(f)}$ term in equation \ref{eq:Wiener Filter} is estimated using the \verb+fminsearch+ minimisation function in Matlab.
-Thus an objective function was written as follows: first an estimate of the signal to noise ratio is passed to the function and a deconvolution of the signal is performed using the two-dimensional beam profile given by equation \ref{eq:2D Gaussian Function - DLS} and the aperture matrix.
-The function then performs a convolution of the deconvolved signal with the same aperture matrix and calculates the 2-norm (i.e. the square root of the maximum eigenvalue of a matrix multiplied by its conjugate transpose) of the original convolved signal subtracted from the newly calculated convolved signal.
-This 2-norm value is returned by the objective function.
+Thus an objective function was written as follows:
+\begin{enumerate}
+    \item first an estimate of the signal to noise ratio is passed to the objective function
+    \item using the estimates a deconvolution of the signal is performed using the two-dimensional beam profile given by equation \ref{eq:2D Gaussian Function - DLS} and the aperture matrix.
+    \item a convolution of the deconvolved signal with the same aperture matrix is performed.
+    \item the Frobenius norm\footnote{The Frobenius norm, $||A||_F$, of a matrix, $A$, is defined as $||A||_F \equiv \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n} |a_{ij}|^2}$ where the $a_{ij}$ represent the elements of the matrix.} of the original convolved signal subtracted from the newly calculated convolved signal is calculated and returned by the objective function.
+\end{enumerate}
 If the two signals give a norm value of zero then they are exactly the same, but otherwise a positive value is returned.
 The \verb+fminsearch+ function returns the value of $\f{\mathscr{F}(n)}{\mathscr{F}(f)}$ that minimises the objective function.
 Given the convolved two-dimensional beam profile, the aperture matrix and $\f{\mathscr{F}(n)}{\mathscr{F}(f)}$, the beam profile can be deconvolved using the Matlab function \verb+deconvwnr+ which performs a Wiener deconvolution as described in section \ref{subs:Theoretical introduction} (Figure~\ref{fig:Deconvolved 2D beam profile - DLS} ).
@@ -178,8 +178,8 @@ Given the convolved two-dimensional beam profile, the aperture matrix and $\f{\m
 \end{figure}
 
 The deconvolved 2D beam profile is not smooth, which is typical of deconvolution when the exact noise distribution is unknown.
-A further 2D Gaussian is fitted to the deconvolved data in order to obtain a smooth beam profile (Figure~\ref{fig:Gaussian model fitted to the 2D deconvolved profile - DLS}).
-This is carried out by taking 1D slices of the 2D beam profile in both the $x$ and the $y$ directions around the slice that gives the maximum readings in the centre, and then obtaining the parameters as previously outlined above (section \ref{subs:Implementing the deconvolution}).
+A further 2D Gaussian function is fitted to the deconvolved data in order to obtain a smooth beam profile (Figure~\ref{fig:Gaussian model fitted to the 2D deconvolved profile - DLS}).
+This is carried out by taking 1D slices of the 2D beam profile in both the $x$ and the $y$ directions around the slice that gives the maximum readings in the centre, and then obtaining the parameters as outlined above (section \ref{subs:Implementing the deconvolution}).
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/beam/gaussian_fitted_deconvolved_2d_beam.pdf}
@@ -198,13 +198,13 @@ FWHM = 2 \sigma \sqrt{2\ln(2)}.
 \label{subs:Validation of deconvolution approach}
 No measuring device is available to take measurements at the resolution to which the deconvolution method attempts to spatially resolve the flux readings.
 Therefore to validate the results, the deconvolution method was used in reverse to predict the FWHM values that would be obtained from the diode readings with a 20$\,\mu m$ diameter aperture.
-To do this the 2D deconvolved signal (Figure~\ref{fig:Gaussian model fitted to the 2D deconvolved profile - DLS}) was convolved with an aperture matrix of a different size.
+To achieve this the 2D deconvolved signal (Figure~\ref{fig:Gaussian model fitted to the 2D deconvolved profile - DLS}) was convolved with an aperture matrix of a different size.
 1D slices in the $x$ and $y$ directions were then found such that the flux in the central matrix element was maximum and 1D Gaussian functions were fitted to each slice.
 FWHM values were then calculated from the 1D Gaussians using equation \ref{eq:FWHM mathematical definition} and these calculated values could then be compared with the readings taken from actual experimental data obtained using a 20$\,\mu m$ aperture.
 
 \subsection{Results}
 \label{sub:Results - DLS}
-FWHM values obtained from the experimentally measured (convolved) i\_pin readings using the 20$\,\mu m$ diameter aperture (referred to as Exp$_{\text{20}}$) were compared with calculated FWHM values derived from the numerical convolving of the deconvolved profile with the 20$\,\mu m$ aperture (referred to as Conv$_{\text{20}}$ - Table~\ref{tab:FWHM comparison - DLS}).
+FWHM values obtained from the experimentally measured (convolved) i\_pin readings using the 20$\,\mu m$ diameter aperture (referred to as Exp$_{\text{20}}$) were compared with calculated FWHM values derived from the numerical convolution of the deconvolved profile with the 20$\,\mu m$ aperture (referred to as Conv$_{\text{20}}$ - Table~\ref{tab:FWHM comparison - DLS}).
 \begin{table}[h!]
 	\caption[Comparison of calculated FWHM values with experimentally observed FWHM values.]{Comparison of calculated FWHM values with experimentally observed FWHM values.
     The calculated FWHM values using the 10$\,\mu m$ aperture (in italics) are calculated from the deconvolved profile.
@@ -227,5 +227,5 @@ FWHM values obtained from the experimentally measured (convolved) i\_pin reading
 The errors of the FWHM values between Exp$_{\text{10}}$ and Deconv$_{\text{10}}$ are also quite small.
 In theory however, these values do not necessarily have to be close because the FWHM from Deconv$_{\text{10}}$ are calculated from the deconvolved profile, whereas the FWHM from Exp$_{\text{10}}$  are calculated from the convolved beam profile.
 The fact that these values are close provide evidence that users should not subtract $5 \mu m$ from the quoted FWHM values.
-Furthermore it suggests that deconvolving the X-ray beam does not significantly change the X-ray beam profile.
-This is important because it suggests that the measured 2D current profile does not have to be further altered once the profile has been generated from the 1D scans.
+Furthermore it indicates that deconvolving the X-ray beam does not significantly change the X-ray beam profile.
+This is important because it suggests that the measured 2D current profile does not have to be further altered once the profile has been generated from the 1D aperture scans.

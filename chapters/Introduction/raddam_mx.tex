@@ -2,8 +2,9 @@
 \section{Radiation damage in MX}
 \label{sec:Radiation damage in MX}
     A common theme amongst all of the structural techniques mentioned thus far is that the sample is probed with ionising radiation.
-    This results in the sample suffering radiation damage (even samples studied at XFEL sources have also shown signs of radiation damage when a pulse longer than 30$\,$fs is used \cite{nass2015indications}).
-    Being the most mature of these structural techniques however, a greater amount of literature exists about radiation damage for synchrotron based MX.
+    This results in the sample suffering radiation damage.
+    Even samples studied at XFEL sources have also shown signs of radiation damage when a pulse longer than 30$\,$fs is used \cite{nass2015indications}.
+    Being the most mature of these structural techniques however, a greater volume of literature exists about radiation damage for synchrotron based MX.
     Radiation damage is a problem because it limits the amount of useful data that can be collected from a single crystal during an MX experiment \cite{garman2010}.
     It is therefore the major cause of unsuccessful data collection at synchrotron sources given a sufficiently well diffracting crystal \cite{zeldin2013dwd}.
 
@@ -17,26 +18,25 @@
         \label{subs:Elastic scattering}
             Elastic scattering (also referred to as Rayleigh, Thompson or coherent scattering) is a type of interaction in which no energy from the incident X-ray photon is deposited in the sample \cite{nave1995}.
             The resulting scattered waves interfere to give rise to the observed diffraction pattern.
-            It is the type of interaction that the experimenter would like to maximise.
-            However, of the 2\% of 12.4$\,$keV incident X-ray photons that interact with the sample, only about 8\% of that results in elastic scattering \cite{ravelli2006radiation}.
+            It is this type of interaction that the experimenter would like to maximise.
+            However, of the 2\% of 12.4$\,$keV incident X-ray photons that interact with the sample, only about 8\% of these result in elastic scattering \cite{ravelli2006radiation}.
 
         \subsubsection{Compton Scattering (Figure~\ref{fig:Compton scatter diagram})}
         \label{subs:Compton Scattering}
             Another 8\% of the interaction is due to Compton scattering.
-            This type of scattering occurs when the X-ray photon scatters incoherently from the crystal, thereby transferring some of its energy to an electron.
+            This occurs when the X-ray photon scatters incoherently from the crystal, thereby transferring some of its energy to an electron.
             The resulting scattered X-ray photon leaves with less energy (higher wavelength).
-            It is possible for the recoil electron (the name given to the electron in which the energy is deposited) to also be ejected from the atom \cite{nave1995}.
+            It is possible for the recoil electron (the name given to the electron in which the energy is deposited) also to be ejected from the atom \cite{nave1995}.
 
         \subsubsection{Photoelectric effect (Figure~\ref{fig:Photoelectric effect diagram})}
         \label{subs:Photoelectric effect}
             By far the most prevalent interaction is the photoelectric effect which is responsible for the other 84\% of the X-ray-electron interactions.
-            In this type of interaction, the incident X-ray photon is completely absorbed and an inner shell electron is ejected \cite{garman2010}.
+            Here the incident X-ray photon is completely absorbed and an inner shell electron is ejected \cite{garman2010}.
             The ejected electron is called a photoelectron.
             The vacancy left by the ejection of the photoelectron is filled by another electron.
-            This transition can lead to two different outcomes: either the production of a characteristic X-ray, known as fluorescence, or the ejection of an electron from an outer shell \cite{nave1995}.
-            The ejected electron is known as the Auger electron.
+            This transition can lead to two different outcomes: either the production of a characteristic X-ray, known as fluorescence, or the ejection of an (Auger) electron from an outer shell \cite{nave1995}.
             The relative probability of either fluorescence or Auger emission occurring is dependent on the atomic species.
-            With lighter elements that constitute the vast majority of protein molecules by far the more likely process is Auger emission.
+            With lighter elements that constitute the vast majority of protein molecules, by far the more likely process is Auger emission.
 
         \begin{figure}
             \centering
@@ -62,7 +62,7 @@
             \end{subfigure}
             \caption[Primary X-ray interaction processes of X-ray photons with atoms]{Primary X-ray interaction processes of the X-ray photons with the atoms of the crystal and solvent.
                 (a) Elastic scattering.
-                There is no energy deposited in the crystals and these photons are scattered resulting in the observed diffraction pattern.
+                There is no energy deposited in the crystals and these photons are scattered, resulting in the observed diffraction pattern.
                 (b) Compton scattering.
                 Some photon energy is transferred in the sample which contributes to the absorbed dose and results in emission of a photon with a longer wavelength.
                 This can sometimes cause the emission of a recoil electron.
@@ -72,12 +72,12 @@
             \label{fig:Primary absorption diagrams}
         \end{figure}
 
-        An ionisation event caused by the photoelectric effect or Compton scattering is referred to as primary damage, although the use of this term varies in the literature \cite{garman2010}.
+        An initial ionisation event caused by the photoelectric effect or Compton scattering is referred to as primary damage, although the precise use of this term varies in the literature \cite{garman2010}.
         The relative probability of each of the three interactions (cross section) described above varies with incident X-ray beam energy (Figure~\ref{fig:Relative Absorption Probabilities}).
-        The atomic number also affects the amount of energy absorption in the sample with heavier elements contributing more to the overall absorption per atom.
+        The atomic number also affects the amount of energy absorption in the sample, with heavier elements contributing more to the overall absorption per atom.
         To maximise the amount of elastic scattering it would initially seem advisable to increase the energy of the incident X-ray beam from the range of typical values used in X-ray crystallography, usually around 12$\,$keV \cite{pait2010}.
         However, the diffracted intensity per incident photon is lower for incident beams with higher energy.
-        In practice, the optimal energy for an MX experiment is highly dependent on the sample composition and the aims of the experiment (i.e. the design may be different if the experiment aims to collect suitable data for phasing) and no general consensus has been established \cite{pait2010}.
+        In practice, the optimal energy for an MX experiment is highly dependent on the sample composition and the aims of the experiment (i.e. the design may be different if the experiment aims to collect suitable data for phasing) and no general consensus on the best incident X-ray energy has been established \cite{pait2010}.
         \begin{figure}
             \centering
             \includegraphics[width=0.8\textwidth]{figures/introduction/relativeinteractions.png}
@@ -90,7 +90,7 @@
     \subsection{Secondary damage}
     \label{sub:Secondary damage}
         In contrast to primary damage (ionisation due to the incident photon), secondary damage is the damage propagated by the energetic photoelectrons or fluorescent X-rays produced as a result of the former.
-        In fact it is secondary damage that is responsible for the majority of the damage that is observed in MX experiments.
+        In fact, it is secondary damage that is responsible for the majority of the damage that is observed in MX experiments.
         A single photoelectron has enough energy to cause $\approx$ 500 ionisation events \cite{o2002physical}. The ionisation event is referred to as direct damage if the event occurs within the protein molecule.
         If the event occurs within the surrounding mother liquor then it is referred to as indirect damage.
         The radical species produced as a result of these events can diffuse through the crystal disrupting the structure of the proteins by breaking chemical bonds, causing redox processes and producing more radical species \cite{meents2010}.
@@ -104,9 +104,9 @@
         They determined that radiation damage progression is proportional to the absorbed dose.
         Therefore being able to quantify the amount of energy absorbed by the crystal is vital to track the progression of radiation damage in an MX experiment \cite{blake1962,holton2009}.
         Dose is the metric by which the energy absorbed in the crystal is quantified.
-        The dose is defined as the energy absorbed per unit mass and the SI unit used in MX is the gray (Gy), where 1\,Gy = 1\,J\,kg$^{\text{-1}}$.
-        In typical cryo-MX experiments it is common for a crystal to receive a dose that ranges in the order of millions of gray (MGy) \cite{garman2010} due to the brilliance of third generation synchrotron sources \cite{mitchell1999}.
-        However, due to the complex processes (e.g. the stochastic nature of the absorption events, electron cascades, etc.), the dose cannot be measured so it must be calculated using the parameters of the experiment instead.
+        It is defined as the energy absorbed per unit mass and the SI unit used in MX is the gray (Gy), where 1\,Gy = 1\,J\,kg$^{\text{-1}}$.
+        In typical cryo-MX experiments it is common for a crystal to receive a dose of the order of millions of gray (MGy) \cite{garman2010} due to the brilliance of third generation synchrotron sources \cite{mitchell1999}.
+        However, due to the complex processes (e.g. the stochastic nature of the absorption events, electron cascades, etc.), the dose cannot be measured, so it must be calculated using the parameters of the experiment instead.
         The formula used to calculate the dose for a small volume of sample is
         \begin{equation}
             Dose = \f{E_{incident}}{M_{vol}} \left(1- e^{-\mu_{abs}z}\right),
@@ -115,29 +115,31 @@
         Where $E_{incident}$ is the energy incident on the sample, $M_{vol}$ is the mass of the irradiated volume and $1- e^{-\mu_{abs}z}$ is the fraction of the incident beam absorbed through the volume of thickness $z$, $\mu_{abs}$ is the absorption coefficient of the sample (a value dependent on the atomic cross sections that determines the likelihood of absorbance of the X-ray beam) and $e$ = 2.718$\ldots$ is Euler's number \cite{zeldin2013thesis}.
 
         RADDOSE is a software program that was developed to improve the ease of calculating the dose absorbed by a protein crystal \cite{murray2004}.
-        It increases the accuracy by implementing a 2D model of the experiment as opposed to the 1D model in equation \ref{eq:Dose Calculation 1D}.
-        Information about the crystal (size, unit cell parameters, number of molecules per unit cell, number of residues, solvent content), the beam (energy, flux, size and intensity profile), exposure time per image and the total number of images is required for the calculation.
-        RADDOSE uses these parameters to determine the maximum beam intensity and simulates an experiment by which the crystal is exposed homogeneously to the beam to provide a worst case scenario dose estimate: the maximum dose.
+        It increases the accuracy by implementing a 2D model of the experiment as opposed to the 1D model described in equation \ref{eq:Dose Calculation 1D}.
+        Information about the crystal (size, unit cell parameters, number of molecules per unit cell, number of residues, solvent content), the beam (energy (keV), flux (photons per second), size ($\mu m^2$) and intensity profile), exposure time per image and the total number of images, are required for the calculation.
+        RADDOSE uses these parameters to determine the maximum flux within the beam profile and simulates an experiment in which the crystal is exposed homogeneously to the maximum beam intensity to provide a worst case scenario dose estimate: the maximum dose.
         Several improvements to the model were incorporated in successive versions of RADDOSE.
-        Version two \cite{pait2009} calculated the fluorescent emission probability of the constituent atoms and the probability that these fluorescent photons could escape the crystal.
-        Version three \cite{pait2010} took into account energy loss in the crystal due to the Compton effect.
+        Version two \cite{pait2009} included calculation of the fluorescent emission probability of the constituent atoms and the probability that these fluorescent photons could escape the crystal.
+        Version three \cite{pait2010} took into account the energy loss in the crystal due to the Compton effect, which been neglected in previous versions, but only significantly affects the dose values for incident energies above 25\,keV
 
-        Despite these improvements RADDOSE still has several limitations. One of the major problems with the dose calculation is that some parameters of the data collection experiment are known with more certainty than others.
+        Despite these improvements, RADDOSE still has several limitations.
+        One of the major problems with the dose calculation is that some variables in the data collection experiment are known with more certainty than others.
         Parameters such as the beam flux and exposure time are known to a relatively high degree of accuracy.
-        However, the extent to which parameters such as the crystal volume \cite{holton2009} and beam profile \cite{krojer2011} are known can be significantly less.
+        However, the extent to which parameters such as the crystal volume \cite{holton2009} and beam profile \cite{krojer2011} are known is often significantly less.
         This can lead to large errors in the calculated dose values and inferences about the radiation susceptibility of protein crystals \cite{krojer2011}.
-        The uncertainty can be accounted for by assigning a ``factor of 2" decision threshold \cite{holton2009}.
+        The uncertainty can be taken into account for by assigning a ``factor of 2" decision threshold \cite{holton2009}.
 		This means that a particular radiation damage effect described by quantitative values (e.g. intensity loss or dose) can be considered the same if the values are within a factor of 2 of one another.
         Methods are being developed to better parametrise the data collection experiment for the crystal shape \cite{svensson2015fully,khan2012confocal,brockhauser2008x} and the beam \cite{bowler2015massif} but these methods are not yet routine on the majority of beamlines.
 
         Another inaccuracy in the calculation of dose in RADDOSE is the two-dimensional nature of the model. It lacks the three-dimensional information about the damage state of the crystal.
-        This information is important for optimising the use of crystal volume to collect better quality data \cite{zeldin2012,zeldin2013dwd}.
-        Furthermore RADDOSE assumes that the crystal is always immersed within the beam and does not take into account crystal rotation.
-        This was a reasonable assumption when the code was written, but has become less appropriate over the last 10 years as the size of X-ray beams has become smaller.
+        This is important for optimising the use of crystal volume to collect better quality data \cite{zeldin2012,zeldin2013dwd}.
+        Furthermore, RADDOSE assumes that the crystal is always totally immersed within the beam and does not take into account crystal rotation.
+        With the size of X-ray beams becoming smaller over the last 10 years, it is commonly the case that crystals are no longer completely immersed in the beam, meaning that new, previously unirradiated parts of the crystal could rotate into the beam during the experiment.
+        Thus it is now more critical to model crystal rotation.
 
         This geometric issue is addressed in the RADDOSE-3D \cite{zeldin2013} software program, a successor to RADDOSE.
         RADDOSE-3D takes into account the three-dimensional geometry of the MX experiment to provide a temporally and spatially resolved dose distribution within a protein crystal.
-        Initially RADDOSE-3D was written to model cuboid or spherical crystals, but now it has been extended to be able to capture any polyhedral shape (Figure~\ref{fig:RADDOSE-3D Polyhedral Crystal Examples}).
+        Initially RADDOSE-3D was written to model only cuboid or spherical crystals, but now it has been extended to be able to capture any polyhedral shape (Figure~\ref{fig:RADDOSE-3D Polyhedral Crystal Examples}).
 
         \begin{figure}
             \centering
@@ -191,19 +193,19 @@
         Perhaps the most iconic symptom of global radiation damage is the loss of intensity of reflections in the diffraction pattern, with the reflections corresponding to higher resolution information fading the quickest.
         Global radiation damage is particularly problematic in data collection for experimental phasing where multiple datasets are collected for comparison of reflection amplitudes.
         For experimental determination of phases in isomorphous replacement or anomalous scattering experiments, it is necessary to distinguish intensity changes of around 4\% \cite{taylor2010}.
-        However it was calculated that for a 0.5\% change in all unit cell dimensions or a 0.5$^{\circ}$ rotation about a single axis of a 100\,\AA$^3$ unit cell, there would be a change in the intensity of a 3\,\AA\ general reflection by 15\% and 16\% respectively \cite{crick1956}.
-        Changes in the intensity due to non-isomorphism caused by global radiation damage can exceed these limits thereby swamping the phasing signal and ultimately hindering structure solution.
+        However it was calculated that for a 0.5\% change in all unit cell dimensions or a 0.5$^{\circ}$ rotation of the molecule about a single axis through the centre of gravity of the molecule both perpendicular or parallel to a crystallographic axis of a 100\,\AA$^3$ unit cell, there would be a change in the intensity of a general 3\,\AA\ reflection by 15\% and 16\% respectively \cite{crick1956}.
+        Changes in the intensity due to non-isomorphism caused by global radiation damage can exceed these limits, thereby swamping the phasing signal and ultimately hindering structure solution.
 
         To observe appreciable changes in reciprocal space, radiation damage must be affecting the long range crystalline order of the crystal \cite{meents2010}.
-        At room temperature, many more radical species are mobile and damage occurs much more quickly than at cryo-temperatures (100\,K) \cite{henderson1990cryo,weik2010temperature}.
+        At room temperature, many more radical species are mobile and damage occurs much more quickly than at cryo-temperatures (100\,K) \cite{henderson1990cryo,nave2005,weik2010temperature}.
         However, global radiation damage still occurs at cryo-temperatures and it has been proposed that this is due to hydrogen gas build up.
 		This is because diffusion rates are smaller at lower temperatures.
 		This build up of hydrogen is thought to exert a disruptive force on the crystalline structure leading to the reduction in structural integrity \cite{meents2010}.
 
-        The various symptoms, or variants of them, have been proposed as metrics to assess the extent of radiation damage as a function of the dose (Figure~\ref{fig:Radiation damage metrics}).
-        An ideal metric would change reproducibly and monotonically with increase in the dose.
+        The parameters affected by the various symptoms, or variants of them, have been proposed as metrics to assess the extent of radiation damage as a function of the dose (Figure~\ref{fig:Radiation damage metrics}).
+        An ideal metric would change reproducibly and monotonically with increase in dose.
         This rules out using the mosaicity as a suitable metric as it violates both of these criteria \cite{garman2010}.
-        Unit cell volume expansion was once thought to be a suitable metric \cite{ravelli2002}, however it was determined later that it was not reliable because the expansion was not consistent amongst crystals of the same protein and the same size \cite{murray2002}.
+        Unit cell volume expansion was once thought to be a suitable metric \cite{ravelli2002}, however it was determined later that it was not reliable because the expansion was not consistent amongst crystals of the same protein and the same size irradiated under identical conditions \cite{murray2002}.
         Three promising metrics that seem to adhere to the criteria (within a factor of 2) are: the relative intensity \cite{owen2006}, the relative B factor \cite{kmetko2006} and the decay R factor \cite{diederichs2006}.
 
         \begin{figure}
@@ -223,7 +225,7 @@
             The relative intensity is defined as $I_n/I_1$, where $I_n$ is the summed mean intensity of a complete data set $n$ (or equivalent sections of data) after a dose $D$, and $I_1$ is the mean intensity of the first data set \cite{garman2010}.
             This metric is desirable because it directly analyses the decay of the experimental data: the intensities. Furthermore it exhibits a linear dependence on the dose for a suitably low dose \cite{owen2006,zeldin2013dwd}.
             An experimental dose limit of 30\,MGy was established based on the observation that crystals of proteins with different compositions decay at the same rate at cryo-temperatures \cite{owen2006}.
-            At this dose the relative intensity of the crystals had decayed to 70\% of their initial value, at which point it is regarded that the structural information that can be determined from the sample has been significantly compromised \cite{owen2006,blundell1976protein}.
+            At this dose the relative intensity of the crystals had decayed to 70\% of their initial value, at which point it was observed that the structural information that can be obtained from the sample has been significantly compromised \cite{owen2006,blundell1976protein}.
 
         \subsubsection{Relative B factor}
         \label{subs:Relative B factor}
@@ -235,7 +237,7 @@
         \subsubsection{Decay R factor}
         \label{subs:Decay R factor}
             The decay R factor, $R_d$ is a decay metric that assesses the pairwise difference between symmetry related reflections on different images \cite{diederichs2006}.
-            This results in a relatively smooth function against he difference in image number between two measurements (used as a proxy for dose) that can be interpreted as follows: if $R_d$ stays constant for each image then no significant radiation damage has occurred, whereas if the $R_d$ increases then radiation damage is progressing throughout the dataset.
+            This results in a relatively smooth function against the difference in image number between two measurements (used as a proxy for dose) that can be interpreted as follows: if $R_d$ stays constant for each image then no significant radiation damage has occurred, whereas if the $R_d$ increases then radiation damage is progressing throughout the dataset.
             A desirable feature of this metric is that it can be used with a single dataset.
             Therefore radiation damage analysis can be performed on highly sensitive crystals that may only withstand enough dose for a partial or single dataset.
 			The problem is that it requires high multiplicity which is not always achievable. This metric is less commonly used in radiation damage studies than the other two.
@@ -246,12 +248,12 @@
         It is characterised by what appear to be specific chemical changes to the molecule and occurs in a reproducible order at particular sites \cite{ravelli2000,weik2000,gerstel2015identifying}:
         \begin{enumerate}
             \item Metallo-centres are reduced at doses as low as 45\,kGy \cite{owen2011revealing}.
-            \item Disulphide bonds are elongated and broken. \cite{burmeister2000structural,ravelli2000}.
-            \item Glutamate and aspartate residues are decarboxylated. \cite{burmeister2000structural,weik2000,ravelli2000}.
+            \item Disulphide bonds are elongated and broken \cite{burmeister2000structural,ravelli2000}.
+            \item Glutamate and aspartate residues are decarboxylated \cite{burmeister2000structural,weik2000,ravelli2000}.
             \item The $S^{\delta}-C^{\epsilon}$ bond of methionine residues is cleaved \cite{burmeister2000structural}.
-            \item Covalent metal bonds are cleaved \cite{ramagopal2005radiation}.
+            \item Covalent bonds to metal atoms are cleaved \cite{ramagopal2005radiation}.
         \end{enumerate}
-        Dehydroxylation of tyrosine residues have also been observed \cite{burmeister2000structural}, but the physical basis and the evidence of this being a general symptom of specific radiation damage is contentious (Charlie Bury and Elspeth Garman, personal communication).
+        Dehydroxylation of tyrosine residues has also been observed \cite{burmeister2000structural}, but the physical basis and the evidence of this being a general symptom of specific radiation damage is contentious (Charlie Bury and Elspeth Garman, personal communication).
 
 		Due to the fact that specific damage changes the structural information derived from the model, it can lead to incorrect biological interpretation from structures.
 		Metrics to assess the progression of specific damage also exist but are not always described as a function of dose.
@@ -261,9 +263,9 @@
             Fourier difference maps, $F_n - F_1$, are electron density maps where the amplitudes of the first dataset $F_1$ are subtracted from the amplitudes of a later dataset $F_n$.
 			Negative values correspond to areas where electron density has been lost as the experiment progressed.
 			Sometimes this can be due to noise in the data, but significantly high values (difference peaks) that are coincident with the structural model from the first dataset suggest specific structural damage has occurred.
-			In most studies, this sort of analysis is done via manual inspection of the electron density map \cite{burmeister2000structural,weik2000,ravelli2000}.
+			In most studies, this analysis is carried out via manual inspection of the electron density map \cite{burmeister2000structural,weik2000,ravelli2000}.
 			However work towards automating this analysis is progressing well, and new metrics are being developed to better characterise the level of specific damage \cite{bury2015radiation}.
-            For performing radiation damage analysis with Fourier difference maps it is usual to not refine the phases for the later datasets.
+            For performing radiation damage analysis with Fourier difference maps, it is usual to not refine the phases for the later datasets.
             Instead the phases from the first dataset are used for the later datasets.
 
         \subsubsection{Atomic B-factors}
@@ -279,54 +281,53 @@
 			It is defined as the ratio of an atom's B-factor and the average B-factor of atoms that have a similar packing density environment \cite{gerstel2015identifying}.
 			This is a normalised metric, therefore atoms that show damage will have $B_{damage}$ values significantly greater than 1.
 
-        Analysis of 2 PDB structures with $B_{damage}$ showed a positive correlation between radiation damage and solvent accessibility \cite{gerstel2015identifying}, in agreement with statements made in \cite{sygusch1988}.
-		However other studies have claimed otherwise \cite{coquelle2007activity,homer2011energy}, demonstrating the lack of consensus on metrics and on conclusions in radiation damage studies.
+            Analysis of 2 PDB structures with $B_{damage}$ showed a positive correlation between radiation damage and solvent accessibility \cite{gerstel2015identifying}, in agreement with statements made in a previous study \cite{sygusch1988}.
+		    However other work has claimed otherwise \cite{coquelle2007activity,homer2011energy}, demonstrating the lack of consensus on metrics and on conclusions in radiation damage studies.
 
     \subsection{Experimental methods for dealing with radiation damage}
     \label{sub:Experimental methods for dealing with radiation damage}
-        Due to the challenges presented by radiation damage in MX to achieve successful structure determination, various parameters of the experiment have been varied in an attempt to mitigate its effects.
+        Due to the challenges presented by radiation damage in MX to achieve successful structure determination, various parameters of the experiment have been varied in an attempt to mitigate radiation damage effects.
 
         \subsubsection{Temperature}
         \label{subs:Temperature}
-            It has been known for decades that diffraction experiments carried out at cryo-temperatures (100\,K) improves the lifetime of biological samples \cite{haas1970crystallographic,henderson1990cryo,brooks2015nobel} by around $\sim$ 25 - 110 times over room temperature (RT) experiments \cite{south2007}.
-            Cryo-cooling requires careful protection of the sample to prevent freezing, because ice also exhibits a crystalline structure that will too diffract coherently in the MX experiment.
-            Furthermore ice has 7\% greater volume than liquid water so the formation of ice can increases disorder of the molecules in the crystal.
+            It has been known for decades that diffraction experiments carried out at cryo-temperatures (down to 100\,K) improves the lifetime of biological samples \cite{henderson1990cryo,brooks2015nobel} by around $\sim$ 25 - 110 times over room temperature (RT) experiments \cite{south2007}.
+            Cryo-cooling requires careful protection of the sample to prevent freezing, because ice also exhibits a crystalline structure that will diffract coherently in the MX experiment.
+            Furthermore, ice has 7\% greater volume than liquid water so the formation of ice can increase the disorder of the molecules in the crystal.
             Cryo-protection techniques have been developed since the late 1980s \cite{garman1997macromolecular,hope1988cryocrystallography,teng1990mounting} and cryo-crystallography is now more routinely used than RT \cite{garman2014}.
-            The main problem with cryo-cooling a crystal is that it can decrease the crystalline order of the crystal \cite{nave2005} although this is not always the case \cite{garman1999cool}.
+            The main problem with cryo-cooling a crystal is that it can decrease the crystalline order \cite{nave2005} although this is not always the case \cite{garman1999cool}.
 
-            There is evidence to suggest that using temperatures below 100\,K using helium may further improve the lifetime of crystals and the data quality \cite{meents2010,teng2002}.
+            There is evidence to suggest that using temperatures below 100\,K using an open flow helium cryostat may further improve the lifetime of crystals and the data quality \cite{meents2010,teng2002}.
             However, whether the benefits of cooling to temperatures of 40\,K or below are significant enough to warrant the costs required to achieve those temperatures routinely is still not obvious \cite{weik2010temperature}.
 
         \subsubsection{Dose rate}
         \label{subs:Dose rate}
             Damage processes occur over a finite time period and this has been exploited by increasing the rate at which the dose is deposited in the crystal (dose rate) in an attempt to outrun radiation damage.
-			At cryo-temperatures increased dose rates have been shown to improve crystal lifetimes by up to 10\% \cite{owen2006} although some report that there is no effect at all \cite{sliz2003}.
-			At RT the evidence that there is a dose rate dependence seems is quite convincing \cite{south2007,owen2012,owen2014}.
+			At cryo-temperatures increased dose rates have been shown to decrease crystal lifetimes by up to 10\% \cite{owen2006} although some report that there is no effect at all \cite{sliz2003}.
+			At RT there is growing evidence that a higher dose rate increases crystal lifetimes. \cite{south2007,owen2012,owen2014}.
 			With the increasing popularity of \textit{in situ} data collection of crystals in their growth trays \cite{axford2015structure,axford2012situ}, particularly for protein crystals that are not amenable to cryo-cooling, high dose rate experiments are likely to become more routine.
 
-            Serial femtosecond crystallography (SFX) at XFELs use extremely fast X-ray pulses (as little as 5\,fs \cite{boutet2012high}) to probe protein crystals to obtain ``diffraction before destruction" \cite{chapman2014diffraction}.
-			However, experimental data have now shown indications that radiation damage is still visible at XFELs if the pulse length is too long \cite{nass2015indications}.
+            Serial femtosecond crystallography (SFX) at XFELs use extremely fast X-ray pulses (as short as 5\,fs \cite{boutet2012high}) to probe protein crystals to obtain ``diffraction before destruction" \cite{chapman2014diffraction}.
+			However, experimental data have now shown indications of radiation damage at XFELs if the pulse length is too long \cite{nass2015indications}.
 			SFX at XFELs is still in its infancy but progress, is continuously being made and it is a promising field for the development of structural biology \cite{garman2014,brooks2015nobel}.
 
 
         \subsubsection{Scavengers}
         \label{subs:Scavengers}
-            Scavengers are small molecules introduced to the crystal to mitigate the effects of secondary damage by intercepting or interacting with radicals to make them less reactive.
-			At present, evidence of the efficacy of scavengers is contradictory.
-			For example the studies presented in \cite{barker2009room,kmetko2011can} are conflicting in their evidence as to whether scavengers have any effect on global radiation damage metrics.
+            Scavengers are small molecules introduced into the crystal to mitigate the effects of secondary damage by intercepting or interacting with radicals to make them less reactive.
+			At present, multiple studies have reported conflicting evidence regarding the efficacy of scavengers \cite{barker2009room,kmetko2011can}.
 			It is worth noting that these studies used different global radiation damage metrics ($I_n/I_1$ improved with use of scavengers, whereas $B_{rel}$ did not) to come to their conclusions.
 			The effect of scavengers to protect against specific radiation damage is more promising \cite{southworth2007radioprotectant}.
-			A comprehensive summary of all scavenger literature to date is provided in \cite{allan2012}.
+			A comprehensive summary of all scavenger literature to date is provided in Allan \textit{et al.} (2012).
 
     \subsection{Modelling intensity decay}
     \label{sub:Modelling intensity decay}
         Structure factor amplitudes are derived from the integrated intensity measurements obtained from the experimental data.
         Therefore accurate intensity values are required to obtain reliable structural information.
 		The problem is that the intensity measurements are affected by several systematic factors \cite{evans2005}.
-		In particular, global radiation damage to the sample can be a significant factor contributing to the overall intensity variation.
-		Thus attempts to correct for this effect have been proposed and implemented during data processing.
+		In particular, global radiation damage to the sample can be a significant effect contributing to the overall intensity variation.
+		Thus attempts to correct for it have been proposed and implemented during data processing.
 
-        In the radiation damage study carried out by Blake and Phillips inn 1962 \cite{blake1962}, repeated intensity measurements of a subset of reflections along the 010 zone were taken with increasing X-ray exposure.
+        In the radiation damage study carried out by Blake and Phillips in 1962 \cite{blake1962}, repeated intensity measurements of a subset of reflections along the 010 zone were taken with increasing X-ray exposure.
         It was noted that there was a general decrease in the intensity values, with reflections corresponding to higher resolution decaying quickest.
         If the variation was due solely to thermal disorder then the intensity decay was expected to obey the form
         \begin{equation}
@@ -334,33 +335,33 @@
         \end{equation}
         where $I$ is the experimentally measured intensity, $I_0$ is the initial intensity, $B$ is a measure of the disorder, $\theta$ is the diffraction angle and $\lambda$ is the wavelength of the incident beam.
         However this form did not explain the observation that the intensity decay flattened out at high $\theta$ angles.
-        So a compartmental model of the crystal was proposed. The three states that were used to describe the evolution of the crystal damage were
+        Therefore a compartmental model of the crystal was proposed. The three states that were used to describe the evolution of the crystal damage were
         \begin{enumerate}
             \item $A_1$ - an undamaged fraction of the crystal which contributes to diffraction at all angles.
             \item $A_2$ - a highly disordered fraction that only contributes to diffraction at low angles.
             \item $A_3 = 1 - (A_1 + A_2)$ - an amorphous fraction that no longer diffracts coherently.
         \end{enumerate}
-        These compartments were suggested to contribute to the diffracted intensity, $I$, at time $t$ as
+        These three populations were suggested to contribute to the diffracted intensity, $I$, at time $t$ as
         \begin{equation}
             \f{I(t)}{I(0)} = A_1(t) + A_2(t) \exp\left(-\f{B\sin^2(\theta)}{\lambda^2} \right).
             \label{eq:Blake and Phillips Radiation Damage Model}
         \end{equation}
-        To explain the crystal compartment dynamics (i.e. how the crystal transitions between damaged, highly disordered and amorphous states) it was assumed that radiation damage effects are irreversible.
+        To explain the crystal population dynamics (i.e. how the crystal transitions between damaged, highly disordered and amorphous states) it was assumed that radiation damage effects are irreversible.
         The transitions are described according to Figure~\ref{fig:Crystal Compartments Blake and Phillips} where $k_1, k_2$ and $k_3$ are rate constants to be determined.
         \begin{figure}[H]
             \centering
             \includegraphics[width=0.8\textwidth]{figures/introduction/crystalcompartments_BP.pdf}
-            \caption[Transition dynamics of the compartments in the Blake and Phillips radiation damage model]{Transition dynamics of the compartments in the Blake and Phillips model.
+            \caption[Transition dynamics of the populations in the Blake and Phillips radiation damage model]{Transition dynamics of the populations in the Blake and Phillips model.
             Note here that the states are irreversible and it is possible to transition directly from the undamaged fraction to the amorphous fraction.}
             \label{fig:Crystal Compartments Blake and Phillips}
         \end{figure}
         Intensity measurements corrected using equation \ref{eq:Blake and Phillips Radiation Damage Model} generally agreed well with the measurements from the relatively undamaged crystal.
 
         The Blake and Phillips model was also used to correct for radiation damage in a study on crystals of lamprey haemoglobin \cite{hendrickson1973}.
-        150 reflections were observed in order to determine the change in intensity as a function of the dose.
+        150 reflections were observed in order to determine the change in intensity as a function of dose.
         The data agreed well with the model of Blake and Phillips.
 
-        In 1976, Fletterick \textit{et al.} proposed a modification to the Blake and Phillips model for their study on  glycogen phosphorylase a crystals \cite{fletterick1976low}.
+        In 1976, Fletterick \textit{et al.} proposed a modification to the Blake and Phillips model for their study on  glycogen phosphorylase \textit{a} crystals \cite{fletterick1976low}.
         The modification disallowed a direct transition from the undamaged state to the amorphous state (i.e. $k_3 = 0$ in Figure~\ref{fig:Crystal Compartments Blake and Phillips}). This gives the sequential transition model
         \begin{equation}
             A_1 \xrightarrow{k_1} A_2 \xrightarrow{k_2} A_3.
@@ -368,7 +369,7 @@
         In 1976, Hendrickson studied all possible transitions from the Blake and Phillips model (Figure~\ref{fig:Crystal Compartments Blake and Phillips}) assuming irreversible transition states \cite{hendrickson1976}.
         This included $k_2 = k_3$ \cite{hendrickson1973}, $k_1 = k_2$ and $k_3 = 0$, $k_3 = 0$ \cite{fletterick1976low}, $k_1 + k_3 = k_2$ and the arbitrary time-dependence model ($k_1 \neq k_2 \neq k_3$).
         These models were fitted to the data from the Blake and Phillips myoglobin study \cite{blake1962}.
-        It was concluded that all models explain the data well for moderate dose values ($\approx$ 26\% damage), but none explain radiation damage at high doses very well ($\approx$ 72\% damage).
+        It was concluded that all models explain the data well for moderate dose values ($\approx$ 26\% decrease in relative intensity), but none explain radiation damage at high doses very well ($\approx$ 72\% decrease in relative intensity).
         The general model resulted in refined $k_3$ values that were very close to zero, and the model with $k_3 = 0$ consistently resulted in the best fit to the data at higher dose values.
         This suggests that the radiation damage process is always sequential.
 
@@ -379,15 +380,15 @@
         \begin{equation}
             A_1 \xrightarrow{k_1} A'_1 \xrightarrow{k_1} A_2 \xrightarrow{k_2} A_3.
         \end{equation}
-        This model was fitted with data collected on crystals of rabbit skeletal muscle aldolase. The authors show that the proposed model provides a very good fit for radiation damage even at high doses.
+        This model was fitted with data collected on crystals of rabbit skeletal muscle aldolase. The authors show that the proposed model provides a very good fit for radiation induced intensity decay even at high doses.
 
-        In 2009 James Holton proposed an resolution dependent model of intensity decay for a reflection \cite{holton2009}. This model considers the absorbed dose within the crystal and describes the intensity decay of a reflection, $I$, as
+        In 2009 James Holton proposed a resolution dependent model of intensity decay for a reflection \cite{holton2009}. This model considers the dose absorbed by the crystal and describes the intensity decay of a reflection, $I$, as
         \begin{equation}
             I = I_0 \exp \left(-\ln(2)\f{D}{Hd}\right)
         \end{equation}
-        where $I_0$ is the intensity at zero dose, $D$ is the absorbed dose in MGy, $d$ is the resolution of the reflection in \AA\ corresponding to the distance between successive Bragg planes, and $H$ is the Howells \textit{et al.} criterion which proposed a resolution dependent dose limit of 10\,MGy per \AA\ \cite{howells2009}.
+        where $I_0$ is the intensity at zero dose, $D$ is the absorbed dose in MGy, $d$ is the resolution of the reflection in \AA\ corresponding to the distance between successive Bragg planes, and $H$ is the Howells \textit{et al.} criterion which proposed a resolution dependent dose limit of 10\,MGy per \AA\ of resolution \cite{howells2009}.
         As an example, if a resolution of 3 \AA\ is required, the Howells criterion suggests that the dose limit of the crystal would be 30\,MGy.
-		This model was shown to produce results in agreement with those from \cite{owen2006,kmetko2006}.
+		This model was shown to produce results in agreement with those from Owen \textit{et al.} and Kmetko \textit{et al.}.
 
         In 2012 Leal \textit{et al.} modified a traditional scaling model to account for radiation damage \cite{leal2012}. The scaling model is defined as
         \begin{equation}
@@ -402,27 +403,27 @@
             \label{eq:Linear B factor dependence}
 		\end{equation}
 		where $B_0$ and $\beta$ are empirical constants to be determined.
-		The authors empirically deduced the functional form of the scale factor, $K$ as
+		The functional form of the scale factor, $K$, was empirically deduced as
 		\begin{equation}
 			K(D) = C \exp\left(-\gamma^2 D^2\right),
             \label{eq:Gaussian Scale factor dependence}
 		\end{equation}
 		where $C$ and $\gamma$ are empirical constants to be determined.
         The $D^2$ in equation \ref{eq:Gaussian Scale factor dependence} means that the model proposed by Leal \textit{et al.} exhibits essentially Gaussian decay behaviour.
-		This model was shown to agree well with the overall intensity decay for data collected on 15 different crystals at RT to a relative intensity down to 60\% of the original value.
+		This model was shown to agree well with the overall diffraction intensity decay for data collected on 15 different crystals at RT to a relative intensity down to 60\% of the original value.
 
-		Despite the differences between these models, they each rely on an accurate calculation of the dose absorbed within a crystal.
+		Despite the differences between these models, they each rely on an accurate calculation of the dose absorbed by a crystal.
 		Of particular note, the models proposed by Sygusch and Allaire and Leal \textit{et al.} allow for a delayed intensity decay.
 		For the Leal \textit{et al.} model, this behaviour follows from the Gaussian form of the equation.
 		The Sygusch and Allaire model was shown to exhibit this behaviour by fitting the model to experimental data \cite{owen2014}.
 
-		Current scaling methods employ a scaling equation in the same form as equation \ref{eq:Scaling Model Leal 2012} to place multiple datasets on the same scale \cite{kabsch2010integration}.
-        However the functional forms of the scale and B-factors are not necessarily assumed to take the forms given by equations \ref{eq:Linear B factor dependence} and \ref{eq:Gaussian Scale factor dependence}.
+		Current scaling methods employ a scaling model in the same form as equation \ref{eq:Scaling Model Leal 2012} to place multiple datasets on the same scale \cite{kabsch2010integration}.
+        However the functional forms of the scale and B-factors are not necessarily assumed to take those given by equations \ref{eq:Linear B factor dependence} and \ref{eq:Gaussian Scale factor dependence}.
 		The scaling of intensities on images within a dataset also exhibits a relationship similar to equation \ref{eq:Scaling Model Leal 2012}. Take, for example the scaling model used in AIMLESS:
         \begin{equation}
             g = g_1(\varphi) \times g_2(\bs{s}_2) \times \exp \left(\f{-2B(\varphi)\sin^2(\theta)}{\lambda^2} \right),
         \end{equation}
-		where $g$ is the factor that puts the intensity on an internally consistent scale with the other images in the dataset, $g_1$ and $g_2$ are scaling factors, $\varphi$ is the crystal rotation angle which is used as a proxy for the primary beam direction and the dose and $\bs{s}_2$ is the secondary beam direction \cite{evans2013}.
+		where $g$ is the factor that places the intensity on an internally consistent scale with the other images in the dataset, $g_1$ and $g_2$ are scaling factors, $\varphi$ is the crystal rotation angle which is used as a proxy for the primary beam direction and the dose, and $\bs{s}_2$ is the secondary beam direction \cite{evans2013}.
 		The crystal rotation angle, $\varphi$, is used as a proxy for dose because the dose is not routinely calculated in MX experiments. It is noted by Evans and Murshudov that the B-factor correction in this model is largely an average correction.
 
 		Many studies, including the first by Blake and Phillips, found that the decay of individual reflection intensities is not necessarily monotonic \cite{blake1962,hendrickson1973,hendrickson1976}.

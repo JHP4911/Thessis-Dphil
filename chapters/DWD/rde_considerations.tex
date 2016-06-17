@@ -3,15 +3,15 @@
 \label{sec:Further investigation of the RDE Leal model}
 
 One of the factors that will affect the parameter values that are obtained from the analysis is the resolution of the data collected \cite{leal2012}.
-It is well known that the intensity of higher resolution reflections decay more quickly than lower resolution reflections.
-Therefore if the data were collected at a lower resolution the relative intensity throughout the experiment may be expected to be systematically higher than data collected from the same crystal at a higher resolution.
+It is well known that the intensity of higher resolution reflections decay more quickly than for lower resolution reflections.
+Therefore if the data were collected at a lower resolution, the relative intensity throughout the experiment may be expected to be systematically higher than data collected from the same crystal at a higher resolution.
 To find out the effect that the resolution dependence would have on the parameter values, the data were scaled to three different resolutions: 1.8\,\AA, 3\,\AA, and 4\,\AA.
 The parameter values found for each resolution are given in Table \ref{tab:RDE params3} and the resulting RDE models plotted with the experimental data are shown in Figure~\ref{fig:Resolution comparison plot - scaled to diff res}.
 It is clear that the calculated relative intensity predictions become worse as the resolution of the data decreases.
 
 The other factor that will affect the results of the RDE model are the resolution limits used to perform the RDE Leal integrals (equation \ref{eqrdeleal}).
-The resolution of the \textit{BEST} data extend from 12345.68\,\AA\ to 0.66\,\AA (Figure~\ref{fig:BEST curve}), thus the integrals can be performed between these limits provided the parameter values have been determined.
-What is unclear is whether performing the integral to the high resolution \textit{BEST} limit, 0.66\,\AA, would allow the model to converge for the high resolution relative intensity data despite obtaining the parameter values using low resolution data.
+The resolution of the \textit{BEST} data extend from 12345.68\,\AA\ to 0.66\,\AA\ (Figure~\ref{fig:BEST curve}), thus the integrals can be performed between these limits provided the parameter values have been determined.
+What is unclear is whether performing the integral to the high resolution \textit{BEST} limit, 0.66\,\AA, would allow the model to converge for the high resolution relative intensity data despite obtaining the parameter values using lower resolution data.
 Figure~\ref{fig:Resolution comparison plot - integrated to diff res} shows the RDE models derived from processing the data to the three different resolutions (1.8\,\AA, 3\,\AA, and 4\,\AA) but with the integration performed over the resolution limits of the \textit{BEST} data.
 The magenta, red and green curves correspond to the RDE models using the parameters determined from the data processed to 1.8\,\AA, 3\,\AA, and 4\,\AA\ respectively.
 The green and red curves clearly do not converge towards the expected values of intensity decay (blue circles).
@@ -41,24 +41,23 @@ This is because the integral is performed over a large resolution range regardle
 	\end{tabular}
 	\label{tab:RDE params3}
 \end{table}
-\begin{figure}
-	\centering
-	\begin{subfigure}[b]{1\textwidth}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.9\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/dwd/rescmpplot1.pdf}
-        \caption{Relative intensity data (circles) plotted with the calculated relative intensity using equation \ref{eqrdeleal}, with the corresponding parameter values for each resolution limit from Table \ref{tab:RDE params3}.}
+        \caption{}
         \label{fig:Resolution comparison plot - scaled to diff res}
     \end{subfigure}
-	\label{figres}
-\end{figure}
-\begin{figure}
-\ContinuedFloat
+			\\
     \begin{subfigure}[b]{1\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/dwd/rescmpplot3.pdf}
-        \caption{Relative intensities for the data processed to 1.8\,\AA\ (circles) plotted with the calculated relative intensity using equation \ref{eqrdeleal} with the corresponding parameter values for each resolution limit from Table \ref{tab:RDE params3}, but the high resolution integral limit was the limit of the \emph{BEST} intensity data, 0.66$\,$\AA. The blue solid line corresponds to the calculated relative intensity value with the high resolution integral limit set at 1.8$\,$\AA.}
+        \includegraphics[width=0.9\textwidth]{figures/dwd/rescmpplot3.pdf}
+        \caption{}
         \label{fig:Resolution comparison plot - integrated to diff res}
     \end{subfigure}
-	\caption[Effects of resolution cut offs on Leal \textit{et al.} model.]{}
+	\caption[Effects of resolution cut offs on Leal \textit{et al.} model.]{(a) Relative intensity data (circles) plotted with the calculated relative intensity using equation \ref{eqrdeleal}, with the corresponding parameter values for each resolution limit from Table \ref{tab:RDE params3}.
+	(b) Relative intensities for the data processed to 1.8\,\AA\ (circles) plotted with the calculated relative intensity using equation \ref{eqrdeleal} with the corresponding parameter values for each resolution limit from Table \ref{tab:RDE params3}, but the high resolution integral limit used was the limit of the \emph{BEST} intensity data, 0.66$\,$\AA.
+	The blue solid line corresponds to the calculated relative intensity value with the high resolution integral limit set at 1.8$\,$\AA.}
 	\label{figrescont1}
 \end{figure}

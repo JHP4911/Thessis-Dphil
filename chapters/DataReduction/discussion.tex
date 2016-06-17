@@ -5,8 +5,8 @@
 \subsection{Overview of the forward-backward algorthm}
 \label{sub:Overview of the forward-backward algorthm}
 The work presented in this chapter introduces a representation of the data collection experiment as a hidden Markov model (HMM).
-The fundamental idea is that each image obtained in a diffraction experiment is generated from different crystals.
-These crystals are related by the fact that the atomic composition of the crystal is the same, and the structural changes due to the X-ray exposure between images are small.
+The fundamental idea is that each image obtained in a diffraction experiment is generated from a different crystal.
+The crystals are related by the fact that the atomic composition of the crystal is the same, and the structural changes due to the X-ray exposure between images are small.
 The Markov property makes the assumption that the state of one crystal is only dependent on its previous state, not on its entire history.
 With these assumptions, the Luzzati distribution \cite{luzzati1952traitement,read1990structure} can then be used to mathematically describe how the crystal state evolves (process function).
 Furthermore the intensity observations are directly proportional to the square of the structure factor amplitude giving the observation function.
@@ -17,7 +17,7 @@ Before FBA is applied, the reflection observation data had to be pre-processed t
 The main objective was to allocate each observation to an image.
 For fully recorded reflections there is no ambiguity but for partial reflections this was achieved by matching the calculated centroids of the reflections to the images.
 Additionally, intensity and partiality estimates were made for reflection observations that were not fully traversed in the experiment.
-Further to the uncertainty values calculated from the integration software, more uncertainty had to be added to the intensity estimates arising from the collapsing several partial measurements of an observation to a single image collected at one point in time.
+Further to the error values calculated from the integration software, more uncertainty had to be added to the intensity estimates arising from the collapsing of several partial measurements of an observation to a single image collected at one point in time.
 
 The FBA algorithm was tested on simulated reflection data and the results were extremely good for strong data.
 The resulting amplitude estimates were close to the true values, and the confidence intervals were sensible, decreasing in width when observations were made and increasing further away from observations.
@@ -25,25 +25,25 @@ For weak data the FBA estimate did not perform as well, so a correction to the i
 
 The FBA was successful when applied to real crystallographic data.
 It generated amplitudes that led to interpretable electron density maps for both insulin and the C.Esp1396I protein-DNA complex.
-Furthermore, the final model refinement statistics are on par with those that result from using current data reduction pipeline programs (AIMLESS and CTRUNCATE).
+Furthermore, the final model refinement statistics are on a par with those that result from using current data reduction pipeline programs (AIMLESS and CTRUNCATE).
 
 \subsubsection{Advantages of the FBA}
 \label{subs:Advantages of the FBA}
 One of the major advantages of the FBA algorithm is that the error estimates are calculated explicitly at each time point in the data collection experiment.
 These error estimates are a combination of the uncertainty in the integrated measurement (observation covariance) and the uncertainty of the changes suffered by the crystal (process covariance) propagated through time.
-Since the amplitudes are found directly by the FBA, its use abrogates the need to use existing truncation algorithms including the commonly used French and Wilson algorithm \cite{french1978treatment}.
+Since the amplitudes are found directly by the FBA, it abrogates the need to use existing truncation algorithms including the commonly used French and Wilson algorithm \cite{french1978treatment}.
 This is an advantage, because for large experimental uncertainties the French and Wilson algorithm produces error estimates that resemble the Wilson distribution, which result in weak measurements having a significant influence on a structural model \cite{read2015log}.
 
 The other major advantage of the FBA is the fact that the amplitude estimates are time/dose resolved, so that several electron density maps can be obtained from a single diffraction dataset.
 In theory, the set of structure factor amplitudes given at each point in time could lead to slightly different models showing structural changes throughout the experiment (e.g. due to radiation damage).
-However it is unclear how sensitive downstream processing (such as refinement) is to small amplitude changes in a subset of reflections and whether it will influence the resulting models enough to enable the observation of altered conformations.
+However it is unclear how sensitive downstream processing (such as refinement) is to small amplitude changes in a subset of reflections, and whether the processing will influence the resulting models enough to hinder the observation of altered conformations.
 For example, if it is the case that the applied restraints in refinement are weighted highly, then subtle structural deviations from the ``ideal'' conformation may be missed.
 Further investigation will be required to assess this issue.
 
 An additional, albeit minor, advantage to the FBA is that the framework is very modular by design.
 The process and observation functions are simply based on the current theoretical understanding of structure factor statistics and diffraction theory.
 If the description of the crystal evolution process were to change, then this could simply be incorporated by changing the process function and covariance functions, and it would not require a refactoring of the code.
-Similarly, if the detector were to operate differently and the theory of how the observations (intensities or not) were to alter, then this would only changes the process and observation functions.
+Similarly, if the detector were to operate differently and the theory of how the observations (intensities or not) were to alter, then this would only change the process and observation functions.
 An example of this is that both the Gaussian and Rician process functions exist in the code as separate functions, and either one can be called very simply.
 Thus it is also very easy to compare different processes.
 
@@ -59,8 +59,8 @@ This can be improved if the binary MTZ file contents are read directly using the
 Another way to speed up the code would be to run the FBA in parallel, which is possible because the reflections can be assumed to be independent.
 
 A fundamental feature of the HMM is that the scale factor is simply a parameter concerned with the observation and it is not intrinsic to the crystal.
-At first this seems at odds with the current scaling assumption that the scale factor contains terms that are intrinsic properties of the crystal e.g. unit-cell volume, and the fact that the radiation damage parameter(s) are refined simultaneously with the other scaling factors (absorption, detector response to X-ray photon etc.).
-However it should be theoretically possible to separate the factors that are affected by the crystal changes and those that are a property of the observation method (i.e. observing intensities on a Pilatus detector).
+At first this seems at odds with the current scaling assumption that the scale factor contains terms that are intrinsic properties of the crystal e.g. unit-cell volume, and the fact that the radiation damage parameter(s) are refined simultaneously with the other scaling factors (absorption, detector response to X-ray photon, etc.).
+However, it should be theoretically possible to separate the factors that are affected by the crystal changes and those that are a property of the observation method (i.e. observing intensities on a Pilatus detector).
 A simple thought experiment to demonstrate this is to consider a crystal that is irradiated by X-rays with no detector present.
 The crystal is still going to change due to radiation damage regardless of whether intensity measurements are made.
 Hence a description of the crystal changes must (in theory) be possible without reference to a scale factor that describes how the intensity observations are made.
@@ -69,7 +69,7 @@ This is not that case as ``the only information we have is the measured differen
 
 \subsection{Improvements and extensions}
 \label{sub:Improvements and Extensions}
-The algorithm presented has yielded promising results but there are still several improvements that can be made to the software, one of the obvious being to improve the scaling procedure.
+The algorithm presented has yielded promising results but there are still several improvements that could be made to the software, one of the obvious being to improve the scaling procedure.
 The current method is very primitive and better methods to obtain the scale and B factors have already been proposed \cite{popov2003}.
 Furthermore, the program should accommodate methods to handle varying scale and B factors.
 Non-parametric regression methods such as Gaussian process regression (GPR) could be utilised to do this.
@@ -79,11 +79,11 @@ Rather than defining parameters for a certain family of functions (e.g. the grad
 Restraints would have to be applied during the regression to ensure that the behaviour of resulting amplitude estimates were ``sensible''.
 This may require iterative feedback between the amplitude values and the scale and B factors.
 
-Ultimately, the scaling procedure would benefit from utilising the methods that are currently implemented in software programs like AIMLESS and XSCALE rather than reinventing the wheel.
+Ultimately, the scaling procedure would benefit from utilising the methods that are currently implemented in software programs such as AIMLESS and XSCALE rather than reinventing the wheel.
 These are very mature algorithms that reflect the current knowledge and best practice in scaling.
 Therefore an immediate improvement would be to run AIMLESS and output unmerged, scaled intensity values with B factor correction turned off.
 Thus the scale factor can be assumed to take the value 1 for every image and the FBA would only then be required to track the resulting changes in the crystal state.
-The other advantages of doing this is that the current method implemented to extract reflection intensities (described in section \ref{sec:Extraction and treatment of reflection intensity data}) would effectively be carried out by AIMLESS.
+The other advantages of doing this are that the current method implemented to extract reflection intensities (described in section \ref{sec:Extraction and treatment of reflection intensity data}) would effectively be carried out by AIMLESS.
 Additionally AIMLESS incorporates an outlier rejection algorithm so another one would not necessarily have to be written for the FBA.
 In the case where AIMLESS is used to scale the data, the FBA algorithm could be used simply as a truncation algorithm giving dose resolved amplitude estimates with sensible error estimates for all reflections.
 

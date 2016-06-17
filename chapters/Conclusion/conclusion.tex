@@ -19,49 +19,50 @@ One of these models, \textit{RDE Leal}, which is a normalised form of the DDM pr
 An $\eta$ term, which is a function of this RDE, was then added as a weighting term to the standard DWD to account for the effect of the loss in diffraction efficiency of a damaged crystal.
 The various $\eta$ forms tested were:
 \begin{itemize}
-    \item $\eta$ = 1. (This is the same as the DWD originally developed in \cite{zeldin2013dwd}),
+    \item $\eta$ = 1. (This is the same as the DWD originally developed in Zeldin \textit{et al.} (2013)),
     \item $\eta$ = RDE (Decreasing function),
     \item $\eta$ = 1 - RDE (Increasing function).
 \end{itemize}
 Inclusion of the increasing and decreasing terms did not result in a decreased variability of the relative intensity as hypothesised by Zeldin \textit{et al.}, but this work does suggests that two metrics should be considered.
-One metric that should represent the damaged state of the crystal, which should monotonically increase with increasing X-ray exposure.
+One metric should represent the damaged state of the crystal, which should monotonically increase with increasing X-ray exposure.
 This is typically the type of dose metric used in all radiation damage studies to date (maximum dose, which was reported by RADDOSE v1-3, average dose over the whole crystal and the DWD with $\eta$ = 1).
 The other metric would represent the diffraction quality from the crystal using a decreasing $\eta$ form to weight the DWD.
 This metric has more complicated behaviour and can decay back towards zero as the X-ray exposure increases.
 In this case, images that result in similar DWD values should have similar diffraction quality, thus even images that are collected late in the experiment could have better diffraction quality than images collected in the middle of the experiment.
 This suggests that this metric could be used, in addition to existing methods, to determine which images to merge to obtain good quality, reliable data.
-To the author's knowledge, this type of metric has not been used before.
+To the author's knowledge, this type of metric has not been used previously.
 
 \subsection{Zero-dose extrapolation}
 \label{sub:Zero-dose extrapolation}
 The decay of reflection intensities as a result of global radiation damage can hinder structure solution by swamping the phasing signal in experimental phasing experiments.
 Scaling algorithms attempt to correct for the overall intensity decay but they do not account for reflection specific intensity changes, which can be non-monotonic.
 Previous studies have attempted to correct for the specific intensity decay (zero-dose extrapolation), showing that improvement in the phasing signal can be achieved \cite{diederichs2003,diederichs2006}.
-However, zero-dose extrapolation is not commonly used \cite{borek2007many}, and is not that effective with low multiplicity data.
-In this thesis, a zero-dose extrapolation model is presented that uses the Leal \textit{et al.} DDM for the traditional regression based extrapolation, which was able to capture the non-monotonic behaviour of reflection intensities.
+However, zero-dose extrapolation is not commonly used \cite{borek2007many}, and is not very effective with low multiplicity data.
+In this thesis, a zero-dose extrapolation model is presented that uses the Leal \textit{et al.} DDM for the traditional regression based extrapolation.
+This model was able to capture the non-monotonic behaviour of reflection intensities.
 The procedure also incorporated several quality checks to ensure the reliability of the regression fits.
-Furthermore an additional probabilistic extrapolation routine was developed to perform zero-dose extrapolation for reflections with a small number of observations, which addresses the problem of performing extrapolation for low multiplicity data.
+Furthermore, an additional probabilistic extrapolation routine was developed to perform zero-dose extrapolation for reflections with a small number of observations, thus addressing the problem of performing extrapolation for low multiplicity data.
 Further investigation of this method is required before it can be used reliably for any crystal.
 In particular, it would benefit from the development of:
 \begin{itemize}
     \item a method for learning the weight of the scaling factor used for the probabilistic extrapolation,
-    \item an outlier rejection algorithm for poor observation extrapolations.
+    \item an outlier rejection algorithm for poor observation extrapolations,
     \item a metric to assess the overall quality of the probabilistic extrapolation.
 \end{itemize}
 
 \subsection{Measuring X-ray beam profiles}
 \label{sub:Measuring X-ray Beam profiles}
-As mentioned above, the precise X-ray beam profile is a critical factor that determines the overall dose distribution in a crystal in an MX experiment.
+As mentioned above, the precise X-ray beam profile is a critical factor that determines the overall dose distribution in a crystal during an MX experiment.
 The RADDOSE-3D dose calculation software has the capability to use experimentally measured beam profiles to accurately calculate the dose distribution.
-Various methods for experimentally measuring the X-ray beam profiles exist, but each one requires different preprocessing before it faithfully represents the actual beam profile.
+Various methods for experimentally measuring the X-ray beam profiles exist, but each one requires different preprocessing before it can faithfully represent the actual beam profile.
 In this thesis, several methods for measuring beam profiles and processing the resulting data were investigated.
 Aperture scans were performed at DLS beamline I02, where a piece of steel with a circular hole was translated across the X-ray beam, both vertically and horizontally, and measurements of the current from a diode was taken at regular intervals.
 This only gives 1D data and therefore has to be converted to a 2D beam profile.
-This was done by fitting a 2D Gaussian to the aperture data.
-It was determined that deconvolving the resulting Gaussian profile with the aperture size did not change the overall beam profile significantly.
-Another method used to measure the beam profile at the PETRA III beamline P14, was to use a scintillator combined with an Allied Vision GC1350C CCD camera, which resulted in a 2D image of the X-ray beam.
+This was achieved by fitting a 2D Gaussian to the aperture data.
+It was found that deconvolving the resulting Gaussian profile with the aperture size did not change the overall beam profile significantly.
+Another method employed to measure the beam profile at the PETRA III beamline P14, was to use a scintillator combined with an Allied Vision GC1350C CCD camera, resulting in a 2D image of the X-ray beam.
 The advantage of this method is that it is not necessary to create a 2D profile.
-The major disadvantage is that the image has background noise, which was shown to result in large errors in the dose calculation.
+The major disadvantage is that the image has background noise, which, if removed incorrectly, was shown to result in large errors in the dose calculation.
 Various methods were explored to objectively remove the background, with some methods resulting in similar calculated $D_{1/2}$ values, a radiation damage sensitivity metric that represents the absorbed dose for which the relative intensity has decayed to half of its initial value.
 However it is not objectively clear which method of removing the background is best, so the experimenter should use information that is known about the collimation of the beam to decide where the background is in an image.
 Finally, the beam profile measurements carried out at ESRF beamline BM29, used several aperture scans, both horizonally and vertically, to obtain several 1D slices of the beam profile.
@@ -73,16 +74,16 @@ For this reason it is recommended that beam profile measurements are performed b
 \section{Data reduction}
 \label{sec:Data Reduction}
 Radiation damage correction has always focussed on attempting to correct the intensities that are observed in the diffraction experiment.
-These intensities are ultimately generated by the contents of the crystal and so an alternative perspective to correcting for radiation damage is to describe (probabilistically) the changes that are occurring to the crystal.
+These intensities are ultimately generated by the contents of the crystal and so an alternative perspective to correct for radiation damage is to describe (probabilistically) the changes that are occurring to the crystal.
 Hidden Markov models are mathematical frameworks that track the hidden state of a system according to observations that are generated from it.
-In this thesis we apply this framework to MX, where the state of the system is the crystal state represented by the set of structure factor amplitudes and the observations are the intensities.
-The process and observation functions, along with their respective uncertainties (covariances), are defined as an exponential decay (temperature factor) and the product of the square of the amplitude with a scale factor respectively.
+In this thesis, this framework is applied to MX, where the state of the system is the crystal state represented by the set of structure factor amplitudes and the observations are the intensities.
+The process and observation functions, along with their respective uncertainties (covariances), are defined as an exponential decay (temperature factor) and the product of the square of the amplitude with a scale factor, respectively.
 Applying the unscented Kalman filter (forward pass) with the unscented Rauch-Tung-Streibel smoother (backwards pass) is known as the forward-backward algorithm (FBA), which gives time resolved estimates of the amplitude values throughout the experiment.
-Therefore, it is possible to use the amplitudes at each time point to run phasing and refinement to generate a set of electron density maps from a single dataset.
+Therefore, it is possible to use the amplitudes at each time point for phasing and refinement to generate a set of electron density maps from a single dataset.
 The set of amplitudes estimated at the first time point were then used for the successful structure determination of insulin and the C.Esp1396I protein-DNA complex by molecular replacement.
-The resulting statistics used with this method are comparable to the statistics that result from structure solution using programs in the current data reduction pipeline (AIMLESS and CTRUNCATE).
-In addition to producing time resolved amplitude estimates, the error estimates are also explicitly calculated in the forward-backward algorithm as a combination of the uncertainty in the measurement and the uncertainty in the (damage) process.
-This means that the error estimates should be more representative of the expected error, which may lead to more reliable results in experimental phasing, but this is not verified and still needs to be investigated.
+The resulting statistics from using this method are comparable to the statistics that result from structure solution using programs in the current data reduction pipeline (AIMLESS and CTRUNCATE).
+In addition to producing time resolved amplitude estimates, the error estimates are also explicitly calculated in the FBA as a combination of the uncertainty in the measurement and the uncertainty in the (damage) process.
+This means that the error estimates should be more representative of the expected error, which may lead to more reliable results in experimental phasing, but this is not yet verified and still needs to be investigated.
 
 The HMM representation is not only useful for data reduction.
 In fact the idea of the HMM in crystallography was spawned from the idea of modelling radiation damage in structure refinement (Garib Murshudov, personal communication).
@@ -107,4 +108,4 @@ Additionally it was found that DTT exhibits odd behaviour, particularly at high 
 One of the most intriguing visualisation tools in the Python library is the heatmap.
 For DTT it showed regions of frame similarity which cannot be easily determined via other analytical methods.
 This indicates that it may have implications for deciding which frames experimenters should merge to improve data quality, and possibly distinguish regions of different conformational states.
-More work needs to be done to verify the importance of these regions.
+Further work should be done to verify the importance of these regions.
