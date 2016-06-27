@@ -52,9 +52,10 @@ def run_system_command(command_string):
 os.chdir(MAIN_THESIS_DIR)
 MAIN_FILENAME = "main.tex"
 FILE_KEYWORDS = ["include", "input"]
+TODO_FILENAME = "specialpages/todos.tex"
 
 # Open the to TODO_FILE for writing the list of todos from the thesis.
-TODO_FILE = open("specialpages/todos.tex", "w")
+TODO_FILE = open(TODO_FILENAME, "w")
 TODO_FILE.write("\\chapter{ToDos}\n")
 TODO_FILE.write("\\textcolor{red}{\n")
 TODO_FILE.write("    \\begin{enumerate}\n")
@@ -83,9 +84,8 @@ TODO_FILE.write("}\n")
 TODO_FILE.close()
 
 # If there are no todos then just create an empty file
-if not any_todos:
-    TODO_FILE = open("specialpages/todos.tex", "w")
-    TODO_FILE.close()
+if not any_todos and os.path.isfile(TODO_FILENAME):
+    os.remove(TODO_FILENAME)
 
 # Run TeXCount to get the word count for the thesis
 TEXCOUNT_OPTIONS = "-inc"

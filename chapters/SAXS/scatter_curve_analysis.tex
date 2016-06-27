@@ -4,7 +4,7 @@
 To increase the signal to noise ratio when processing data in SAXS, it is necessary to merge 1D intensity curves from several frames.
 If the scattering for different frames is from the same molecule in the sample, then the frames will be similar i.e. the frames will overlap.
 However as radiation damage progresses during the experiment, the molecules begin to aggregate, which causes the intensity curve to increase at low $q$ angles and is speculated to decrease at high $q$ angles \cite{hopkins2016quantifying}.
-Fragmentation on the other hand, causes a decrease in scattering at low $q$ angles and an increase at high $q$ angles.
+On the other hand, fragmentation and molecule repulsion due to protein charging, cause a decrease in scattering at low $q$ angles and an increase at high $q$ angles.
 Figure~\ref{fig:1D Scatter Curves} shows the scattering profile of several SAXS frames collected from the same glucose isomerase sample.
 As the dose increases, there is a clear decrease in the scattered intensity at low angles suggesting that the sample is undergoing fragmentation.
 This was also observed with the glucose isomerase samples used in the study conducted by Hopkins and Thorne \cite{hopkins2016quantifying}.
@@ -173,7 +173,7 @@ The set of $P_{adj}(>C)$ values that result from comparing the first frame to al
     For similar frames to frame 1, the pairwise CorMaps are more like randomised lattices (Figure~\ref{fig:Pairwise correlation frames 1 and 2}) and hence $C$ is fairly small.
     Therefore the chance of observing a longer edge length than $C$ is high ($P_{adj}(>C) = 1$ - blue circles).
     As frames start becoming more dissimilar, the $C$ values increase and the $P_{adj}(>C)$ values fall.
-    These circles are coloured teal.
+    These circles are coloured green.
     When frames are very dissimilar, $C$ becomes very large (Figure~\ref{fig:Pairwise correlation frames 1 and 120}) and $P_{adj}(>C) <$ 0.01.
     The circles representing the comparison with these frames are coloured orange.
     The first dissimilar frame (coloured orange - frame 55) is may not necessarily be the point at which frames should stop being merged according to this analysis, because there are circles after frame 55 that are not orange in colour.}
@@ -184,7 +184,7 @@ The set of $P_{adj}(>C)$ values that result from comparing the first frame to al
 \label{subs:Applying this methodology to Expt 2 results}
 As can be seen in Figure~\ref{fig:p values for comparisons with frame 1}, the first frame which is calculated to be dissimilar to frame 1 is frame 55 (first orange circle) which has a corresponding dose of 14.73$\,$kGy.
 Therefore the threshold for radiation damage onset to be significant could be set at that frame.
-However the frames immediately after 55 do not have $P_{adj}(>C) <$ 0.01 (teal or blue circles) suggesting that these frames are not significantly dissimilar to frame 1.
+However the frames immediately after 55 do not have $P_{adj}(>C) <$ 0.01 (green or blue circles) suggesting that these frames are not significantly dissimilar to frame 1.
 Thus frame 55 may be a noisy outlier and radiation damage may not necessarily be significant at that frame.
 A more robust check may be to find the first dissimilar frame for which $m$ consecutive frames are dissimilar.
 This possibility was thus investigated and tested for $m$ = 1, 3, 5, 7 and 10 to determine the value $m = m_0$ for which $m > m_0$ did not significantly change the dose at which frames were determined to be dissimilar.

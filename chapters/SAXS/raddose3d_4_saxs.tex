@@ -43,7 +43,7 @@ The modular design of RADDOSE-3D enables this type of extension into be easily i
 In a typical SAXS experiment, liquid samples are generally contained in, or flowed through, a cylindrical capillary during the X-ray exposure.
 Therefore it is necessary for RADDOSE-3D to be able model cylindrical sample shapes.
 RADDOSE-3D was extended to handle polygonal shapes \cite{bury2015radiation}, which meant that because any 3D shape can be modelled by a series of polygons, it was already capable of modelling cylindrical shapes.
-However the implementation for polyhedral crystals requires the user to define the sample geometry in a non-user friendly manner.
+However, the implementation for polyhedral crystals requires the user to define the sample geometry in a non-user friendly manner.
 A file specifying the geometry of the shape using a set of vertex positions, and their connectivity is required.
 This is much more complex than defining the diameter of the circular cross section and the length/height of a cylinder.
 Therefore a module was written that accepts a diameter and height as input and converts this into a polyhedral description (a set of vertices and faces) of a cylinder within RADDOSE-3D.
@@ -66,7 +66,7 @@ Note that this assumes the origin of the system is located at the centre of the 
 Regardless of the dimensions of the cylinder, the connectivity of the vertices remains the same because the number of vertices and their orientation with respect to one another is constant.
 Therefore the connectivity has been hard-coded into RADDOSE-3D.
 It will only ever need to be changed if the number of points is altered.
-However this parameter is not exposed to the user and hence it would only change if a developer modified the source code.
+However, this parameter is not exposed to the user and hence it would only change if a developer modified the source code.
 
 The geometry defined to create the cylinder is rotated $90^{\circ}$ about the $y$-axis compared to the usual RADDOSE-3D simulation geometry.
 This means that the beam would irradiate the sample along the $x$-axis (or directly into the page looking at Figure~\ref{fig:Cylindrical implementation} A).
@@ -128,10 +128,10 @@ A section of the webpage for the mass attenuation coefficient table of carbon is
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{figures/saxs/nist_table_carbon.png}
-    \caption[X-ray mass attenuation coefficient data for carbon from NIST.]{Section of the X-ray mass attenuation coefficient data for carbon from NIST \cite{nisttable3}. The mass attenuation coefficient data are tabulated beneath the graph. The exact energy of the X-ray photons used in crystallography and SAXS (typically around $12\ keV$) is not explicitly tabulated therefore the mass attenuation coefficient is obtained by linear interpolation.}
+    \caption[X-ray mass attenuation coefficient data for carbon from NIST.]{Section of the X-ray mass attenuation coefficient data for carbon from NIST \cite{nisttable3}. The mass attenuation coefficient data are tabulated beneath the graph. The exact energy of the X-ray photons used in crystallography and SAXS (typically around 12\,keV) is not explicitly tabulated therefore the mass attenuation coefficient is obtained by linear interpolation.}
     \label{fig:NIST table for carbon}
 \end{figure}
-The tabulated energy values do not explicitly include the typycial energies used in crystallograpy and SAXS (around $12\ keV$), so the mass attenuation coefficient is linearly interpolated between the closest values.
+The tabulated energy values do not explicitly include the typycial energies used in crystallograpy and SAXS (around 12\,keV), so the mass attenuation coefficient is linearly interpolated between the closest values.
 Mass attenuation coefficient data for various mixtures including air, borosilicate glass, water, bone and soft tissue are also tabulated in NIST table 4 \cite{nisttable4}.
 These mixtures can be used directly by RADDOSE-3D.
 
@@ -200,13 +200,13 @@ Extrapolation of the plot from \cite{hopkins2016quantifying} (reproduced in Figu
 
 The SAXS sample can also be manipulated in the same way as a crystal in RADDOSE-3D.
 Hence helical scanning, translations and rotations of the sample can all be performed.
-Figure~\ref{fig:SAXS cylinder rotated} is the final dose state of a glucose isomerase sample in an experiment where the sample was rotated $180^{\circ}$ for a total of 200 seconds in a 700 $\times$ 700 $\mu m^{\text{2}}$ top-hat profile beam with a flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident photon energy of 12.1$\,$keV.
+Figure~\ref{fig:SAXS cylinder rotated} is the final dose state of a glucose isomerase sample in an experiment where the sample was rotated 180$^{\circ}$ for a total of 200 seconds in a 700 $\times$ 700 $\mu m^{\text{2}}$ top-hat profile beam with a flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident photon energy of 12.1$\,$keV.
 \begin{figure}
     \centering
     \includegraphics[width=0.75\textwidth]{figures/saxs/SAXScylinder.pdf}
-    \caption[RADDOSE-3D dose contour plot of a cylindrical SAXS sample.]{Final dose state of a glucose isomerase sample in an experiment where the sample was rotated $180^{\circ}$ in a $ 700 \mu m \times 700 \mu m $ top-hat profile beam with a beam flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident energy of $ 12.1 keV $ for a total exposure time of 200 seconds.
+    \caption[RADDOSE-3D dose contour plot of a cylindrical SAXS sample.]{Final dose state of a glucose isomerase sample in an experiment where the sample was rotated 180$^{\circ}$ in a 700\,$\mu m$ $\times$ 700\,$\mu m $ top-hat profile beam with a beam flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident energy of 12.1\,keV for a total exposure time of 200 seconds.
     The capillary was treated as completely transparent to the X-rays so there was no attenuation.
     The dose state is only calculated and shown for the sample, not the capillary.
-    The contours correspond to dose iso-surfaces: light blue = $ 0.1\ MGy $, dark blue = $ 1.5\ MGy $ and red = $ 2\ MGy $ }
+    The contours correspond to dose iso-surfaces: light blue = 0.1\,MGy, dark blue = 1.5\,MGy and red = 2\,MGy.}
     \label{fig:SAXS cylinder rotated}
 \end{figure}

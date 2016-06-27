@@ -54,19 +54,13 @@ In section \ref{sub:Data analysis - experiment 2} a metric for assessing the fra
 Explicitly, this metric was defined as the point at which three consecutive frames were defined as dissimilar ($m$ = 3) resulting from the CorMap test with threshold $\alpha$ = 0.01.
 This metric will be referred to as the \textit{CMD} (CorMap Derived) metric.
 
-In addition to the \textit{CMD} metric, an automatic data analysis pipeline at beamline BM29 \cite{brennich2016online} is integrated into the beamline control system, \textit{BsxCuBE}.
+In addition to the \textit{CMD} metric, an automatic data analysis pipeline at beamline BM29 is integrated into the beamline control system, \textit{BsxCuBE}.
 This pipeline additionally performs analysis of frames and hence gives merging thresholds calculated for radiation damage onset using a metric henceforth denoted the \textit{BsxCuBE} metric.
 
 The results from analysis with both metrics were calculated/recorded and figure~\ref{fig:SAXS Metric comparison} shows how the two metrics compare for each compound at all concentrations.
 Generally the two metrics agree on the order of the efficacy of the various radioprotectant compounds, but the \textit{BsxCuBE} metric always suggests that more frames can be merged then the \textit{CMD} metric.
 Given that the \textit{CMD} metric was developed to avoid individual dissimilar frames prematurely being flagged as the point of significant radiation damage onset, this result is quite surprising.
 It suggests that the \textit{BsxCuBE} metric employs a very different method to assess the similarity of frames than the \textit{CMD} metric.
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:Ask Adam about BsxCuBE}{\textbf{TODO:} ask adam about the BsxCuBE metric.}
-        The paper suggest that it too uses the CorMap method with the same $\alpha$ = 0.01 but the results don't match up.
-    \end{myenumerate}
-}
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.75\textwidth}
@@ -133,7 +127,7 @@ The fact that performing the pairwise comparisons with different reference frame
 Figure~\ref{fig:heatmap - DTT} is a heat map showing the results from all possible pairwise frame comparisons.
 The first row shows the results that were obtained using frame 1 as the reference frame.
 It shows the \textit{CMD} metric highlighting frames becoming dissimilar very early on in the experiment (frame 8 out of 120).
-However there is a large square region of similar frames in the top left of the map suggesting that the best results may be obtained by merging the frames from the larger region.
+However, there is a large square region of similar frames in the top left of the map suggesting that the best results may be obtained by merging the frames from the larger region.
 This region notably does not include the first frame.
 The structure of this map could suggest that there are fast changes occurring in the sample early on in the experiment until a relatively stable molecular conformation is reached.
 Perhaps merging frames from these different regions may result in molecular envelopes resembling the molecules in different conformations.
@@ -152,9 +146,9 @@ It may be the case that some of these states are functionally important.
 Using the dose as the metric to evaluate the efficacy of the different radioprotectants means that the results are normalised for the energy absorption of the compounds. It is sensible to ask whether this normalisation changes the conclusions that would be drawn if the frame number alone was used as the threshold metric.
 Figure~\ref{fig:SAXS dose vs frame} shows the results for the 1\,mM and the 10\,mM concentrations of radioprotectants with dose value and frame number as the damage thresholds.
 For the more radiation tolerant samples (ascorbate, ethylene glycol, glycerol and even DTT) there is not much difference in using either the dose or the frame number.
-However for the less efficient radioprotectants (sucrose, TEMPO and trehalose) there is a significant difference.
+However, for the less efficient radioprotectants (sucrose, TEMPO and trehalose) there is a significant difference.
 If the frame number is used (Figures \ref{fig:SAXS frame- 1mM}, \ref{fig:SAXS frame- 10mM}) the order of the relative efficacies of those radioprotectants is not too obvious.
-However if the dose value is used instead (Figures \ref{fig:SAXS dose- 1mM}, \ref{fig:SAXS dose- 10mM}) then the order becomes much clearer, particularly at 1\,mM concentration.
+However, if the dose value is used instead (Figures \ref{fig:SAXS dose- 1mM}, \ref{fig:SAXS dose- 10mM}) then the order becomes much clearer, particularly at 1\,mM concentration.
 The spread of the threshold values for those compounds is also smaller using dose instead of frame number for the 10\,mM concentration.
 \begin{figure}
     \centering
@@ -221,7 +215,7 @@ Thus the protection ability of ethylene glycol is not a simple monotonic functio
 \label{subs:Relative radioprotectant efficacy}
 The results shown in Figure~\ref{fig:SAXS Ratio plot} indicate that the most effective radioprotectant varies depending on the concentration of the compound used in the sample.
 The \textit{BsxCuBE} and \textit{CMD} metrics show agreement that at low concentrations (1$\,$mM and 2$\,$mM) DTT is the most effective radioprotectant.
-However at higher concentrations these metrics disagree.
+However, at higher concentrations these metrics disagree.
 At 5$\,$mM and 10$\,$mM the \textit{BsxCuBE} metric suggests that the most effective radioprotectant is still DTT.
 On the otherhand, the \textit{CMD} metric suggests that the most effective radioprotectant is glycerol.
 Furthermore, it also suggests that DTT is the least effective radioprotectant.

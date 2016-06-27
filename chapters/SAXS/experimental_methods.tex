@@ -6,18 +6,7 @@ The first of these experiments was carried out in 2014 whereas the second was ca
 
 \subsection{Sample preparation}
 \label{sub:Sample preparation}
-\textcolor{red}{
-    \begin{myenumerate}
-        \item \hypertarget{todo:Need info from Ed}{\textbf{TODO:} Get following info from Ed:}
-        \begin{itemize}
-            \item when was the data for Rebecca's experiment collected?
-            \item Where was GI purchased? (Hampton Research?)
-            \item where was the extinction coefficient information obtained? what was the extinction coefficient? and at what wavelength was this tested?
-            \item why did we use GI? (model protein in SAXS?)
-        \end{itemize}
-    \end{myenumerate}
-}
-Crystalline glucose isomerase (GI) used in both experiments was purchased in tetrameric form (1552 residues, 172 kDa) from \textcolor{red}{...}.
+Crystalline glucose isomerase (GI) used in both experiments was purchased in tetrameric form (1552 residues, 172 kDa) from Hampton Research. GI was chosen because it is a stable, soluble globular protein that has well defined SAXS behaviour and is sufficiently large to scatter well at modest concentrations.
 
 \subsubsection{Experiment 1 (Expt 1)}
 \label{subs:Experiment 1 - sample prep}
@@ -33,8 +22,8 @@ Each sample was prepared in triplicate to allow repeats. The following radioprot
 \subsubsection{Experiment 2 (Expt 2)}
 \label{subs:Experiment 2 - sample prep}
 GI was dissolved and dialysed for 24 hours at 277$\,$K with the same buffer components as those used in the first experiment.
-The final GI concentration of (1$\,$mg/ml) used for all data collection runs was determined using the extinction coefficient given by \textcolor{red}{...} at \textcolor{red}{$...\,$nm}.
-Eight solution additives were tested for their radiation damage protection capabilities: sodium ascorbate, dithiothreitol (DTT), ethylene glycol, glycerol, sodium nitrate, sucrose, (2,2,6,6-tetramethylpiperidin-1-yl)oxyl (TEMPO) and trehalose.
+The final GI concentration, 1\,mg/ml, used for all data collection runs was determined using the extinction coefficient given by 45,600\,M$^{\text{-1}}$cm$^{\text{-1}}$ at 280\,nm absorbance.
+Eight solution additives were tested for their radiation damage protection capabilities: dithiothreitol (DTT), ethylene glycol, glycerol, sodium ascorbate, sodium nitrate, sucrose, (2,2,6,6-tetramethylpiperidin-1-yl)oxyl (TEMPO) and trehalose.
 The additives were added to the buffer solutions at four different concentrations: 10$\,$mM, 5$\,$mM, 2$\,$mM and 1$\,$mM, except glycerol and ethylene glycol which were both prepared at 10\%$\,$v/v, 5\%$\,$v/v, 2\%$\,$v/v and 1\%$\,$v/v immediately prior to data collection.
 These additives were also prepared to the same final concentration in the solution containing both the buffer and protein.
 
@@ -58,7 +47,7 @@ The photon energy used throughout was 12.5$\,$keV and the photon flux was estima
     \text{flux} = \text{5.72293 + 2.72295} \times \text{10}^{\text{15}} \times \text{d}_{\text{r}},
 \end{equation}
 where d$_{\text{r}}$ is the diode reading.
-The flux obtained using this formula was calibrated with an OSD1-0 photodiode purchased from Optoelectronics, which was a 500$\,\mu m$ thick silicon diode with a 1$\,$mm$^{\text{2}}$ active area as per \cite{owen2009}.
+The flux obtained using this formula was calibrated with an OSD1-0 photodiode purchased from Optoelectronics, which was a 500$\,\mu m$ thick silicon diode with a 1$\,$mm$^{\text{2}}$ active area as per Owen \textit{et al.} (2009) \nocite{owen2009}.
 The flux was calculated for each frame because the diode readings constantly changed between frames (Figure~\ref{fig:Diode and flux readings}), however the overall change in diode reading was only 0.54\%.
 Despite the small percentage change, account was still taken for this effect in the analysis.
 \begin{figure}
@@ -92,8 +81,8 @@ The full 2D X-ray beam profile was determined as outlined in section \ref{sec:Pr
     \label{fig:SAXS beam profile}
 \end{figure}
 
-The data were recorded using a Dectris Pilatus 1M detector.
-\textcolor{red}{...$15\ \mu l$...} of each sample was loaded into a 1.8$\,$mm external diameter quartz capillary (1.7\,mm internal diameter, thus the wall thickness is 50\,$\mu m$) held at room temperature.
+The data were recorded using a Pilatus 1M detector from Dectris.
+15\,$\mu l$ of each sample was loaded into a 1.8$\,$mm external diameter quartz capillary (1.7\,mm internal diameter, thus the wall thickness is 50\,$\mu m$) held at room temperature using the automated robotic sample changer \cite{round2015biosaxs}.
 For each additive, data were collected at each concentration (given in section \ref{sub:Sample preparation}), and each of these runs was repeated 3 times.
 The exposure time for each frame was 1 second, and a total of 120 frames were collected for a single run with the sample kept static.
 For each radioprotecant concentration a single dataset was collected with only the buffer (no protein) so that a suitable buffer correction (subtraction) could be applied during data analysis.
