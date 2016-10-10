@@ -93,7 +93,7 @@ Functionality to handle the experimentally measured beam profile was added to RA
         \caption{}
         \label{fig:Hamburg beamslice horizontal}
     \end{subfigure}
-    \caption[Beam profile at beamline P14, PETRA III, Hamburg.]{(a) Image (790 x 1360) of the experimentally determined beam profile.
+    \caption[Beam profile at beamline P14, PETRA III, Hamburg.]{(a) Image (790 x 1360 pixels) of the experimentally determined beam profile.
     (b) Vertical slice through the beam image showing the flat profile of the beam.
     (c) Horizontal slice through the beam image showing the flat profile of the beam.}
     \label{fig: Hamburg beam pgm and slice}
@@ -131,8 +131,9 @@ This was done because it is well documented that the unit cell expands and the m
 
 The data were then scaled with AIMLESS \cite{evans2013} in batches of 900 frames (equivalent to 90$^{\circ}$ rotations) separated 50 frames apart (equivalent to 5$^{\circ}$).
 This resulted in several overlapping datasets being extracted which allowed the progression of radiation damage to be tracked in much more detail than would be the case if datasets did not overlap.
+It is important to note however that these datasets will have sampled different regions of reciprocal space and so will therefore have different numbers of total observations, however, the differences are not expected to be significant.
 14400 images were collected from each insulin crystal, so processing the data in this way produced 271 datasets per crystal.
-Despite the fact that the insulin crystals diffracted to 1.38$\,$\AA, the data were scaled with a resolution limit of 1.8$\,$\AA.
+Despite the fact that the insulin crystals diffracted to 1.38$\,$\AA, the data were scaled to a resolution limit of 1.8$\,$\AA.
 This was to ensure that the processing for the highly damaged datasets were less likely to fail and to allow more direct comparison of the intensity values between datasets.
 Only five of the 8 insulin datasets produced data that were processed straightforwardly in MOSFLM.
 Data processing statistics for those five insulin crystals are shown in Table~\ref{tab: Hamburg data processing}.

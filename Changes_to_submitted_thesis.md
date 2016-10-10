@@ -191,21 +191,21 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 **to**
 > The *relative diffraction efficiency* (RDE)
 
-2. **Page 68, 2st paragraph** - Add missing "an". I.e. change from:
+2. ~~**Page 68, 2st paragraph** - Add missing "an". I.e. change from:~~
 
 > as additional weighting term.
 
 **to**
 > as an additional weighting term.
 
-3. **Page 74, Figure 2.3 caption** - Add units to numbers. I.e. change from:
+3. ~~**Page 74, Figure 2.3 caption** - Add units to numbers. I.e. change from:~~
 
 > (790 x 1360)
 
 **to**
 > (790 x 1360 pixels)
 
-4. **Page 75, middle of Last paragraph** - change a word. I.e. change from:
+4. ~~**Page 75, middle of Last paragraph** - change a word. I.e. change from:~~
 
 > data were scaled with a resolution limit of 1.8Å
 
