@@ -314,7 +314,7 @@
         The fraction of the reflection that is recorded on a given image, the partiality of a reflection, has to be calculated and the experimental parameters refined in a process called post-refinement \cite{rossmann1979processing, rossmann1979oscillation}.
 
         Although the space group of the crystal is determined during the indexing stage, it is still only an informed prediction.
-        An improvement of the predicted space group can be made after the integration stage with a ccp4 program called POINTLESS \cite{evans2011introduction}.
+        An improvement of the predicted space group can be made after the integration stage with a CCP4 program called POINTLESS \cite{evans2011introduction}.
 
         The intensities of reflections are affected not only by the number of electrons in the unit cell, but also by the variation of other systematic factors such as the rotation rate, incident beam intensity, the path length of the X-ray beam through the crystal, and the secondary absorption etc. \cite{evans2005}.
         These factors must be taken into account so that the intensities of all reflections are on the same scale.
@@ -331,7 +331,7 @@
 
         Although phases are not observed directly in the diffraction experiment, they can be derived in multiple ways.
         If the sequence of the target protein is similar to another structure that has already been solved ($\approx$ 25-35\% \cite{taylor2010,abergel2013molecular}) or the structure is thought to be similar to another structure, then initial phases can be taken from the homologous structure.
-        First, the homologue structure is transformed via a series of rotations and translations within the asymmetric unit of the target crystal so that the calculated Patterson map best matches the one that has been obtained experimentally \cite{mccoy2007solving}.
+        The homologue structure is transformed via a series of rotations and translations within the asymmetric unit of the target crystal so that the calculated Patterson map best matches the one that has been obtained experimentally \cite{mccoy2007solving}.
         Programs such as PHASER perform these operations \cite{mccoy2007phaser}.
         \newline
         If no structural homologue exists, then the phases must be derived experimentally.
@@ -345,7 +345,7 @@
         \newline
         With both amplitudes and phases obtained, it is possible to perform the Fourier transform defined in equation \ref{eq:electron density equation} to obtain an electron density map.
         The atomic structure can then be built into the resulting map.
-        In general the initial map is unlikely to provide a satisfactory structure, so a process of refinement is carried out to improve the agreement of the amplitude calculated from the model that has been built, with those that were derived from the experimental intensities.
+        In general the initial map is unlikely to provide a satisfactory structure, so a process of refinement is carried out to improve the agreement of the amplitudes calculated from the model that has been built, with those that were derived from the experimental intensities.
         Programs such as REFMAC \cite{murshudov2011refmac5} and PHENIX.REFINE \cite{adams2010phenix} perform these operations until a satisfactory structure has been obtained.
         An atomic model is determined to be satisfactory when the statistical quantities, $R_{work}$ and $R_{free}$, are low enough.
         To ensure that the final structure is reliable, software programs such as MOLPROBITY \cite{chen2010molprobity} and PROCHECK \cite{laskowski1993procheck} are used to check the stereochemical quality of the structure.

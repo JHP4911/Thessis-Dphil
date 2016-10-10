@@ -82,7 +82,7 @@
             \centering
             \includegraphics[width=0.8\textwidth]{figures/introduction/relativeinteractions.png}
             \caption[Relative contribution to the overall X-ray interaction cross section as a function of incident beam energy for chicken egg-white lysozyme]{Relative contribution to the overall X-ray interaction cross section as a function of incident beam energy for chicken egg-white lysozyme \cite{pait2010}.
-            The photoelectric effect dominates at typical wavelengths used in MX (about 1\,\AA).
+            The photoelectric effect dominates at typical wavelengths used in MX (about 1\,\AA $\approx 12$\,keV).
             However, at higher energies the elastic contribution increases but the Compton effect increases faster and begins to dominate.}
             \label{fig:Relative Absorption Probabilities}
         \end{figure}
@@ -120,14 +120,14 @@
         RADDOSE uses these parameters to determine the maximum flux within the beam profile and simulates an experiment in which the crystal is exposed homogeneously to the maximum beam intensity to provide a worst case scenario dose estimate: the maximum dose.
         Several improvements to the model were incorporated in successive versions of RADDOSE.
         Version two \cite{pait2009} included calculation of the fluorescent emission probability of the constituent atoms and the probability that these fluorescent photons could escape the crystal.
-        Version three \cite{pait2010} took into account the energy loss in the crystal due to the Compton effect, which been neglected in previous versions, but only significantly affects the dose values for incident energies above 25\,keV
+        Version three \cite{pait2010} took into account the energy loss in the crystal due to the Compton effect, which had been neglected in previous versions, but only significantly affects the dose values for incident energies above 25\,keV
 
         Despite these improvements, RADDOSE still has several limitations.
         One of the major problems with the dose calculation is that some variables in the data collection experiment are known with more certainty than others.
         Parameters such as the beam flux and exposure time are known to a relatively high degree of accuracy.
         However, the extent to which parameters such as the crystal volume \cite{holton2009} and beam profile \cite{krojer2011} are known is often significantly less.
         This can lead to large errors in the calculated dose values and inferences about the radiation susceptibility of protein crystals \cite{krojer2011}.
-        The uncertainty can be taken into account for by assigning a ``factor of 2" decision threshold \cite{holton2009}.
+        The uncertainty can be accounted for by assigning a ``factor of 2'' decision threshold \cite{holton2009}.
 		This means that a particular radiation damage effect described by quantitative values (e.g. intensity loss or dose) can be considered the same if the values are within a factor of 2 of one another.
         Methods are being developed to better parametrise the data collection experiment for the crystal shape \cite{svensson2015fully,khan2012confocal,brockhauser2008x} and the beam \cite{bowler2015massif} but these methods are not yet routine on the majority of beamlines.
 
@@ -216,7 +216,7 @@
             (b) \% change in unit cell volume.
             (c) $R$ value ($R_{meas}$).
             (d) Wilson $B$ value.
-            Work performed by \cite{owen2006}, reproduced from \cite{garman2010}.}
+            Work performed by Owen \textit{et al.} (2006), reproduced from Garman (2010).}
             \label{fig:Radiation damage metrics}
         \end{figure}
 
@@ -278,7 +278,7 @@
         \subsubsection{B damage}
         \label{subs:B damage}
             B damage, $B_{damage}$, is a metric that aims to deconvolute the dependence of the atomic B factor on its packing density.
-			It is defined as the ratio of an atom's B-factor and the average B-factor of atoms that have a similar packing density environment \cite{gerstel2015identifying}.
+			It is defined as the ratio of an atom's B-factor to the average B-factor of atoms that have a similar packing density environment \cite{gerstel2015identifying}.
 			This is a normalised metric, therefore atoms that show damage will have $B_{damage}$ values significantly greater than 1.
 
             Analysis of 2 PDB structures with $B_{damage}$ showed a positive correlation between radiation damage and solvent accessibility \cite{gerstel2015identifying}, in agreement with statements made in a previous study \cite{sygusch1988}.
@@ -306,7 +306,7 @@
 			At RT there is growing evidence that a higher dose rate increases crystal lifetimes. \cite{south2007,owen2012,owen2014}.
 			With the increasing popularity of \textit{in situ} data collection of crystals in their growth trays \cite{axford2015structure,axford2012situ}, particularly for protein crystals that are not amenable to cryo-cooling, high dose rate experiments are likely to become more routine.
 
-            Serial femtosecond crystallography (SFX) at XFELs use extremely fast X-ray pulses (as short as 5\,fs \cite{boutet2012high}) to probe protein crystals to obtain ``diffraction before destruction" \cite{chapman2014diffraction}.
+            Serial femtosecond crystallography (SFX) at XFELs use extremely fast X-ray pulses (as short as 5\,fs \cite{boutet2012high}) to probe protein crystals to obtain ``diffraction before destruction'' \cite{chapman2014diffraction}.
 			However, experimental data have now shown indications of radiation damage at XFELs if the pulse length is too long \cite{nass2015indications}.
 			SFX at XFELs is still in its infancy but progress, is continuously being made and it is a promising field for the development of structural biology \cite{garman2014,brooks2015nobel}.
 
@@ -378,7 +378,7 @@
         This is because these surface perturbations are caused before there are any significant changes in molecular conformation.
         The resulting sequential model is expressed as
         \begin{equation}
-            A_1 \xrightarrow{k_1} A'_1 \xrightarrow{k_1} A_2 \xrightarrow{k_2} A_3.
+            A_1 \xrightarrow{k_0} A'_1 \xrightarrow{k_1} A_2 \xrightarrow{k_2} A_3.
         \end{equation}
         This model was fitted with data collected on crystals of rabbit skeletal muscle aldolase. The authors show that the proposed model provides a very good fit for radiation induced intensity decay even at high doses.
 
@@ -409,7 +409,7 @@
             \label{eq:Gaussian Scale factor dependence}
 		\end{equation}
 		where $C$ and $\gamma$ are empirical constants to be determined.
-        The $D^2$ in equation \ref{eq:Gaussian Scale factor dependence} means that the model proposed by Leal \textit{et al.} exhibits essentially Gaussian decay behaviour.
+        The $D^2$ in equation \ref{eq:Gaussian Scale factor dependence} means that the model proposed by Leal \textit{et al.} exhibits Gaussian decay behaviour.
 		This model was shown to agree well with the overall diffraction intensity decay for data collected on 15 different crystals at RT to a relative intensity down to 60\% of the original value.
 
 		Despite the differences between these models, they each rely on an accurate calculation of the dose absorbed by a crystal.
@@ -427,7 +427,7 @@
 		The crystal rotation angle, $\varphi$, is used as a proxy for dose because the dose is not routinely calculated in MX experiments. It is noted by Evans and Murshudov that the B-factor correction in this model is largely an average correction.
 
 		Many studies, including the first by Blake and Phillips, found that the decay of individual reflection intensities is not necessarily monotonic \cite{blake1962,hendrickson1973,hendrickson1976}.
-		As well as diffraction being anisotropic \cite{abrahams1987anisotropy}, some reflection reflections also increase in intensity with increasing dose \cite{abrahams1973}.
+		As well as diffraction being anisotropic \cite{abrahams1987anisotropy}, some reflections also increase in intensity with increasing dose \cite{abrahams1973}.
 
 		Therefore the average radiation damage correction will not account for the specific changes that are known to occur.
 		Diederichs \textit{et al.} used a linear function to correct individual reflection intensities up to a dose of 10\,MGy and showed that this reflection specific correction could improve results in SAD phasing \cite{diederichs2003}.
@@ -437,4 +437,4 @@
 		The exponential model has the advantage that it only results in positive values but again it lacks a physical interpretation.
 
 		Despite some of the drawbacks, these specific correction models have shown some promise, but they are not yet standard.
-        This is because they are not necessarily straight forward to implement and they do not always improve the data quality (Phil Evans, personal communication).
+        This is because they are not necessarily straightforward to implement and they do not always improve the data quality (Phil Evans, personal communication).
