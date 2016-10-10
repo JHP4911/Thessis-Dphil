@@ -11,9 +11,9 @@
 % \includeonly{specialpages/titlepage, specialpages/dedication, specialpages/abstract, specialpages/acknowledgements, specialpages/abbreviations, specialpages/listsandcontents}
 %
 % % Include Introduction chapter only
-% \includeonly{chapters/Introduction/introduction, chapters/Introduction/macromolecular_crystallography,
-% chapters/Introduction/small_angle_xray_scattering, chapters/Introduction/limitations,
-% chapters/Introduction/raddam_mx, chapters/Introduction/raddam_saxs, chapters/Introduction/in_context}
+\includeonly{chapters/Introduction/introduction, chapters/Introduction/macromolecular_crystallography,
+chapters/Introduction/small_angle_xray_scattering, chapters/Introduction/limitations,
+chapters/Introduction/raddam_mx, chapters/Introduction/raddam_saxs, chapters/Introduction/in_context}
 %
 % % Include DWD chapter only
 % \includeonly{chapters/DWD/introduction, chapters/DWD/experimental_methods, chapters/DWD/ddm,
@@ -54,63 +54,62 @@
     %%                              CHAPTERS                                  %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %----------------- INTRODUCTION -----------------%
-    \input{chapters/Introduction/introduction}
-    \input{chapters/Introduction/macromolecular_crystallography}
-    \input{chapters/Introduction/small_angle_xray_scattering}
-    \input{chapters/Introduction/limitations}
-    \input{chapters/Introduction/raddam_mx}
-    \input{chapters/Introduction/raddam_saxs}
-    \input{chapters/Introduction/in_context}
+    \include{chapters/Introduction/introduction}
+    \include{chapters/Introduction/macromolecular_crystallography}
+    \include{chapters/Introduction/small_angle_xray_scattering}
+    \include{chapters/Introduction/limitations}
+    \include{chapters/Introduction/raddam_mx}
+    \include{chapters/Introduction/raddam_saxs}
+    \include{chapters/Introduction/in_context}
 
     %----------------- DWD -----------------%
-    \input{chapters/DWD/introduction}
-    \input{chapters/DWD/experimental_methods}
-    \input{chapters/DWD/ddm}
-    \input{chapters/DWD/ddm_rde_comparison}
-    \input{chapters/DWD/rde_considerations}
-    \input{chapters/DWD/dwd}
-    \input{chapters/DWD/discussion}
+    \include{chapters/DWD/introduction}
+    \include{chapters/DWD/experimental_methods}
+    \include{chapters/DWD/ddm}
+    \include{chapters/DWD/ddm_rde_comparison}
+    \include{chapters/DWD/rde_considerations}
+    \include{chapters/DWD/dwd}
+    \include{chapters/DWD/discussion}
 
     %----------------- ZDE -----------------%
-    \input{chapters/ZDE/introduction}
-    \input{chapters/ZDE/get_intensity_and_dose}
-    \input{chapters/ZDE/extrapolation}
-    \input{chapters/ZDE/results}
-    \input{chapters/ZDE/discussion}
+    \include{chapters/ZDE/introduction}
+    \include{chapters/ZDE/get_intensity_and_dose}
+    \include{chapters/ZDE/extrapolation}
+    \include{chapters/ZDE/results}
+    \include{chapters/ZDE/discussion}
 
     %----------------- Data Reduction -----------------%
-    \input{chapters/DataReduction/introduction}
-    \input{chapters/DataReduction/whyjulia}
-    \input{chapters/DataReduction/hmm}
-    \input{chapters/DataReduction/intensities}
-    \input{chapters/DataReduction/simulation}
-    \input{chapters/DataReduction/results}
-    \input{chapters/DataReduction/discussion}
+    \include{chapters/DataReduction/introduction}
+    \include{chapters/DataReduction/whyjulia}
+    \include{chapters/DataReduction/hmm}
+    \include{chapters/DataReduction/intensities}
+    \include{chapters/DataReduction/simulation}
+    \include{chapters/DataReduction/results}
+    \include{chapters/DataReduction/discussion}
 
     %----------------- Beam -----------------%
-    \input{chapters/Beam/introduction}
-    \input{chapters/Beam/aperture_meas}
-    \input{chapters/Beam/pgm}
-    \input{chapters/Beam/multiple_ap_scans}
-    \input{chapters/Beam/discussion}
+    \include{chapters/Beam/introduction}
+    \include{chapters/Beam/aperture_meas}
+    \include{chapters/Beam/pgm}
+    \include{chapters/Beam/multiple_ap_scans}
+    \include{chapters/Beam/discussion}
 
     %----------------- SAXS -----------------%
-    \input{chapters/SAXS/introduction}
-    \input{chapters/SAXS/raddose3d_4_saxs}
-    \input{chapters/SAXS/experimental_methods}
-    \input{chapters/SAXS/scatter_curve_analysis}
-    \input{chapters/SAXS/results}
-    \input{chapters/SAXS/discussion}
-    % \input{chapters/SAXS/summary}
+    \include{chapters/SAXS/introduction}
+    \include{chapters/SAXS/raddose3d_4_saxs}
+    \include{chapters/SAXS/experimental_methods}
+    \include{chapters/SAXS/scatter_curve_analysis}
+    \include{chapters/SAXS/results}
+    \include{chapters/SAXS/discussion}
 
     %----------------- Conclusion -----------------%
-    \input{chapters/Conclusion/conclusion}
+    \include{chapters/Conclusion/conclusion}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                             BIBLIOGRAPHY                               %%
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \bibliographystyle{mystyle}
-    \bibliography{bibliography/references}
+    % \bibliographystyle{mystyle}
+    % \bibliography{bibliography/references}
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %%                              APPENDICES                                %%
