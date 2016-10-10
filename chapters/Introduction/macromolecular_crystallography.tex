@@ -50,9 +50,7 @@
             (b) A single unit cell with axes $\bs{a}, \bs{b}$ and $\bs{c}$, with angles between them $\alpha, \beta$ and $\gamma$. \cite{drenth2012}}
     		\label{fig:Introduction-Unit Cells}
         \end{figure}
-        If $a, b, c$ are viewed as directional vectors (vectors will be generally represented by lowercase bold letters {$\bs{a}, \bs{b}, \bs{c}$}) instead of physical unit cell lengths, and only integer multiples of them are considered, then the resulting set of points is referred to as a (Bravais) lattice.
-        Visually the lattice is a set of points, which can be viewed as the points where the edges of the unit cells intersect each other in Figure~\ref{fig:Unit cells as building blocks}.
-        Mathematically this is equivalent to:
+        If $\bs{a}, \bs{b}, \bs{c}$ are viewed as directional vectors (vectors will be generally represented by lowercase bold letters {$\bs{a}, \bs{b}, \bs{c}$}) instead of physical unit cell lengths, and only integer multiples of them are considered, then the resulting set of points is referred to as a (Bravais) lattice. Mathematically this is equivalent to:
         \begin{equation}
             \{n_1 \bs{a} + n_2 \bs{b} + n_3 \bs{c}\ |\ n_1, n_2, n_3 \in \mathbb{N} \},
             \label{eq:Bravais Lattice}
@@ -63,7 +61,7 @@
         Despite this distinction, the properties of lattices are applicable to crystals.
 
         There are different types of lattices which are defined by their lattice (axial) system and their types (centerings) (examples given in Figure~\ref{fig:2D Bravais lattices}).
-        In three dimensions there are 7 lattice systems and 7 lattice types, and these combine to make the set of 14 Bravais Lattices.
+        In three dimensions there are 7 lattice systems (cubic, tetragonal, orthorhombic, monoclinic, triclinic, hexagonal rhombohedral), and 5 crystal centering types (primitive (P), base-centered (A, B, C), face-centered (F), Body-centered (I), Rhombohedrally-centered (R )), and these combine to make the set of 14 Bravais Lattices.
         (Note: a stricter way to define the 14 possible Bravais lattices is to realise that two lattices are equivalent if their symmetry groups are isomorphic.
         Bravais' original criterion only classifies 11 types of lattice \cite{pitteri1996definition}).
         \begin{figure}
@@ -102,10 +100,10 @@
         The final experimental stage of the structure solution pipeline is the data collection.
         Once a suitable crystal composed of the target protein has been grown, diffraction data are collected using a method that will also keep the crystal hydrated in the solution in which it was grown: the mother liquor.
         It is then mounted and irradiated with a beam of intense X-rays (energy usually between 6 and 18\,keV), typically whilst being rotated, although other collection protocols are becoming increasingly common (e.g. helical scans).
-        Over a small angular rotation range, the diffracted X-ray photons are collected on a position sensitive detector and produce a diffraction pattern (a diffraction image) that is unique to that protein (Figure~\ref{fig:Insulin diffraction image}).
+        Over a small angular rotation range, the diffracted X-ray photons are collected on a position sensitive detector and produce a diffraction pattern (a diffraction image) that is unique to that crystal (Figure~\ref{fig:Insulin diffraction image}).
         The spots that are observed on the images are known as reflections. These observations are in fact the intensities of the reflections.
         The goal of the data collection experiment is to accurately measure the intensities of as many reflections (unique and multiplicitous) as possible.
-        The space that contains these reflections is known as reciprocal space.
+        The space that allows indexing of these reflections is known as reciprocal space.
         Therefore to sample as much of reciprocal space as possible, multiple diffraction patterns are collected as the crystal rotates (often the number of images range in the hundreds).
         Understanding how the diffraction of the X-ray photons arise from their interaction with the atoms in the protein crystal allows crystallographers to interpret the pattern and solve the atomic structure of the protein.
         \begin{figure}
@@ -125,15 +123,15 @@
             The diffraction of the X-ray beam by the crystal results from the interaction of the electric component of the X-ray beam with the electrons in the crystal.
             When an X-ray hits an electron, the electron begins to oscillate.
             When the scattering is elastic (the desired scattering type for diffraction in MX), the original photon is absorbed by the electron which then emits an X-ray with the same wavelength as the incident X-ray photon, but with a phase shift of $180^{\circ}$.
-            The amplitude of the electric component, $E_{el}$ of the scattered X-ray photon at a distance $r$ from a free (unbound) electron is given by
+            The amplitude of the electric component, $E_{el}$, of the scattered X-ray photon at a distance $r$ from a free (unbound) electron is given by
             \begin{equation}
                 E_{el} = E_0 \f{1}{r}\f{e^2}{mc^2} \sin(\varphi),
             \end{equation}
-            where $E_0$ is the amplitude of the electric vector of the incident X-ray photon, $e$ is the electron charge, $m$ is the electron mass, $c$ is the speed of light and $\varphi$ is the component of $E_0$ perpendicular to the scattering electron \cite{drenth2012}.
+            where $E_0$ is the amplitude of the electric vector of the incident X-ray photon, $e$ is the electron charge, $m$ is the electron mass, $c$ is the speed of light and $\sin(\varphi)$ is the proportion of the component of $E_0$ perpendicular to the direction of the scattering electron \cite{drenth2012}.
 
         \subsubsection{Scattering from a two electron system}
         \label{subs:Scattering from two electron system}
-            Suppose a beam of X-rays is incident on a system of two electrons as depicted in Figure~\ref{fig:Two electron system}.
+            Suppose a beam of X-rays is incident on a system of two electrons where electron 1 is positioned at the origin and electron 2 is at position $\bs{r}$ relative to electron 1 as depicted in Figure~\ref{fig:Two electron system}.
             \begin{figure}
                 \centering
                 \begin{subfigure}[b]{0.45\textwidth}
@@ -158,10 +156,10 @@
                 This gives $|\bs{S}| = 2 \sin(\theta)/\lambda$ \cite{drenth1999}.}
         		\label{fig:Scattering from two electrons}
             \end{figure}
-            The direction of the incident X-ray beam, $\bs{s}_0$, is altered after the diffraction event, and the direction of the scattered beam is denoted $\bs{s}$.
+            The direction of the incident X-ray beam, $\bs{s}_0$, is altered after the scattering event, and the direction of the scattered beam is denoted $\bs{s}$.
             The lengths of these vectors can be arbitrarily chosen.
             The convenient choice is $|\bs{s}| = |\bs{s}_0| = 1/\lambda$ where $\lambda$ is the wavelength of the incident beam.
-            The path length difference of the beam scattered by electron 1 and electron 2 is $p + q = \lambda[\bs{r} \cdot (\bs{s}_0 - \bs{s})]$.
+            The path length difference of the beam scattered by electron 1 and electron 2 is $p + q = \lambda[\bs{r} \cdot (\bs{s}_0 - \bs{s})]$ (where $p$ and $q$ are defined as shown in Figure \ref{fig:Two electron system}).
             Thus the second beam lags behind the first, and the resulting phase difference is
             \begin{equation}
                 \f{-2 \pi}{\lambda} \times \lambda[\bs{r} \cdot (\bs{s}_0 - \bs{s})] = 2 \pi \bs{r} \cdot \bs{S},
@@ -176,7 +174,7 @@
             This demonstrates the importance of the phases for generating accurate structural information \cite{taylor2003phase, taylor2010}.
 
             The amplitudes of the scattered waves from both electrons in the system are the same, they only differ in phase.
-            If the amplitude of the scattered wave from an electron positioned at the origing (e.g. electron 1) is equal to 1, then the total scattered wave from the two-electron system shown in Figure~\ref{fig:Two electron system} is $1 + 1 \times \exp[2 \pi i \bs{r} \cdot \bs{S}]$ where $i$ is the imaginary number, $i = \sqrt{-1}$.
+            If the amplitude of the scattered wave from an electron positioned at the origin (e.g. electron 1) is equal to 1, then the total scattered wave from the two-electron system shown in Figure~\ref{fig:Two electron system} is $1 + 1 \times \exp[2 \pi i \bs{r} \cdot \bs{S}]$ where $i$ is the imaginary number, $i = \sqrt{-1}$.
 
         \subsubsection{Scattering from an atom}
         \label{subs:Scattering from an atom}
@@ -198,7 +196,7 @@
             The integral is only over half of the entire space and the quantity does not contain any imaginary terms, hence the atomic scattering factor is a real quantity.
 
             The atomic scattering factor of an atomic is only dependent on the length of the vector $\bs{S}$ (equation \ref{eq:length of vector S}).
-            The dependence of the atomic scattering factor, $f$, on $|\bs{S}|$ is shown for carbon in Figure~\ref{fig:carbon atomic scattering factor}.
+            The dependence of the atomic scattering factor, $f$, on $|\bs{S}| = 2\sin(\theta)/\lambda$ is shown for carbon in Figure~\ref{fig:carbon atomic scattering factor}.
 
             \begin{figure}
                 \centering
@@ -237,7 +235,7 @@
                 \label{eq:structure factor equation - summation}
             \end{equation}
             where $\bs{r}_j$ and $f_j$ are the position and atomic scattering factor of the $j$-th atom respectively.
-            $\bs{F}(\bs{S})$ is referred to as the structure factor because it depends on the structure of the atoms within the unit cell \cite{drenth2012}.
+            $\bs{F}(\bs{S})$ is referred to as the structure factor because it depends on the structure composed of the various atoms within the unit cell \cite{drenth2012}.
 
         \subsubsection{Scattering from a crystal}
         \label{subs:Scattering from a crystal}
@@ -250,19 +248,21 @@
             \end{equation}
             If this is extended to include all unit cells then the total wave scattered by the crystal is
             \begin{equation}
-                \bs{K}(\bs{S}) \times \sum_{t=0}^{n_1}\exp[2\pi i t\bs{a} \cdot \bs{S}] \times \sum_{u=0}^{n_2}\exp[2\pi i u\bs{b} \cdot \bs{S}] \times \sum_{v=0}^{n_3}\exp[2\pi i v\bs{c} \cdot \bs{S}],
+                \bs{K}(\bs{S}) = \bs{F}(\bs{S}) \times \sum_{t=0}^{n_1}\exp[2\pi i t\bs{a} \cdot \bs{S}] \times \sum_{u=0}^{n_2}\exp[2\pi i u\bs{b} \cdot \bs{S}] \times \sum_{v=0}^{n_3}\exp[2\pi i v\bs{c} \cdot \bs{S}],
             \end{equation}
             where $n_1, n_2, n_3$ are the number of unit cells along the direction of the basis vectors $\bs{a}, \bs{b}$ and $\bs{c}$ respectively.
             Since $n_1, n_2$ and $n_3$ are typically very large, the summations
             $\sum_{t=0}^{n_1}\exp[2\pi i t\bs{a} \cdot \bs{S}]$, $\sum_{u=0}^{n_2}\exp[2\pi i u\bs{b} \cdot \bs{S}]$ and $\sum_{v=0}^{n_3}\exp[2\pi i v\bs{c} \cdot \bs{S}]$
             are usually equal to zero unless $\bs{a} \cdot \bs{S} = h$, $\bs{b} \cdot \bs{S} = k$ and $\bs{c} \cdot \bs{S} = l$ where $h,k,l \in \mathbb{Z}$.
             Therefore a crystal scatters X-rays if
-            \begin{align}
-                \bs{a} \cdot \bs{S} &= h, \\
-                \bs{b} \cdot \bs{S} &= k, \\
-                \bs{c} \cdot \bs{S} &= l.
-                \label{eq:Laue conditions}
-            \end{align}
+            \begin{subequations}
+                \begin{align}
+                    \bs{a} \cdot \bs{S} &= h, \\
+                    \bs{b} \cdot \bs{S} &= k, \\
+                    \bs{c} \cdot \bs{S} &= l.
+                \end{align}
+            \label{eq:Laue conditions}
+            \end{subequations}
             These are known as the Laue conditions \cite{drenth1999}. The $h,k,l \in \mathbb{Z}$ are referred to as Miller indices and they define individual reflections (Figure~\ref{fig:Insulin diffraction image}). The result is that the amplitude of the total scattered wave from the crystal is proportional to the structure factor $\bs{F}(\bs{S})$ and the number of unit cells in the crystal \cite{drenth1999}.
 
     \subsection{From diffraction patterns to electron density - The theory}
@@ -282,15 +282,15 @@
         The position $\bs{r}$ can also be rewritten as $\bs{r} = \bs{a}x + \bs{b}y + \bs{c}z$, so this implies that
         \begin{align}
             \bs{r} \cdot \bs{S} &= \bs{a}\cdot\bs{S}\ x + \bs{b}\cdot\bs{S}\ y + \bs{c}\cdot\bs{S}\ z \\
-            &= hx + ky + lz.
+            &= hx + ky + lz,
         \end{align}
-        Thus $\bs{F}(\bs{S})$ can be written as a function of the Miller indices $\bs{F}(h,k,l)$ giving
+        using the Laue conditions (equation \ref{eq:Laue conditions}). Thus $\bs{F}(\bs{S})$ can be written as a function of the Miller indices $\bs{F}(h,k,l)$ giving
         \begin{equation}
             \bs{F}(h,k,l) = V \int_{x=0}^1 \int_{y=0}^1 \int_{z=0}^1 \rho(x,y,z) \exp[2\pi i (hx + ky + lz)]\ \mathrm{d}x\ \mathrm{d}y\ \mathrm{d}z.
             \label{eq:structure factor equation - fractional integral}
         \end{equation}
         Equation \ref{eq:structure factor equation - fractional integral} shows explicitly that the structure factor $\bs{F}(h,k,l)$ is the Fourier transform of the electron density $\rho(x,y,z)$.
-        Since the Fourier transform is the inverse of itself, it means that the electron density in the unit cell can be obtained by taking the Fourier transform of the structure factor
+        The electron density in the unit cell can be obtained by taking the inverse Fourier transform of the structure factor
         \begin{equation}
             \rho(x,y,z) = \f{1}{V} \sum_h \sum_k \sum_l |\bs{F}(h,k,l)| \exp{-2\pi i (hx + ky + lz) + i \alpha(h,k,l)},
             \label{eq:electron density equation}
@@ -306,9 +306,10 @@
     \label{sub:From diffraction patterns to electron density - In practice}
         In practice, much of the theory is abstracted from the crystallographer and many software programs perform the necessary calculations `behind the scenes'.
 
-        A set of diffraction images from a data collection experiment is known as a dataset. Extracting the amplitudes from the dataset is the ultimate aim of the first series of programs.
-        The first step is to calculate the intensities of the observations from the images programs.
-        Programs such as MOSFLM \cite{leslie2007}, XDS \cite{kabsch2010} and more recently DIALS \cite{waterman2013dials,waterman2016diffraction}, are used to find the spots on the images, determine the unit cell dimensions and its orientation with respect to the beam, assign Miller indices to each reflection (indexing) and finally integrate the intensity of the observations on the images.
+        A set of diffraction images from a data collection experiment is known as a dataset.
+        Extracting the amplitudes of each reflection in the dataset is the ultimate aim of the first series of programs.
+        The first step is to calculate the intensities of the observations from the images.
+        Programs such as MOSFLM \cite{leslie2007}, XDS \cite{kabsch2010} and more recently DIALS \cite{waterman2013dials,waterman2016diffraction}, are used to find the spots, index (which includes determining the unit cell dimensions and its orientation with respect to the beam and assigning Miller indices to each reflection) and finally integrate the intensity of the observations on the images.
         Commonly it is the case that a single observation is observed on multiple images because the rotation range of the crystal that results in a diffraction image (the oscillation angle) does not sample the entirety of a reflection.
         The fraction of the reflection that is recorded on a given image, the partiality of a reflection, has to be calculated and the experimental parameters refined in a process called post-refinement \cite{rossmann1979processing, rossmann1979oscillation}.
 
@@ -322,7 +323,7 @@
 
         Once the intensity estimates have been put on an internally consistent scale, it is possible to derive the amplitudes.
         In theory the amplitudes are equal to the square root of the intensities.
-        However the conversion is not as straight forward as this, because subtraction of background noise in the diffraction images during the integration step leads to weakly measured intensity observations having negative values.
+        However the conversion is not as straightforward as this, because subtraction of background noise in the diffraction images during the integration step leads to weakly measured intensity observations having negative values.
         This is a problem because it has been established that the amplitude should be a real quantity.
         One way to deal with negative intensity reflections is to set the intensity values to zero.
         However French and Wilson developed a treatment that uses Bayesian analysis \cite{french1978treatment} and Wilson statistics \cite{wilson1949probability} to calculate a better estimate of the amplitude given that a negative intensity has been observed.
@@ -330,7 +331,7 @@
 
         Although phases are not observed directly in the diffraction experiment, they can be derived in multiple ways.
         If the sequence of the target protein is similar to another structure that has already been solved ($\approx$ 25-35\% \cite{taylor2010,abergel2013molecular}) or the structure is thought to be similar to another structure, then initial phases can be taken from the homologous structure.
-        First, the homologue structure is transformed via a series of rotations and translations within the asymmetric unit of the target crystal so that the calculated amplitudes best match the ones that have been obtained experimentally \cite{mccoy2007solving}.
+        First, the homologue structure is transformed via a series of rotations and translations within the asymmetric unit of the target crystal so that the calculated Patterson map best matches the one that has been obtained experimentally \cite{mccoy2007solving}.
         Programs such as PHASER perform these operations \cite{mccoy2007phaser}.
         \newline
         If no structural homologue exists, then the phases must be derived experimentally.
@@ -338,7 +339,7 @@
         The phases can then be derived by analysing the difference in the intensity observations \cite{taylor2010}.
         \newline
         Another method known as anomalous dispersion can also be used, in which a heavy element is incorporated into the structure (sometimes this is not necessary if the structure already contains enough elements such as sulphur or heavier) and multiple datasets are collected at different X-ray photon energies.
-        If possible, some of the datasets are collected at close to the absorption edge of the heavy element so appreciable differences between the native dataset and the new dataset can be measured \cite{bijvoet1954structure}.
+        If possible, some of the datasets are collected at close to the absorption edge of the heavy element so appreciable differences between the Bijvoet pair can be measured \cite{bijvoet1954structure}.
         If only 1 dataset is collected, this is known as single wavelength anomalous dispersion (SAD) and differences in intensities are analysed between Friedel pairs ([h, k, l] and [-h, -k. -l]) of reflections.
         If datasets are collected at different incident X-ray energies, the method is known as multiple wavelength anomalous diffraction/dispersion (MAD) \cite{hendrickson1991determination,taylor2010}.
         \newline
