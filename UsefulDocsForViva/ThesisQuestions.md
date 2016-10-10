@@ -65,6 +65,8 @@ A particle that is bound — confined spatially — can only take on certain dis
 
 ### DWD Chapter
 
+> Can you explain/prove that using the summed intensity method for calculating the overall intensity will result in the same relative intensity values when using the mean method?
+
 > Why would you use linear fitting procedures over non-linear ones and what's the difference?
 
 ### Data Reduction Chapter
