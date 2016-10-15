@@ -6,7 +6,7 @@
 \label{sub:Uniform irradiation}
 
 To validate the subsequent analysis performed to find a suitable DDM, it was essential that the crystals were uniformly irradiated.
-A homogeneous dose distribution resulting from uniform irradiation would mean that the various dose metrics; average dose, maximum dose and DWD, should all give the same value.
+A homogeneous dose distribution resulting from uniform irradiation would mean that the various dose metrics: average dose, maximum dose and DWD, should all give the same value.
 Simulations performed in RADDOSE-3D show that all crystals were completely immersed in the X-ray beam and the predictions displayed showed a very homogeneous dose distribution (Figure \ref{fig:Uniform}).
 \begin{figure}
         \centering
@@ -46,6 +46,9 @@ For the other two crystals (crystal IDs: 180 and 172), the RDE Sygusch model giv
 An important feature of the RDE Sygusch model is that it displays at least two phases during the relative intensity decay.
 Both phases appear to decay linearly, with the first linear phase decaying faster than the second phase.
 The RDE Holton model consistently gives the highest RMSD value for all five crystals and the decay curve does not correlate well visually with the decay shown in the data.
+It should be noted that the RMSD does not account for the different degrees of freedom of the models.
+The Holton model has fewer degrees of freedom than the other two models and so it would be expected to perform worse.
+A more representative metric to assess the quality of the fit would be something like the Pearson's chi-squared test, however this has not been performed in this analysis.
 
 The RDE Leal model was chosen as the one to investigate with the DWD due to its simplicity and superior predictive ability.
 Figure~\ref{fig:Relative Intensity - All crystals 1.4 Angstroms} shows the relative intensity values predicted by the RDE Leal model with parameters obtained as described in section \ref{sub:Obtaining Model Parameter Values} and averaged for each of the 5 insulin crystals processed.

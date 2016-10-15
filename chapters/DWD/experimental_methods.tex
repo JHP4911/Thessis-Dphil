@@ -135,13 +135,13 @@ It is important to note however that these datasets will have sampled different 
 14400 images were collected from each insulin crystal, so processing the data in this way produced 271 datasets per crystal.
 Despite the fact that the insulin crystals diffracted to 1.38$\,$\AA, the data were scaled to a resolution limit of 1.8$\,$\AA.
 This was to ensure that the processing for the highly damaged datasets were less likely to fail and to allow more direct comparison of the intensity values between datasets.
-Only five of the 8 insulin datasets produced data that were processed straightforwardly in MOSFLM.
+Only five of the eight insulin datasets produced data that were processed straightforwardly in MOSFLM.
 Data processing statistics for those five insulin crystals are shown in Table~\ref{tab: Hamburg data processing}.
 
 \begin{table}[ht!]
 \centering
 \captionsetup{justification=centering}
-	\caption[Data processing statistics for the first data set collected from each of the processed insulin crystals.]{Overall data processing statistics for the first data set collected from each of the processed insulin crystals.
+	\caption[Data processing statistics for the first data set collected from each of the processed insulin crystals.]{Overall data processing statistics for the first data set collected from each of the processed insulin crystals (the completeness and multiplicity values are similar for the other datasets because the angular range is the same and the highest observable resolution data, out to 1.4\,\AA, has been discarded for this part of the analysis).
 	\\[1pt]
 	Values in parentheses are for the outer shell (1.83-1.79\AA). Unit cell and mosaicity are average values for all 14400 images}
 	\centering
@@ -151,7 +151,7 @@ Data processing statistics for those five insulin crystals are shown in Table~\r
 		\hline
 		Space group   														&$I$2$_{\text{1}}$3	 &$I$2$_{\text{1}}$3		&$I$2$_{\text{1}}$3	   &$I$2$_{\text{1}}$3			&$I$2$_{\text{1}}$3 		\\
 		Unit-cell parameters  										& 						 &    					&   					 &   						&  						 	\\
-		$a = b = c$(\AA)  																&78.28				 &78.28					&78.35				 &78.36 				&78.40					\\
+		$a = b = c$ (\AA)  																&78.28				 &78.28					&78.35				 &78.36 				&78.40					\\
 		$\alpha = \beta = \gamma$ ($^{\circ}$) 		&90					   &90 						&90						 &90					 	&90							\\
 		Total No. of reflections									&71955 (4528)  &70860 (4208)	&70757 (4423)	 &71968 (4554)	&71580 (4463)		\\
 		No. of unique reflections									&7446 (474)	   &7436 (445)		&7478 (471)		 &7478 (473)		&7468 (471)			\\
@@ -170,17 +170,26 @@ Data processing statistics for those five insulin crystals are shown in Table~\r
 \label{sub:Calculating the relative intensity}
 The relative intensity of a uniformly irradiated crystal is effectively the same as the RDE.
 Recall that the relative intensity is defined as $I_n/I_1$, where $I_n$ is the summed mean intensity of a complete data set $n$ (or equivalent sections of data) after a dose $D$, and $I_1$ is the mean intensity of the first data set.
-Implicit in this definition is that the total intensity is integrated for the same reflections for each dataset.
+Implicit in this definition is that the total intensity is integrated for the same reflections for each dataset. Note: the relative intensity in this thesis has been calculated incorrectly and is described below.
 
 Figure \ref{fig: AIMLESS log file} shows a table from the log file of an AIMLESS job.
-The overall mean intensity given in the table (highlighted red in Figure \ref{fig: AIMLESS log file}) is calculated from measurable reflections within that particular dataset.
-If this value is divided by the overall mean intensity of the first dataset, then the resulting relative intensity value is generally an overestimate of the true value.
-This is because it will not account for reflections that may have been present in the first dataset that are no longer detectable for the current dataset due to the overall intensity loss.
+The overall mean intensity given in the table (highlighted red in Figure \ref{fig: AIMLESS log file}) is calculated from intensities of the reflections within that particular dataset.
+The relative intensity can be calculated by dividing this value by the corresponding overall mean intensity from the first dataset, referred to in Figure \ref{figrelint} as \textit{Aimless average intensity}.
 
-Another way to calculate the relative intensity is to calculate the total summed intensity of a dataset, then divide that by the total summed intensity of the first dataset.
+Another way to calculate the relative intensity is to calculate the total summed intensity of a dataset, then divide that by the total summed intensity of the first dataset, referred to in Figure \ref{figrelint} as \textit{total intensity}.
 This was achieved by multiplying the number of measured reflections in each resolution bin (\textit{Nmeas} - highlighted orange in Figure \ref{fig: AIMLESS log file}) by the average intensity in that resolution bin (\textit{AvI} - highlighted blue in Figure \ref{fig: AIMLESS log file}), then summing them.
-Calculating the relative intensity in this way agrees with the values given when calculating the ratio of the overall mean intensities with non-detectable reflections included in the calculation, i.e. taking the \textit{Nmeas} values from the first dataset (Figure \ref{figrelint}).
-Therefore, the method chosen to calculate the relative intensities was to take the ratios of the total summed intensity of a data set with that of the first data set.
+The latter method of calculating the relative intensity is was preferred over the previous method because it is more representative of the overall intensity loss, as opposed to the mean intensity loss.
+Therefore the relative intensity was always calculated using the total intensity method.
+Figure \ref{figrelint} shows the results of calculating the relative intensity using both methods and shows that the Aimless average intensity method decays more slowly than the total intensity method as the relative intensity drops below 0.6.
+
+It is important to note that both of the methods described above for calculating the relative intensity are incorrect for two main reasons:
+\begin{enumerate}
+    \item each dataset was scaled separately in Aimless. However Aimless assigns a different scale factor for each run and therefore the scaled values are not necessarily comparable between datasets.
+    \item the summed intensity values are derived from all reflections observed in a particular dataset. However these datasets sample different sections of reciprocal space and hence the same reflections are not necessarily observed in all datasets.
+\end{enumerate}
+To calculate the relative intensity correctly, all datasets should be scaled together and only the reflections that are observed in all datasets should be used for the total summed intensity calculation.
+This method of calculating the relative intensity has not been used for the data in this thesis because this was discovered during the viva and it was determined that it is likely that the conclusions of the work will not change using the new method.
+
 \begin{figure}
   \centering
     \includegraphics[width=1\textwidth]{figures/dwd/aimlesslog.png}
@@ -193,6 +202,6 @@ Therefore, the method chosen to calculate the relative intensities was to take t
 \begin{figure}
   \centering
     \includegraphics[width=1.0\textwidth]{figures/dwd/calcrelint.pdf}
-    \caption[Relative intensity plotted against the average absorbed dose for one insulin crystal.]{Relative intensity plotted against the average absorbed dose for one insulin crystal. The data show that using the overall mean intensity given in the AIMLESS log file increases the relative intensity values because it excludes reflections that cannot be measured. On the other hand, calculating the overall mean intensity using all of the measured reflections from the first data set, agrees with the relative intensity calculated by taking the ratio of the total summed intensity of the current data set divided by that of the first data set.}
+    \caption[Relative intensity plotted against the average absorbed dose for one insulin crystal.]{Relative intensity plotted against the average absorbed dose for one insulin crystal using the two methods described in section \ref{sub:Calculating the relative intensity}.}
     \label{figrelint}
 \end{figure}

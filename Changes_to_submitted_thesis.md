@@ -212,21 +212,21 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 **to**
 > data were scaled to a resolution limit of 1.8Å
 
-5. **Page 75, end of Last paragraph** - Change inconsistent number notation. I.e. change from:
+5. ~~**Page 75, end of Last paragraph** - Change inconsistent number notation. I.e. change from:~~
 
 > Only five of the 8 insulin datasets
 
 **to**
 > Only five of the eight insulin datasets
 
-6. **Page 76, Table 2.2, row 3** - Add space between row name and units. I.e. change from:
+6. ~~**Page 76, Table 2.2, row 3** - Add space between row name and units. I.e. change from:~~
 
 > a = b = c(Å)
 
 **to**
 > a = b = c (Å)
 
-7. **Page 80, last paragraph** - Add missing word. I.e. change from:
+7. ~~**Page 80, last paragraph** - Add missing word. I.e. change from:~~
 
 > proportions of damaged states of the crystal as a function the absorbed dose
 
@@ -235,47 +235,47 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 
 8. **Page 82, 2nd footnote** - Move footnote onto the same page as the table which it is referenced.
 
-9. **Page 95, Figure 2.13** - change incorrect x-axis label. I.e. change from:
+~~9. **Page 95, Figure 2.13** - change incorrect x-axis label. I.e. change from:~~
 > Average Intensity (MGy)
 
 **to**
 > Average Dose Whole Crystal (MGy)
 
-10. **Page 96, First paragraph, 2nd sentence** - Change wording of sentence label. I.e. change from:
+10. ~~**Page 96, First paragraph, 2nd sentence** - Change wording of sentence label. I.e. change from:~~
 > To find out the effect
 
 **to**
 > To determine the effect
 
-11. **Page 99, End of paragraph** - Change incorrect result references. I.e. change from:
+11. ~~**Page 99, End of paragraph** - Change incorrect result references. I.e. change from:~~
 > The increasing $\eta$ function shifts the big beam data towards higher dose values relative to the small beam data, whereas the decreasing function shifts the big beam data towards lower dose values.
 
 **to**
 > The decreasing $\eta$ function shifts the big beam data towards higher dose values relative to the small beam data, whereas the increasing function shifts the big beam data towards lower dose values.
 
-12. **Page 103, Last paragraph, penultimate line** - Change incorrect offset value. I.e. change from:
+12. ~~**Page 103, Last paragraph, penultimate line** - Change incorrect offset value. I.e. change from:~~
 > either 5 $\mu m$ or 255 $\mu m$ with a rotation range
 
 **to**
 > either 5 $\mu m$ or 25 $\mu m$ with a rotation range
 
-13. **Page 104, Offset experiment section** - Change wording of sentence. Change from:
+13. ~~**Page 104, Offset experiment section** - Change wording of sentence. Change from:~~
 > after it had been subjected to the high dose datasets.
 
 **to**
 > after it had been subjected to a high dose X-ray exposure.
 
-14. **Page 104, Penultimate line** - Change wording of sentence from:
+14. ~~**Page 104, Penultimate line** - Change wording of sentence from:~~
 > For the first probe datasets (P1-S and P1-O), the DWD using the decreasing $\eta$ agrees perfectly with those from of the DWD using the simple $\eta$ form.
 
 **to**
 > For the first probe datasets (P1-S and P1-O), the DWD values obtained using the decreasing $\eta$ form agrees perfectly (to 2 d.p.) with the resulting DWD values using the simple $\eta$ form.
 
-15. **Page 110, 1st paragraph** - Remove unnecessary words. Change from:
+15. ~~**Page 110, 1st paragraph** - Remove unnecessary words. Change from:~~
 > around the line of best fit in Figure 2.21 ( C) i.e. $I_n/I_1$ against DWD.
 
 **to**
-> around the line of best fit in Figure 2.21 ( 1C).
+> around the line of best fit in Figure 2.21 ( C).
 
 ### Chapter 3 - Zero-dose extrapolation
 1. **Page 116, Last line** - Make explicit reference to insulin crystal. Change from:

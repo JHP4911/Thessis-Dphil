@@ -68,7 +68,7 @@ A_3  &= A_{30} + \left(A_{20} - \f{k_1 A'_{10}}{k_2 - k_1}\right) \left(1 - e^{-
 \end{subequations}
 where $A'_{10}, A_{20}$ and $A_{30}$ are the values of the crystal fractions $A'_{1}, A_{2}$ and $A_{3}$ at dose $D = D_L$ respectively.
 Although a solution for the model is undefined for $k_1 = k_2$, Table \ref{tab:RDE params1} shows that the best fit values for the two parameters are different enough to neglect this case. \newline
-The strength of this model lies in the fact it explicitly predicts the proportions of damaged states of the crystal as a function the absorbed dose via the system of ODEs, and uses that solution to determine the intensity of a reflection.
+The strength of this model lies in the fact it explicitly predicts the proportions of damaged states of the crystal as a function of the absorbed dose via the system of ODEs, and uses that solution to determine the intensity of a reflection.
 The drawbacks of this model are that it requires 3 parameters to be determined and also that its analytical form is not easy to intuitively interpret.
 
 The second model was proposed by Dr. James Holton and assumes that the average intensity of a reflection $I(D)$ decays exponentially \cite{holton2010}. Mathematically this is expressed as:
@@ -76,14 +76,12 @@ The second model was proposed by Dr. James Holton and assumes that the average i
 I(D) = I_{ND} \exp \left[ -\ln(2) \f{Dh}{H} \right],
 \label{eq:Holton DDM}
 \end{equation}
-where $I_{ND}$ is the average reflection intensity expected in the absence of radiation damage, $\ln(\text{2})$ is the natural logarithm of 2 ($\approx$ 0.693) and $H$ is Howell's criterion (10$\, $MGy$\,$\AA$^{-1}$).
+where $I_{ND}$ is the average reflection intensity expected in the absence of radiation damage, $\ln(\text{2})$ is the natural logarithm of 2 ($\approx$ 0.693), $D$ is the dose, $h = 1/d$, where $d$ is the distance between successive Bragg planes and $H$ is Howell's criterion (10$\, $MGy$\,$\AA$^{-1}$).
 The advantages of this model are that it is very simple and only has a maximum of two parameters to be determined, $I_{ND}$ and $H$.
 To simplify the parameter value extraction, the value of $H$ can be assumed to be 10$\,$MGy$\,$\AA$^{-\text{1}}$ and $I_{ND}$ can be approximated to the intensity values from the first data set.
 Therefore this model is relatively easy to apply and does not require any further simplifying assumptions.
 
-However the simplicity of this model is also the cause of its main disadvantages.
-The model makes no reference to the crystal composition, and so two crystals with entirely different compositions will lose diffracting power identically if their $I_{ND}$ values are the same.
-The other drawback is that it does not predict a lag phase for intensity decay.
+However the simplicity of this model is also the cause of its main disadvantage: it does not predict a lag phase for intensity decay.
 At cryotemperatures this prediction may be correct but recent results suggest otherwise for room temperature MX \cite{owen2014}.
 Therefore this model already has apparent limitations in the applicability of its predictive power.
 
@@ -159,14 +157,14 @@ The values of $B_0$, $\beta$, $K$ and $\gamma$ are found by fitting the function
 The Cauchy M-estimator\footnote{M-estimation is a fitting technique designed to be insensitive to outliers. The idea is to try to minimise a function of the residual values that increases less than the square, because the square of the residual of an outlier is large. Thus using a function that increases less than the square decreases the influence of outliers in the fitting.} was used instead of the commonly used least-squares fitting procedure to reduce the influence of errors on the fit.
 \begin{figure}
         \centering
-        \begin{subfigure}[b]{0.825\textwidth}
+        \begin{subfigure}[b]{0.8\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{figures/dwd/bplot.pdf}
                 \caption{}
                 \label{figbvalues}
         \end{subfigure}
 				\\
-        \begin{subfigure}[b]{0.825\textwidth}
+        \begin{subfigure}[b]{0.8\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{figures/dwd/scaleplot.pdf}
                 \caption{}
@@ -175,6 +173,7 @@ The Cauchy M-estimator\footnote{M-estimation is a fitting technique designed to 
         \caption[Scale and B factor values plotted against the average dose over the whole crystal.]{(a) $B$ values plotted against average dose (whole crystal).
 		Initially the B values increase linearly as reported in the literature \cite{kmetko2006, warkentin2010, leal2012}.
 		However the linearity begins to break down as radiation damage progresses.
+		The group of data points in the top right are possibly an artefact of unstable data processing for highly damaged datasets.
 		This was a major factor in the decision to fit the parameters in Tables \ref{tab:RDE params1} and \ref{tab:RDE params2} using only data where the relative intensity was above a given threshold value.
 		The threshold relative intensity value of 0.7 was chosen since other data quality indicators suggest that data beyond this point become significantly biologically compromised \cite{owen2006}.
 		(b) Scale values plotted against the average dose (whole crystal).
@@ -199,14 +198,14 @@ A full parameter analysis has not been performed and therefore the values for $k
 Thus more analysis is required before the model can be fully evaluated, but these results show the model to be very promising.
 \begin{figure}
         \centering
-        \begin{subfigure}[b]{0.825\textwidth}
+        \begin{subfigure}[b]{0.8\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{figures/dwd/syguschfit.pdf}
                 \caption{}
                 \label{figfitfial}
         \end{subfigure}
 				\qquad
-        \begin{subfigure}[b]{0.825\textwidth}
+        \begin{subfigure}[b]{0.8\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{figures/dwd/crystalstates.pdf}
                 \caption{}

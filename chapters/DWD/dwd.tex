@@ -8,7 +8,7 @@ However if the DWD is used to characterise the damage in a crystal, then it woul
 For this reason two forms of $\eta$ were investigated along with the simple DWD where $\eta$ had no dose dependence:
 \begin{align}
     \eta &= 1 \qquad \text{simple $\eta$ form}, \label{eq:Simple eta form} \\
-    \eta &= \text{RDE} \qquad \text{deacreasing $\eta$ form}, \label{eq:Decreasing eta form} \\
+    \eta &= \text{RDE} \qquad \text{decreasing $\eta$ form}, \label{eq:Decreasing eta form} \\
     \eta &= 1 - \text{RDE} \qquad \text{increasing $\eta$ form} \label{eq:Increasing eta form}
 \end{align}
 Both dose dependent forms are bounded between 0 and 1.
@@ -53,7 +53,7 @@ The main difference that can be seen in the plots is the DWD range.
 The increasing $\eta$ function results in the largest range of DWD values.
 Conversely, the decreasing $\eta$ function reduces the range of DWD values when compared to the simple DWD.
 Another difference is that introducing a dose dependent $\eta$ function shifts the big beam data relative to the small beam data.
-The increasing $\eta$ function shifts the big beam data towards higher dose values relative to the small beam data, whereas the decreasing $\eta$ function shifts the big beam data towards lower dose values.
+The decreasing $\eta$ function shifts the big beam data towards higher dose values relative to the small beam data, whereas the increasing function shifts the big beam data towards lower dose values.
 This suggests that there is a signature from the different beams.
 However this is an undesirable feature because DWD should already account for the different beam conditions via the flux weighting.
 \begin{figure}
@@ -139,7 +139,7 @@ To quantify the efficiency of a given data collection strategy, Zeldin \textit{e
 The DDE states the number of elastically scattered photons that are diffracted per unit dose and it is this quantity that should be maximised for a given experiment.
 To explore this metric, the authors simulated experiments where the rotation axis was offset from the beam axis by various distances to determine how spreading the dose affected the DDE.
 These simulations were repeated for this work with each $\eta$ form incorporated into the DWD.
-In all simulations a cuboid crystal of various sizes and ``average" crystal absorption (absorption coefficient = 0.237$\,$mm$^{\text{-1}}$ \cite{zeldin2013}) was exposed to a Gaussian profile beam with a 20 $\times$ 20$\,\mu m^{\text{2}}$ FWHM, a flux of 5 $\times$ 10$^{\text{11}}$ ph/s and incoming photon energy of 12.4$\,$keV (1$\,$\AA).
+In all simulations a cuboid crystal of various sizes and ``average'' crystal absorption (absorption coefficient = 0.237$\,$mm$^{\text{-1}}$ \cite{zeldin2013}) was exposed to a Gaussian profile beam with a 20 $\times$ 20$\,\mu m^{\text{2}}$ FWHM, a flux of 5 $\times$ 10$^{\text{11}}$ ph/s and incoming photon energy of 12.4$\,$keV (1$\,$\AA).
 The collimation was rectangular and set to 40$\,\mu m \times$ 40$\,\mu m$ and the total exposure time was 60 seconds.
 The results of these simulations with each of the forms of DWD are presented in Figure~\ref{fig:Offset simulations} for two cubic crystals with edge lengths of 400$\,\mu m$ and 60$\,\mu m$.
 
@@ -154,7 +154,7 @@ The situation is very different for the increasing $\eta$ form which suggests th
 For the 60$\,\mu m$ crystal (Figures~\ref{fig:Offset simulations 60 - Simple Eta}, \ref{fig:Offset simulations 60 - Decreasing Eta} and \ref{fig:Offset simulations 60 - Increasing Eta}) the differences are less pronounced.
 Of course the DDE values differ, again the decreasing $\eta$ form suggests an increase in DDE values whereas a decrease in DDE is predicted with the increasing $\eta$ form.
 All $\eta$ forms suggest that no improvement in DDE is gained by offsetting with rotation angles up to 180$^{\circ}$, but from 270$^{\circ}$ upwards it is best to offset the rotation axis by 15$\,\mu m$ from the beam axis.
-The main differences result from offsetting the crystal by either 5$\,\mu m$ or 255$\,\mu m$ with a rotation range larger than 270$^{\circ}$.
+The main differences result from offsetting the crystal by either 5$\,\mu m$ or 25$\,\mu m$ with a rotation range larger than 270$^{\circ}$.
 The simple $\eta$ form suggests that offsetting by either distance gives similar DDE values but the better distance to offset fluctuates with the overall rotation angle.
 In contrast, the decreasing $\eta$ form suggests that offsetting by 5$\,\mu m$ produces superior DDE values than offsetting by 25$\,\mu m$.
 However the increasing $\eta$ form suggests the opposite i.e. for a rotation range larger than 360$^{\circ}$ it is always better to offset by 25$\,\mu m$.
@@ -222,7 +222,7 @@ In the experiment, a cuboid crystal of bovine pancreatic insulin (460 $\times$ 5
 \end{figure}
 The first position corresponded to the rotation axis aligned with the beam axis (standard strategy).
 The second position corresponded to the rotation axis offset from the beam axis by 1.25 times the beam FWHM (50$\,\mu m$ - offset strategy).
-At each of the two positions three datasets were collected: first a 180$^{\circ}$ low dose \textit{probe} dataset, then a high-dose burn dataset, and then finally another low dose \textit{probe} dataset to evaluate the damage state of the crystal after it had been subjected to the high dose datasets.
+At each of the two positions three datasets were collected: first a 180$^{\circ}$ low dose \textit{probe} dataset, then a high-dose burn dataset, and then finally another low dose \textit{probe} dataset to evaluate the damage state of the crystal after it had been subjected to a high dose X-ray exposure.
 To achieve the same DWD value (for the simple $\eta$ = 1 form) for each of the high dose datasets, the standard strategy exposed the crystal for 126 seconds whereas for the offset strategy the exposure was 162 seconds.
 The final dose state of the crystal as calculated in RADDOSE-3D is shown in Figure~\ref{fig:Offset experiment - Dose state}.
 \begin{figure}
@@ -252,7 +252,7 @@ The results from the data processing of this experiment with the different forms
 \end{table}
 \footnotetext{Equivalent at 100\% transmission (1.4 $\times$ 10$^{\text{12}}$ ph/s)}
 The resulting DWD values for this experiment tell very different stories about the states of the crystal.
-For the first probe datasets (P1-S and P1-O), the DWD using the decreasing $\eta$ agrees perfectly with those from of the DWD using the simple $\eta$ form.
+For the first probe datasets (P1-S and P1-O), the DWD values obtained using the decreasing $\eta$ form agrees perfectly (to 2 d.p.) with the resulting DWD values using the simple $\eta$ form.
 The DWD values for the increasing $\eta$ form are practically double that value.
 For the high dose datasets (HD-S and HD-O) that were designed so that the simple $\eta$ form DWD was similar for both strategies, the decreasing $\eta$ form DWD values for the two experiments are the most similar.
 On the other hand, the increasing form $\eta$ DWD values differ by almost 1 MGy.

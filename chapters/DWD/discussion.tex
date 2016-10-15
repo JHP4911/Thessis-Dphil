@@ -1,7 +1,7 @@
 %!TEX root = ../../main.tex
 \section{Discussion}
 \label{sec:Discussion - Dose Decay Modelling}
-The DWD is a dose metric that was introduced by Zeldin \textit{et al.} which represents ``the average dose in the diffracting crystal volume from which the photons making up a given image have scattered" \cite{zeldin2013dwd}.
+The DWD is a dose metric that was introduced by Zeldin \textit{et al.} which represents ``the average dose in the diffracting crystal volume from which the photons making up a given image have scattered'' \cite{zeldin2013dwd}.
 In essence, the DWD is a weighted average of the dose where the weights are given by the fluence at each point in the crystal (equation \ref{eq:DWD equation - no RDE}).
 Zeldin \textit{et al.} demonstrated that DWD was superior to other metrics (average dose - whole crystal and the maximum dose) in predicting the relative intensity loss of protein crystals whilst accounting for different beam profiles.
 \begin{figure}
@@ -17,7 +17,7 @@ Zeldin \textit{et al.} demonstrated that DWD was superior to other metrics (aver
     \label{fig:Dose metric comparisons - zeldin et al}
 \end{figure}
 The improvement in relative intensity decay prediction makes DWD a promising metric for comparing radiation damage studies and also for zero dose extrapolation.
-However, data points are still scattered around the line of best fit in Figure~\ref{fig:Dose metric comparisons - zeldin et al} (C) i.e. $I_n/I_1$ against DWD.
+However, data points are still scattered around the line of best fit in Figure~\ref{fig:Dose metric comparisons - zeldin et al} (C).
 The scatter is thought to be caused by two factors:
 the first is the intrinsic variation in crystal quality, and the second is the fact that the DWD does not account for the effects of inhomogeneous dose distribution, such as an uneven loss of diffraction efficiency throughout the crystal \cite{zeldin2013dwd}.
 
@@ -76,7 +76,7 @@ Hence an experiment, such as the offsetting one described above, would need to b
 
 When framing the DWD as a metric to describe the quality of diffraction, it helps to think about an experiment where a crystal is irradiated by a Gaussian beam.
 In this case, the Gaussian beam has tails that are being diffracted from relatively undamaged regions of the crystal, even at late stages of the experiment.
-So when ``highly damaged" data are processed, the structure factors that are obtained are more similar to the zero-dose case than they were in the middle of the dataset when the crystal in the bright part of the beam was contributing significantly (James Holton, personal communication).
+So when ``highly damaged'' data are processed, the structure factors that are obtained are more similar to the zero-dose case than they were in the middle of the dataset when the crystal in the bright part of the beam was contributing significantly (James Holton, personal communication).
 In this case it makes sense for the DWD to decrease because it tells us that the quality of the diffraction has improved, despite the overall damage state of the crystal being worse.
 
 This presents a case for using two metrics concerned with different aspects of radiation damage.
