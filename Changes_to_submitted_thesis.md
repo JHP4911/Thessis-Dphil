@@ -278,93 +278,93 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 > around the line of best fit in Figure 2.21 ( C).
 
 ### Chapter 3 - Zero-dose extrapolation
-1. **Page 116, Last line** - Make explicit reference to insulin crystal. Change from:
+1. ~~**Page 116, Last line** - Make explicit reference to insulin crystal. Change from:~~
 
 > collected from one of the cubic crystals (crystal ID 0259)
 
 **to**
 > collected from one of the cubic insulin crystals (crystal ID 0259)
 
-2. **Page 119, Middle of paragraph** - Make explicit that decreasing $\eta$ form is assumed. Change from:
+2. ~~**Page 119, Middle of paragraph** - Make explicit that decreasing $\eta$ form is assumed. Change from:~~
 
 > because for small doses, $\eta(D) \approx 1$
 
 **to**
 > because for small doses, $\eta(D) \approx 1$ (assuming the decreasing $\eta$ form)
 
-3. **Page 124, Figure 3.5 caption** - Change sentence from:
+3. ~~**Page 124, Figure 3.5 caption** - Change sentence from:~~
 
 > so the fit does not exhibit the expected relationship when fitting to negative data, which results in an unsatisfactory fit.
 
 **to**
 > so the fit does not exhibit a physically reasonable relationship when fitting to negative data.
 
-4. **Page 125, After equation 3.3.7** - Correct mathematical notation in text to match the one given in the equation. I.e. change from:
+4. ~~**Page 125, After equation 3.3.7** - Correct mathematical notation in text to match the one given in the equation. I.e. change from:~~
 
 > $\sigma_{corr}$.
 
 **to**
 > $\sigma^{corr}_{\boldsymbol{h}}$
 
-5. **Page 128, First paragraph** - Need missing comma in sentence. I.e. change from:
+5. ~~**Page 128, First paragraph** - Need missing comma in sentence. I.e. change from:~~
 
 > The mean intensity of a resolution bin, $\Sigma$ must be corrected for $\varepsilon$.
 
 **to**
 > The mean intensity of a resolution bin, $\Sigma$, must be corrected for $\varepsilon$.
 
-6. **Page 128, Equation 3.3.16** - change incorrect word "if" to "of". I.e. change from:
+6. ~~**Page 128, Equation 3.3.16** - change incorrect word "if" to "of". I.e. change from:~~
 
 > is the intensity if the $i^{th}$
 
 **to**
 > is the intensity of the $i^{th}$
 
-7. **Page 128, Last paragraph** - Include reference to French and Wilson. change from:
+7. ~~**Page 128, Last paragraph** - Include reference to French and Wilson. change from:~~
 
 > French and Wilson truncation algorithm,
 
 **to**
 > French and Wilson truncation algorithm (French and Wilson, 1978),
 
-8. **Pages 128, 129 and 130** - Use angle brackets to denote average values.
+8. ~~**Pages 128, 129 and 130** - Use angle brackets to denote average values.~~
 
-9. **Page 132, Last paragraph** - remove superfluous reference to Diederichs et al. (2003). Change from:
+9. ~~**Page 132, Last paragraph** - remove superfluous reference to Diederichs et al. (2003). Change from:~~
 
 > Diederichs *et al.* (Diederichs *et al.*, 2003) use a similar principal of down weighting their decay factors and standard deviations (Diederichs *et al.*, 2003).
 
 **to**
 > Diederichs *et al.* use a similar principal of down weighting their decay factors and standard deviations (Diederichs *et al.*, 2003).
 
-10. **Page 135, 2nd paragraph 1st line** - Change wording of the sentence. Change from:
+10. ~~**Page 135, 2nd paragraph 1st line** - Change wording of the sentence. Change from:~~
 
 > A total 507 of the 1255 reflections (40.40%) were rejected
 
 **to**
 > A total of 507 (40.40%) reflections were rejected
 
-11. **Page 135, 2nd paragraph** - remove too many references to negative reflection intensities. Change from:
+11. ~~**Page 135, 2nd paragraph** - remove too many references to negative reflection intensities. Change from:~~
 
 > The extrapolated intensities for negative reflection intensities are made positive because the Wilson distribution has a zero probability value for negative reflection intensities.
 
 **to**
 > The extrapolated intensities for negative reflections are made positive because the Wilson distribution has a zero probability value for negative intensity values.
 
-12. **Page 141, 1st paragraph 2nd sentence** - use "outlier rejection", rather than "outlier rejecting". Change from:
+12. ~~**Page 141, 1st paragraph 2nd sentence** - use "outlier rejection", rather than "outlier rejecting". Change from:~~
 
 > this issue could be corrected by using an outlier rejecting method.
 
 **to**
 > this issue could be corrected by using an outlier rejection method.
 
-13. **Page 141, 1st paragraph last sentence** - be clear about which reflections that it may not be suitable for. Change from:
+13. ~~**Page 141, 1st paragraph last sentence** - be clear about which reflections that it may not be suitable for. Change from:~~
 
 > but may not be reliable for other reflections.
 
 **to**
 > but there is no guarantee that it will be reliable for the reflections that were not extrapolated using the regression approach.
 
-14. **Page 142, 2nd paragraph 2nd sentence** - the word "real" should be changed for "actual". Change from:
+14. ~~**Page 142, 2nd paragraph 2nd sentence** - the word "real" should be changed for "actual". Change from:~~
 
 > however real intensity data can be both positive and negative.
 

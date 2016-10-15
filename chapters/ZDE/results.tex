@@ -26,6 +26,7 @@ These values were chosen by inspecting a subset of extrapolated curves to determ
 They are quite conservative so it is expected that values which would result in a higher number of reflections extrapolated via the regression method (i.e. lower number of observations and lower correlation coefficient) might lead to better overall extrapolated values.
 If the natural logarithm of any intensity value was over 14, then regression based extrapolation was not performed on the reflection.
 This value was chosen because the plot of the data (Figure~\ref{fig:Before extrapolation all observations - Extrapolation method}) visually show that values beyond 14 are highly unlikely.
+However, it should be noted that these values have not been statistically determined as outliers and may actually represent true values of very strong reflections.
 With the above criteria, the conventional regression analysis was only performed on 748 (59.60\%) of the 1255 unique reflections.
 The rejection list was as follows:
 \begin{itemize}
@@ -70,9 +71,9 @@ Despite the general decrease in the average reflection intensities throughout th
         \label{fig:Successful zero-dose extrapolations}
 \end{figure}
 
-A total 507 of the 1255 reflections (40.40\%) were rejected for the regression fits and were thus extrapolated using the probabilistic approach.
+A total of 507 (40.40\%) reflections were rejected for the regression fits and were thus extrapolated using the probabilistic approach.
 The calculated distributions for 2 centric reflections are shown in Figure~\ref{fig:Probabilistic distributions - Extrapolation method}.
-The extrapolated intensities for negative reflection intensities are made positive because the Wilson distribution has a zero probability value for negative reflection intensities.
+The extrapolated intensities for negative reflections are made positive because the Wilson distribution has a zero probability value for negative intensity values.
 The intensity values for weak reflections are significantly affected by the prior distribution.
 This is evidenced by the fact that the posterior distribution resembles the prior distribution for weak reflections (Figure~\ref{fig:Weak negative reflection intensity - Extrapolation method}).
 In contrast, strong reflections are almost unaffected by the prior distribution (Figure~\ref{fig:Strong positive reflection intensity - Extrapolation method}).
@@ -111,12 +112,20 @@ The relative increase in the extrapolated intensities is greater on average for 
 This is expected because the intensity of higher resolution reflections are known to decay more quickly than low resolution reflections.
 
 There are some reflection observations that have abnormally high extrapolated intensity values.
-These act to highly skew the spherically averaged mean intensity of resolution shells, as can be seen by the blue line sharply increasing for the first and last resolution shells.
+These act to highly skew the spherically averaged mean intensity of resolution shells, as can be seen by the blue line sharply increasing for the highest resolution shells.
+If these reflections are removed by only using zero dose intensities that are below six standard deviations above the mean value of the original uncorrected intensities then the sharp increase in the average intensity is removed (Figure \ref{fig:Spherically averaged without high intensities - Extrapolation method}).
+For this resolution bin (1.48\AA\ - 1.41\AA) there are 59 reflections (2.57\% of the reflections in that bin) that exceed this threshold, the maximum of which has an intensity of 1.75 $\times$ 10$^{\text{42}}$.
+These excessively high values explain the sharp increase in the spherically averaged intensity at the highest resolution shell in Figure \ref{fig:Before and after extrapolation results - Extrapolation method}.
 These high intensity values are not a result of the regression based extrapolation because the averaged zero-dose intensities after the regression analysis do not exhibit this feature (Figure~\ref{fig:Zero-dose mean intensity in resolution shells - Extrapolation method}).
 Therefore these are the result of the probabilistic extrapolation and are most likely due to applying $f(r) \approx s(D_{obs})$ to a reflection intensity where the reflection does not behave like the ``average'' reflection in the resolution shell.
 These outliers could simply be rejected using suitable outlier criteria.
 An obvious choice would be to reject observations where the intensity is above a given threshold.
 A more sophisticated outlier rejection method using Wilson statistics could be implemented \cite{read1999detecting}.
+
+A feature of Figure \ref{fig:After extrapolation all observations - Extrapolation method} that may not be expected is that many of the data points have shifted away from zero.
+This is unexpected because the prior for the reflections is centred on zero (Figure \ref{fig:Probabilistic distributions - Extrapolation method}).
+It should be noted that Figure \ref{fig:After extrapolation all observations - Extrapolation method} only includes positive intensity observations and therefore does not include the predicted zero dose intensities of 215 observations.
+However, the bias in the figure is unexplained and could be due to a bug in the numerical implementation of the Bayesian calculation.
 \begin{figure}
 	\centering
 	\begin{subfigure}[b]{0.95\textwidth}
@@ -136,4 +145,12 @@ A more sophisticated outlier rejection method using Wilson statistics could be i
 	The points on the red and blue solid lines represent the mean intensity of the resolution shells before and after the extrapolation respectively and are shown on both (a) and (b) for ease of viewing.
 	As expected, there is a general increase in the reflection intensities after extrapolation.}
 	\label{fig:Before and after extrapolation results - Extrapolation method}
+\end{figure}
+
+\begin{figure}
+  \centering
+    \includegraphics[width=0.95\textwidth]{figures/zde/IntensityCurve_BeforeExtrapolation_WithoutHighI.pdf}
+    \caption[Reflection intensities of 5000 reflections before zero-dose extrapolation and the spherically averaged zero-dose data have been calculated without contribution from the abnormally high intensity values.]{Reflection intensities of 5000 reflections before zero-dose extrapolation, however, this time the spherically averaged zero-dose data have been calculated without contribution from the abnormally high intensity values.
+	It can be seen that the spherically averaged data no longer diverge as they did in Figure \ref{fig:Before and after extrapolation results - Extrapolation method}.}
+    \label{fig:Spherically averaged without high intensities - Extrapolation method}
 \end{figure}

@@ -35,13 +35,17 @@ In general the extrapolated intensities of reflections showed an increase from t
 
 However, the method presented still requires some work before it can be used reliably for general crystallographic data.
 The most obvious improvement is to find a method to prevent the probabilistic extrapolation method giving abnormally high intensity values.
-As mentioned earlier, this issue could be corrected by using an outlier rejecting method.
+As mentioned earlier, this issue could be corrected by using an outlier rejection method.
 There is also currently no check for the quality of the extrapolation from the probabilistic approach, which would aid in highlighting potential problems.
 A possible validation criteria may be that the probabilistic extrapolation gives values that are similar to the regression based extrapolation values for the reflections that have already been extrapolated.
 This basically checks the consistency of the two methods.
 The reason that the consistency check is a good way to validate that the probabilistic method works is that the regression based method is already validated with several checks and its own validation metrics.
 The drawback with this is that the distribution parameters are calculated from the intensities extrapolated using the regression method.
-This means that it is more likely that the two methods will seem consistent, but may not be reliable for other reflections.
+This means that it is more likely that the two methods will seem consistent, but there is no guarantee that it will be reliable for the reflections that were not extrapolated using the regression approach.
+Another approach to assessing the quality of the extrapolation is the using cross validation as is typically used in refinement in MX \cite{brunger199719}.
+This involves keeping a relatively small subset of reflections aside and performing the extrapolation on the remaining data, then finally assessing the quality of the fits using all of the reflections at the end.
+The potential problem with this approach is that there is generally not enough data to start with due to low multiplicity and the method requires a subset of reflections to have a sufficient multiplicity to perform the regression based extrapolation.
+Therefore the ``free'' observation set may not be able to be picked completely randomly in all cases.
 
 It is likely that the abnormally high extrapolated intensities are caused by applying the scale factor, $s(D)$, to reflections that do not obey the behaviour of the scale function.
 $f(r)$ is a factor that was introduced to dampen the proportion of $s(D)$ that is applied to reflection observations.
@@ -52,16 +56,16 @@ Secondly, the parameter values $A$ and $B$ in the equation \ref{eq:Fraction of s
 They were chosen by visual inspection of the behaviour of a limited set of observations and therefore were not rigorously determined.
 
 Furthermore, there are improvements that could be made to the regression based extrapolation.
-It was observed that a ``bad" correlation between the fitted model and the data was simply due to noise.
+It was observed that a ``bad'' correlation between the fitted model and the data was simply due to noise.
 This implies that the correlation coefficient check may be too stringent, and in fact some reflections may be rejected despite the possibility that the model would have given a reasonable extrapolated zero-dose intensity.
-Perhaps removing the correlation requirement in favour of a different criterion could improve the data quality by not rejecting ``well behaved" reflections due to systematic noise.
+Perhaps removing the correlation requirement in favour of a different criterion could improve the data quality by not rejecting ``well behaved'' reflections due to systematic noise.
 The reason this was not done in the present analysis is because it was thought to be more important to have fewer reliable zero-dose estimates than a huge number where some estimates were questionable.
 
 The corrected standard deviation equation (\ref{eq:Corrected sigma value - Extrapolation method}) is based on the form of the analogous equation in \cite{diederichs2003}.
 Other forms of the correction function should be explored with a good physical/statistical justification.
 
 A limitation of using the Leal \textit{et al.} model for the regression fits is that the model assumes positive intensity values for all (real) dose values.
-As a physical model, this assumption is completely valid; however real intensity data can be both positive and negative.
+As a physical model, this assumption is completely valid; however actual intensity data can be both positive and negative.
 In the regression analysis, any reflection which had too many negative/small intensity values was rejected because this could lead to unreliable extrapolated intensity values.
 Further work could include suggesting alternative physical dose decay models or amendments of the Leal \textit{et al.} model to satisfactorily account for negative intensity values.
 However, it is currently reasonable to suggest that perhaps a single parametric dose decay model is not capable of describing the relationship between the change in intensity and the dose.

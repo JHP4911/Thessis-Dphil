@@ -43,7 +43,7 @@ To scale the data, the following function was first fitted to the data
 where $k, a$ and $b$ are parameters to be determined.
 A closer inspection shows that this equation is a more general form of the Leal \textit{et al.} model where the resolution dependence has been omitted.
 The dose metric used here is the simple DWD (equation \ref{eq:DWD equation - no RDE}), because at this point there is no information about the parameter values required to calculate $\eta$.
-For small dose ranges, the simple DWD is a suitable approximation for the DWD with dose dependent $\eta$ terms, because for small doses, $\eta(D) \approx 1$.
+For small dose ranges, the simple DWD is a suitable approximation for the DWD with dose dependent $\eta$ terms, because for small doses, $\eta(D) \approx 1$ (assuming the decreasing $\eta$ form).
 A least squares curve fitting procedure, Matlab's \verb+lsqcurvefit+ routine, was used to fit the relative intensity data to the function defined in equation \ref{eq:Relative intensity scaling - resolution independent Leal model}.
 The relative intensity data were then scaled by $k$.
 The result of the relative intensity scaling for the example above (ten 90$^{\circ}$ wedge datasets from crystal 0259) is shown in Figure~\ref{fig:Scaled relative intensity data - ZDE}.
