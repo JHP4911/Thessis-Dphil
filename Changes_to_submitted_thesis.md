@@ -233,7 +233,7 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 **to**
 > proportions of damaged states of the crystal as a function of the absorbed dose
 
-8. **Page 82, 2nd footnote** - Move footnote onto the same page as the table which it is referenced.
+8. ~~**Page 82, 2nd footnote** - Move footnote onto the same page as the table which it is referenced.~~
 
 ~~9. **Page 95, Figure 2.13** - change incorrect x-axis label. I.e. change from:~~
 > Average Intensity (MGy)
@@ -393,7 +393,7 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 **to**
 > The data collection experiment...
 
-4. **Page 148, 1st paragraph, last line** - Include bibliography entry for the reference to Wan and van der Merwe (2002).
+4. ~~**Page 148, 1st paragraph, last line** - Include bibliography entry for the reference to Wan and van der Merwe (2002).~~
 
 5. ~~**Page 149, last paragraph, 1st line** - reword sentence so it makes sense. I.e. change from:~~
 
