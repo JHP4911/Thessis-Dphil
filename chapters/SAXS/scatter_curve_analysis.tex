@@ -87,14 +87,14 @@ To perform this analysis it was necessary to calculate the curvature, $\kappa$, 
     \kappa(x) = \f{\f{\mathrm{d}^2F}{\mathrm{d}x^2}}{\left( 1 + \f{\mathrm{d}F}{\mathrm{d}x}\right)^{3/2}}.
     \label{eq:Curvature}
 \end{equation}
-This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function \verb+fminbnd+ to find the minimum value of $-\kappa(x)$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This is a common procedure for optimisation problems.
+This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function \verb+fminbnd+ to find the minimum value of $-\kappa(x)$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum of the negative of the function. This is a common procedure for optimisation problems.
 
 An implicit assumption with the methods described is that damage is entirely progressive and subsequent frames beyond the threshold are all significantly dissimilar.
 Mathematically this assumption manifests itself as logistic functions representing the fidelity as a monotonically increasing function of the dose.
 
 \subsection{Data analysis - experiment 2}
 \label{sub:Data analysis - experiment 2}
-In a similar manner to the analysis performed on the results from Expt 1, buffer subtraction and cropping was performed before 1D curve similarity analysis.
+In a similar manner to the analysis performed on the results from Expt 1, buffer subtraction and cropping were performed before 1D curve similarity analysis.
 However these steps were performed with custom written Python scripts.
 This was done for two reasons:
 the first was that the pipeline could then be completely scripted (Sc\AA tter, which was used for buffer subtraction for data processing for Expt 1, is a GUI based program written in Java),
@@ -163,7 +163,7 @@ This is calculated from the Schilling distribution with parameters $n$ and $C$.
 If the $p$ value is smaller than a threshold value $\alpha$ ($\alpha \le$ 0.01 is recommended \cite{franke2015correlation}) then the two frames can be considered dissimilar.
 
 The CorMap test is implemented in the current distribution of DATCMP, although the software does not include visualisation tools.
-Since multiple pairwise tests have to be made from several comparisons, the Bonferroni correction\footnote{If multiple hypotheses are tested then the likelihood of observing a rare event (and thus the likelihood of incorrectly rejecting the null hypothesis) is increased. The Bonferroni correction, divides the overall statistical significance level, $\alpha$, by the number of tests, $n$, so that the hypotheses are tested individually at a significance level of $\alpha/n$.} is applied to the $P(>C)$ values resulting in $P_{adj}(>C)$ values.
+Since multiple pairwise tests have to be made from several comparisons, the Bonferroni correction\footnote{If multiple hypotheses are tested then the likelihood of observing a rare event (and thus the likelihood of incorrectly rejecting the null hypothesis) is increased. The Bonferroni correction divides the overall statistical significance level, $\alpha$, by the number of tests, $n$, so that the hypotheses are tested individually at a significance level of $\alpha/n$.} is applied to the $P(>C)$ values resulting in $P_{adj}(>C)$ values.
 The raw output from the program is essentially a list of $P(>C)$ and $P_{adj}(>C)$ values for all possible pairwise comparisons.
 The set of $P_{adj}(>C)$ values that result from comparing the first frame to all subsequent frames is shown in Figure~\ref{fig:p values for comparisons with frame 1}.
 \begin{figure}
@@ -176,7 +176,7 @@ The set of $P_{adj}(>C)$ values that result from comparing the first frame to al
     These circles are coloured green.
     When frames are very dissimilar, $C$ becomes very large (Figure~\ref{fig:Pairwise correlation frames 1 and 120}) and $P_{adj}(>C) <$ 0.01.
     The circles representing the comparison with these frames are coloured orange.
-    The first dissimilar frame (coloured orange - frame 55) is may not necessarily be the point at which frames should stop being merged according to this analysis, because there are circles after frame 55 that are not orange in colour.}
+    The first dissimilar frame (coloured orange - frame 55) may not necessarily be the point at which frames should stop being merged according to this analysis, because there are circles after frame 55 that are not orange in colour.}
     \label{fig:p values for comparisons with frame 1}
 \end{figure}
 

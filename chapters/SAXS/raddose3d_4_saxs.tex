@@ -82,7 +82,7 @@ This is because the overall absorption coefficient of the sample, $\mu_{\text{ab
     \label{eq:Absorption coefficient calculation}
 \end{equation}
 where, $V_c$ is the volume of the unit cell, $N$ is the number of atoms in the unit cell and $\sigma_j = \sigma_j^{\text{Thompson}} + \sigma_j^{\text{Compton}} + \sigma_j^{\text{Photoelectric}}$ \cite{murray2004}.
-(The previous RADDOSE versions assumed $\mu_{\text{abs}} = \mu_{\text{att}}$ so equation 1 in Murray \textit{et al.} (2004) \nocite{murray2004}, which is analogous to equation \ref{eq:Absorption coefficient calculation} here, writes `$\mu_{\text{att}}$' instead of `$\mu_{\text{abs}}$').
+(The previous RADDOSE versions assumed that the absorption coefficient was equal to the attenuation coefficient, $\mu_{\text{att}} i.e. $$\mu_{\text{abs}} = \mu_{\text{att}}$, so equation 1 in Murray \textit{et al.} (2004) \nocite{murray2004}, which is analogous to equation \ref{eq:Absorption coefficient calculation} here, writes `$\mu_{\text{att}}$' instead of `$\mu_{\text{abs}}$').
 In MX the crystal composition is calculated from the contents of the unit cell.
 In SAXS the samples are liquids as opposed to crystals, and hence the notion of a unit cell does not apply.
 Thus instead, the approach to determine the atomic composition of the sample is to define a volume of liquid and estimate the contents given its protein concentration and buffer composition.
@@ -131,7 +131,7 @@ A section of the webpage for the mass attenuation coefficient table of carbon is
     \caption[X-ray mass attenuation coefficient data for carbon from NIST.]{Section of the X-ray mass attenuation coefficient data for carbon from NIST \cite{nisttable3}. The mass attenuation coefficient data are tabulated beneath the graph. The exact energy of the X-ray photons used in crystallography and SAXS (typically around 12\,keV) is not explicitly tabulated therefore the mass attenuation coefficient is obtained by linear interpolation.}
     \label{fig:NIST table for carbon}
 \end{figure}
-The tabulated energy values do not explicitly include the typycial energies used in crystallograpy and SAXS (around 12\,keV), so the mass attenuation coefficient is linearly interpolated between the closest values.
+The tabulated energy values do not explicitly include the typical energies used in crystallograpy and SAXS (around 12\,keV), so the mass attenuation coefficient is linearly interpolated between the closest values.
 Mass attenuation coefficient data for various mixtures including air, borosilicate glass, water, bone and soft tissue are also tabulated in NIST table 4 \cite{nisttable4}.
 These mixtures can be used directly by RADDOSE-3D.
 
