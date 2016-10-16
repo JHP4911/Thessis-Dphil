@@ -35,6 +35,11 @@ Since the amplitudes are found directly by the FBA, it abrogates the need to use
 This is an advantage, because for large experimental uncertainties the French and Wilson algorithm produces error estimates that resemble the Wilson distribution, which result in weak measurements having a significant influence on a structural model \cite{read2015log}.
 
 The other major advantage of the FBA is the fact that the amplitude estimates are time/dose resolved, so that several electron density maps can be obtained from a single diffraction dataset.
+The dose was not explicitly used here because the crystal was irradiated in a standard single axis rotation experiment.
+This meant that the rotation angle/time are directly proportional to the dose and either could be used as a proxy for it.
+In a more complex experiment where the crystal is translated, the dose calculated in successive frames does not change monotonically.
+In this case the order of the images would be explicitly dependent on the calculated dose and the results of a dose calculation program like RADDOSE-3D would be required for this method to work efficiently.
+
 In theory, the set of structure factor amplitudes given at each point in time could lead to slightly different models showing structural changes throughout the experiment (e.g. due to radiation damage).
 However it is unclear how sensitive downstream processing (such as refinement) is to small amplitude changes in a subset of reflections, and whether the processing will influence the resulting models enough to hinder the observation of altered conformations.
 For example, if it is the case that the applied restraints in refinement are weighted highly, then subtle structural deviations from the ``ideal'' conformation may be missed.
@@ -53,14 +58,14 @@ The main disadvantage of the FBA is that in its current implementation, it is co
 The insulin dataset which consists of 450 images took about 16 hours to process through the algorithm, whereas the C.Esp1396I dataset which only had 100 images took around 4 hours to run despite containing around twice the number of reflections.
 This suggests that the computational time is largely dependent on the total number of images.
 There are many ways in which the performance can be improved.
-An obvious one would be to write it in a faster language such as C++, but the code would still need to be written is a more optimal manner.
+An obvious one would be to write it in a faster language such as C++, but the code would still need to be written in a more optimal manner.
 For example (although not the biggest bottleneck), to read reflection information the program runs MTZDUMP and then parses the resulting text to retrieve the information.
 This can be improved if the binary MTZ file contents are read directly using the MTZLIB.
 Another way to speed up the code would be to run the FBA in parallel, which is possible because the reflections can be assumed to be independent.
 
 A fundamental feature of the HMM is that the scale factor is simply a parameter concerned with the observation and it is not intrinsic to the crystal.
 At first this seems at odds with the current scaling assumption that the scale factor contains terms that are intrinsic properties of the crystal e.g. unit-cell volume, and the fact that the radiation damage parameter(s) are refined simultaneously with the other scaling factors (absorption, detector response to X-ray photon, etc.).
-However, it should be theoretically possible to separate the factors that are affected by the crystal changes and those that are a property of the observation method (i.e. observing intensities on a Pilatus detector).
+However, it should be theoretically possible to separate the factors that are affected by the crystal changes and those that are a property of the observation method (e.g. observing intensities on a Pilatus detector).
 A simple thought experiment to demonstrate this is to consider a crystal that is irradiated by X-rays with no detector present.
 The crystal is still going to change due to radiation damage regardless of whether intensity measurements are made.
 Hence a description of the crystal changes must (in theory) be possible without reference to a scale factor that describes how the intensity observations are made.
@@ -87,14 +92,14 @@ The other advantages of doing this are that the current method implemented to ex
 Additionally AIMLESS incorporates an outlier rejection algorithm so another one would not necessarily have to be written for the FBA.
 In the case where AIMLESS is used to scale the data, the FBA algorithm could be used simply as a truncation algorithm giving dose resolved amplitude estimates with sensible error estimates for all reflections.
 
-One of the assumptions that was made in deriving the process function is that the changes in the structure factor amplitude resulting from the coordinate errors could be absorbed into the temperature factor term.
-This assumption may not hold and investigation into the coordinate error distributions should also be carried out to determine the true effect of it.
+One of the assumptions that was made in deriving the process function is that the changes in the structure factor amplitude resulting from the average coordinate error could be absorbed into the temperature factor term.
+This assumption may not hold and investigation into the atomic coordinate error distributions should also be carried out to determine the true effect of it.
 
 To extend the use of the algorithm, the FBA could be used to merge data from several crystals.
 First, pairwise cross-covariance matrices between sets of amplitude values resulting from applying the FBA to several different crystals should be calculated.
 The elements of the resulting matrices can be used to determine whether the data from different crystals can be merged (Garib Murshudov, personal communication).
 
-As mentioned above, one of the major features of the algorithm is that it produces dose resolved amplitude estimates, which provides a unique opportunity to perform radiation damage correction.
+As mentioned above, one of the major features of the algorithm is that it produces time/dose resolved amplitude estimates, which provides a unique opportunity to perform radiation damage correction.
 This means that the behaviour of reflections can be tracked explicitly, particularly for reflections that are observed multiple times.
 If the assumption is made that reflections in the same resolution bin behave similarly, then the behaviour of reflections that were only observed once can be predicted by determining the ``average'' behaviour of multiply observed reflections in the same resolution bin.
 The obstacle with this method that must be overcome is how to average `behaviour' irrespective of the varying scales on which the reflections are observed.

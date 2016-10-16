@@ -372,21 +372,21 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 > however actual intensity data can be both positive and negative.
 
 ### Chapter 4 - A Markovian Data Reduction Framework
-1. **Page 145, 1st line** - restraint sounds wrong. It should be constraint. Therefore it should be changed from:
+1. ~~**Page 145, 1st line** - restraint sounds wrong. It should be constraint. Therefore it should be changed from:~~
 
 > with the additional restraint that the developer’s
 
 **to**
 > with the additional constraint that the developer’s
 
-2. **Page 145, last paragraph, 1st line** - the sentence is hard to read and needs changing:
+2. ~~**Page 145, last paragraph, 1st line** - the sentence is hard to read and needs changing:~~
 
 > code can be written in Julia which may not be compiled to the speed of performance optimised machine code
 
 **to**
 > Julia code can be written in such a way that it compiles to non-optimal machine code.
 
-3. **Page 146, 1st line of section 4.3** - remove first bit of the sentence. I.e. change from:
+3. ~~**Page 146, 1st line of section 4.3** - remove first bit of the sentence. I.e. change from:~~
 
 > Following the terminology in the relevant literature, the data collection experiment...
 
@@ -395,74 +395,74 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 
 4. **Page 148, 1st paragraph, last line** - Include bibliography entry for the reference to Wan and van der Merwe (2002).
 
-5. **Page 149, last paragraph, 1st line** - reword sentence o it makes sense. I.e. change from:
+5. ~~**Page 149, last paragraph, 1st line** - reword sentence so it makes sense. I.e. change from:~~
 
 > The crystal state changes as a result of X-ray exposure, the duration of which for a single diffraction image will differ depending on the goal of the experiment, the detector speed and the radiation sensitivity of the irradiated crystal.
 
 **to**
 > The crystal state changes as a result of the X-ray exposure (the duration of which will differ for a single diffraction image depending on the goal of the experiment) and the magnitude of these changes will vary depending on the radiation sensitivity of the irradiated crystal.
 
-6. **Page 150, First paragraph** - I think "affects" should be "effects". I.e. change from:
+6. ~~**Page 150, First paragraph** - I think "affects" should be "effects". I.e. change from:~~
 
 > which quantifies the affects of crystal perturbations
 
 **to**
 > which quantifies the effects of crystal perturbations
 
-7. **Page 154, First paragraph** - Change the wording to make more explicit I.e. change from:
+7. **Page 154, First paragraph** - ~~Change the wording to make more explicit I.e. change from:~~
 
 > Thus the mean and covariance of the states calculated at each time point in the HMM are used as a Gaussian approximation for the true state
 
 **to**
-> Thus the mean and covariance of the states calculated at each time point in the HMM are used as parameters for the Gaussian distribution that is used as an approximation of the true crystal state.
+> Thus the mean and covariance of the states calculated at each time point in the HMM are used as parameters for the Gaussian distribution that is used as an approximation of the true crystal state
 
-8. **Page 164, Figure 4.6, caption** - make "increase" plural I.e. change from:
+8. ~~**Page 164, Figure 4.6, caption** - make "increase" plural I.e. change from:~~
 
 > As the cycle number increase the log...
 
 **to**
 > As the cycle number increases the log...
 
-9. **Page 166, Figure 4.6** - ***REPEATED FIGURE NUMBERING*** Need to sort this out.
+9. ~~**Page 166, Figure 4.6** - ***REPEATED FIGURE NUMBERING*** Need to sort this out.~~
 
-10. **Page 166, Figure 4.6 caption** - change "estimation" to "estimate". I.e. change from:
+~~10. **Page 166, Figure 4.6 caption** - change "estimation" to "estimate". I.e. change from:~~
 
 > The forward-backward pass for cycle 1 looks like it may lead to a good estimation of the true value.
 
 **to**
 > The forward-backward pass for cycle 1 looks like it may lead to a good estimate of the true value.
 
-11. **Page 170, Footnote** - Remove unnecessary word "is". I.e. change from:
+11. ~~**Page 170, Footnote** - Remove unnecessary word "is". I.e. change from:~~
 
 > A QQ plot is graphically determines whether two datasets come from the same distribution
 
 **to**
 > A QQ plot graphically determines whether two datasets come from the same distribution
 
-12. **Page 175, Last paragraph** - remove brackets galore and add spacing. I.e. change from:
+12. ~~**Page 175, Last paragraph** - remove brackets galore and add spacing. I.e. change from:~~
 
 > The same refinement procedure was performed with data processed using AIMLESS (Evans and Murshudov, 2013) and CTRUNCATE (ACT pipeline)(Winn *et al.*, 2011) (i.e. no processing with the forward-backward algorithm).
 
 **to**
 > The same refinement procedure was performed with data processed using AIMLESS (Evans and Murshudov, 2013) and CTRUNCATE (ACT pipeline) (Winn *et al.*, 2011) i.e. no processing with the forward-backward algorithm.
 
-13. **Page 179, 1st paragraph** - refer to the b factors not the reflections. I.e. change from:
+13. ~~**Page 179, 1st paragraph** - refer to the b factors not the reflections. I.e. change from:~~
 
 > Four reflections that were removed in the outlier rejection procedure are clearly visible in Figure 4.16a with B factor values of zero.
 
 **to**
 > Four B factors that were removed in the outlier rejection procedure are clearly visible in Figure 4.16a with B factor values of zero.
 
-14. **Page 185, Figure 4.20, caption** - refer to both figure (a) and (b) in the caption.
+14. ~~**Page 185, Figure 4.20, caption** - refer to both figure (a) and (b) in the caption.~~
 
-15. **Page 186, 1st paragraph** - missing word "level". I.e. change from:
+15. ~~**Page 186, 1st paragraph** - missing word "level". I.e. change from:~~
 
 > The resulting electron density maps contoured at the $3\sigma$ at 2.4 Å for selected residues...
 
 **to**
 > The resulting electron density maps contoured at the $3\sigma$ level at 2.4 Å for selected residues...
 
-16. **Page 190, last sentence** - change "is" to "in". I.e. change from:
+16. ~~**Page 190, last sentence** - change "is" to "in". I.e. change from:~~
 
 > but the code would still need to be written is a more optimal manner.
 

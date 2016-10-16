@@ -76,7 +76,7 @@ The log likelihoods for the 10 cycles, calculated using the natural logarithm of
     \centering
     \includegraphics[width=1.0\textwidth]{figures/datared/loglik.pdf}
     \caption[Log likelihood values calculated at the end of each smoothing pass for a strong reflection.]{Log likelihood values calculated for each smoothing pass.
-    As the cycle number increase the log likelihood starts to plateau meaning that the forward-backward solution is converging on a final solution.}
+    As the cycle number increases the log likelihood starts to plateau meaning that the forward-backward solution is converging on a final solution.}
     \label{fig:Simulation Log likelihood - good}
 \end{figure}
 
@@ -92,7 +92,6 @@ The same process and observation functions are defined but the estimate supplied
 Additive zero-mean Gaussian noise was applied to the observation model to obtain observed intensities of -1.92 and 2.91 on images 41 and 99 respectively.
 The results of the forward-backward algorithm for cycles 1 and 8 are shown in Figure~\ref{fig:forward-backward algorithm simulation results - bad}.
 \begin{figure}
-    \ContinuedFloat
     \begin{subfigure}[b]{1.0\textwidth}
         \centering
         \includegraphics[width=\textwidth]{figures/datared/intDecSim_Filt1_bad.pdf}
@@ -123,7 +122,7 @@ The results of the forward-backward algorithm for cycles 1 and 8 are shown in Fi
         \label{fig:URTSS simulation results - cycle 8 - bad}
     \end{subfigure}
     \caption[Forward-backward algorithm results for simulated data for a weak reflection.]{Forward-backward algorithm results for a simulated weak reflection observed on image 41 and 99 (solid gold lines) of a dataset consisting of 100 images.
-    The forward-backward pass for cycle 1 looks like it may lead to a good estimation of the true value.
+    The forward-backward pass for cycle 1 looks like it may lead to a good estimate of the true value.
     However, by cycle 8 the estimates have converged to zero and the 95\% confidence interval has not improved.}
     \label{fig:forward-backward algorithm simulation results - bad}
 \end{figure}

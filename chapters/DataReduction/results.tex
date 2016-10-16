@@ -36,13 +36,15 @@ The resulting B factor distribution is plotted in Figure~\ref{fig:B factors per 
     \label{fig:B factors per image - insulin}
 \end{figure}
 
-To ensure that the B-factors exhibited linear behaviour, "damage corrected" B factors, $B_{dc}$, were calculated by rearranging the linear formula for the B factor increase.
+To ensure that the B-factors exhibited linear behaviour, ``damage corrected'' B factors, $B_{dc}$, were calculated by rearranging the linear formula for the B factor increase.
+If the B-factors do show linear behaviour then the ``damage corrected'' B factors should be normally distributed, so the goal is to check for this.
+The ``damage corrected'' B factors are determined as
 \begin{equation}
     B^i_{dc} = B_i - \Delta B \times i,
 \end{equation}
 where $B_i$ is the B factor calculated at image $i$, and $\Delta B$ is the gradient of the line fitted to the data.
 A histogram of the "damage corrected" B factor distribution was then plotted, which should be a Gaussian distribution centred on the intercept of the line in Figure~\ref{fig:B factors per image after outlier removal - insulin}.
-Additionally a QQ plot\footnote{A QQ plot is graphically determines whether two datasets come from the same distribution. It plots the quantiles of the first dataset against the quantiles of the second. If the two datasets come from the same distribution the points should fall on a 45$^{\circ}$ reference line which is typically also plotted.} was used to ensure that the data were normally distributed (Figure~\ref{fig:B factor QQ plot - insulin}).
+Additionally a QQ plot\footnote{A QQ plot graphically determines whether two datasets come from the same distribution. It plots the quantiles of the first dataset against the quantiles of the second. If the two datasets come from the same distribution the points should fall on a 45$^{\circ}$ reference line which is typically also plotted.} was used to ensure that the data were normally distributed (Figure~\ref{fig:B factor QQ plot - insulin}).
 The gradient $\Delta B$ was calculated to be 0.001$\,$\AA$^2$.
 \begin{figure}
     \centering
@@ -93,7 +95,7 @@ The resulting scale factors, $\{ s^{*}_{images} \}$, are shown in Figure~\ref{fi
     \label{fig:Scale factors per image - insulin}
 \end{figure}
 
-Figure~\ref{fig:Scale factor distribution after outlier removal - insulin} presents the distribution of scale factors as a histogram.
+Figure~\ref{fig:Scale factor distribution after outlier removal - insulin} presents the distribution of scale factors as a histogram with a kernel density estimation of the distribution overlaid.
 The fact that the mode and mean are very similar in value also suggests that the scale factor distribution is Gaussian.
 However there is no guarantee that the scale factor distribution for a general experiment will be Gaussian and hence there are no checks for normality included in the algorithm for the scale factors.
 The mean scale factor value of the distribution, $s_{mean}$ = 0.010 was used in the forward-backward algorithm, which is assumed to be constant throughout the experiment.
@@ -121,7 +123,8 @@ The forward-backward algorithm was applied with the following parameters defined
 \end{itemize}
 Amplitude estimates resulting from applying the forward-backward algorithm for 4 reflections are shown in Figure~\ref{fig:Amplitude estimates - insulin}.
 It can be seen that for these reflections, the initial amplitude value estimated using CTRUNCATE is within the 95\% confidence region as estimated by the forward-backward algorithm.
-This suggests that the constant scale factor assumption used for the simple scaling procedure used for this study is valid for this experiment.
+In fact the median percentage error between the amplitude estimates for all reflections from CTRUNCATE and the forward-backward algorithm is 3.77\%.
+This suggests that the constant scale factor assumption (outlined in section \ref{sub:Obtaining parameter values for the process and observation functions} and graphically depicted in Figure \ref{fig:Scale factors per image after outlier removal - insulin}) used for the simple scaling procedure used for this study is valid for this experiment.
 
 Figures~\ref{fig:Amplitude estimates ref 0,30,38 - insulin} and \ref{fig:Amplitude estimates ref 0,37,11 - insulin} exhibit the expected behaviour of an average refection, since both of these reflections decay relatively smoothly as exposure time increases.
 Figure~\ref{fig:Amplitude estimates ref 0,49,27 - insulin} shows a reflection whose amplitude increases as the exposure increases.
@@ -179,9 +182,9 @@ This should ensure that the (possibly non-linear) behaviour of the reflection sh
 
 \subsubsection{Refinement results}
 \label{subs:Refinement results - insulin}
-The initial amplitude estimates resulting from the forward-backward algorithm (FBA) were combined with the phases from a deposited insulin structure (PDB code 2BN3) and refined with REFMAC \cite{murshudov2011refmac5} (10 cycles of rigid body refinement followed by 10 cycles of restrained refinement).
-The same refinement procedure was performed with data processed using AIMLESS \cite{evans2013} and CTRUNCATE (ACT pipeline)\cite{winn2011} (i.e. no processing with the forward-backward algorithm).
-The resulting electron density maps contoured at the 3$\sigma$ at 1.38$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - insulin}.
+To obtain an electron density map of the structure the initial amplitude estimates resulting from the forward-backward algorithm (FBA) were combined with the phases from a deposited insulin structure (PDB code 2BN3) and refined with REFMAC \cite{murshudov2011refmac5} (10 cycles of rigid body refinement followed by 10 cycles of restrained refinement).
+The same refinement procedure was performed with data processed using AIMLESS \cite{evans2013} and CTRUNCATE (ACT pipeline) \cite{winn2011} i.e. no processing with the forward-backward algorithm.
+The resulting electron density maps contoured at the 3$\sigma$ level (arbitrary choice of $\sigma$ level) at 1.38$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - insulin}.
 The maps are practically identical for the two different data reduction pipelines, which is the case for the rest of the structure.
 \begin{figure}
 	\centering
@@ -207,10 +210,10 @@ The maps are practically identical for the two different data reduction pipeline
 
 A difference map was also calculated to locate the major differences between the results of the two different data reduction pipelines.
 The differences were calculated between the resulting amplitudes from the ACT and FBA pipelines, rather than the calculated amplitudes after refinement.
-Phases were obtained from the final model resulting from refinement using the phases from PDB 2BN3 and the ACT amplitudes.
+Phases for the difference map were obtained from the model generated from the data processed through the ACT pipeline.
 Figure~\ref{fig:Difference electron density map - insulin} displays the resulting difference map contoured at the 3$\sigma$ level along with the full insulin structure from which the phases were obtained.
 The difference electron density is distributed quite uniformly over the unit cell rather than showing large differences overlapping the structure.
-This supports the result shown above that the two methods give practically identical electron density for the structure.
+This supports the result shown above that the two methods give practically equivalent electron density for the structure.
 \begin{figure}
     \begin{subfigure}[b]{1.0\textwidth}
         \centering
@@ -263,7 +266,7 @@ Thus not all of the crystal was immersed in the beam and the rotation led to the
 \end{figure}
 The atomic composition used to provide expected intensity values was obtained from the PDB structure 4X4B.
 The B factors were calculated as described above and are shown in Figure~\ref{fig:B factors per image - C.Esp1396I}.
-Four reflections that were removed in the outlier rejection procedure are clearly visible in Figure~\ref{fig:B factors per image before outlier removal - C.Esp1396I} with B factor values of zero.
+Four B factors that were removed in the outlier rejection procedure are clearly visible in Figure~\ref{fig:B factors per image before outlier removal - C.Esp1396I} with B factor values of zero.
 The initial B factor is much higher for the C.Esp1396I structure (57.69$\,$\AA$^2$) than it was for the insulin structure (12.19$\,$\AA$^2$).
 In contrast to the behaviour observed with the insulin dataset, the B factor for the C.Esp1396I structure decreases linearly throughout the dataset (Figure~\ref{fig:B factors per image after outlier removal - C.Esp1396I}).
 The assumption of a linear behaviour of the B-factor is again justified (Figure~\ref{fig:Gaussian B factor plots - C.Esp1396I}).
@@ -361,6 +364,7 @@ Addressing this issue will require the algorithm to check the size of the argume
 The amplitude estimates for two reflections resulting from the processing are shown in Figure~\ref{fig:Amplitude estimates - C.Esp1396I}.
 As was the case with the insulin dataset, some reflections exhibit smooth behaviour (Figure~\ref{fig:Amplitude estimates ref 0,17,48 - C.Esp1396I}), whereas others show sharp changes that are likely to be due to imperfect scale factors (Figure~\ref{fig:Amplitude estimates ref 8,9,4 - C.Esp1396I}).
 Due to the incorrect scale factor used for the images in the dataset, the CTRUNCATE and the FBA amplitude values do not agree.
+This is confirmed by the median percentage error between the amplitude estimates for all reflections from CTRUNCATE and the forward-backward algorithm which in this case is 272.60\%.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{1.0\textwidth}
@@ -378,16 +382,16 @@ Due to the incorrect scale factor used for the images in the dataset, the CTRUNC
     \end{subfigure}
     \caption[Amplitude estimates for two different reflections observed in the C.Esp1396I dataset using the forward-backward algorithm.]{Amplitude estimates for two different reflections observed in the C.Esp1396I dataset using the forward-backward algorithm (blue solid line).
     The estimate produced with CTRUNCATE is shown in green.
-    The estimates using the two different pipelines do not agree and this is likely to be due to the incorrect scale factor used for the forward-backward algorithm.
+    The estimates using the two different pipelines do not agree in both (a) and (b) and this is likely to be due to the incorrect scale factor used for the forward-backward algorithm.
     Reflection 8,9,4 in (b) also exhibits sharp changes in the amplitude, which are likely to be noise.}
     \label{fig:Amplitude estimates - C.Esp1396I}
 \end{figure}
 
 \subsubsection{Refinement results}
 \label{subs:Refinement results - C.Esp1396I}
-The initial amplitude estimates resulting from FBA were combined with the phases from the deposited C.Esp1396I structure (PDB code 3CLC) and refined with REFMAC \cite{murshudov2011refmac5} (20 cycles of rigid body refinement followed by 20 cycles of restrained refinement).
+To obtain an electron density map of the structure the initial amplitude estimates resulting from FBA were combined with the phases from the deposited C.Esp1396I structure (PDB code 3CLC) and refined with REFMAC \cite{murshudov2011refmac5} (20 cycles of rigid body refinement followed by 20 cycles of restrained refinement).
 The same procedure was also performed using the amplitudes calculated using the ACT pipeline.
-The resulting electron density maps contoured at the 3$\sigma$ at 2.4$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - C.Esp1396I}.
+The resulting electron density maps contoured at the 3$\sigma$ level at 2.4$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - C.Esp1396I}.
 Once again the maps generally agree structurally but the overlap is less pronounced in this structure than it was for insulin.
 This is expected because the amplitude values did not agree as well, largely due to an incorrect scale factor used for the FBA.
 \begin{figure}
@@ -413,7 +417,7 @@ This is expected because the amplitude values did not agree as well, largely due
 \end{figure}
 
 The difference map between the amplitude values calculated from the ACT and FBA pipelines, using phases from the final model after refinement with the 3CLC phases and ACT amplitudes, is shown in Figure~\ref{fig:Difference electron density map - C.Esp1396I}.
-The difference density is no longer random and in fact is located around where the model is located in the unit cell.
+The difference density is no longer random and in fact is located around the model.
 This suggests that the two different pipelines could lead to different structural models.
 \begin{figure}[ht!]
     \centering
@@ -430,7 +434,7 @@ The FBA pipeline results in 32944 reflections at the end of data reduction, wher
 Overall refinement statistics using both pipelines are shown in Table \ref{tab:Refinement statistics - C.Esp1396I}.
 The R values are slightly better for the ACT pipeline but the RMS values are lower for the FBA pipeline.
 The statistics obtained using the FBA method are much better than expected considering the scale factor used in the FBA was non-optimal.
-If the amplitude values resulting from the FBA pipeline are indeed inaccurate then it is likely that the refinement process is significantly ``mopping up" the errors that are made during the data reduction stage.
+If the amplitude values resulting from the FBA pipeline are indeed inaccurate then it is likely that the refinement process is significantly ``filtering out'' the errors that are made during the data reduction stage.
 It is also possible that the statistical improvement by manually refining the model may be more limited with the data for the FBA pipeline compared to that of the ACT pipeline.
 \begin{table}[ht!]
 	\caption[Final refinement statistics for data processed with the ACT and FBA pipelines.]{Final refinement statistics for data processed with the ACT and FBA pipelines.}

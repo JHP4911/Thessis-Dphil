@@ -4,7 +4,8 @@
 
 \subsection{Allocating observations to images}
 \label{sub:Allocating observations to images}
-Before the forward-backward algorithm can be applied, the data for each full observation have to be extracted and allocated to a single diffraction image.
+The algorithm presented was applied to the data that were collected on a crystal of bovine pancreatic insulin (Crystal ID 0259) as described in Chapter \ref{chap:Dose Decay Modelling}.
+However, before the forward-backward algorithm can be applied, the data for each full observation have to be extracted and allocated to a single diffraction image.
 An MTZ file containing the integrated data from the set of diffraction images was produced by processing the images with MOSFLM \cite{leslie2007}.
 MTZDUMP, a program from the CCP4 software suite \cite{winn2011}, was used to extract the data from the integrated MTZ file, with additional commands to obtain the space group symmetry and image (batch) information.
 A custom script was written to parse the MTZDUMP output and extract the observation information.
@@ -93,6 +94,7 @@ where the sum is over all images on which the measurements of an observation are
     \bs{D}^{im}_i = \exp(-2 |\Delta B_{i}^{diff}|\sin^2(\theta) / \lambda^2)),
 \end{equation}
 where $\Delta B_{i}^{diff}$ is the difference in B factor between image $i$ and the centroid image.
+The explicit calculation and results of the B factor analysis is given in sections \ref{subs:Scale and B factors - insulin} and \ref{subs:Scale and B factors - C.Esp1396I}.
 
 Secondly, the total fraction of each measurement is calculated for each reflection (denoted \verb+FRACTIONCALC+ in the MTZ column from MOSFLM).
 The sum of these values for partial measurements of an individual observation should be equal to 1.
