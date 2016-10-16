@@ -246,7 +246,7 @@ This occurs because RADDOSE-3D is run independently from the scaling of the diff
 As alluded to above, more zero pixel values means that the same total photon flux is distributed over a smaller area (which always contained the crystal), and hence the crystal absorbs more energy which contributes to higher doses.
 This gives the appearance that the crystal is less radiation sensitive (because the $D_{1/2}$ is higher).
 
-The other major factor in the calculation of the dose values is the computed absorption coefficients.
+The other major factor in the calculation of the dose values is the calculation of the absorption coefficients.
 In Figure \ref{figdhalf}, the blue markers correspond to simulations where the absorption coefficients were calculated with RADDOSE version 2 \cite{pait2009} (denoted RDV2 in Figure \ref{figdhalf}) which gave an absorption coefficient of 4 $\times$ 10$^{\text{-4}}\, \mu m^{\text{-1}}$ (solvent content supplied as 64\%).
 The red markers represent simulations where the absorption coefficients were calculated for an ``average protein'', H$_{\text{49.8}}$C$_{\text{31.8}}$N$_{\text{8.56}}$O$_{\text{9.54}}$S$_{\text{0.249}}$ (denoted \textit{``default''} in Figure \ref{figdhalf}).
 The absorption coefficient, assuming 50\% solvent, is 2.37 $\times 10^{\text{-4}}\, \mu m^{\text{-1}}$ (details of the calculation can be found in Holton and Frankel (2010)).
@@ -254,12 +254,12 @@ The absorption coefficient of insulin is bigger than that of the average protein
 The difference between the absorption coefficients leads to differences in calculated doses of about a factor of 2.
 \newline
 The results seem to suggest that the two factors investigated here: beam profile and absorption coefficient, are the most important for dose calculations.
-However, the differences between the profiles of the original beam image, the top hat beam and the deconvolved beam have a much less pronounced affect on the dose calculations compared to the absorption coefficient.
+However, the differences between the profiles of the original beam image, the top hat beam and the deconvoluted beam have a much less pronounced affect on the dose calculations compared to the absorption coefficient.
 For example, the percentage difference of $D_{1/2}$ between the original beam with no background (denoted Original$_{\text{NB}}$ in the figure legend of Figure \ref{figdhalf}) and the deconvolved beam with no background is 0.8\% (using coefficients calculated using RADDOSE version 2).
 This shows that deconvolution of the image will not significantly affect the dose estimate.
 This is because the differences in the pixel values are relatively small when compared to the differences one may expect if a Gaussian beam profile is compared with a tophat profile.
 \newline
-Using the threshold method, there is a difference in $D_{1/2}$ ($\approx$ 3.9\% - 6.0\%) depending on the background threshold value) values if the maximum pixel value of the background is subtracted from the image or the mean pixel value is subtracted from the image.
+Using the threshold method there is a difference in $D_{1/2}$ values ($\approx$ 3.9\% - 6.0\% depending on the background threshold value) if the maximum pixel value of the background is subtracted from the image or the mean pixel value is subtracted from the image.
 This is consistent with the observation that the higher the threshold value, the higher the $D_{1/2}$ value.
 The difference between the maximum threshold value from the 160 $\times$ 160$\, \mu m^2$ rectangle (Bkgd$_{\text{20}}$) and the mean value is 3.89\% (using RDV2 calculated absorption coefficients).
 This result demonstrates that even if the area that is considered background is the same (Figure \ref{figbackgrounds}), deciding whether to subtract the mean background pixel value or the maximum pixel value will also have a small affect on the resulting $D_{1/2}$ value.

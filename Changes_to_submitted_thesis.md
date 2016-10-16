@@ -470,68 +470,68 @@ the correlations of structure factor amplitudes derived from a small polypeptide
 > but the code would still need to be written in a more optimal manner.
 
 ### Chapter 5 - X-ray Beam Analysis
-1. **Page 196, 1st paragraph** - Add missing word "to" and missing comma. I.e. change from:
+1. ~~**Page 196, 1st paragraph** - Add missing word "to" and missing comma. I.e. change from:~~
 
 > For this reason, a module in RADDOSE-3D was implemented to allow it simulate MX experiments using experimentally measured X-ray beam profiles which can be read by the program.
 
 **to**
 > For this reason, a module in RADDOSE-3D was implemented to allow it to simulate MX experiments using experimentally measured X-ray beam profiles, which can be read by the program.
 
-2. **Page 197, 2nd paragraph** Reword sentence in paragraph because it's quite convoluted i.e. change from:
+2. ~~**Page 197, 2nd paragraph** Reword sentence in paragraph because it's quite convoluted i.e. change from:~~
 
 > Only this current profile is necessary for the beam profile measurement because RADDOSE-3D additionally requires a total flux estimate, which is distributed across the measured beam profile (a 2D array) according to the measured value at each position.
 
 **to**
 > Only this estimate of the true 2D profile of the current is necessary for the beam profile measurement. This is because RADDOSE-3D additionally requires a total flux estimate, which is distributed across the measured beam profile (a 2D array) according to the current at each spatial position.
 
-3. **Page 200, 1st paragraph** Add sentence to make clear what the goal is mathematically i.e. change from:
+3. ~~**Page 200, 1st paragraph** Add sentence to make clear what the goal is mathematically i.e. change from:~~
 
 > ...and the aperture contribution, $g(x)$. In general...
 
 **to**
 > ...and the aperture contribution, $g(x)$. Mathematically this aim can be interpreted as finding some $w(x)$ such that:
 $$
-\hat{f}(x) = [w * [f*g]](x)
+\hat{f}(x) = [w * [f*g]](x),
 $$
 >where $\hat{f}(x)$ is an estimate of $f(x)$ that minimises the mean square error.
 In general...
 
-4. **Page 200, 1st paragraph** Add sentence to make clear that multiplication in the Fourier domain is the same as convolution in the real domain i.e. change from:
+4. ~~**Page 200, 1st paragraph** Add sentence to make clear that multiplication in the Fourier domain is the same as convolution in the real domain i.e. change from:~~
 
 > Parseval’s theorem implies that minimising the mean squared error in the Fourier domain is equivalent to minimising the mean squared error in the real domain.
 
 **to**
 > Multiplication in the Fourier domain is equivalent to a convolution operation in the real domain, making clear the equivalence between equation (5.2.4) and the statement of the mathematical aim (equation ...). Furthermore, Parseval’s theorem implies that minimising the mean squared error in the Fourier domain is equivalent to minimising the mean squared error in the real domain.
 
-5. **Page 201, all equations** - These $g$ functions are not the same $g$ they should have different subscripts. I.e. change from:
+5. ~~**Page 201, all equations** - These $g$ functions are not the same $g$ they should have different subscripts. I.e. change from:~~
 
 > $g(x,y)$, $g(x)$ and $g(y)$
 
 **to**
 > $g_{2D}(x,y)$, $g_{h}(x)$ and $g_{v}(y)$
 
-6. **Page 201, paragraph below equations** - need to include comma. change from:
+6. ~~**Page 201, paragraph below equations** - need to include comma. change from:~~
 
 > then $A_x = A_y$ but due to experimental error this is rarely the case.
 
 **to**
 > then $A_x = A_y$, but due to experimental error this is rarely the case.
 
-7. **Page 216, middle of 2nd paragraph** - sentence needs refactoring. change from:
+7. ~~**Page 216, middle of 2nd paragraph** - sentence needs refactoring. change from:~~
 
 > Using the threshold method, there is a difference in $D_{1/2}$ ($\approx$ 3.9% - 6.0%) depending on the background threshold value) values if the maximum pixel value...
 
 **to**
 > Using the threshold method, there is a difference in $D_{1/2}$ values ($\approx$ 3.9% - 6.0% depending on the background threshold value) if the maximum pixel value...
 
-8. **Page 219, Figure 5.11 b** - y axis label changed from:
+8. ~~**Page 219, Figure 5.11 b** - y axis label changed from:~~
 
 > $\mu AA$
 
 **to**
 > $\mu A$  
 
-9. **Page 219, Figure 5.11 a and b** - x-axis units changed from:
+9. ~~**Page 219, Figure 5.11 a and b** - x-axis units changed from:~~
 
 > ($\mu m$)
 
