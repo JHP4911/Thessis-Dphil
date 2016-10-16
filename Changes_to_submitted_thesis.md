@@ -669,14 +669,7 @@ to
 > Glycerol on the other hand, is known to increase the noise and hence reduce the observable signal obtained from  the sample (Jeffries et al., 2015)
 
 ### Chapter 7 - Conclusions
-1. **Page 278, last paragraph** - change "suggests" to "suggest". Change from:  
-
-> ...but this work does suggests that...
-
-**to**
-> ...but this work does suggest that...
-
-2. **Page 278, last paragraph** - change "suggests" to "suggest". Change from:  
+1. ~~**Page 278, last paragraph** - change "suggests" to "suggest". Change from:  ~~
 
 > ...but this work does suggests that...
 

@@ -23,7 +23,7 @@ The various $\eta$ forms tested were:
     \item $\eta$ = RDE (Decreasing function),
     \item $\eta$ = 1 - RDE (Increasing function).
 \end{itemize}
-Inclusion of the increasing and decreasing terms did not result in a decreased variability of the relative intensity as hypothesised by Zeldin \textit{et al.}, but this work does suggests that two metrics should be considered.
+Inclusion of the increasing and decreasing terms did not result in a decreased variability of the relative intensity as hypothesised by Zeldin \textit{et al.}, but this work does suggest that two metrics should be considered.
 One metric should represent the damaged state of the crystal, which should monotonically increase with increasing X-ray exposure.
 This is typically the type of dose metric used in all radiation damage studies to date (maximum dose, which was reported by RADDOSE v1-3, average dose over the whole crystal and the DWD with $\eta$ = 1).
 The other metric would represent the diffraction quality from the crystal using a decreasing $\eta$ form to weight the DWD.
@@ -55,11 +55,11 @@ In particular, it would benefit from the development of:
 As mentioned above, the precise X-ray beam profile is a critical factor that determines the overall dose distribution in a crystal during an MX experiment.
 The RADDOSE-3D dose calculation software has the capability to use experimentally measured beam profiles to accurately calculate the dose distribution.
 Various methods for experimentally measuring the X-ray beam profiles exist, but each one requires different preprocessing before it can faithfully represent the actual beam profile.
-In this thesis, several methods for measuring beam profiles and processing the resulting data were investigated.
+In this thesis, three methods for measuring beam profiles and processing the resulting data were investigated.
 Aperture scans were performed at DLS beamline I02, where a piece of steel with a circular hole was translated across the X-ray beam, both vertically and horizontally, and measurements of the current from a diode was taken at regular intervals.
 This only gives 1D data and therefore has to be converted to a 2D beam profile.
 This was achieved by fitting a 2D Gaussian to the aperture data.
-It was found that deconvolving the resulting Gaussian profile with the aperture size did not change the overall beam profile significantly.
+It was found that deconvoluting the resulting Gaussian profile with the aperture size did not change the overall beam profile significantly.
 Another method employed to measure the beam profile at the PETRA III beamline P14, was to use a scintillator combined with an Allied Vision GC1350C CCD camera, resulting in a 2D image of the X-ray beam.
 The advantage of this method is that it is not necessary to create a 2D profile.
 The major disadvantage is that the image has background noise, which, if removed incorrectly, was shown to result in large errors in the dose calculation.
@@ -80,7 +80,7 @@ In this thesis, this framework is applied to MX, where the state of the system i
 The process and observation functions, along with their respective uncertainties (covariances), are defined as an exponential decay (temperature factor) and the product of the square of the amplitude with a scale factor, respectively.
 Applying the unscented Kalman filter (forward pass) with the unscented Rauch-Tung-Streibel smoother (backwards pass) is known as the forward-backward algorithm (FBA), which gives time resolved estimates of the amplitude values throughout the experiment.
 Therefore, it is possible to use the amplitudes at each time point for phasing and refinement to generate a set of electron density maps from a single dataset.
-The set of amplitudes estimated at the first time point were then used for the successful structure determination of insulin and the C.Esp1396I protein-DNA complex by molecular replacement.
+The set of amplitudes estimated at the first time point were then used to obtain interpretable electron density maps for insulin and the C.Esp1396I protein-DNA complex by molecular replacement, although the refinement statistics for the latter are not very good and would require manual refinement.
 The resulting statistics from using this method are comparable to the statistics that result from structure solution using programs in the current data reduction pipeline (AIMLESS and CTRUNCATE).
 In addition to producing time resolved amplitude estimates, the error estimates are also explicitly calculated in the FBA as a combination of the uncertainty in the measurement and the uncertainty in the (damage) process.
 This means that the error estimates should be more representative of the expected error, which may lead to more reliable results in experimental phasing, but this is not yet verified and still needs to be investigated.
