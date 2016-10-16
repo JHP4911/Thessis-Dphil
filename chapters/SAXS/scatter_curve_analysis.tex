@@ -40,14 +40,14 @@ A plot of the fidelity values against time and diffraction weighted dose (DWD) i
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/cmpd_plt_frame.pdf}
             \caption{}
-            \label{fig:1D scatter plot of frames 1 and 120}
+            \label{fig:Fidelity values against frame number}
     \end{subfigure}
     \\
     \begin{subfigure}[b]{1.0\textwidth}
             \centering
             \includegraphics[width=\textwidth]{figures/saxs/cmpd_plt_dose.pdf}
             \caption{}
-            \label{fig:Pairwise correlation frames 1 and 120}
+            \label{fig:Fidelity values against dose}
     \end{subfigure}
     \caption[Fidelity value as a function of time and dose.]{(a) Fidelity value as a function of time
     (b) Fidelity value as a function of dose.
@@ -87,7 +87,7 @@ To perform this analysis it was necessary to calculate the curvature, $\kappa$, 
     \kappa(x) = \f{\f{\mathrm{d}^2F}{\mathrm{d}x^2}}{\left( 1 + \f{\mathrm{d}F}{\mathrm{d}x}\right)^{3/2}}.
     \label{eq:Curvature}
 \end{equation}
-This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function `fminbnd' to find the minimum value of $-\kappa(x)$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This is a common procedure for optimisation problems.
+This equation was calculated symbolically using the symbolic math toolbox in MATLAB. The maximum of this function was found using the MATLAB function \verb+fminbnd+ to find the minimum value of $-\kappa(x)$ i.e. the problem was converted from trying to find the maximum into a problem in which the same solution is found by finding the minimum. This is a common procedure for optimisation problems.
 
 An implicit assumption with the methods described is that damage is entirely progressive and subsequent frames beyond the threshold are all significantly dissimilar.
 Mathematically this assumption manifests itself as logistic functions representing the fidelity as a monotonically increasing function of the dose.
@@ -113,7 +113,7 @@ Given that the intensity values are assumed to come from a normal distribution \
 Due to the symmetry of the normal distribution, the probability of the difference of the data being either positive or negative is 0.5.
 The pairwise CorMaps between selected frames from the experiment are shown in Figure~\ref{fig:Pairwise correlation plots}.
 Notice that for similar frames 1 and 2 (Figure~\ref{fig:1D scatter plot of frames 1 and 2}), the pairwise CorMap resembles a randomised lattice (Figure~\ref{fig:Pairwise correlation frames 1 and 2}) as expected for identical data.
-Conversely, for dissimilar frames 1 and 120 (Figure~\ref{fig:1D scatter plot of frames 1 and 120}), the pairwise CorMap shows large regions of white and black patches, suggesting that the frames are systematically different.
+Conversely, for dissimilar frames 1 and 120 (Figure~\ref{fig:1D scatter plot of frames 1 and 120}), the pairwise CorMap shows large regions of white and black patches (Figure \ref{fig:Pairwise correlation frames 1 and 120}), suggesting that the frames are systematically different.
 DATCMP performs quantitative analysis that formalises the similarity conclusions that can be drawn from these CorMaps.
 \begin{figure}
     \centering

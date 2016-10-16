@@ -25,7 +25,7 @@ It is clear from these results that adding a radioprotectant allows useable data
 
 Similar conclusions are obtained from Figure~\ref{fig:Scavenger plot - maximum curvature} where the dose at which maximum curvature is reached is plotted for each radioprotectant.
 The results obtained using this metric give an identical relative efficacy ordering to the order seen when using the other metric. i.e. ethylene glycol is most effective, followed by the glycerol/sodium nitrate mixture etc.
-The main difference between the metrics is that
+The main difference between the metrics is that the doses at which the thresholds are determined using the maximum curvature method are consistently lower than those found using the high value threshold.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{1.0\textwidth}
@@ -112,14 +112,14 @@ If instead frames were compared to a different `reference frame' would the thres
 The results shown in Figure~\ref{fig:First n diff frames - DTT} address this question, where the analysis was performed for the first repeat of GI sample with DTT added at 10$\,$mM concentration.
 Along the $y$-axis are the frames which would be considered as the merging limit if the corresponding frame on the $x$-axis was chosen as the `reference frame'.
 It can be seen that the radiation threshold value obtained using the \textit{CMD} metric is highly dependent on the reference frame.
-This will greatly affect the conclusions that could be drawn from the analyses.
+This will greatly affect the conclusions that could be drawn from the analysis.
 From Figure~\ref{fig:First n diff frames - DTT}, if the reference frame is 1, as is the case for the main analysis, then the frame at which radiation damage is considered significant is frame 8 (DWD = 4.32$\,$kGy).
 However, if the reference frame was frame 7, then the threshold frame would be number 57 (DWD = 32.50\,kGy).
 This value is closer to the value obtained from the \textit{BsxCuBE} metric for that run (DWD = 46.88\,kGy).
 \begin{figure}
     \centering
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_first_n_plot.pdf}
-    \caption[Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.]{Expt 2: Radiation damage threshold value against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
+    \caption[Radiation damage threshold frame against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.]{Expt 2: Radiation damage threshold frame against reference frame ($m$ = 3) for the first repeat with DTT as the added radioprotectant at a concentration of 10\,mM.}
     \label{fig:First n diff frames - DTT}
 \end{figure}
 
@@ -137,7 +137,7 @@ It may be the case that some of these states are functionally important.
     \includegraphics[width=1.0\textwidth]{figures/saxs/dtt_heatmap.pdf}
     \caption[Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added]{Expt 2: Heat map of all possible pairwise frame comparisons for the first repeat with 10\,mM concentration DTT added.
     The $y$-axis represents the reference frame to which all other frames on the $x$-axis are compared.
-    Blue - $P_{adj}(>C)$ = 1. Teal - 0.01 $\le P_{adj}(>C)$ < 1. Orange - $P_{adj}(>C)$ < 0.01.}
+    Blue - $P_{adj}(>C)$ = 1. Green - 0.01 $\le P_{adj}(>C)$ < 1. Orange - $P_{adj}(>C)$ < 0.01.}
     \label{fig:heatmap - DTT}
 \end{figure}
 
@@ -200,7 +200,7 @@ Significant concentration dependence can be observed for several radioprotectant
 In particular, ascorbate, glycerol, and sodium nitrate all exhibit a strong positive concentration dependence i.e. the higher the concentration, the better the protection ability.
 DTT exhibits the opposite behaviour.
 At low concentrations DTT exhibits the highest ratio but this decreases at the higher concentrations.
-Sucrose, TEMPO and Trehalose show a very small positive dependence but even at the highest concentration (10\,mM) the RD onset ratio is less than 2.
+Sucrose, TEMPO and trehalose show a very small positive dependence but even at the highest concentration (10\,mM) the RD onset ratio is less than 2.
 This suggests that these radioprotectants are not very efficient at increasing the dose tolerance of the sample.
 The RD onset ratio for ethylene glycol decreases as the concentration increases from 1\,mM to 5\,mM, but then there is a large increase at 10$\,$mM.
 Thus the protection ability of ethylene glycol is not a simple monotonic function of the concentration.
@@ -219,11 +219,11 @@ However, at higher concentrations these metrics disagree.
 At 5$\,$mM and 10$\,$mM the \textit{BsxCuBE} metric suggests that the most effective radioprotectant is still DTT.
 On the otherhand, the \textit{CMD} metric suggests that the most effective radioprotectant is glycerol.
 Furthermore, it also suggests that DTT is the least effective radioprotectant.
-It is important to take into account that using a different reference frame to perform pairwise comparisons can result in different results with the \textit{CMD} metric as shown in Figures~\ref{fig:First n diff frames - DTT} and \ref{fig:heatmap - DTT}.
+It is important to take into account that using a different reference frame to perform pairwise comparisons can result in different conclusions with the \textit{CMD} metric as shown in Figures~\ref{fig:First n diff frames - DTT} and \ref{fig:heatmap - DTT}.
 
 The \textit{CMD} metric result also disagrees with the results from Expt 1 where ethylene glycol was found to be the most effective radioprotectant at 5$\,$mM.
 Furthermore, in Expt 1 ascorbate was the one of the least effective radioprotectants.
-It only outperformed sucrose and Trehalose.
+It only outperformed sucrose and trehalose.
 Whereas in Expt 2, ascorbate was the second most effective radioprotectant when used at a 5$\,$mM concentration.
 These results could be caused by the fact that the experimental parameters were not as well characterised in the first experiment as opposed to the second.
 

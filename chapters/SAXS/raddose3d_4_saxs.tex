@@ -33,7 +33,7 @@ Output files giving information about the crystal state are updated after the cr
 
 At an abstract level, the crystal is defined by several properties that are typically associated with crystals in MX.
 These include the unit cell volume and the number of molecules in the unit cell.
-RADDOSE-3D uses this information to calculate the composition of the crystal so that an absorption coefficient can be calculated.
+RADDOSE-3D uses this information to determine the composition of the crystal so that an absorption coefficient can be calculated.
 However, there is no reason that the composition has to be defined by information specific to the crystal, in which case it is more appropriate to refer to what has been termed the ``crystal'' so far as the ``sample''.
 If the sample is a liquid, as is the case in SAXS experiments, then the sample composition should be determined with different inputs.
 The modular design of RADDOSE-3D enables this type of extension into be easily incorporated to the existing functionality.
@@ -41,8 +41,8 @@ The modular design of RADDOSE-3D enables this type of extension into be easily i
 \subsection{Cylindrical sample geometry}
 \label{sub:Cylindrical sample geometry}
 In a typical SAXS experiment, liquid samples are generally contained in, or flowed through, a cylindrical capillary during the X-ray exposure.
-Therefore it is necessary for RADDOSE-3D to be able model cylindrical sample shapes.
-RADDOSE-3D was extended to handle polygonal shapes \cite{bury2015radiation}, which meant that because any 3D shape can be modelled by a series of polygons, it was already capable of modelling cylindrical shapes.
+Therefore it is necessary for RADDOSE-3D to be able to model cylindrical sample shapes.
+RADDOSE-3D had already been extended to handle polygonal shapes \cite{bury2015radiation}, which meant that it was already capable of modelling cylindrical shapes, since any 3D shape can be modelled by a series of polygons,
 However, the implementation for polyhedral crystals requires the user to define the sample geometry in a non-user friendly manner.
 A file specifying the geometry of the shape using a set of vertex positions, and their connectivity is required.
 This is much more complex than defining the diameter of the circular cross section and the length/height of a cylinder.
@@ -50,7 +50,7 @@ Therefore a module was written that accepts a diameter and height as input and c
 \begin{figure}
     \centering
     \includegraphics[width=1\textwidth]{figures/saxs/cylinder_implementation.pdf}
-    \caption[Implementation of the cylindrical sample geometry in RADDOSE-3D.]{Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$ and height $h$. (A) evenly spaced points around a circle are generated given the radius $r = d/2$ of the circular cross-section. RADDOSE-3D defaults to 32 points. (B) In three dimensions the points represent the circles at each end of the cylinder at a distance of $h/2$ from the origin located at the centre of the cylinder. The connectivity of these vertices is hard-coded into the RADDOSE-3D source code.}
+    \caption[Implementation of the cylindrical sample geometry in RADDOSE-3D.]{Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$, and height, $h$. (A) evenly spaced points around a circle are generated given the radius $r = d/2$ of the circular cross-section. RADDOSE-3D defaults to 32 points. (B) In three dimensions the points represent the circles at each end of the cylinder at a distance of $h/2$ from the origin located at the centre of the cylinder. The connectivity of these vertices is hard-coded into the RADDOSE-3D source code.}
     \label{fig:Cylindrical implementation}
 \end{figure}
 
@@ -180,7 +180,7 @@ The sample itself is assumed static, moving as a rigid body when rotated or tran
 This greatly reduces the computational cost when compared to the possibility of modelling the exact fluid dynamics.
 The assumption that the capillary volume is completely filled is generally valid since this is usually the case during an experiment.
 The static assumption is not always valid, especially when the sample is flowed through the capillary.
-Hopkins and Thorne calculated that for typical experimental parameters (capillary diameters: 1.5-2$\,$mm, flow velocities: 0.5-15$\,$mm$\,$s$^{\text{-1}}$) the Reynolds numbers\footnote{The Reynolds number is defined as the ratio of inertial forces to viscous forces and is a quantities used in fluid mechanics to determine properties of fluid flow \cite{purcell1977life}.} are in the range 1-25 implying a laminar flow regime \cite{hopkins2016quantifying}.
+Hopkins and Thorne calculated that for typical experimental parameters (capillary diameters: 1.5-2$\,$mm, flow velocities: 0.5-15$\,$mm$\,$s$^{\text{-1}}$) the Reynolds numbers\footnote{The Reynolds number is defined as the ratio of inertial forces to viscous forces and is a quantity used in fluid mechanics to determine properties of fluid flow \cite{purcell1977life}.} are in the range 1-25 implying a laminar flow regime \cite{hopkins2016quantifying}.
 In this case the velocity profile is expected to exhibit the quadratic Poiseuille flow profile, which arises from the axial symmetry and no-slip boundary assumptions (the velocity at the centre of the tube moves the fastest while the velocity at the boundary is equal to zero provided the capillary is also stationary).
 Furthermore, Hopkins and Thorne also calculated that the residence times of the sample in the beam were too short for any appreciable radial diffusive mixing, hence the flow profile results in radius-dependent residence times in the X-ray beam.
 Therefore the static assumption here will give misleading dose values if calculated for experiments where the sample is flowed through the beam.
@@ -207,6 +207,6 @@ Figure~\ref{fig:SAXS cylinder rotated} is the final dose state of a glucose isom
     \caption[RADDOSE-3D dose contour plot of a cylindrical SAXS sample.]{Final dose state of a glucose isomerase sample in an experiment where the sample was rotated 180$^{\circ}$ in a 700\,$\mu m$ $\times$ 700\,$\mu m $ top-hat profile beam with a beam flux of 1.51 $\times$ 10$^{\text{13}}\,$ph/s and an incident energy of 12.1\,keV for a total exposure time of 200 seconds.
     The capillary was treated as completely transparent to the X-rays so there was no attenuation.
     The dose state is only calculated and shown for the sample, not the capillary.
-    The contours correspond to dose iso-surfaces: light blue = 0.1\,MGy, dark blue = 1.5\,MGy and red = 2\,MGy.}
+    The contours correspond to dose iso-surfaces: light blue = 0.1\,MGy, dark blue = 1.5\,MGy and purple = 2\,MGy.}
     \label{fig:SAXS cylinder rotated}
 \end{figure}

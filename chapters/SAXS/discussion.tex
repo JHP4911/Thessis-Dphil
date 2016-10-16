@@ -22,7 +22,7 @@ Some of the RADDOSE-3D code was refactored so that the library of residue inform
 RADDOSE-3D now implements a \textit{container} class which defines the material that houses the sample.
 The attenuation of the beam by the container is considered for all experiments.
 For SAXS experiments this is usually a quartz capillary, whereas for MX it is assumed to be a container that is \textit{transparent} to X-rays.
-However, the user can define any container for any experiment, SAXS or MX giving greater flexibility.
+However, the user can define any container for any experiment, SAXS or MX, giving greater flexibility.
 An immediate application is for \textit{in situ} RT MX data collection.
 
 As mentioned in section \ref{sub:RADDOSE-3D Architecture}, RADDOSE-3D has been written in a very modular style so that extensions to existing functionality can be easily incorporated.
@@ -38,13 +38,13 @@ In order to implement this method of data collection in RADDOSE-3D, a sufficient
 Care would be needed to avoid the case where the time discretisation is so small that the computational time is unnecessarily long.
 
 Additionally diffusive turnover, as described in section \ref{sub:Model considerations}, could be incorporated into the dose calculations.
-However, beams sizes in SAXS experiments are typically quite large and exposure times are not long enough for the diffusive turnover to cause significant effect (500$\,\mu m$ $\times$ 250$\,\mu m$ with maximum exposure time 141 seconds (RT) \cite{jeffries2015limiting}, 220$\,\mu m$ $\times$ 190$\,\mu m$ with 60 seconds exposures (100$\,$K) \cite{meisburger2013breaking}).
+However, beam sizes in SAXS experiments are typically quite large and exposure times are not long enough for the diffusive turnover to cause significant effect (500$\,\mu m$ $\times$ 250$\,\mu m$ with maximum exposure time 141 seconds (RT) \cite{jeffries2015limiting}, 220$\,\mu m$ $\times$ 190$\,\mu m$ with 60 seconds exposures (100$\,$K) \cite{meisburger2013breaking}).
 Therefore this would not be a high priority extension.
 
 The formal tests for the SAXS extensions still need to be written before the code is officially released.
 These include testing that the cylindrical implementation is stable for different inputs and is aligned with the axial length perpendicular to the beam by default.
 It is also necessary to check that the absorption coefficient calculation works for different types of elemental and mixture compositions.
-However, the code is currently public on the RADDOSE-3D Github repository in the branch named ``SAXS" \url{https://github.com/GarmanGroup/RADDOSE-3D}.
+However, the code is currently public on the RADDOSE-3D Github repository in the branch named ``SAXS'' \url{https://github.com/GarmanGroup/RADDOSE-3D}.
 Alpha versions of the SAXS extensions have already been distributed to Dr. Edward Snell (Hauptman-Woodward Institute, Buffalo) and Dr. Adam Round (ESRF, Grenoble) for user testing.
 
 \subsubsection{Radioprotectant analysis}
@@ -87,7 +87,7 @@ DTT was found to be the most effective radioprotectant at the lower concentratio
 
 One aspect that was not considered in the analysis is how the radioprotectants affect the environment of the sample.
 For example, it is known that DTT reduces disulphide bonds and undergoes oxidation.
-Glycerol on the other hand is known to reduce the scattering intensities of the sample \cite{jeffries2015limiting}.
+Glycerol on the other hand, is known to increase the noise and hence reduce the observable signal obtained from  the sample \cite{jeffries2015limiting}.
 These are considerations that the experimenter must also take into account when deciding on which radioprotectant compound to use.
 
 The heatmap shown in Figure~\ref{fig:heatmap - DTT} displays some exciting possibilities for data analysis.

@@ -75,7 +75,7 @@
 
 > using the Laue conditions.
 
-after equation 1.1.17.
+~~after equation 1.1.17.~~
 
 12. ~~**page 37, last paragraph** - add that we are extracting the amplitudes of each reflection in the dataset. I.e. change from:~~
 
@@ -88,7 +88,7 @@ after equation 1.1.17.
 
 >programs
 
-at the end of the 3rd sentence.  
+~~at the end of the 3rd sentence.~~
 
 14. ~~**Page 38, 1st paragraph** - CCP4 needs to be put in uppercase. I.e. change from:~~
 
@@ -540,93 +540,93 @@ to
 > ($mm$)
 
 ### Chapter 6 - Methods to Assess Radiation Damage in SAXS
-1. **Page 227, section 6.2.1, 2nd paragraph** - Repeated use of "calculate" in a sentence. Change from:  
+1. ~~**Page 227, section 6.2.1, 2nd paragraph** - Repeated use of "calculate" in a sentence. Change from:~~
 
 > RADDOSE-3D uses this information to calculate the composition of the crystal so that an absorption coefficient can be calculated.
 
 **to**
 > RADDOSE-3D uses this information to determine the composition of the crystal so that an absorption coefficient can be calculated.
 
-2. **Page 227, section 6.2.2, 2nd sentence** - Add missing word "to". Change from:  
+2. ~~**Page 227, section 6.2.2, 2nd sentence** - Add missing word "to". Change from:~~
 
 > Therefore it is necessary for RADDOSE-3D to be able model cylindrical sample shapes.
 
 **to**
 > Therefore it is necessary for RADDOSE-3D to be able to model cylindrical sample shapes.
 
-3. **Page 227, section 6.2.2, last sentence** - reword sentence. Change from:  
+3. ~~**Page 227, section 6.2.2, last sentence** - reword sentence. Change from:~~
 
 > RADDOSE-3D was extended to handle polygonal shapes (Bury et al., 2015), which meant that because any 3D shape can be modelled by a series of polygons, it was already capable of modelling cylindrical shapes.
 
 **to**
 > RADDOSE-3D had already been extended to handle polygonal shapes (Bury et al., 2015), which meant that it was already capable of modelling cylindrical shapes, since any 3D shape can be modelled by a series of polygons,
 
-4. **Page 229, Figure 6.2, caption** - missing commas. Change from:  
+4. ~~**Page 229, Figure 6.2, caption** - missing commas. Change from:~~
 
 > Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$ and height $h$.
 
 **to**
 > Implementation of the cylindrical sample geometry in RADDOSE-3D given user defined diameter, $d$, and height, $h$.
 
-5. **Page 235, Footnote** - incorrect word "quantities" needs changing to "quantity". I.e. Change from:  
+5. ~~**Page 235, Footnote** - incorrect word "quantities" needs changing to "quantity". I.e. Change from:~~
 
 > to viscous forces and is a quantities used in
 
 **to**
 > to viscous forces and is a quantity used in
 
-6. **Page 236, Figure 6.7, caption** - Wrong colour. I.e. Change from:  
+6. ~~**Page 236, Figure 6.7, caption** - Wrong colour. I.e. Change from:~~
 
 > red = 2MGy
 
 **to**
 > purple = 2MGy
 
-7. **Page 237, 1st paragraph** - Add month which 1st SAXS experiments were performed. I.e. Change from:  
+7. ~~**Page 237, 1st paragraph** - Add month which 1st SAXS experiments were performed. I.e. Change from:~~
 
 > carried out in 2014 whereas
 
 **to**
 > carried out in Oct 2014 whereas
 
-8. **Page 245, 1st paragraph after equation (6.4.2)** - change 'fminbnd' to verbatim font for consistency.
+8. ~~**Page 245, 1st paragraph after equation (6.4.2)** - change 'fminbnd' to verbatim font for consistency.~~
 
-9. **Page 246, last paragraph, penultimate sentence** - Add reference to CorMap figure. I.e. Change from:  
+9. ~~**Page 246, last paragraph, penultimate sentence** - Add reference to CorMap figure. I.e. Change from:~~
 
 > the pairwise CorMap shows large regions of white and black patches, suggesting
 
 **to**
 > the pairwise CorMap shows large regions of white and black patches (Figure 6.12d), suggesting
 
-10. **Page 260, last sentence** - ***Unfinished sentence.*** Add conclusive statement. I.e. change from:  
+10. ~~**Page 260, last sentence** - ***Unfinished sentence.*** Add conclusive statement. I.e. change from:~~
 
 > The main difference between the metrics is that
 
 **to**
 > The main difference between the metrics is that the doses at which the thresholds are determined using the maximum curvature method are consistently lower than those found using the high value threshold.
 
-11. **Page 265, Figure 6.19, caption** - incorrect reference to the meaning of the y-axis label. I.e. change from:  
+11. ~~**Page 265, Figure 6.19, caption** - incorrect reference to the meaning of the y-axis label. I.e. change from:~~
 
 > Radiation damage threshold value against reference frame
 
 **to**
 > Radiation damage threshold frame against reference frame
 
-12. **Page 265, paragraph** - change "analyses" to "analysis". I.e. change from:  
+12. ~~**Page 265, paragraph** - change "analyses" to "analysis". I.e. change from:~~
 
 > This will greatly affect the conclusions that could be drawn from the analyses.
 
 **to**
 > This will greatly affect the conclusions that could be drawn from the analysis.
 
-13. **Page 266, Figure 6.20, caption** - Change from  
+13. ~~**Page 266, Figure 6.20, caption** - Change from~~
 
 > "Teal"
 
 **to**
 > "Green"
 
-14. **Pages 267 and 271** - "Trehalose" spelt with capital "T", it shouldn't be. I.e. Change from
+14. ~~**Pages 267 and 271** - "Trehalose" spelt with capital "T", it shouldn't be. I.e. Change from~~
 
 > Trehalose
 
@@ -634,7 +634,7 @@ to
 
 > trehalose
 
-15. **Page 270, last line** - change repeated use of "repeat" in sentence. I.e. Change from:
+15. ~~**Page 270, last line** - change repeated use of "results" in sentence. I.e. Change from:~~
 
 > ...perform pairwise comparisons can result in different results with the CMD metric as shown...
 
@@ -642,9 +642,9 @@ to
 
 > ...perform pairwise comparisons can result in different conclusions with the CMD metric as shown...
 
-16. **Figure 6.18 and 6.21** - ***I've used old figures. I need to use the corrected ones.***
+16. ~~**Figure 6.18 and 6.21** - ***I've used old figures. I need to use the corrected ones.***~~
 
-17. **Page 272, 2nd paragraph** - add missing comma. I.e. Change from:
+17. ~~**Page 272, 2nd paragraph** - add missing comma. I.e. Change from:~~
 
 > However, the user can define any container for any experiment, SAXS or MX giving greater flexibility.
 
@@ -652,7 +652,7 @@ to
 
 > However, the user can define any container for any experiment, SAXS or MX, giving greater flexibility.
 
-18. **Page 273, 1st paragraph** - "beams" should be changed to "beam". I.e. Change from:
+18. ~~**Page 273, 1st paragraph** - "beams" should be changed to "beam". I.e. Change from:~~
 
 > However, beams sizes in SAXS experiments...
 
@@ -660,7 +660,7 @@ to
 
 > However, beam sizes in SAXS experiments
 
-19. **Page 275, 2nd paragraph** - glycerol doesn't reduce scattering but increases noise. I.e. Change from:
+19. ~~**Page 275, 2nd paragraph** - glycerol doesn't reduce scattering but increases noise. I.e. Change from:~~
 
 > Glycerol on the other hand is known to reduce the scattering intensities of the sample (Jeffries et al., 2015)
 
