@@ -108,14 +108,15 @@ Other checks were also performed to make sure that the resulting fits and zero-d
 \end{figure}
 
 All the above checks are made to ensure that the model fit is representative of the data.
-However, the zero-dose values are not obtained from these fits (i.e. the zero dose value of the blue line in Figures~\ref{fig:Data Overfitting to few data points - Extrapolation method}, \ref{fig:Bad correlation plots - Extrapolation method} and \ref{fig:Bad Extrapolations, violated checks - Extrapolation method}).
-Instead, the zero dose value is obtained separately for each reflection to preserve the spread of the data for rescaling.
+However, the zero-dose values are not obtained from these fits (i.e. the zero dose value of the blue line in Figures~\ref{fig:Data Overfitting to few data points - Extrapolation method}, \ref{fig:Bad correlation plots - Extrapolation method} and \ref{fig:Bad Extrapolations, violated checks - Extrapolation method} is not used).
+Instead, the zero dose value is obtained separately for each observation to preserve the spread of the data for rescaling.
 This is exactly the same method used by Diederichs \textit{et al.} \cite{diederichs2003}.
-To obtain the zero-dose estimate for each observation, ($I(0)$), $K_{\bs{h}}$ in equation \ref{eq:Extrapolation regression function} is rearranged to get
+To obtain the zero-dose estimate for each observation, $K^{obs}_{\bs{h}} = I_{obs}(0)$, equation \ref{eq:Extrapolation regression function} is rearranged to get
 \begin{equation}
-    K_{\bs{h}} = \exp\left[\log(I_{obs}(D_{obs})) + A^2_{\bs{h}}D^2_{obs} + B_{\bs{h}} D_{obs} h/2\right].
+    K^{obs}_{\bs{h}} = \exp\left[\log(I_{obs}(D_{obs})) + A^2_{\bs{h}}D^2_{obs} + B_{\bs{h}} D_{obs} h/2\right],
     \label{eq:Zero-dose extrapolated intensity for each reflection observation}
 \end{equation}
+where the values for $A_{\bs{h}}$ and $B_{\bs{h}}$ are as determined from the regression fit.
 
 Although the zero-dose observations are estimated using regression analysis, the standard deviations are not dealt with by this method.
 The standard deviation is computed as
