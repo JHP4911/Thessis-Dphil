@@ -50,7 +50,7 @@
             (b) A single unit cell with axes $\bs{a}, \bs{b}$ and $\bs{c}$, with angles between them $\alpha, \beta$ and $\gamma$. \cite{drenth2012}}
     		\label{fig:Introduction-Unit Cells}
         \end{figure}
-        If $\bs{a}, \bs{b}, \bs{c}$ are viewed as directional vectors (vectors will be generally represented by lowercase bold letters {$\bs{a}, \bs{b}, \bs{c}$}) instead of physical unit cell lengths, and only integer multiples of them are considered, then the resulting set of points is referred to as a (Bravais) lattice. Mathematically this is equivalent to:
+        If $\bs{a}, \bs{b}, \bs{c}$ are viewed as directional vectors (vectors will be generally represented by lowercase bold letters {$\bs{a}, \bs{b}, \bs{c}$}) instead of physical unit cell lengths, and only integer multiples of them are considered, then the resulting set of points is referred to as a (3D Bravais) lattice. Mathematically this is equivalent to:
         \begin{equation}
             \{n_1 \bs{a} + n_2 \bs{b} + n_3 \bs{c}\ |\ n_1, n_2, n_3 \in \mathbb{N} \},
             \label{eq:Bravais Lattice}
@@ -58,7 +58,10 @@
         where $\mathbb{N}$ denotes the set of natural numbers $\{$ 0, 1, 2, 3,$\ldots \}$ (Note: sometimes the set of natural numbers is defined as excluding 0 but here it is included).
         The terms `crystal' and `lattice' are sometimes used interchangeably because they are very closely related.
         However, the distinction between the physical crystal and the hypothetical lattice is made clear by noticing that the set defined in equation \ref{eq:Bravais Lattice} implies that the array of lattice points is infinite, whereas the physical crystal is not.
-        Despite this distinction, the properties of lattices are applicable to crystals.
+        Despite this distinction, the properties of lattices are applicable to crystals. In particular, the electron density, $\rho$, at a given point in the crystal, $\bs{r}$, is assumed to be invariant by a translation of a lattice vector, $\bs{t}$ (a lattice vector is any linear combination of unit lattice vectors $\bs{a}, \bs{b}, \bs{c}$). Explicitly this is
+        \begin{equation}
+            \rho(\bs{r}) = \rho(\bs{r} + \bs{t}), \quad \{\bs{t} =  m_1\bs{a} + m_2\bs{b} + m_3\bs{c}\ |\ m_1, m_2, m_3 \in \mathbb{N}\}.
+        \end{equation}
 
         There are different types of lattices which are defined by their lattice (axial) system and their types (centerings) (examples given in Figure~\ref{fig:2D Bravais lattices}).
         In three dimensions there are 7 lattice systems (cubic, tetragonal, orthorhombic, monoclinic, triclinic, hexagonal rhombohedral), and 5 crystal centering types (primitive (P), base-centered (A, B, C), face-centered (F), Body-centered (I), Rhombohedrally-centered (R )), and these combine to make the set of 14 Bravais Lattices.

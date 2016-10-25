@@ -86,14 +86,21 @@ This may require iterative feedback between the amplitude values and the scale a
 
 Ultimately, the scaling procedure would benefit from utilising the methods that are currently implemented in software programs such as AIMLESS and XSCALE rather than reinventing the wheel.
 These are very mature algorithms that reflect the current knowledge and best practice in scaling.
-Therefore an immediate improvement would be to run AIMLESS and output unmerged, scaled intensity values with B factor correction turned off.
-Thus the scale factor can be assumed to take the value 1 for every image and the FBA would only then be required to track the resulting changes in the crystal state.
+Therefore an immediate improvement would be to run AIMLESS and output unmerged, scaled intensity values.
+The resulting B and scale factors can then be used to construct prior distributions on these parameter values.
+However, it is the amplitude values that are ultimately of interest, so in this respect, the B and scale parameters can be treated as nuisance variables.
+This means that marginalisation (integrating out the variables) can be carried out to obtain the most likely distribution for the amplitudes given the information that has already been obtained.
 The other advantages of doing this are that the current method implemented to extract reflection intensities (described in section \ref{sec:Extraction and treatment of reflection intensity data}) would effectively be carried out by AIMLESS.
 Additionally AIMLESS incorporates an outlier rejection algorithm so another one would not necessarily have to be written for the FBA.
 In the case where AIMLESS is used to scale the data, the FBA algorithm could be used simply as a truncation algorithm giving dose resolved amplitude estimates with sensible error estimates for all reflections.
 
 One of the assumptions that was made in deriving the process function is that the changes in the structure factor amplitude resulting from the average coordinate error could be absorbed into the temperature factor term.
 This assumption may not hold and investigation into the atomic coordinate error distributions should also be carried out to determine the true effect of it.
+
+An important step in establishing the robustness of this method was applying the FBA to track the behaviour of a simulated reflection.
+This allowed an understanding of how the algorithm performed with various amplitude changing behaviours.
+However, before applying the FBA method on real protein crystal data, it should be tested on a simulated dataset with a program like MFLSOM \cite{holton2014r}.
+This would be beneficial because it is possible to manually vary the extent of the error in the data, which would be crucial for determining which parts of the FBA algorithm need to be tweaked so that it would perform better, and also determine its limitations.
 
 To extend the use of the algorithm, the FBA could be used to merge data from several crystals.
 First, pairwise cross-covariance matrices between sets of amplitude values resulting from applying the FBA to several different crystals should be calculated.

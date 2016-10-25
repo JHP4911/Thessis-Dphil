@@ -70,6 +70,8 @@ The initial value found during the smoothing is also closer to the true value.
 The second forward-backward pass shows the same characteristics, whereby the smoother gives a smaller uncertainty estimate and smoothes the values from the filtering pass (Figures~\ref{fig:UKF simulation results - cycle 2 - good} and \ref{fig:URTSS simulation results - cycle 2 - good}).
 After 10 forward-backward cycles the smoothed estimates are very close to the true values (Figure~\ref{fig:URTSS simulation results - cycle 10 - good}).
 Importantly the uncertainty values are smallest at the points where the observations are made, as expected.
+Conversely, the uncertainty is largest at the points furthest away from the observations.
+This is because the uncertainty in the amplitude values propagates when the data are not observed.
 
 The log likelihoods for the 10 cycles, calculated using the natural logarithm of equation \ref{eq:FBA likelihood function}, were also computed and are shown in Figure~\ref{fig:Simulation Log likelihood - good}.
 \begin{figure}[ht!]

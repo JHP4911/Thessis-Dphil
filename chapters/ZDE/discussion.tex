@@ -55,6 +55,8 @@ However, there is no apparent evidence to support this assumption, so it may not
 Secondly, the parameter values $A$ and $B$ in the equation \ref{eq:Fraction of scale factor to be applied - Extrapolation method} are not guaranteed to be optimal.
 They were chosen by visual inspection of the behaviour of a limited set of observations and therefore were not rigorously determined.
 
+The current method calculates the distribution parameter for the prior distribution using information obtained by spherically averaging the zero-dose extrapolated values. This should work fine when the data are isotropic, but could result in large errors when the data are anisotropic. A method that accounts for any potential anisotropy in the data is necessary to reduce these errors.
+
 Furthermore, there are improvements that could be made to the regression based extrapolation.
 It was observed that a ``bad'' correlation between the fitted model and the data was simply due to noise.
 This implies that the correlation coefficient check may be too stringent, and in fact some reflections may be rejected despite the possibility that the model would have given a reasonable extrapolated zero-dose intensity.

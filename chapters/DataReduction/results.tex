@@ -136,7 +136,7 @@ To prevent this problem, restraints should be imposed during the scaling procedu
 It should be noted that not all sharp changes in amplitudes relate to noise/incorrect processing.
 Mechanical or chemical changes of the structure can occur within a few seconds \cite{allan2012}.
 
-Another undesirable feature of the forward-backward algorithm is the fact that the initial amplitude estimate is solely influenced by the amplitude estimate at the point where the observation is made.
+Another undesirable feature of the forward-backward algorithm is the fact that the initial amplitude estimate is solely influenced by the amplitude estimate at the point where the first observation is made.
 This effect is prominent in Figures~\ref{fig:Amplitude estimates ref 0,37,11 - insulin} and \ref{fig:Amplitude estimates ref 0,49,27 - insulin}.
 Thus the initial amplitude estimate is not influenced by the multiplicity and hence erroneous estimates are more likely to arise if the first observation of a reflection is an outlier.
 This can be overcome by performing the forward-backward algorithm on each observation separately and merging the entire amplitude curves for equivalent reflections.
@@ -182,26 +182,26 @@ This should ensure that the (possibly non-linear) behaviour of the reflection sh
 
 \subsubsection{Refinement results}
 \label{subs:Refinement results - insulin}
-To obtain an electron density map of the structure the initial amplitude estimates resulting from the forward-backward algorithm (FBA) were combined with the phases from a deposited insulin structure (PDB code 2BN3) and refined with REFMAC \cite{murshudov2011refmac5} (10 cycles of rigid body refinement followed by 10 cycles of restrained refinement).
+To obtain an electron density map of the structure the initial amplitude estimates resulting from the forward-backward algorithm (FBA) were used along with the deposited insulin model (PDB code 2BN3) and refined with REFMAC \cite{murshudov2011refmac5} (10 cycles of rigid body refinement followed by 10 cycles of restrained refinement).
 The same refinement procedure was performed with data processed using AIMLESS \cite{evans2013} and CTRUNCATE (ACT pipeline) \cite{winn2011} i.e. no processing with the forward-backward algorithm.
-The resulting electron density maps contoured at the 3$\sigma$ level (arbitrary choice of $\sigma$ level) at 1.38$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - insulin}.
+The resulting electron density maps contoured at the 1$\sigma$ level (arbitrary choice of $\sigma$ level) at 1.38$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - insulin}.
 The maps are practically identical for the two different data reduction pipelines, which is the case for the rest of the structure.
 \begin{figure}
 	\centering
     \begin{subfigure}[b]{1.0\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/datared/tyrosine_insulin.png}
+        \includegraphics[width=\textwidth]{figures/datared/tyrosine_insulin_1sig.png}
         \caption{}
         \label{fig:Tyrosine residue - insulin}
     \end{subfigure}
     \\
 	\begin{subfigure}[b]{1.0\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{figures/datared/disulphide_insulin.png}
+        \includegraphics[width=\textwidth]{figures/datared/disulphide_insulin_1sig.png}
         \caption{}
         \label{fig:Disulpide bond - insulin}
     \end{subfigure}
-    \caption[2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps for insulin dataset.]{2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps contoured at the 3$\sigma$ level at 1.38$\,$\AA\ resolution for the ACT pipeline (blue) and the FBA pipeline (orange) with the insulin structure obtained after refinement with REFMAC with data processed via the ACT pipeline.
+    \caption[2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps for insulin dataset.]{2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps contoured at the 1$\sigma$ level at 1.38$\,$\AA\ resolution for the ACT pipeline (blue) and the FBA pipeline (orange) with the insulin structure obtained after refinement with REFMAC with data processed via the ACT pipeline.
     (a) Tyrosine residue.
     (b) Disulphide bond.
     The electron density maps are practically identical and these are representative of the density around the entire structure.}
@@ -383,40 +383,41 @@ This is confirmed by the median percentage error between the amplitude estimates
     \caption[Amplitude estimates for two different reflections observed in the C.Esp1396I dataset using the forward-backward algorithm.]{Amplitude estimates for two different reflections observed in the C.Esp1396I dataset using the forward-backward algorithm (blue solid line).
     The estimate produced with CTRUNCATE is shown in green.
     The estimates using the two different pipelines do not agree in both (a) and (b) and this is likely to be due to the incorrect scale factor used for the forward-backward algorithm.
-    Reflection 8,9,4 in (b) also exhibits sharp changes in the amplitude, which are likely to be noise.}
+    (a) In the second half of the experiment, there are no observations of reflection 0,17,48 and hence the uncertainty in the amplitude values propagates and increases.
+    (b) Reflection 8,9,4 exhibits sharp changes in the amplitude, which are likely to be noise.}
     \label{fig:Amplitude estimates - C.Esp1396I}
 \end{figure}
 
 \subsubsection{Refinement results}
 \label{subs:Refinement results - C.Esp1396I}
-To obtain an electron density map of the structure the initial amplitude estimates resulting from FBA were combined with the phases from the deposited C.Esp1396I structure (PDB code 3CLC) and refined with REFMAC \cite{murshudov2011refmac5} (20 cycles of rigid body refinement followed by 20 cycles of restrained refinement).
+To obtain an electron density map of the structure the initial amplitude estimates resulting from FBA were used along with the deposited C.Esp1396I model (PDB code 3CLC) and refined with REFMAC \cite{murshudov2011refmac5} (20 cycles of rigid body refinement followed by 20 cycles of restrained refinement).
 The same procedure was also performed using the amplitudes calculated using the ACT pipeline.
-The resulting electron density maps contoured at the 3$\sigma$ level at 2.4$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - C.Esp1396I}.
+The resulting electron density maps contoured at the 1$\sigma$ level at 2.4$\,$\AA\ for selected residues are shown in Figure~\ref{fig:Electron density maps - C.Esp1396I}.
 Once again the maps generally agree structurally but the overlap is less pronounced in this structure than it was for insulin.
 This is expected because the amplitude values did not agree as well, largely due to an incorrect scale factor used for the FBA.
 \begin{figure}
     \centering
     \begin{subfigure}[b]{1.0\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/datared/prot_section.png}
+            \includegraphics[width=\textwidth]{figures/datared/prot_section2.png}
             \caption{}
             \label{fig:Electron density map 1 - C.Esp1396I}
     \end{subfigure}
     \\
     \begin{subfigure}[b]{1.0\textwidth}
             \centering
-            \includegraphics[width=\textwidth]{figures/datared/DNA_section.png}
+            \includegraphics[width=\textwidth]{figures/datared/DNA_section2.png}
             \caption{}
             \label{fig:Electron density map 2 - C.Esp1396I}
     \end{subfigure}
-    \caption[2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps for the C.Esp1396I dataset]{2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps contoured at the 3$\sigma$ level at 2.42$\,$\AA\ for the ACT pipeline (blue) and the FBA pipeline (orange).
+    \caption[2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps for the C.Esp1396I dataset]{2F$_{\text{o}}$ - F$_{\text{c}}$ electron density maps contoured at the 1$\sigma$ level at 2.42$\,$\AA\ for the ACT pipeline (blue) and the FBA pipeline (orange).
     The model was obtained after refinement with REFMAC with data processed via the ACT pipeline.
     (a) Leu-Ile-Met-Lys-Gly residues of the protein from the C.Esp1396I protein-DNA complex.
     (b) DNA section of the C.Esp1396I protein-DNA complex.}
     \label{fig:Electron density maps - C.Esp1396I}
 \end{figure}
 
-The difference map between the amplitude values calculated from the ACT and FBA pipelines, using phases from the final model after refinement with the 3CLC phases and ACT amplitudes, is shown in Figure~\ref{fig:Difference electron density map - C.Esp1396I}.
+The difference map between the amplitude values calculated from the ACT and FBA pipelines, using phases from the final model after refinement using the ACT amplitudes and the C.Esp1396I structure (PDB 3CLC) as a starting model, is shown in Figure~\ref{fig:Difference electron density map - C.Esp1396I}.
 The difference density is no longer random and in fact is located around the model.
 This suggests that the two different pipelines could lead to different structural models.
 \begin{figure}[ht!]
@@ -435,7 +436,7 @@ Overall refinement statistics using both pipelines are shown in Table \ref{tab:R
 The R values are slightly better for the ACT pipeline but the RMS values are lower for the FBA pipeline.
 The statistics obtained using the FBA method are much better than expected considering the scale factor used in the FBA was non-optimal.
 If the amplitude values resulting from the FBA pipeline are indeed inaccurate then it is likely that the refinement process is significantly ``filtering out'' the errors that are made during the data reduction stage.
-It is also possible that the statistical improvement by manually refining the model may be more limited with the data for the FBA pipeline compared to that of the ACT pipeline.
+It is also possible that the statistical improvement by manually building the model may be more limited with the data for the FBA pipeline compared to that of the ACT pipeline.
 \begin{table}[ht!]
 	\caption[Final refinement statistics for data processed with the ACT and FBA pipelines.]{Final refinement statistics for data processed with the ACT and FBA pipelines.}
 	\centering
